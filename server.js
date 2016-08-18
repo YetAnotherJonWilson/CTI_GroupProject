@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var LocalStrategy = require('passport-local');
 var index = require('./routes/index');
-var salesforce = require('./routes/salesforce.js');
+var salesforce = require('./routes/salesforce2.js');
+var email = require('./routes/email.js');
 var app = express();
 var mongoose = require('mongoose');
 var donor = require('./routes/donor');
@@ -26,6 +27,8 @@ app.use(session({
 app.use('/', index);
 app.use('/salesforce', salesforce);
 app.use('/donor', donor);
+app.use('/email', email);
+
 
 var db = mongoose.connect('mongodb://localhost/donorCollection').connection;
 
