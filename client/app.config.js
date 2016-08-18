@@ -1,14 +1,14 @@
-angular.module('rewardsApp').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+angular.module('App').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
     .when('/', {
-      templateUrl: '/views/home.html',
-      controller: 'IndexController',
-      controllerAs: 'index'
-    })
-    .when('/login', {
       templateUrl: '/views/login.html',
-      controller: "LoginController",
-      controllerAs: "login"
+      controller: 'LoginController',
+      controllerAs: 'login'
+    })
+    .when('/home', {
+      templateUrl: '/views/home.html',
+      controller: "HomeController",
+      controllerAs: "home"
     })
     .when('/edit', {
       templateUrl: '/views/edit.html',

@@ -13,9 +13,9 @@ module.exports = function(grunt) {
       main: {
         files: [
           // makes all src relative to cwd
-          {expand: true, cwd: 'node_modules', src: ['angular/**', 'bootstrap/**'], dest: 'dest/'},
-        ],
-      },
+          {expand: true, cwd: 'node_modules', src: ['angular/**', 'bootstrap/**'], dest: 'dest/'}
+        ]
+      }
     },
     uglify: {
      my_target: {
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'public/client.min.js': ['public/scripts/*.js']
+         'public/assets/client.min.js': ['client/app.module.js', 'client/app.config.js', 'client/MainController.js', 'client.DataService.js', 'client/LoginController.js', 'client/HomeController.js', 'client/EditController.js', 'client/SettingsController.js']
        }
      }
    }
@@ -34,6 +34,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['uglify', 'watch']);
 
 };

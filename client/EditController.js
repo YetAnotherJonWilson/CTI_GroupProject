@@ -1,7 +1,7 @@
-angular.module('App').controller('EditController', ['$http', '$location', 'Dataservice' , function($http, $location, Dataservice)
+angular.module('App').controller('EditController', ['$http', '$location', 'Dataservice' , function($http, $location, Dataservice){
 
 
 
 
 
-]);
+}]);
