@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-require('dotenv').config();
+// require('dotenv').config();
 const jsforce = require('jsforce');
 
 router.get('/oauth2/auth', function(request, response){

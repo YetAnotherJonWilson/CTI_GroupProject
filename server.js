@@ -5,6 +5,7 @@ var session = require('express-session');
 var LocalStrategy = require('passport-local');
 var index = require('./routes/index');
 var salesforce = require('./routes/salesforce2.js');
+var email = require('./routes/email.js');
 var app = express();
 
 //parse request
@@ -23,6 +24,7 @@ app.use(session({
 //routes
 app.use('/', index);
 app.use('/salesforce', salesforce);
+app.use('/email', email);
 
 
 
