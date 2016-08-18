@@ -16,6 +16,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "jsforce": "^1.7.0",
     "mongo": "^0.1.0",
     "mongoose": "^4.5.9",
     "passport": "^0.3.2",

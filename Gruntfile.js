@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'public/assets/client.min.js': ['client/app.module.js', 'client/app.config.js', 'client/MainController.js', 'client.DataService.js', 'client/LoginController.js', 'client/HomeController.js', 'client/EditController.js', 'client/SettingsController.js']
+         'public/assets/client.min.js': ['client/app.module.js', 'client/app.config.js', 'client/MainController.js', 'client/DataService.js', 'client/LoginController.js', 'client/HomeController.js', 'client/EditController.js', 'client/SettingsController.js']
        }
      }
    }

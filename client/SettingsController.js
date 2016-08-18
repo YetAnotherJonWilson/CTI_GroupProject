@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'Dataservice' , function($http, $location, Dataservice){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService' , function($http, $location, DataService){
 
 
 
