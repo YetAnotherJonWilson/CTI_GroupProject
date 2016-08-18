@@ -7,17 +7,17 @@ var username = 'ryan@primeacademy.io';
 var password = 'nAMUGu!11YSVc0G&r';
 
 
-//  TODO
+// TODO
 
-router.get("/pull", function (req, res) {
+router.get('/pull', function (req, res) {
 
-    console.log("In pull on the serve, and req.params=", req.query.instanceUrl, req.query.accessToken);
+    console.log('In pull on the serve, and req.params=', req.query.instanceUrl, req.query.accessToken);
   var conn = new jsforce.Connection({
       instanceUrl : req.query.instanceUrl,
       accessToken : req.query.accessToken
   });
 
-  console.log("Connected?");
+  console.log('Connected?');
 
   // everything query, pulls all relevant data, this is currently set for Staff.
 
@@ -77,8 +77,9 @@ router.get("/fetch", function (req, res) {
 
   var strSql = req.query.strSql;
   var myQuery = req.query.queryInfo;
+  var myKey = req.query.key;
 
-  console.log("Connected?");
+  console.log('Connected?');
 
   conn.query(strSql, function(err, result) {
       if (err) { return console.error(err); }
@@ -87,6 +88,7 @@ router.get("/fetch", function (req, res) {
     //   console.log("records : " + result.data.records);
 
       var objRow = {
+          myKey: myKey,
           count: result.totalSize,
           queryInfo : myQuery,
 
@@ -105,18 +107,18 @@ router.get("/fetch", function (req, res) {
 router.get("/force", function (req, res) {
   var conn = new jsforce.Connection({
     // you can change loginUrl to connect to sandbox or prerelease env.
-    // loginUrl : 'https://test.salesforce.com'
+    loginUrl : 'https://test.salesforce.com'
   });
 
-  var username = 'ryan@primeacademy.io';
-  var password = 'nAMUGu!11YSVc0G&r';
+  // var username = 'ryan@primeacademy.io';
+  // var password = 'nAMUGu!11YSVc0G&r';
 
   console.log(" in index username = ", username);
   conn.login(username, password, function(err, userInfo) {
     if (err) { return console.error(err); }
     // Now you can get the access token and instance URL information.
     // Save them to establish connection next time.
-    console.log("acces token", conn.accessToken);
+    console.log("access token", conn.accessToken);
     console.log("conn insrtance url",conn.instanceUrl);
     // logged in user property
     console.log("User ID: " + userInfo.id);

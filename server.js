@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var LocalStrategy = require('passport-local');
 var index = require('./routes/index');
-var salesforce = require('./routes/salesforce.js');
+var salesforce = require('./routes/salesforce2.js');
 var app = express();
 
 //parse request
