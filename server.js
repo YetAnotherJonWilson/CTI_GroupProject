@@ -5,7 +5,10 @@ var session = require('express-session');
 var LocalStrategy = require('passport-local');
 var index = require('./routes/index');
 var salesforce = require('./routes/salesforce2.js');
+var email = require('./routes/email.js');
 var app = express();
+var mongoose = require('mongoose');
+var donor = require('./routes/donor');
 
 //parse request
 app.use(bodyParser.json());
@@ -23,9 +26,15 @@ app.use(session({
 //routes
 app.use('/', index);
 app.use('/salesforce', salesforce);
+app.use('/donor', donor);
+app.use('/email', email);
 
 
+var db = mongoose.connect('mongodb://localhost/donorCollection').connection;
 
+db.once('open', function() {
+  console.log('Connected to MongoDB');
+});
 
 var server = app.listen(3000, function(){
   var port = server.address().port;

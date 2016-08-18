@@ -6,4 +6,4 @@ router.get('/', function(request, response){
   response.sendFile(createdPath);
 });
 
-module.exports=router;
+module.exports = router;
