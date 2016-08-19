@@ -10,7 +10,7 @@ var nodemailer = require('nodemailer');
 
 
 
-var template = fs.readFileSync('./public/emails/email.hjs', 'utf-8');
+// var template = fs.readFileSync('./public/emails/email.hjs', 'utf-8');
 // var compiledTemplate = Hogan.compile(template);
 
 router.post('/sendMail/:id', function(request, response){

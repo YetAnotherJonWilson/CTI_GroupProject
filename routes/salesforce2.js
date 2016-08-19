@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-// require('dotenv').config();
+require('dotenv').config();
 const jsforce = require('jsforce');
 var request = require('request');
 
@@ -50,7 +50,7 @@ router.get('/test', function(request, response){
 
 function getStuff(accessToken, instanceUrl){
   var requestObj = {
-    url: instanceUrl + '/services/data/v20.0',
+    url: instanceUrl + '/services/data/v37.0/sobjects',
     headers: {
       client_id: process.env.SF_CLIENT_ID,
       client_secret: process.env.SF_CLIENT_SECRET,
@@ -59,7 +59,10 @@ function getStuff(accessToken, instanceUrl){
   }
   request(requestObj, function(err, response, body){
     if(err){console.log('err', err);}
-    else{console.log(response.body);}
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log(stuff);
+    }
   });
 }
 
