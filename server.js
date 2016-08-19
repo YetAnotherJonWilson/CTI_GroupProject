@@ -10,6 +10,9 @@ var email = require('./routes/email.js');
 var app = express();
 var request = require('request');
 var fs = require('fs');
+var mongoose = require('mongoose');
+var donor = require('./routes/donor');
+
 
 //parse request
 app.use(bodyParser.json());
@@ -27,11 +30,16 @@ app.use(session({
 //routes
 app.use('/', index);
 app.use('/salesforce', salesforce);
+app.use('/donor', donor);
 app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 
 
+var db = mongoose.connect('mongodb://localhost/donorCollection').connection;
 
+db.once('open', function() {
+  console.log('Connected to MongoDB');
+});
 
 var server = app.listen(3000, function(){
   var port = server.address().port;
