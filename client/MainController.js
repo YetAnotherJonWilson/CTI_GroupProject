@@ -5,4 +5,8 @@ angular.module('App').controller('MainController', ['$http', '$location', 'DataS
     vm.message = "CTI Thank You Email System";
 
 
+    vm.sendMail = function(){
+      EmailService.sendMail();
+    }
+
 }]);
