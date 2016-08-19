@@ -22,7 +22,11 @@
     "mongoose": "^4.5.9",
     "passport": "^0.3.2",
     "passport-forcedotcom": "^0.1.4",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "nodemailer": "^2.5.0",
+    "hjs": "0.0.6",
+    "hogan": "^1.0.2",
+    "hogan.js": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
