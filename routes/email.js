@@ -10,32 +10,36 @@ var nodemailer = require('nodemailer');
 
 
 
-var template = fs.readFileSync('./public/emails/email.hjs', 'utf-8');
-// var compiledTemplate = Hogan.compile(template);
 
-router.post('/sendMail/:id', function(request, response){
-  var mailid = request.params.id;
-  var mailData = request.body;
-  console.log('ENV' , process.env.username);
-  console.log(mailData.customer.customer_email);
+router.post('/sendMail', function(request, response){
+  var data = request.body;
+  console.log('sendMail request.body', request.body);
+
+  var template = fs.readFileSync('./public/emails/template1.hjs', 'utf-8');
+  var compiledTemplate = Hogan.compile(template);
+  console.log('ENV' , process.env.emailusername);
+  // console.log(mailData.customer.customer_email);
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: process.env.username,
-      pass: process.env.password,
+      user: 'gusarewards@gmail.com',
+      pass: 'golfusaadmin',
     }
   });
   var mailOptions = {
-    from: 'Golf Usa <gusarewards@gmail.com',
-    to: mailData.customer.customer_email,
-    subject: 'Rewards Info',
-    text: 'Thank you for your purchase ' + mailData.customer.customer_FirstName + ".\n" + "Punches = " + mailData.customer.punches + ".\n" + "Rewards = " + mailData.customer.rewards + ".",
+    from: 'CTI GROUP <gusarewards@gmail.com',
+    to: 'justindoty12@gmail.com',
+    subject: 'Thank You',
+    text: 'Thank You for donating!',
+
     html: compiledTemplate.render({
-    firstName: mailData.customer.customer_FirstName,
-    lastName: mailData.customer.customer_LastName,
-    punches: mailData.customer.punches,
-    rewards: mailData.customer.rewards}),
-  };
+    para1: data.p1,
+    para2: data.p2,
+    quote: data.q,
+    // para3: chosenTemplate.p3,
+    }),
+};
+
 
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
