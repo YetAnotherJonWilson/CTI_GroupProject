@@ -110,7 +110,7 @@ router.delete('/removeWithId/:id', function(request, response){
                 if(err){
                     console.log(err);
                 }
-            })
+            });
 
             console.log('User deleted');
             response.sendStatus(200);
