@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
-// require('dotenv').config();
+require('dotenv').config();
 const jsforce = require('jsforce');
 var request = require('request');
 
@@ -49,17 +49,24 @@ router.get('/test', function(request, response){
 
 
 function getStuff(accessToken, instanceUrl){
+  // var qstring= query: "SELECT Name, Amount, CloseDate, toLabel(Payment_Method__c), toLabel(StageName), RecordType.Name, Id, RecordTypeId, CreatedDate, LastModifiedDate, SystemModstamp FROM Opportunity WHERE RecordTypeId = '012d0000000b7UQ' ORDER BY Name ASC NULLS FIRST, Id ASC NULLS FIRST";
+  // ?start=2010-01-25T00%3A00%3A00%2B00%3A00&end=2011-08-13T00%3A00%3A00%2B00%3A00
+  // query/?q=SELECT+Name+from+Opportunity+where+CloseDate+<+2009-11-01
+  // query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49.000
+  // sobjects/Opportunity/006d000000hTiXbAAK
   var requestObj = {
-    url: instanceUrl + '/services/data/v20.0',
+    url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
     headers: {
-      client_id: process.env.SF_CLIENT_ID,
-      client_secret: process.env.SF_CLIENT_SECRET,
+      // client_id: process.env.SF_CLIENT_ID,
+      // client_secret: process.env.SF_CLIENT_SECRET,
       Authorization: 'Bearer ' + accessToken
     }
   }
   request(requestObj, function(err, response, body){
     if(err){console.log('err', err);}
-    else{console.log(response.body);}
+    else{
+      var something = JSON.parse(response.body)
+      console.log(something);}
   });
 }
 

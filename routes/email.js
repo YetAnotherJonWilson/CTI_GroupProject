@@ -11,6 +11,7 @@ var nodemailer = require('nodemailer');
 
 
 
+
 router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
@@ -19,6 +20,8 @@ router.post('/sendMail', function(request, response){
   var compiledTemplate = Hogan.compile(template);
   console.log('ENV' , process.env.emailusername);
   // console.log(mailData.customer.customer_email);
+
+
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
