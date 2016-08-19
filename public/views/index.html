@@ -13,11 +13,12 @@
   </head>
   <body ng-controller="MainController as main">
     <div class="container-fluid">
+      <button ng-click="main.sendMail()">Test Email</button>
       <header>
         <h1>{{main.message}}</h1>
       </header>
         <div ng-view>
-            
+
         </div>
     </div>
   </body>
