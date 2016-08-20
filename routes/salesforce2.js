@@ -55,11 +55,9 @@ function getStuff(accessToken, instanceUrl){
   // query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49.000
   // sobjects/Opportunity/006d000000hTiXbAAK
   var requestObj = {
-<<<<<<< HEAD
-    url: instanceUrl + '/services/data/v37.0/sobjects',
-=======
+
     url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
->>>>>>> 0d56e904ce0465ee2f924100252889b2600bbc5e
+
     headers: {
       // client_id: process.env.SF_CLIENT_ID,
       // client_secret: process.env.SF_CLIENT_SECRET,
@@ -69,14 +67,10 @@ function getStuff(accessToken, instanceUrl){
   request(requestObj, function(err, response, body){
     if(err){console.log('err', err);}
     else{
-<<<<<<< HEAD
       var stuff = JSON.parse(response.body);
       console.log(stuff);
     }
-=======
-      var something = JSON.parse(response.body)
-      console.log(something);}
->>>>>>> 0d56e904ce0465ee2f924100252889b2600bbc5e
+
   });
 }
 
