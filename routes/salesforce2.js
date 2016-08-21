@@ -56,7 +56,9 @@ function getStuff(accessToken, instanceUrl){
   // sobjects/Opportunity/006d000000hTiXbAAK
   var requestObj = {
 
+
     url: instanceUrl + '/services/data/v37.0/sobjects',
+
 
     url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
 
@@ -73,6 +75,7 @@ function getStuff(accessToken, instanceUrl){
       var stuff = JSON.parse(response.body);
       console.log(stuff);
     }
+
 
       var something = JSON.parse(response.body)
       console.log(something);
