@@ -7,8 +7,8 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
     })
     .when('/home', {
       templateUrl: '/views/home.html',
-      controller: "HomeController",
-      controllerAs: "home"
+      controller: 'HomeController',
+      controllerAs: 'home'
     })
     .when('/edit', {
       templateUrl: '/views/edit.html',
@@ -20,7 +20,7 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'SettingsController',
       controllerAs: 'settings'
     })
-    
+
 
     .otherwise({redirectTo:'/'});
 

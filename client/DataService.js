@@ -5,7 +5,9 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
 
   }
 
-  function getContactInfo
+  function getContactInfo(){
+    
+  }
 
   return {
     getDonors: getDonors,

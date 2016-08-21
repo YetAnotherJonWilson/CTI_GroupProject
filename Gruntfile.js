@@ -23,11 +23,7 @@ module.exports = function(grunt) {
       //    mangle: false
       //  },
        files: {
-         'public/assets/client.min.js': ['client/app.module.js',
-         'client/app.config.js', 'client/MainController.js', 'client/DataService.js', 'client/LoginController.js', 'client/HomeController.js', 'client/EditController.js', 'client/SettingsController.js',
-         'client/RouteService.js',
-         'client/EmailService.js',
-         'client/TemplateService.js']
+         'public/assets/client.min.js': ['client/app.module.js', 'client/app.config.js', 'client/MainController.js', 'client/DataService.js', 'client/LoginController.js', 'client/HomeController.js', 'client/EditController.js', 'client/SettingsController.js', 'client/RouteService.js', 'client/EmailService.js', 'client/TemplateService.js']
        }
      }
    }
@@ -38,6 +34,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['uglify', 'watch']);
+  grunt.registerTask('default', ['uglify']);
 
 };
