@@ -1,7 +1,55 @@
-<div class="row">
-    <div class="col-lg-2 col-md-2"></div>
-    <div class="col-lg-8 col-md-8">
-        <p style="text-align: center">Search</p>
+<div class="donorInfoHome" class="animated fadeIn">
+    <div class="donorSearchDiv">
+        <h3>Search</h3>
+        <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
     </div>
-    <div class="col-lg-2 col-md-2"></div>
+
+    <h1></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Donation Amount</th>
+                <th>Donation Date</th>
+                <th>Template</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr "filter:Enter_Anything |orderBy: doner_donationAmount">
+            <!-- I took out the ng repeat just to display some dummy data and see how it would look. We will need to decide what donor info will be displayed on this page.  -->
+       <!-- <td>{{donor.donor_firstName}}</td>
+            <td>{{donor_lastName}}</td>
+            <td>{{donor_email}}</td>
+            <td>{{donor_donationAmount}}</td>
+            <td>{{donor_donationDate}}</td>
+            <td>{{donor_template}}</td> -->
+                <td>DummyData</td>
+                <td>DummyData</td>
+                <td>DummyData@DummyData.com</td>
+                <td>5000</td>
+                <td>8/20/2017</td>
+                <td>1</td>
+                <td>
+                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
+                    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+                </td>
+            </tr>
+            <tr "filter:Enter_Anything |orderBy: doner_donationAmount">
+                <td>DummyData</td>
+                <td>DummyData</td>
+                <td>DummyData@DummyData.com</td>
+                <td>8000</td>
+                <td>9/20/2017</td>
+                <td>3</td>
+                <td>
+                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
+                    <button id="sendEmail" class="btn" ng-click="home.sendMail()">Send</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

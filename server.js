@@ -8,6 +8,7 @@ var salesforce = require('./routes/salesforce2.js');
 var verticleResponse = require('./routes/verticleResponse.js');
 var email = require('./routes/email.js');
 var app = express();
+var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var mongoose = require('mongoose');
@@ -84,6 +85,9 @@ db.once('open', function() {
 //     console.log('Saved successfully');
 //   }
 // });
+app.get('/*', function(req, res){
+  res.sendFile(path.join(__dirname, 'public/views/index.html'));
+});
 
 var server = app.listen(3000, function(){
   var port = server.address().port;

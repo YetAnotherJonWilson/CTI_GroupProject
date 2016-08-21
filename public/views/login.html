@@ -1,29 +1,30 @@
-<div class="row">
+<div id="loginwrapper" class="row">
     <div class="col-lg-4 col-md-4"></div>
     <div class="col-lg-4 col-md-4">
-         <div id = "loginDiv">
+         <div id="loginDiv">
             <div>
-                <label for="username">Username:</label>
+                <label for="username">Username</label>
                 <input type="text" ng-model="login.username" id="username"/>
             </div>
             <div>
-                <label for="password">Password: </label>
+                <label for="password">Password </label>
                 <input type="password" ng-model="login.password" id="password"/>
             </div>
-            <button class="btn btn-primary" ng-click="login.login()">Login</button>
+            <button class="btn" ng-click="login.login()">Login</button>
             <div ng-show="login.error">
                 {{login.errorMessage}}
             </div>
-
-        </div> -->
-        <!-- <a href="https://vrapi.verticalresponse.com/api/v1/oauth/authorize?client_id=prsyeu8hbmh4f56ht6jctw5w&redirect_uri=http://localhost:3000/email
-"><button>Vertical Response</button></a> -->
-
-<button ng-click="login.homeRoute()">Home</button>
-<button ng-click="login.editRoute()">Edit</button>
-<button ng-click="login.settingsRoute()">Settings</button>
-
+        </div>
     </div>
     <div class="col-lg-4 col-md-4">
     </div>
 </div>
+<div>
+  <h3>Test Buttons - Will be removed</h3>
+  <button ng-click="login.sendMail()">Test Email</button>
+  <button ng-click="login.homeRoute()">Home</button>
+  <button ng-click="login.editRoute()">Edit</button>
+  <button ng-click="login.settingsRoute()">Settings</button>
+</div>
+<!-- <a href="https://vrapi.verticalresponse.com/api/v1/oauth/authorize?client_id=prsyeu8hbmh4f56ht6jctw5w&redirect_uri=http://localhost:3000/email
+"><button>Vertical Response</button></a> -->

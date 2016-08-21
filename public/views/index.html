@@ -13,13 +13,21 @@
   </head>
   <body ng-controller="MainController as main">
     <div class="container-fluid">
-      <button ng-click="main.sendMail()">Test Email</button>
-      <header>
-        <h1>{{main.message}}</h1>
-      </header>
-        <div ng-view>
+      <div class="wrapper">
+        <header>
+          <img src="/assets/CTI_logo_text.png" alt="cti logo"/>
+          <a href="/logout">Log Out</a>
+          <a href="/settings">Settings</a>
+          <a href="/home">Home</a>
+        </header>
+
+
+        <div id="ngview" ng-view>
 
         </div>
+
+
+      </div>
     </div>
   </body>
 </html>

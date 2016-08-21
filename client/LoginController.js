@@ -13,6 +13,8 @@ vm.settingsRoute = function(){
   RouteService.settingsRoute();
 }
 
+
+
     var vm = this;
 
     vm.username = '';
