@@ -15,17 +15,16 @@
                 <th>Email</th>
                 <th>Donation Amount</th>
                 <th>Donation Date</th>
-                <th>Template</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="donor in donorlist" filter:'Enter_Anything |orderBy: doner_donationAmount'>
-            <td>{{donor_firstName}}</td>
-            <td>{{donor_lastName}}</td>
-            <td>{{donor_email}}</td>
-            <td>{{donor_donationAmount}}</td>
-            <td>{{donor_donationDate}}</td>
+            <tr ng-repeat="donor in home.donorList | orderBy: 'donor.donationAmount'">
+            <td>{{donor.firstName}}</td>
+            <td>{{donor.lastName}}</td>
+            <td>{{donor.email}}</td>
+            <td>{{donor.donationAmount}}</td>
+            <td>{{donor.donationDate}}</td>
               <td>
                   <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
                   <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>

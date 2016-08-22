@@ -2,7 +2,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
    var vm = this;
 
-   vm.donorlist = DonorService.donorlist
+   vm.donorList = DataService.donorObject.donors
 
   vm.homeRoute = function(){
     RouteService.homeRoute();
