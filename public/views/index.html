@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>CTI Thank You Email App</title>
+
     <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/stylesheet.css">
     <script src="/vendors/angular/angular.min.js"></script>
     <script src="/vendors/angular-route/angular-route.min.js"></script>
     <script src="/assets/client.min.js"></script>
+
 
     <base href="/" />
   </head>
@@ -21,7 +23,16 @@
           <a href="/home">Home</a>
         </header>
 
-
+        <div ng-controller="MainController">
+<select ng-model="template" ng-options="t.name for t in templates">
+ <option value="">(blank)</option>
+</select>
+url of the template: <code>{{template.url}}</code>
+<hr/>
+<div class="slide-animate-container">
+  <div class="slide-animate" ng-include="template.url"></div>
+</div>
+</div>
         <div id="ngview" ng-view>
 
         </div>

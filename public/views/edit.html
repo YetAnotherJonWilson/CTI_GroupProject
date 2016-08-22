@@ -20,8 +20,144 @@
   </div>
 
   <div class='editview'>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head></head><body><style type="text/css"></style><div class="document" style="font-family:'PT SANS',Georgia,Serif;margin:20px"><wrapper class="header" style="background:#8a8a8a"><container><row class="collapse"><columns small="6"><img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" height="100px" width="75px"></columns></row></container><br><p>{{date}}</p></wrapper><container><spacer size="16"></spacer><row><columns small="12"><p>Dear {{Household_Informal_Greeting}}:</p><p class="lead" >{{edit.paragraph0}}</p><p class="lead" >{{edit.template1.p1}}</p></columns></row><spacer size="16"></spacer><row><columns small="6"><img class="img" src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="350px" height="225px" style="float:left;margin:20px"></columns><columns small="6"><callout class="primary" style="font-style:italic;padding:20px"><p>{{edit.quote}}</p></callout></columns></row><row><p>{{edit.template1.p2}}</p><wrapper class="secondary"><spacer size="16"></spacer><row><columns large="6"><p>Sincerely,</p><br><p>Alexandra Spieldoch</p><p>Executive Director</p><img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px"><p class="postscript">P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!</p></columns></row></wrapper><div class="receipt" style="border-bottom:dotted 1px gray;border-top:dotted 1px gray;color:gray;display:inline-block;font-size:.9em"><p>Gift Amount: ${{amount}}</p><p>Gift Date: {{giftDate}}</p><p>CTI is a 501(c)(3) non-profit ● No goods or services have been provided in exchange for your contribution</p></div></row></container></div></body></html>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <!-- The character set should be utf-8 -->
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width"/>
+      <!-- Link to the email's CSS, which will be inlined into the email -->
+      <link rel="stylesheet" href="vendors/foundation-emails.css">
 
-  </div>
+    </head>
+    <style scoped type="text/css">
+
+        .document {
+            font-family: "PT SANS", Georgia, Serif;
+            margin: 20px;
+        }
+        .header {
+            background: #8a8a8a;
+        }
+
+        .header .columns {
+            padding-bottom: 0;
+        }
+
+        .header .wrapper-inner {
+            padding: 20px;
+        }
+
+        .header .container {
+            background: transparent;
+        }
+
+        .img {
+            float: left;
+            margin: 20px;
+        }
+
+        .img-quote {
+            display: inline-block;
+        }
+
+        .primary {
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .receipt {
+            font-size: .9em;
+            border-top: dotted 1px gray;
+            border-bottom: dotted 1px gray;
+            display: inline-block;
+            color: gray;
+        }
+
+        .signature {
+            float: left;
+        }
+
+        .wrapper.secondary {
+            background: #f3f3f3;
+        }
+
+    </style>
+
+
+    <div class="document">
+        <wrapper class="header">
+            <container>
+                <row class="collapse">
+                    <columns small="6">
+                        <img src="../assets/CTI_logo_text.png" height="100px" width="75px">
+                    </columns>
+                </row>
+            </container>
+            <p>{{Household_Formal_Greeting}}</p>
+            <p>{{Household_Mailing_Street}}</p>
+            <p>{{Household_Mailing_City}}, {{Household_Mailing_StateProvince}} {{Household_Mailing_ZipPostal_Code}}</p>
+            <br>
+            <p>{{date}}</p>
+
+        </wrapper>
+
+        <container>
+
+            <spacer size="16"></spacer>
+
+            <row>
+                <columns small="12">
+                    <p>Dear {{Household_Informal_Greeting}}: </p>
+                    <p class="lead">Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the
+                        table. It's clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone's life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
+                    </p>
+                  </row>
+                  <spacer size="16"></spacer>
+
+                  <row>
+                    <columns small="6">
+                    <!-- <div class="img-quote"> -->
+                        <img class="img" src="../assets/sampleimage3.jpg" alt="image" width="350px" height="225px">
+                      </columns>
+                      <columns small="6">
+                        <callout class="primary">
+
+                            <p>"Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community.
+                            I'm proud that I don't need to ask for help."</p>
+                        </callout>
+                      </columns>
+                    </row>
+                  <row>
+                    <!-- </div> -->
+                    <p>Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou's possible. And I can't thank you enough.</p>
+                </columns>
+
+            <wrapper class="secondary">
+
+                <spacer size="16"></spacer>
+
+                <row>
+                    <columns large="6">
+                        <p>Sincerely,</p>
+                        <br>
+                        <p>Alexandra Spieldoch</p>
+                        <p>Executive Director</p>
+                        <img src="../assets/Alexandra.png" width="200px" height="50px">
+
+                        <p class="postscript">P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!</p>
+                    </columns>
+                </row>
+            </wrapper>
+
+            <div class="receipt">
+                <p>Gift Amount: ${{amount}}</p>
+                <p>Gift Date: {{giftDate}}</p>
+                <p>CTI is a 501(c)(3) non-profit &#9679; No goods or services have been provided in exchange for your contribution</p>
+            </div>
+        </container>
+    </div>
+
+
   <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
 </div>

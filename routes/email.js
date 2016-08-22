@@ -9,8 +9,6 @@ var fs = require('fs');
 var nodemailer = require('nodemailer');
 
 
-
-
 router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
