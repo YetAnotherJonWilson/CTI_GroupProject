@@ -1,4 +1,4 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService' , function($http, $location, DataService, RouteService){
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', function($http, $location, DataService, RouteService, orderBy){
 
    var vm = this;
 
@@ -13,6 +13,31 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
   vm.settingsRoute = function(){
     RouteService.settingsRoute();
   }
+
+
+//
+// vm.propertyName = 'donationAmount';
+// vm.reverse = true;
+// vm.donors = orderBy(vm.donorList, vm.propertyName, vm.reverse);
+//
+// vm.sortBy = function(propertyName) {
+//   console.log('sortBy click.  PropertyName:', propertyName);
+//   vm.reverse = (vm.propertyName !== null && vm.propertyName === propertyName)
+//       ? !vm.reverse : false;
+//   vm.propertyName = propertyName;
+//   vm.donors = orderBy(vm.donorList, vm.propertyName, vm.reverse);
+
+
+  vm.propertyName = 'donationAmount';
+  vm.reverse = true;
+  vm.donors = vm.donorList;
+
+  vm.sortBy = function(propertyName) {
+    console.log('donorList:', vm.donors);
+    console.log('sortBy propertyName:', propertyName);
+    vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
+    vm.propertyName = propertyName;
+  };
 
 
 

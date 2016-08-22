@@ -10,24 +10,38 @@
     <table class="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Donation Amount</th>
-                <th>Donation Date</th>
+
+                <th>
+                    <button ng-click="home.sortBy('firstName')">First Name</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'firstName'" ng-class="{reverse: reverse}"></span> -->
+                </th>
+                <th>
+                    <button ng-click="home.sortBy('lastName')">Last Name</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'lastName'" ng-class="{reverse: reverse}"></span></th> -->
+                <th>
+                    <button ng-click="home.sortBy('email')">Email</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'email'" ng-class="{reverse: reverse}"></span></th> -->
+                <th>
+                    <button ng-click="home.sortBy('donationAmount')">Donation Amount</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th> -->
+                <th>
+                    <button ng-click="home.sortBy('donationDate')">Donation Date</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
+
                 <th>&nbsp</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="donor in home.donorList | filter:Enter_Anything | orderBy: '-donationAmount'">
-            <td>{{donor.firstName}}</td>
-            <td>{{donor.lastName}}</td>
-            <td>{{donor.email}}</td>
-            <td>{{donor.donationAmount}}</td>
-            <td>{{donor.donationDate}}</td>
-              <td>
-                  <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
-                  <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+            <tr ng-repeat="donor in home.donorList | orderBy:propertyName:reverse">
+                <td>{{donor.firstName}}</td>
+                <td>{{donor.lastName}}</td>
+                <td>{{donor.email}}</td>
+                <td>{{donor.donationAmount}}</td>
+                <td>{{donor.donationDate}}</td>
+                <td>
+                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
+                    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+
                 </td>
             </tr>
 
@@ -35,6 +49,6 @@
     </table>
 </div>
 
-    <div class="col-lg-2 col-md-2"></div>
+<div class="col-lg-2 col-md-2"></div>
 </div>
 <h1>it worked</h1>
