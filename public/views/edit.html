@@ -1,30 +1,39 @@
 <div class='editmain'>
 
-  <div class="editinputs">
-  <div>
-  <label for="paragraph0">P</label>
-  <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
-  </div>
-  <div class="paragraph1">
-  <label for="paragraph1">P</label>
-  <textarea type="text" ng-model="edit.template1.p1" id="paragraph1"></textarea>
-  </div>
-  <div>
-  <label for="quote">Q</label>
-  <textarea type="text" ng-model="edit.template1.quote" id="quote" /></textarea>
-  </div>
-  <div>
-  <label for="paragraph2">P</label>
-  <textarea type="text" ng-model="edit.template1.p2" id="paragraph2" /></textarea>
-  </div>
-  </div>
+    <div class="editinputs">
+        <div>
+            <label for="paragraph0">P</label>
+            <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
+        </div>
+        <div class="paragraph1">
+            <label for="paragraph1">P</label>
+            <textarea type="text" ng-model="edit.template1.p1" id="paragraph1"></textarea>
+        </div>
+        <div>
+            <label for="quote">Q</label>
+            <textarea type="text" ng-model="edit.template1.quote" id="quote" /></textarea>
+        </div>
+        <div>
+            <label for="paragraph2">P</label>
+            <textarea type="text" ng-model="edit.template1.p2" id="paragraph2" /></textarea>
+        </div>
+    </div>
 
-  <div class='editview'>
-
+    <div class='editview'>
+        <div>
+            <select ng-model="edit.template" ng-options="t.name for t in edit.templates">
+                <option value="">(blank)</option>
+            </select>
+            <!-- url of the template: <code>{{edit.template.url}}</code> -->
+            <hr/>
+            <div class="slide-animate-container">
+                <div class="slide-animate" ng-include="edit.template.url"></div>
+            </div>
+        </div>
     </div>
 
 
-  <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
+    <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
 
 
 </div>
