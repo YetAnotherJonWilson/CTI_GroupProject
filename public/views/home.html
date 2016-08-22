@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="donor in home.donorList | orderBy:propertyName:reverse">
+            <tr ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything">
                 <td>{{donor.firstName}}</td>
                 <td>{{donor.lastName}}</td>
                 <td>{{donor.email}}</td>
