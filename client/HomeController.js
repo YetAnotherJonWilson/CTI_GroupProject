@@ -15,19 +15,6 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
   }
 
 
-//
-// vm.propertyName = 'donationAmount';
-// vm.reverse = true;
-// vm.donors = orderBy(vm.donorList, vm.propertyName, vm.reverse);
-//
-// vm.sortBy = function(propertyName) {
-//   console.log('sortBy click.  PropertyName:', propertyName);
-//   vm.reverse = (vm.propertyName !== null && vm.propertyName === propertyName)
-//       ? !vm.reverse : false;
-//   vm.propertyName = propertyName;
-//   vm.donors = orderBy(vm.donorList, vm.propertyName, vm.reverse);
-
-
   vm.propertyName = 'donationAmount';
   vm.reverse = true;
   vm.donors = vm.donorList;
