@@ -32,7 +32,7 @@ UserSchema.pre('save', function(next){
 UserSchema.methods.comparePassword = function(candidatePassword, callback){
 // no error, boolean indicating whether the passwords matched
 // this.password is the password in the database
-// candidatePassword is what we received on the request
+ // candidatePassword is what we received on the request
 
   var user = this;
 
