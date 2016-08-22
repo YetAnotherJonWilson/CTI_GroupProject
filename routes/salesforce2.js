@@ -54,13 +54,16 @@ function getStuff(accessToken, instanceUrl){
   // query/?q=SELECT+Name+from+Opportunity+where+CloseDate+<+2009-11-01
   // query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49.000
   // sobjects/Opportunity/006d000000hTiXbAAK
+  // 001d000000DfVkPAAV
+  // npe01__Contact_Id_for_Role__c: '003d000000JJqG1AAL'
   var requestObj = {
 
 
-    url: instanceUrl + '/services/data/v37.0/sobjects',
+    // url: instanceUrl + '/services/data/v37.0/sobjects/Contact/a00d0000007j6fAAAQ',
+    // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,npe01__Is_Opp_from_Individual__c+,npe01__Contact_Id_for_Role__c+,AccountId+,Id+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
 
-
-    url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
+    // url: instanceUrl + '/services/data/v37.0/process/rules',
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
 
     headers: {
       // client_id: process.env.SF_CLIENT_ID,
@@ -74,13 +77,34 @@ function getStuff(accessToken, instanceUrl){
 
       var stuff = JSON.parse(response.body);
       console.log(stuff);
+      var records = stuff.records;
+      for(var i=0; i<records.length; i++){
+        getInfo(accessToken, instanceUrl, records[i]);
+      }
     }
 
-
-      var something = JSON.parse(response.body)
-      console.log(something);
+      //
+      // var something = JSON.parse(response.body)
+      // console.log(something);
 
   });
 }
-
+function getInfo(accessToken, instanceUrl, record){
+  var requestObj = {
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,AccountId+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
+    headers: {
+      // client_id: process.env.SF_CLIENT_ID,
+      // client_secret: process.env.SF_CLIENT_SECRET,
+      Authorization: 'Bearer ' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){console.log('err', err);}
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log(stuff);
+    }
+  });
+}
 module.exports = router;
