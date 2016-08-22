@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="donor in home.donorList | orderBy: 'donor.donationAmount'">
+            <tr ng-repeat="donor in home.donorList | filter:Enter_Anything | orderBy: '-donationAmount'">
             <td>{{donor.firstName}}</td>
             <td>{{donor.lastName}}</td>
             <td>{{donor.email}}</td>
