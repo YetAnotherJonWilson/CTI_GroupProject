@@ -15,7 +15,7 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
       {
         firstName: 'Michael'
         LastName: 'Jordan'
-        email: 'mjair@gmail.com'
+        email: 'hisairness@gmail.com'
         donationAmount: 50000
         donationDate: '5/20/2014'
         street: 'Dunk St.'
@@ -26,7 +26,7 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
       {
         firstName: 'Michael'
         LastName: 'Phelps'
-        email: 'mpswim@gmail.com'
+        email: 'phelpswim@gmail.com'
         donationAmount: 40000
         donationDate: '6/05/2016'
         street: 'Swim St.'
@@ -37,13 +37,24 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
       {
         firstName: 'Steve'
         LastName: 'Jobs'
-        email: 'applefan@gmail.com'
+        email: 'applefan@apple.com'
         donationAmount: 100000
         donationDate: '12/25/2012'
         street: 'Apple Ave.'
         city: 'Silicon Valley'
         state: 'CA'
         zip: '90543'
+      },
+      {
+        firstName: 'John'
+        LastName: 'Wayne'
+        email: 'olejonny@gmail.com'
+        donationAmount: 19
+        donationDate: '1/30/1981'
+        street: 'Old West St.'
+        city: 'Old West Town'
+        state: 'MT'
+        zip: '65652'
       },
     ]
   }
