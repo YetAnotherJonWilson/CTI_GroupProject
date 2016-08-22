@@ -63,7 +63,7 @@ function getStuff(accessToken, instanceUrl){
     // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,npe01__Is_Opp_from_Individual__c+,npe01__Contact_Id_for_Role__c+,AccountId+,Id+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
 
     // url: instanceUrl + '/services/data/v37.0/process/rules',
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
 
     headers: {
       // client_id: process.env.SF_CLIENT_ID,
