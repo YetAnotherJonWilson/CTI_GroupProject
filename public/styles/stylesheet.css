@@ -33,6 +33,9 @@ table {
 /*Everthing above is the reset. DONT CHANGE*/
 
 /*index.html and main layout*/
+body {
+  font-family: 'PT SANS';
+}
 .wrapper {
   width:90%;
   height: 1100px;
@@ -139,8 +142,10 @@ tr:nth-child(even) {
   margin-top: 100px;
 }
 .editinputs {
+  float: left;
   display: inline-block;
-  width: 600px;
+  width: 50%;
+  max-width: 600px;
   margin-top: 30px;
 }
 .editinputs label {
@@ -149,17 +154,17 @@ tr:nth-child(even) {
 }
 .editinputs input {
   height: 150px;
-  width: 500px;
+  width: 100%;
   margin-bottom: 10px;
 }
 .editinputs textarea {
   height: 150px;
-  width: 500px;
+  width: 100%;
   margin-bottom: 10px;
 }
 .editview {
-  float: right;
-  width: 600px;
+  float: left;
+  width: 50%;
   margin-top: 30px;
   height: 600px;
   border: 1px solid rgba(0, 0, 0, 0.1);

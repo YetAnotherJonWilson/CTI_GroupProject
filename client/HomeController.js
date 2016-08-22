@@ -2,6 +2,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
    var vm = this;
 
+   vm.donorlist = DonorService.donorlist
+
   vm.homeRoute = function(){
     RouteService.homeRoute();
   }
@@ -11,4 +13,15 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
   vm.settingsRoute = function(){
     RouteService.settingsRoute();
   }
+
+
+
+
+
+
+
+
+
+
+
 }]);

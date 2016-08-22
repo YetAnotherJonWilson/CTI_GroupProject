@@ -23,8 +23,8 @@ router.post('/sendMail', function(request, response){
   var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'gusarewards@gmail.com',
-      pass: 'golfusaadmin',
+      user: process.env.emailuser,
+      pass: process.env.emailpass,
     }
   });
   var mailOptions = {

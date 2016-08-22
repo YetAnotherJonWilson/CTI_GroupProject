@@ -20,37 +20,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr "filter:Enter_Anything |orderBy: doner_donationAmount">
-            <!-- I took out the ng repeat just to display some dummy data and see how it would look. We will need to decide what donor info will be displayed on this page.  -->
-       <!-- <td>{{donor.donor_firstName}}</td>
+            <tr ng-repeat="donor in donorlist" filter:'Enter_Anything |orderBy: doner_donationAmount'>
+            <td>{{donor_firstName}}</td>
             <td>{{donor_lastName}}</td>
             <td>{{donor_email}}</td>
             <td>{{donor_donationAmount}}</td>
             <td>{{donor_donationDate}}</td>
-            <td>{{donor_template}}</td> -->
-                <td>DummyData</td>
-                <td>DummyData</td>
-                <td>DummyData@DummyData.com</td>
-                <td>5000</td>
-                <td>8/20/2017</td>
-                <td>1</td>
-                <td>
-                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
-                    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+              <td>
+                  <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
+                  <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
                 </td>
             </tr>
-            <tr "filter:Enter_Anything |orderBy: doner_donationAmount">
-                <td>DummyData</td>
-                <td>DummyData</td>
-                <td>DummyData@DummyData.com</td>
-                <td>8000</td>
-                <td>9/20/2017</td>
-                <td>3</td>
-                <td>
-                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
-                    <button id="sendEmail" class="btn" ng-click="home.sendMail()">Send</button>
-                </td>
-            </tr>
+
         </tbody>
     </table>
 </div>

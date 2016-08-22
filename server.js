@@ -24,7 +24,7 @@ var salesforce = require('./routes/salesforce2.js');
 var verticleResponse = require('./routes/verticleResponse.js');
 
 var app = express();
-
+require('dotenv').config();
 //parse request
 app.use(bodyParser.json());
 //serve static files
