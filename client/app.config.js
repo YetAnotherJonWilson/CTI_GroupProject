@@ -9,19 +9,11 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       templateUrl: '/views/home.html',
       controller: 'HomeController',
       controllerAs: 'home'
-// <<<<<<< Updated upstream
 //       resolve: {
 //         donors: function(DataService){
 //           return DataService.getDonors();
 //         }
 //       }
-
-      // resolve: {
-      //   donors: function(DataService){
-      //     return DataService.getDonors();
-      //   }
-      // }
-
     })
     .when('/edit', {
       templateUrl: '/views/edit.html',
