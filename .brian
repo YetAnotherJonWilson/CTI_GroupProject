@@ -13,3 +13,12 @@
 
 
 // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
+// url: instanceUrl + '/services/data/v37.0/process/rules',
+//Opportunity
+//Primary_Contact__c 003d000000V8J9gAAF
+//prime 006d000000r6eqJAAQ
+//Customer_Organization__c 001d0000025MIvXAAW
+//Primary_Contact__c 003d0000037X5yoAAC
+//justin doty 006d000000r6hZ8AAI
+// url: instanceUrl + '/services/data/v37.0/sobjects/Account/001d0000025MIvXAAW',
+// url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2010-08-20T21:04:49Z",
