@@ -1,4 +1,4 @@
-angular.module('App').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+angular.module('App').config(['$routeProvider', '$locationProvider', 'DataService', function($routeProvider, $locationProvider, DataService){
   $routeProvider
     .when('/', {
       templateUrl: '/views/login.html',
@@ -9,6 +9,19 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       templateUrl: '/views/home.html',
       controller: 'HomeController',
       controllerAs: 'home'
+<<<<<<< Updated upstream
+      resolve: {
+        donors: function(DataService){
+          return DataService.getDonors();
+        }
+      }
+=======
+      // resolve: {
+      //   donors: function(DataService){
+      //     return DataService.getDonors();
+      //   }
+      // }
+>>>>>>> Stashed changes
     })
     .when('/edit', {
       templateUrl: '/views/edit.html',

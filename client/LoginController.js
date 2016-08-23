@@ -1,4 +1,4 @@
-angular.module('App').controller('LoginController', ['$http', '$location', 'RouteService', function($http, $location, RouteService){
+angular.module('App').controller('LoginController', ['$http', '$location', 'RouteService', 'DataService', function($http, $location, RouteService, DataService){
 
 
   var vm = this;
@@ -41,6 +41,6 @@ angular.module('App').controller('LoginController', ['$http', '$location', 'Rout
     vm.error = true;
   }
 
-
+DataService.getDonors();
 
 }]);
