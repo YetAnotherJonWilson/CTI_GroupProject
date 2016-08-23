@@ -3,6 +3,8 @@ const path = require('path');
 require('dotenv').config();
 const jsforce = require('jsforce');
 var request = require('request');
+var records=[];
+var contacts=[];
 
 router.get('/oauth2/auth', function(request, response){
   response.redirect(oauth2.getAuthorizationUrl({}));
@@ -59,7 +61,7 @@ function getStuff(accessToken, instanceUrl){
   var requestObj = {
 
 
-    // url: instanceUrl + '/services/data/v37.0/sobjects/Contact/a00d0000007j6fAAAQ',
+    // url: instanceUrl + '/services/data/v37.0/sobjects/Contact/003d0000037X5z3AAC',
     // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,npe01__Is_Opp_from_Individual__c+,npe01__Contact_Id_for_Role__c+,AccountId+,Id+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
 
     // url: instanceUrl + '/services/data/v37.0/process/rules',
@@ -77,21 +79,38 @@ function getStuff(accessToken, instanceUrl){
 
       var stuff = JSON.parse(response.body);
       console.log(stuff);
-      var records = stuff.records;
+      records = stuff.records;
       for(var i=0; i<records.length; i++){
         getInfo(accessToken, instanceUrl, records[i]);
       }
     }
-
-      //
-      // var something = JSON.parse(response.body)
-      // console.log(something);
-
   });
 }
 function getInfo(accessToken, instanceUrl, record){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,AccountId+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
+    headers: {
+      // client_id: process.env.SF_CLIENT_ID,
+      // client_secret: process.env.SF_CLIENT_SECRET,
+      Authorization: 'Bearer ' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){console.log('err', err);}
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log(stuff);
+      // contacts.push(stuff.records);
+      getHousehold(accessToken, instanceUrl, stuff.records[0].npo02__Household__c);
+      addHouseholdId(stuff.records[0].npo02__Household__c, stuff.records[0].Id);
+    }
+  });
+}
+function getHousehold(accessToken, instanceUrl, household){
+  // console.log(household);
+  var requestObj = {
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+npo02__Household__c+where+Id+=+'"+household+"'",
     // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,AccountId+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
     headers: {
       // client_id: process.env.SF_CLIENT_ID,
@@ -106,5 +125,12 @@ function getInfo(accessToken, instanceUrl, record){
       console.log(stuff);
     }
   });
+}
+function addHouseholdId(householdId, contactId){
+  for(var i=0; i<records.length; i++){
+    if(records[i].Primary_Contact__c===contactId){
+      records[i].householdId= householdId;
+    }
+  }
 }
 module.exports = router;
