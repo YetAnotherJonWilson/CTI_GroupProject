@@ -27,7 +27,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
   };
 
 
-
+   DataService.getData();
 
 
 

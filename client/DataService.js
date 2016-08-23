@@ -81,9 +81,9 @@ angular.module('App').factory('DataService', ['$http', function($http){
 
 
 
-  function getDonors(){
-    $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
-  }
+  // function getDonors(){
+  //   $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
+  // }
   function getData(){
     $http.get('/salesforce/data').then(handleSuccess, handleFailure);
   }
@@ -100,7 +100,7 @@ angular.module('App').factory('DataService', ['$http', function($http){
 
   return {
     getDonors: getDonors,
-    // getContactInfo: getContactInfo,
+    getData: getData,
     donorObject: donorObject
   };
 }]);
