@@ -9,11 +9,19 @@ angular.module('App').config(['$routeProvider', '$locationProvider', 'DataServic
       templateUrl: '/views/home.html',
       controller: 'HomeController',
       controllerAs: 'home'
+<<<<<<< Updated upstream
       resolve: {
         donors: function(DataService){
           return DataService.getDonors();
         }
       }
+=======
+      // resolve: {
+      //   donors: function(DataService){
+      //     return DataService.getDonors();
+      //   }
+      // }
+>>>>>>> Stashed changes
     })
     .when('/edit', {
       templateUrl: '/views/edit.html',

@@ -9,6 +9,10 @@ var accounts =[];
 var households=[];
 var everything=[opportunities, contacts, accounts, households];
 
+router.get('/data', function(request, response){
+  response.send(everything);
+});
+
 router.get('/oauth2/auth', function(request, response){
   response.redirect(oauth2.getAuthorizationUrl({}));
 });

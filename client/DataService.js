@@ -1,4 +1,4 @@
-angular.module('App').factory('DataService', ['$http', function($http, DataService){
+angular.module('App').factory('DataService', ['$http', function($http){
 
 
 
@@ -82,11 +82,17 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
 
 
   function getDonors(){
-
+    $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
+  }
+  function getData(){
+    $http.get('/salesforce/data').then(handleSuccess, handleFailure);
   }
 
-  function getContactInfo(){
-
+  function handleSuccess(res){
+      console.log(res);
+  }
+  function handleFailure(res){
+    console.log('fail', res);
   }
 
 
@@ -94,7 +100,7 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
 
   return {
     getDonors: getDonors,
-    getContactInfo: getContactInfo,
+    // getContactInfo: getContactInfo,
     donorObject: donorObject
   };
 }]);
