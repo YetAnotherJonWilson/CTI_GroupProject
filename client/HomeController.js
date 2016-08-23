@@ -16,6 +16,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.settingsRoute = function() {
 		RouteService.settingsRoute();
 	}
+	
 
 
 	vm.propertyName = 'donationAmount';

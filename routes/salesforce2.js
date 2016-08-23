@@ -75,7 +75,7 @@ function getOpps(accessToken, instanceUrl){
 }
 function getContact(accessToken, instanceUrl, record){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,npo02__Formula_HouseholdMailingAddress__c+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,MailingAddress+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
