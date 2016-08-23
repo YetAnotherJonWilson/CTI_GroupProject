@@ -106,7 +106,7 @@ convertDates();
 
 
   return {
-    getDonors: getDonors,
+    // getDonors: getDonors,
     getData: getData,
     donorObject: donorObject
   };
