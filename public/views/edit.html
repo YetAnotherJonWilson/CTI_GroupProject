@@ -1,39 +1,75 @@
 <div class='editmain'>
 
+<!--
     <div class="editinputs">
+<<<<<<< HEAD
         <div>
             <label for="paragraph0">Testing the font-family</label>
             <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
         </div>
+=======
+>>>>>>> 087834ed0fafd1e12bcbc9f57fcf9733429f794a
         <div class="paragraph1">
-            <label for="paragraph1">P</label>
-            <textarea type="text" ng-model="edit.template1.p1" id="paragraph1"></textarea>
+            <label for="paragraph1">Paragraph 1</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p1" id="paragraph1"></textarea>
         </div>
         <div>
-            <label for="quote">Q</label>
-            <textarea type="text" ng-model="edit.template1.quote" id="quote" /></textarea>
+            <label for="quote">Quote</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.quote" id="quote" /></textarea>
         </div>
         <div>
-            <label for="paragraph2">P</label>
-            <textarea type="text" ng-model="edit.template1.p2" id="paragraph2" /></textarea>
+            <label for="paragraph2">Paragraph 2</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p2" id="paragraph2" /></textarea>
         </div>
-    </div>
+    </div> -->
 
-    <div class='editview'>
-        <div>
-            <select ng-model="edit.template" ng-options="t.name for t in edit.templates">
-                <option value="">(blank)</option>
-            </select>
-            <!-- url of the template: <code>{{edit.template.url}}</code> -->
-            <hr/>
-            <div class="slide-animate-container">
-                <div class="slide-animate" ng-include="edit.template.url"></div>
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div> -->
+
+    <div class="editField">
+        <select class="form-control" ng-model="edit.template" ng-options="t.name for t in edit.templates">
+            <option value="">(blank)</option>
+        </select>
+
+        <div class='editview'>
+            <div>
+                <!-- <hr/> -->
+                <div class="slide-animate-container">
+                    <div class="slide-animate" ng-include="edit.template.url"></div>
+                </div>
             </div>
         </div>
+        <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
     </div>
 
 
-    <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
+    <!--
+<div class='editview'>
+    <iframe id="Example2"
+    name="Example2"
+    title="Example2"
+    width="600"
+    height="800"
+    frameborder="1"
+    scrolling="no"
+    marginheight="0"
+    marginwidth="0"
+    src="emails/template_1.html">
+</iframe>
+</div> -->
+
 
 
 </div>

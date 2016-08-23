@@ -1,4 +1,4 @@
-angular.module('App').factory('DataService', ['$http', function($http, DataService){
+angular.module('App').factory('DataService', ['$http', function($http){
 
 
 
@@ -82,19 +82,32 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
 
 
   function getDonors(){
-
+    $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
+  }
+  function getData(){
+    $http.get('/salesforce/data').then(handleSuccess, handleFailure);
   }
 
-  function getContactInfo(){
-
+  function handleSuccess(res){
+      console.log(res);
+  }
+  function handleFailure(res){
+    console.log('fail', res);
   }
 
+function convertDates(){
+    for (var i = 0; i < donorObject.donors.length; i++){
+      donorObject.donors[i].convertedDate = new Date(donorObject.donors[i].donationDate);
+    }
+}
 
+
+convertDates();
 
 
   return {
     getDonors: getDonors,
-    getContactInfo: getContactInfo,
+    // getContactInfo: getContactInfo,
     donorObject: donorObject
   };
 }]);

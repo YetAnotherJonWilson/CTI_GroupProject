@@ -30,6 +30,18 @@ app.use(bodyParser.json());
 //serve static files
 app.use(express.static('public'));
 
+
+// process.env.MONGODB_URI will only be defined if you
+// are running on Heroku
+if(process.env.MONGODB_URI != undefined) {
+  // use the string value of the environment variable
+  databaseURI = process.env.MONGODB_URI;
+} else {
+  // use the local database server
+  databaseURI = 'mongodb://localhost:27017/donorCollection';
+}
+
+
 app.use(session({
   secret: 'mmmbutter',
   key: 'user',
@@ -49,7 +61,7 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 
-var db = mongoose.connect('mongodb://localhost:27017/donorCollection').connection;
+var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
   console.log('mongodb connection error', err);

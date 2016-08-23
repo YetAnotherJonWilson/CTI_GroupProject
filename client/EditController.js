@@ -2,6 +2,9 @@ angular.module('App').controller('EditController', ['$http', '$location', 'DataS
 
 	var vm = this;
 
+  vm.templatesObject = TemplateService.templatesObject;
+
+
 	vm.editObject = {};
 
 	// vm.user = UserService.user;
@@ -46,7 +49,9 @@ angular.module('App').controller('EditController', ['$http', '$location', 'DataS
 	vm.template = vm.templates[0];
 
 
-
+  vm.editModal = function(){
+    
+  }
 
 	vm.sendMail = function(p1, q, p2) {
 		console.log('You cliked me');

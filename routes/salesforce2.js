@@ -3,6 +3,15 @@ const path = require('path');
 require('dotenv').config();
 const jsforce = require('jsforce');
 var request = require('request');
+var opportunities=[];
+var contacts=[];
+var accounts =[];
+var households=[];
+var everything=[opportunities, contacts, accounts, households];
+
+router.get('/data', function(request, response){
+  response.send(everything);
+});
 
 router.get('/oauth2/auth', function(request, response){
   response.redirect(oauth2.getAuthorizationUrl({}));
@@ -21,53 +30,31 @@ console.log({clientId : process.env.SF_CLIENT_ID,
 router.get('/oauth2/callback', function(request, response){
   var conn = new jsforce.Connection({oauth2: oauth2});
   var code = request.param('code');
-  // console.log(code);
   conn.authorize(code, function(err, userInfo){
     if(err){
       return console.log(err);
     }
-
     console.log('accessToken: ' + conn.accessToken);
-    // console.log('tokenSecret: ' + conn.tokenSecret);
     console.log('connRefreshToken' + conn.refreshToken);
     console.log('Instance url: ' + conn.instanceUrl);
     console.log('user id: ' + userInfo.id);
     console.log('org id: ' + userInfo.organizationId);
     request.session.accessToken = conn.accessToken;
     request.session.instanceUrl = conn.instanceUrl;
-
-    // getStuff(conn.accessToken, conn.instanceUrl);
-
     console.log('work please');
     response.redirect('/salesforce/test');
   });
 });
 
 router.get('/test', function(request, response){
-  getStuff(request.session.accessToken, request.session.instanceUrl);
+  getOpps(request.session.accessToken, request.session.instanceUrl);
 });
 
 
-function getStuff(accessToken, instanceUrl){
-  // var qstring= query: "SELECT Name, Amount, CloseDate, toLabel(Payment_Method__c), toLabel(StageName), RecordType.Name, Id, RecordTypeId, CreatedDate, LastModifiedDate, SystemModstamp FROM Opportunity WHERE RecordTypeId = '012d0000000b7UQ' ORDER BY Name ASC NULLS FIRST, Id ASC NULLS FIRST";
-  // ?start=2010-01-25T00%3A00%3A00%2B00%3A00&end=2011-08-13T00%3A00%3A00%2B00%3A00
-  // query/?q=SELECT+Name+from+Opportunity+where+CloseDate+<+2009-11-01
-  // query/?q=SELECT+Name+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49.000
-  // sobjects/Opportunity/006d000000hTiXbAAK
-  // 001d000000DfVkPAAV
-  // npe01__Contact_Id_for_Role__c: '003d000000JJqG1AAL'
+function getOpps(accessToken, instanceUrl){
   var requestObj = {
-
-
-    // url: instanceUrl + '/services/data/v37.0/sobjects/Contact/a00d0000007j6fAAAQ',
-    // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,npe01__Is_Opp_from_Individual__c+,npe01__Contact_Id_for_Role__c+,AccountId+,Id+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
-
-    // url: instanceUrl + '/services/data/v37.0/process/rules',
     url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
-
     headers: {
-      // client_id: process.env.SF_CLIENT_ID,
-      // client_secret: process.env.SF_CLIENT_SECRET,
       Authorization: 'Bearer ' + accessToken
     }
   }
@@ -77,25 +64,18 @@ function getStuff(accessToken, instanceUrl){
 
       var stuff = JSON.parse(response.body);
       console.log(stuff);
-      var records = stuff.records;
-      for(var i=0; i<records.length; i++){
-        getInfo(accessToken, instanceUrl, records[i]);
+      opportunities = stuff.records;
+      for(var i=0; i<opportunities.length; i++){
+        getContact(accessToken, instanceUrl, opportunities[i]);
+        getAccount(accessToken, instanceUrl, opportunities[i].AccountId);
       }
     }
-
-      //
-      // var something = JSON.parse(response.body)
-      // console.log(something);
-
   });
 }
-function getInfo(accessToken, instanceUrl, record){
+function getContact(accessToken, instanceUrl, record){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
-    // url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Name+,AccountId+from+Opportunity+where+CreatedDate+>+2012-04-03T21:04:49Z',
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,npo02__Formula_HouseholdMailingAddress__c+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
     headers: {
-      // client_id: process.env.SF_CLIENT_ID,
-      // client_secret: process.env.SF_CLIENT_SECRET,
       Authorization: 'Bearer ' + accessToken
     }
   }
@@ -104,6 +84,40 @@ function getInfo(accessToken, instanceUrl, record){
     else{
       var stuff = JSON.parse(response.body);
       console.log(stuff);
+      contacts.push(stuff.records[0]);
+        getHousehold(accessToken, instanceUrl, stuff.records[0].npo02__Household__c);
+    }
+  });
+}
+function getHousehold(accessToken, instanceUrl, household){
+  var requestObj = {
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npo02__Addressee__c+,npo02__Formula_MailingAddress__c+,npo02__HouseholdEmail__c+,npo02__HouseholdPhone__c+,npo02__Formal_Greeting__c+,npo02__Informal_Greeting__c+from+npo02__Household__c+where+Id+=+'"+household+"'",
+    headers: {
+      Authorization: 'Bearer ' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){console.log('err', err);}
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log(stuff);
+      households.push(stuff.records[0]);
+    }
+  });
+}
+function getAccount(accessToken, instanceUrl, AccountId){
+  var requestObj = {
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,BillingAddress+,Phone+,npe01__LifetimeDonationHistory_Amount__c+,npe01__LifetimeDonationHistory_Number__c+,npo02__AverageAmount__c+,Formal_Salutation__c+,Informal_Greeting__c+,Main_Contact__c+,Organization_Email__c+from+Account+where+Id+=+'"+AccountId+"'",
+    headers: {
+      Authorization: 'Bearer ' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){console.log('err', err);}
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log(stuff);
+      accounts.push(stuff.records[0]);
     }
   });
 }

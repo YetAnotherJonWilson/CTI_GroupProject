@@ -6,7 +6,7 @@
 
 
     <h1></h1>
-    
+
     <table class="table">
         <thead>
             <tr>
@@ -27,6 +27,9 @@
                 <th>
                     <button ng-click="home.sortBy('donationDate')">Donation Date</button>
                     <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
+                <th>
+                    <button ng-click="home.sortBy('convertedDate')">Converted Date</button>
+                    <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
 
                 <th>&nbsp</th>
             </tr>
@@ -38,6 +41,7 @@
                 <td>{{donor.email}}</td>
                 <td>{{donor.donationAmount}}</td>
                 <td>{{donor.donationDate}}</td>
+                <td>{{donor.convertedDate}}</td>
                 <td>
                     <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
                     <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
