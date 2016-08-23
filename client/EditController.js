@@ -37,10 +37,10 @@ angular.module('App').controller('EditController', ['$http', '$location', 'DataS
 
 	vm.templates = [{
 		name: 'template_1.html',
-		url: 'emails/template1.hjs'
+		url: 'emails/template_1.html'
 	}, {
 		name: 'template2.html',
-		url: 'emails/hero.html'
+		url: 'emails/template_2.html'
 	}];
 
 	vm.template = vm.templates[0];

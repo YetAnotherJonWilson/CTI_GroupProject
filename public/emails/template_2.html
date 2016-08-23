@@ -1,4 +1,16 @@
-<style type="text/css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- The character set should be utf-8 -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width"/>
+  <!-- Link to the email's CSS, which will be inlined into the email -->
+  <link rel="stylesheet" href="vendors/foundation-emails.css">
+</head>
+
+
+
+<style>
     .document {
         font-family: "PT SANS", Georgia, Serif;
         margin: 20px;
@@ -21,12 +33,12 @@
     }
 
     .img {
-        /*float: left;*/
+        float: left;
         margin: 20px;
     }
 
     .img-quote {
-        /*display: inline-block;*/
+        display: inline-block;
     }
 
     .primary {
@@ -49,6 +61,7 @@
     .wrapper.secondary {
         background: #f3f3f3;
     }
+
 </style>
 
 <div class="document">
@@ -63,24 +76,13 @@
         <p>{{Household_Formal_Greeting}}</p>
         <p>{{Household_Mailing_Street}}</p>
         <p>{{Household_Mailing_City}}, {{Household_Mailing_StateProvince}} {{Household_Mailing_ZipPostal_Code}}</p>
+        <br>
         <p>{{date}}</p>
 
     </wrapper>
 
     <container>
-        <!-- <div class="img-quote"> -->
-        <row>
-            <columns large="6">
-                <img class="img" src="../assets/sampleimage3.jpg" alt="image" width="350px" height="225px">
-            </columns>
-            <columns large="6">
-                <callout class="primary">
-                    <p>"Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community.
-                        I'm proud that I don't need to ask for help."</p>
-                </callout>
-            </columns>
-        </row>
-        <!-- </div> -->
+
         <spacer size="16"></spacer>
 
         <row>
@@ -89,10 +91,26 @@
                 <p class="lead">Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the
                     table. It's clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone's life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
                 </p>
+              </row>
+              <spacer size="16"></spacer>
 
+              <row>
+                <columns small="6">
+                <!-- <div class="img-quote"> -->
+                    <img class="img" src="../assets/sampleimage3.jpg" alt="image" width="350px" height="225px">
+                  </columns>
+                  <columns small="6">
+                    <callout class="primary">
+
+                        <p>"Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community.
+                        I'm proud that I don't need to ask for help."</p>
+                    </callout>
+                  </columns>
+                </row>
+              <row>
+                <!-- </div> -->
                 <p>Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou's possible. And I can't thank you enough.</p>
             </columns>
-        </row>
 
         <wrapper class="secondary">
 
