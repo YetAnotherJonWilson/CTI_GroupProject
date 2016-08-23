@@ -89,7 +89,14 @@ angular.module('App').factory('DataService', ['$http', function($http, DataServi
 
   }
 
+function convertDates(){
+    for (var i = 0; i < donorObject.donors.length; i++){
+      donorObject.donors[i].convertedDate = new Date(donorObject.donors[i].donationDate);
+    }
+}
 
+
+convertDates();
 
 
   return {
