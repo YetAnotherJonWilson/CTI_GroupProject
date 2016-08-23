@@ -1,8 +1,11 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', function($http, $location, DataService, RouteService, orderBy) {
 
+   DataService.getData();
+
 	var vm = this;
 
-	vm.donorList = DataService.donorObject.donors
+	vm.donorList = DataService.donorObject.donors;
+
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();

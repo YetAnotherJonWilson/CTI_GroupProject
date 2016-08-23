@@ -42,7 +42,8 @@ router.get('/oauth2/callback', function(request, response){
     request.session.accessToken = conn.accessToken;
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
-    response.redirect('/salesforce/test');
+    getOpps(request.session.accessToken, request.session.instanceUrl);
+    response.redirect('/index');
   });
 });
 
@@ -64,17 +65,17 @@ function getOpps(accessToken, instanceUrl){
 
       var stuff = JSON.parse(response.body);
       console.log(stuff);
-      opportunities = stuff.records;
-      for(var i=0; i<opportunities.length; i++){
-        getContact(accessToken, instanceUrl, opportunities[i]);
-        getAccount(accessToken, instanceUrl, opportunities[i].AccountId);
+      for(var i=0; i<stuff.records.length; i++){
+        opportunities.push(stuff.records[i]);
+        getContact(accessToken, instanceUrl, stuff.records[i]);
+        getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
     }
   });
 }
 function getContact(accessToken, instanceUrl, record){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,npo02__Formula_HouseholdMailingAddress__c+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,MailingAddress+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }

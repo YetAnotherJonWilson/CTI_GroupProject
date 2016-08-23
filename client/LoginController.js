@@ -41,6 +41,6 @@ angular.module('App').controller('LoginController', ['$http', '$location', 'Rout
     vm.error = true;
   }
 
-DataService.getDonors();
+// DataService.getDonors();
 
 }]);
