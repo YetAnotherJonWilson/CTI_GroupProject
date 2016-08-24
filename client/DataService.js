@@ -1,6 +1,7 @@
 angular.module('App').factory('DataService', ['$http', function($http){
 
-
+  var data=[];
+  var sorted=[];
 
   var donorObject = {
     donors:[{
@@ -90,6 +91,8 @@ angular.module('App').factory('DataService', ['$http', function($http){
 
   function handleSuccess(res){
       console.log(res);
+      data=res.data;
+      sortData(data);
   }
   function handleFailure(res){
     console.log('fail', res);
@@ -100,7 +103,37 @@ function convertDates(){
       donorObject.donors[i].convertedDate = new Date(donorObject.donors[i].donationDate);
     }
 }
+function sortData(data){
+  for (var i=0; i<data[0].length; i++){
+    sorted.push(data[0][i]);
+  }
+  findHouseholdId();
+  findNextKeys();
+}
 
+function findHouseholdId(){
+  for(var i=0; i<sorted.length; i++){
+    for(var j=0; j<data[1].length; j++){
+      if(sorted[i].Primary_Contact__c == data[1][j].Id){
+        sorted[i].householdId= data[1][j].npo02__Household__c;
+        break;
+      }
+    }
+  }
+  console.log(sorted);
+}
+function findNextKeys(){
+  console.log(sorted);
+  for(var i=0; i<sorted.length; i++){
+    // sorted[i].email=findEmail(sorted[i]);
+    // sorted[i].address=findAddress();
+    // sorted[i].formalGreeting=findFormalGreeting();
+    // sorted[i].informalGreeting=findInformalGreeting();
+    //
+    // sorted[i].name=findName();
+
+  }
+}
 
 convertDates();
 

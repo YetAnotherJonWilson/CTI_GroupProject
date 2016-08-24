@@ -7,13 +7,15 @@ var opportunities=[];
 var contacts=[];
 var accounts =[];
 var households=[];
-var everything=[opportunities, contacts, accounts, households];
+var everything=[];
 
 router.get('/data', function(request, response){
+  everything=[opportunities, contacts, accounts, households];
   response.send(everything);
 });
 
 router.get('/oauth2/auth', function(request, response){
+  console.log("hellos");
   response.redirect(oauth2.getAuthorizationUrl({}));
 });
 
@@ -43,16 +45,15 @@ router.get('/oauth2/callback', function(request, response){
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
     getOpps(request.session.accessToken, request.session.instanceUrl);
-    response.redirect('/index');
+    response.redirect('/index/index');
   });
 });
 
-router.get('/test', function(request, response){
-  getOpps(request.session.accessToken, request.session.instanceUrl);
-});
-
-
 function getOpps(accessToken, instanceUrl){
+   opportunities=[];
+   contacts=[];
+   accounts =[];
+   households=[];
   var requestObj = {
     url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
@@ -64,11 +65,11 @@ function getOpps(accessToken, instanceUrl){
     else{
 
       var stuff = JSON.parse(response.body);
-      console.log(stuff);
+      // console.log(stuff);
       for(var i=0; i<stuff.records.length; i++){
-        opportunities.push(stuff.records[i]);
-        getContact(accessToken, instanceUrl, stuff.records[i]);
-        getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+          opportunities.push(stuff.records[i]);
+          getContact(accessToken, instanceUrl, stuff.records[i]);
+          getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
     }
   });
@@ -84,7 +85,7 @@ function getContact(accessToken, instanceUrl, record){
     if(err){console.log('err', err);}
     else{
       var stuff = JSON.parse(response.body);
-      console.log(stuff);
+      // console.log(stuff);
       contacts.push(stuff.records[0]);
         getHousehold(accessToken, instanceUrl, stuff.records[0].npo02__Household__c);
     }
@@ -101,7 +102,7 @@ function getHousehold(accessToken, instanceUrl, household){
     if(err){console.log('err', err);}
     else{
       var stuff = JSON.parse(response.body);
-      console.log(stuff);
+      // console.log(stuff);
       households.push(stuff.records[0]);
     }
   });
@@ -117,9 +118,10 @@ function getAccount(accessToken, instanceUrl, AccountId){
     if(err){console.log('err', err);}
     else{
       var stuff = JSON.parse(response.body);
-      console.log(stuff);
+      // console.log(stuff);
       accounts.push(stuff.records[0]);
     }
   });
 }
+
 module.exports = router;
