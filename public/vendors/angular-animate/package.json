@@ -3,16 +3,16 @@
     [
       {
         "name": "angular-animate",
-        "raw": "angular-animate",
-        "rawSpec": "",
+        "raw": "angular-animate@^1.5.8",
+        "rawSpec": "^1.5.8",
         "scope": null,
-        "spec": "latest",
-        "type": "tag"
+        "spec": ">=1.5.8 <2.0.0",
+        "type": "range"
       },
       "/Users/ryanmattson/WORKSPACE/CTI_GroupProject"
     ]
   ],
-  "_from": "angular-animate@latest",
+  "_from": "angular-animate@>=1.5.8 <2.0.0",
   "_id": "angular-animate@1.5.8",
   "_inCache": true,
   "_installable": true,
@@ -30,11 +30,11 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "angular-animate",
-    "raw": "angular-animate",
-    "rawSpec": "",
+    "raw": "angular-animate@^1.5.8",
+    "rawSpec": "^1.5.8",
     "scope": null,
-    "spec": "latest",
-    "type": "tag"
+    "spec": ">=1.5.8 <2.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
@@ -42,7 +42,7 @@
   "_resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.5.8.tgz",
   "_shasum": "535f7369225aba7fb15bf7134c71b15bc635c586",
   "_shrinkwrap": null,
-  "_spec": "angular-animate",
+  "_spec": "angular-animate@^1.5.8",
   "_where": "/Users/ryanmattson/WORKSPACE/CTI_GroupProject",
   "author": {
     "email": "angular-core+npm@google.com",

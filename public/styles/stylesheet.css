@@ -172,3 +172,6 @@ tr:nth-child(even) {
   margin: auto;
   margin-top: 30px;
 }
+.editModal {
+  margin: 10px;
+}
