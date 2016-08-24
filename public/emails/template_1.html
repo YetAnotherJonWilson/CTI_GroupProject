@@ -93,7 +93,7 @@
         <row>
             <columns small="12">
                 <p>Dear {{Household_Informal_Greeting}}: </p>
-                <p>{{edit.templatesObject.template1.p1}}</p>
+                <p class="textHover" ng-click="edit.editModal()">{{edit.templatesObject.template1.p1}}</p>
             </columns>
         </row>
         <spacer size="16"></spacer>
@@ -106,7 +106,7 @@
             <columns small="6">
                 <callout class="primary">
 
-                    <p ng-click="edit.editModal()">"{{edit.templatesObject.template1.quote}}"</p>
+                    <p>"{{edit.templatesObject.template1.quote}}"</p>
                 </callout>
             </columns>
         </row>

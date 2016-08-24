@@ -13,7 +13,7 @@ router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
 
-  var template = fs.readFileSync('./public/emails/template1.hjs', 'utf-8');
+  var template = fs.readFileSync('./public/emails/customTemplate1.hjs', 'utf-8');
   var compiledTemplate = Hogan.compile(template);
   console.log('ENV' , process.env.emailusername);
   // console.log(mailData.customer.customer_email);
@@ -26,8 +26,8 @@ router.post('/sendMail', function(request, response){
     }
   });
   var mailOptions = {
-    from: 'CTI GROUP <gusarewards@gmail.com',
-    to: 'justindoty12@gmail.com',
+    from: 'CTI GROUP <ctithankyou@gmail.com',
+    to: 'ryansmattson@gmail.com',
     subject: 'Thank You',
     text: 'Thank You for donating!',
 

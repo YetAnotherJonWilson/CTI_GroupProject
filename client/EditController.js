@@ -1,8 +1,8 @@
-angular.module('App').controller('EditController', ['$http', '$location', 'DataService', 'TemplateService', 'EmailService', function($http, $location, DataService, TemplateService, EmailService) {
+angular.module('App').controller('EditController', ['$http', '$location', '$uibModal', 'DataService', 'TemplateService', 'EmailService', function($http, $location, $uibModal, DataService, TemplateService, EmailService) {
 
 	var vm = this;
 
-  vm.templatesObject = TemplateService.templatesObject;
+	vm.templatesObject = TemplateService.templatesObject;
 
 
 	vm.editObject = {};
@@ -40,18 +40,48 @@ angular.module('App').controller('EditController', ['$http', '$location', 'DataS
 
 	vm.templates = [{
 		name: 'template_1.html',
-		url: 'emails/template_1.html'
+		url: 'emails/template1EditView.html'
 	}, {
 		name: 'template2.html',
-		url: 'emails/template_2.html'
+		url: 'emails/customTemplate1.html'
 	}];
 
 	vm.template = vm.templates[0];
 
 
+
   vm.editModal = function(){
-    
+
   }
+
+	vm.animationsEnabled = true;
+	vm.items = ['item1', 'item2', 'item3'];
+
+	vm.editModal = function() {
+		console.log('Clickety Click');
+
+		var modalInstance = $uibModal.open({
+			animation: vm.animationsEnabled,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: 'emails/p1.html',
+			controller: 'EditController',
+			controllerAs: 'edit',
+			size: 'md',
+			resolve: {
+				items: function() {
+					return vm.items;
+				}
+			}
+		});
+		//
+		// 	modalInstance.result.then(function(selectedItem) {
+		// 		vm.selected = selectedItem;
+		// 	}, function() {
+		// 		$log.info('Modal dismissed at: ' + new Date());
+		// 	});
+	};
+
 
 	vm.sendMail = function(p1, q, p2) {
 		console.log('You cliked me');

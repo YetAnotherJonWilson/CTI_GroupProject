@@ -7,10 +7,6 @@
 
 
     <style>
-      .wrapper {
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
-      }
       .date {
         font-family: "PT SANS", "OPEN SANS", "MAKO";
         font-size: 14px;
@@ -50,7 +46,7 @@
       .signature{
         font-family: "PT SANS", "OPEN SANS", "MAKO";
         font-size: 14px;
-        padding: 10px 0 10px 5px;
+        padding: 0 0 10px 5px;
       }
       .footer {
         font-family: "PT SANS", "OPEN SANS", "MAKO";
@@ -72,18 +68,30 @@
       #giftAmount {
         padding-bottom: 5px;
       }
+      .ps {
+        font-family: "PT SANS", "OPEN SANS", "MAKO";
+        font-size: 12px;
+        padding-right: 10px;
+      }
+      .address {
+        font-family: "Trebuchet MS", "Calibri";
+        font-size: 10.5px;
+        padding-top: 10px;
+        color: #086A81;
+      }
+      #email {
+        text-decoration:none;
+        color: #086A81;
+      }
     </style>
 
 
   </head>
   <body style="margin 0; padding: 0;" >
-  <table class="wrapper" align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-    <tr>
-      <td>
-        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <table class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr>
             <td>
-              <img   src="https://dl.dropboxusercontent.com/u/566253206/CTI_logo_text.png" height="100px" width="75px">
+              <img  src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png">
             </td>
           </tr>
           <tr>
@@ -140,6 +148,9 @@
             <td>
             <img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px">
             </td>
+            <td class="ps" width="250">
+              P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!
+            </td>
           </tr>
           <tr>
             <td>
@@ -153,7 +164,7 @@
           </tr>
         </table>
         <table class="footer" border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tr class="footer" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
             <td>
               Gift Amount: ${{amount}}
             </td>
@@ -173,9 +184,12 @@
               </td>
           </tr>
         </table>
-      <td>
-    </tr>
-  </table>
-
+        <table class="address" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr >
+              <td align="center">
+                800 TRANSFER ROAD SUITE 6, SAINT PAUL, MN 55114 • PHONE: 651.632.3912 • <br /><span id="email">COMPATIBLETECHNOLOGY.ORG</span>
+              </td>
+          </tr>
+        </table>
   </body>
 </html>
