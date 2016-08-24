@@ -40,14 +40,19 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 
 	vm.templates = [{
 		name: 'template_1.html',
-		url: 'emails/template_1.html'
+		url: 'emails/template1EditView.html'
 	}, {
 		name: 'template2.html',
-		url: 'emails/template_2.html'
+		url: 'emails/customTemplate1.html'
 	}];
 
 	vm.template = vm.templates[0];
 
+
+
+  vm.editModal = function(){
+
+  }
 
 	vm.animationsEnabled = true;
 	vm.items = ['item1', 'item2', 'item3'];
@@ -76,6 +81,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 		// 		$log.info('Modal dismissed at: ' + new Date());
 		// 	});
 	};
+
 
 	vm.sendMail = function(p1, q, p2) {
 		console.log('You cliked me');
