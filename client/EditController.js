@@ -40,17 +40,17 @@ angular.module('App').controller('EditController', ['$http', '$location', 'DataS
 
 	vm.templates = [{
 		name: 'template_1.html',
-		url: 'emails/template_1.html'
+		url: 'emails/template1EditView.html'
 	}, {
 		name: 'template2.html',
-		url: 'emails/template_2.html'
+		url: 'emails/customTemplate1.html'
 	}];
 
 	vm.template = vm.templates[0];
 
 
   vm.editModal = function(){
-    
+
   }
 
 	vm.sendMail = function(p1, q, p2) {

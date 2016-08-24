@@ -37,7 +37,8 @@
         <li><a href="#">Separated link</a></li>
       </ul>
     </div> -->
-
+    <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send</button>
+    
     <div class="editField">
         <select class="form-control" ng-model="edit.template" ng-options="t.name for t in edit.templates">
             <option value="">(blank)</option>
@@ -51,7 +52,6 @@
                 </div>
             </div>
         </div>
-        <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send!</button>
     </div>
 
 
