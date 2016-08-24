@@ -28,10 +28,13 @@
         padding: 15px 0 0 5px;
       }
       .imageRow {
+        padding-top: 15px;
+      }
+      .quote {
         font-family: "PT SANS", "OPEN SANS", "MAKO";
-        padding-top: 10px;
-        font-size: 14px;
+        font-size: 13px;
         font-style: italic;
+        padding: 5px 10px 5px 34px;
       }
       .p3 {
         font-family: "PT SANS", "OPEN SANS", "MAKO";
@@ -79,11 +82,11 @@
         padding-top: 10px;
         color: #086A81;
       }
-      #email {
+      .stoplink {
         text-decoration:none;
         color: #086A81;
       }
-      #email a {
+      .stoplink a {
         text-decoration:none;
         color: #086A81;
       }
@@ -91,14 +94,15 @@
         text-decoration:none;
         color: #086A81;
       }
+
     </style>
 
 
   </head>
   <body style="margin 0; padding: 0;" >
   <table class="wrapper" align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-    <tr>
-      <td>
+      <tr>
+        <td>
         <table class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr>
             <td>
@@ -130,12 +134,19 @@
             </td>
           </tr>
         </table>
-        <table class="imageRow" >
+        <table class="imageRow" border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
           <tr>
             <td>
-              <img   src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="325px" height="200px">
+              <img src={{imageL}} alt="image" width="300px" height="200px">
             </td>
             <td>
+              <img src={{imageR}} alt="image" width="300px" height="200px">
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td class="quote" width="550">
               “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
             </td>
           </tr>
@@ -198,7 +209,9 @@
         <table class="address" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr >
               <td align="center">
-                <span id="email"> 800 TRANSFER ROAD SUITE 6, SAINT PAUL, MN 55114 • PHONE: 651.632.3912 • <br /> COMPATIBLETECHNOLOGY.ORG</span>
+                <span class="stoplink">800 TRANSFER ROAD SUITE 6, SAINT PAUL, MN 55114</span>•<span class="stoplink">
+              PHONE: 651.632.3912</span>•<br />
+              <span class="stoplink">COMPATIBLETECHNOLOGY.ORG</span>
               </td>
           </tr>
         </table>

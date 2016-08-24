@@ -1,5 +1,6 @@
 <div class='editmain'>
 
+{{edit.savedEmails}}
 <!--
     <div class="editinputs">
         <div>
@@ -35,7 +36,8 @@
       </ul>
     </div> -->
     <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send</button>
-    
+    <button ng-click='edit.saveEditedEmail(edit.currentTemplate.p1, edit.currentTemplate.p2, edit.currentTemplate.p3, edit.currentTemplate.p4, edit.currentTemplate.q)'>Save</button>
+
     <div class="editField">
         <select class="form-control" ng-model="edit.template" ng-options="t.name for t in edit.templates">
             <option value="">(blank)</option>
