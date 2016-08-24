@@ -64,21 +64,23 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 			animation: vm.animationsEnabled,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
-			// template: '<div class="paragraph1">' +
-			// 	'<label for="paragraph1">Paragraph 1</label>' +
-			// 	'<textarea type="text" ng-model="edit.templatesObject.template1.p1"' + 'id="paragraph1"></textarea>' +
-			// 	'</div>',
-      templateUrl: 'emails/p1.html',
+			templateUrl: 'emails/p1.html',
 			controller: 'EditController',
 			controllerAs: 'edit',
-			size: 'lg',
+			size: 'md',
 			resolve: {
 				items: function() {
 					return vm.items;
 				}
 			}
 		});
-	}
+		//
+		// 	modalInstance.result.then(function(selectedItem) {
+		// 		vm.selected = selectedItem;
+		// 	}, function() {
+		// 		$log.info('Modal dismissed at: ' + new Date());
+		// 	});
+	};
 
 
 	vm.sendMail = function(p1, q, p2) {
