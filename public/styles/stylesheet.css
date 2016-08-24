@@ -182,3 +182,7 @@ tr:nth-child(even) {
 .editModal {
   margin: 10px;
 }
+.textHover:hover {
+  cursor: pointer;
+  background-color: #ededed;
+}
