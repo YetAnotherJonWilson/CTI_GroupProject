@@ -10,19 +10,19 @@ var nodemailer = require('nodemailer');
 
 
 
-var image1 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg";
+var image1 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage.jpg";
 var image2 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage2.jpg";
-var image3 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg";
+var image3 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg";
 var image4 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg";
 var image5 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg";
-var image6 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage.jpg";
+
 
 
 router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
 
-  var template = fs.readFileSync('./public/emails/customTemplate2.hjs', 'utf-8');
+  var template = fs.readFileSync('./public/emails/customTemplate3.hjs', 'utf-8');
   var compiledTemplate = Hogan.compile(template);
   console.log('ENV' , process.env.emailusername);
   // console.log(mailData.customer.customer_email);
@@ -44,7 +44,9 @@ router.post('/sendMail', function(request, response){
     para1: data.p1,
     para2: data.p2,
     quote: data.q,
-    image: image2
+    image: image2,
+    imageL: image1,
+    imageR: image5
     // para3: chosenTemplate.p3,
     }),
 };
