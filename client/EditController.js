@@ -3,6 +3,10 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 	var vm = this;
 
 	vm.templatesObject = TemplateService.templatesObject;
+	vm.currentTemplate = TemplateService.currentTemplate;
+	vm.savedEmails = TemplateService.savedEmails;
+
+	vm.fieldId = '';
 
 
 	vm.editObject = {};
@@ -50,30 +54,30 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 
 
 
-  vm.editModal = function(){
-
-  }
-
 	vm.animationsEnabled = true;
 	vm.items = ['item1', 'item2', 'item3'];
 
-	vm.editModal = function() {
-		console.log('Clickety Click');
 
-		var modalInstance = $uibModal.open({
+	vm.editModal = function(id) {
+		console.log('currentTemplate:', vm.currentTemplate);
+
+		vm.fieldId = id;
+		vm.currentTemplate.currentField = id;
+		$uibModal.open({
 			animation: vm.animationsEnabled,
 			ariaLabelledBy: 'modal-title',
 			ariaDescribedBy: 'modal-body',
-			templateUrl: 'emails/p1.html',
-			controller: 'EditController',
-			controllerAs: 'edit',
+			templateUrl: 'emails/edit_modal.html',
+			controller: 'ModalController',
+			controllerAs: 'modal',
 			size: 'md',
-			resolve: {
-				items: function() {
-					return vm.items;
-				}
-			}
+			// resolve: {
+			// 	items: function() {
+			// 		return vm.items;
+			// 	}
+			// }
 		});
+
 		//
 		// 	modalInstance.result.then(function(selectedItem) {
 		// 		vm.selected = selectedItem;
@@ -88,7 +92,15 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 		EmailService.sendMail(p1, q, p2);
 	}
 
+	vm.saveEditedEmail = function(p1, p2, p3, p4, q){
+		TemplateService.saveEditedEmail(p1, p2, p3, p4, q)
+	}
 
-	// createEditObject();
+	function getCurrentTemplate(templateNum) {
+		console.log('Im getting the current template');
+		TemplateService.getCurrentTemplate(templateNum);
+	}
+
+	getCurrentTemplate(1);
 
 }]);
