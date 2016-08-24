@@ -25,7 +25,6 @@
     "jsforce": "^1.7.0",
     "mongo": "^0.1.0",
     "mongoose": "^4.5.9",
-    "ngUpload": "^0.5.20",
     "nodemailer": "^2.5.0",
     "passport": "^0.3.2",
     "passport-forcedotcom": "^0.1.4",
