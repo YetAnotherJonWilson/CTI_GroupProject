@@ -125,11 +125,13 @@ function findNextKeys(){
   for(var i=0; i<sorted.length; i++){
     sorted[i].email=findEmail(sorted[i]);
     sorted[i].address=findAddress(sorted[i]);
-    // sorted[i].formalGreeting=findFormalGreeting();
-    // sorted[i].informalGreeting=findInformalGreeting();
-    //
-    // sorted[i].name=findName();
-
+    sorted[i].formalGreeting=findFormalGreeting(sorted[i]);
+    sorted[i].informalGreeting=findInformalGreeting(sorted[i]);
+    sorted[i].personName=findName(sorted[i]);
+    sorted[i].phone=findPhone(sorted[i]);
+    sorted[i].donationHistory=findDonationHistory(sorted[i]);
+    sorted[i].firstName=findFirstName(sorted[i]);
+    sorted[i].lastName=findLastName(sorted[i]);
   }
   console.log(sorted);
 }
@@ -142,7 +144,7 @@ function findEmail(donationObject){
   }
   for (var i=0; i<data[1].length; i++){
     if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].Email != null){
-      return data[i][1].Email;
+      return data[1][i].Email;
     }
   }
   for (var i=0; i<data[2].length; i++){
@@ -153,7 +155,7 @@ function findEmail(donationObject){
   return "no email found";
 }
 function findAddress(donationObject){
-  if(donationObject.npe01__Is_Opp_from_Individual__c == "true"){
+  if(donationObject.npe01__Is_Opp_From_Individual__c === "true"){
     for(var i=0; i<data[1].length; i++){
       if(donationObject.Primary_Contact__c == data[1][i].Id  && data[1][i].MailingAddress != null){
         return data[1][i].MailingAddress;
@@ -173,6 +175,181 @@ function findAddress(donationObject){
     }
   }
   return "no address found";
+}
+function findFormalGreeting(donationObject){
+  if(donationObject.npe01__Is_Opp_From_Individual__c === "true"){
+    for(var i=0; i<data[3].length; i++){
+      if(donationObject.householdId == data[3][i].Id && data[3][i].npo02__Formal_Greeting__c != null){
+        return data[3][i].npo02__Formal_Greeting__c;
+      }
+    }
+    for(var i=0; i<data[1].length; i++){
+      if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].name != null && data[1][i].Saluation != null){
+        return data[1][i].Saluation + data[1][i].Name;
+      }
+      else if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].name != null){
+        return data[1][i].Name;
+      }
+    }
+  }
+  else{
+    for(var i=0; i<data[1].length; i++){
+      if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].Name != null && data[1][i].Saluation != null){
+        return data[1][i].Saluation + data[1][i].Name;
+      }
+      else if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].Name != null){
+        return data[1][i].Name;
+      }
+    }
+    for(var i=0; i<data[2].length; i++){
+      if(donationObject.AccountId == data[2][i].Id && data[2][i].Name != null && data[2][i].Formal_Salutation__c !=null){
+        return data[2][i].Formal_Salutation__c + data[2][i].Name;
+      }
+      else if(donationObject.AccountId == data[2][i].Id && data[2][i].Name != null){
+        return data[2][i].Name;
+      }
+    }
+  }
+  return "no Formal Greeting found";
+}
+function findInformalGreeting(donationObject){
+  if(donationObject.npe01__Is_Opp_From_Individual__c === "true"){
+    for(var i=0; i<data[3].length; i++){
+      if(donationObject.householdId == data[3][i].Id && data[3][i].npo02__Informal_Greeting__c != null){
+        return data[3][i].npo02__Informal_Greeting__c;
+      }
+    }
+    for(var i=0; i<data[2].length; i++){
+      if(donationObject.AccountId == data[2][i].Id && data[2][i].Informal_Greeting__c != null){
+        return data[2][i].Informal_Greeting__c;
+      }
+    }
+    for(var i=0; i<data[1].length; i++){
+      if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][1].Greeting__c != null){
+        return data[2][i].Greeting__c;
+      }
+    }
+  }
+  else{
+    for(var i=0; i<data[2].length; i++){
+      if(donationObject.AccountId == data[2][i].Id && data[2][i].Informal_Greeting__c != null){
+        return data[2][i].Informal_Greeting__c;
+      }
+    }
+    for(var i=0; i<data[1].length; i++){
+      if(donationObject.Primary_Contact__c == data[1][i].Id && data[1][i].Greeting__c != null){
+        return data[1][i].Greeting__c;
+      }
+    }
+  }
+  return "no informal Greeting found";
+}
+function findName(donorObject){
+  if(donorObject.npe01__Is_Opp_From_Individual__c === 'true'){
+    for(var i = 0; i < data[3].length; i++){
+      if(donorObject.householdId == data[3][i].Id){
+        return data[3][i].Name;
+      }
+    }
+    for(var j = 0; j < data[1].length; j++){
+      if(donorObject.Primary_Contact__c == data[1][j].Id){
+        return data[1][j].Name;
+      }
+    }
+  }
+  else{
+    for(var j = 0; j < data[1].length; j++){
+      if(donorObject.Primary_Contact__c == data[1][j].Id){
+        return data[1][j].Name;
+      }
+    }
+    for(var k = 0; k < data[2].length; k++){
+      if(donorObject.AccountId == data[2][k].Id){
+        return data[2][k].Name;
+      }
+    }
+  }
+  return 'No Name Found';
+}
+
+function findPhone(donorObject){
+  if(donorObject.npe01__Is_Opp_From_Individual__c === 'true'){
+    for(var i = 0; i < data[3].length; i++){
+      if(donorObject.householdId == data[3][i].Id){
+        if(data[3][i].npo02__HouseholdPhone__c !== null){
+          console.log('house phone');
+          return data[3][i].npo02__HouseholdPhone__c;
+        }
+        else{
+          break;
+        }
+      }
+    }
+    for(var j = 0; j < data[1].length; j++){
+      if(donorObject.Primary_Contact__c == data[1][j].Id){
+        if(data[1][j].Phone !== null){
+          console.log('contact phone');
+          return data[1][j].Phone;
+        }
+        else{
+          break
+        }
+      }
+    }
+  }
+  else {
+    for(var k = 0; k < data[2].length; k++){
+      if(donorObject.AccountId == data[2][k].Id){
+        if(data[2][k].Phone !== null){
+          console.log('account phone');
+          return data[2][k].Phone;
+        }
+        else{
+          break;
+        }
+      }
+    }
+    for(var l = 0; l < data[1].length; l++){
+      if(donorObject.Primary_Contact__c == data[1][l].Id){
+        if(data[1][l].Phone !== null){
+          return data[1][l].Phone;
+        }
+        else{
+        return 'No phone number found';
+        }
+      }
+    }
+
+  }
+      return 'No phone number found';
+}
+
+function findDonationHistory(donorObject){
+  for(var i=0; i < data[2].length; i++){
+    var donationHistory = {};
+    if(donorObject.AccountId == data[2][i].Id && data[2][i].BillingAddress != null){
+      donationHistory.lifeTimeAmount = data[2][i].npe01__LifetimeDonationHistory_Amount__c;
+      donationHistory.lifeTimeNumber = data[2][i].npe01__LifetimeDonationHistory_Number__c;
+      return donationHistory;
+    }
+  }
+  return 'No donation history found';
+}
+function findFirstName(donationObject){
+  for(var i=0; i<data[1].length; i++){
+    if(donationObject.Primary_Contact__c == data[1][i].Id){
+      var names = data[1][i].Name.split(' ');
+      return names[0];
+    }
+  }
+}
+function findLastName(donationObject){
+  for(var i=0; i<data[1].length; i++){
+    if(donationObject.Primary_Contact__c == data[1][i].Id){
+      var names = data[1][i].Name.split(' ');
+      return names[1];
+    }
+  }
 }
 convertDates();
 
