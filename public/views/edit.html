@@ -1,14 +1,12 @@
 <div class='editmain'>
 
+{{edit.savedEmails}}
 <!--
     <div class="editinputs">
-<<<<<<< HEAD
         <div>
             <label for="paragraph0">Testing the font-family</label>
             <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
         </div>
-=======
->>>>>>> 087834ed0fafd1e12bcbc9f57fcf9733429f794a
         <div class="paragraph1">
             <label for="paragraph1">Paragraph 1</label>
             <textarea type="text" ng-model="edit.templatesObject.template1.p1" id="paragraph1"></textarea>
@@ -38,7 +36,8 @@
       </ul>
     </div> -->
     <button ng-click='edit.sendMail(edit.template1.p1, edit.quote, edit.template1.p2)'>Send</button>
-    
+    <button ng-click='edit.saveEditedEmail(edit.currentTemplate.p1, edit.currentTemplate.p2, edit.currentTemplate.p3, edit.currentTemplate.p4, edit.currentTemplate.q)'>Save</button>
+
     <div class="editField">
         <select class="form-control" ng-model="edit.template" ng-options="t.name for t in edit.templates">
             <option value="">(blank)</option>
