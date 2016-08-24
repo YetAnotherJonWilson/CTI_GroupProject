@@ -55,6 +55,7 @@ app.use(passport.session());
 
 //routes
 app.use('/', index);
+app.use('/index', index);
 app.use('/salesforce', salesforce);
 app.use('/donor', donor);
 app.use('/email', email);
