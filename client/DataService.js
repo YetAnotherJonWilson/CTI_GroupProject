@@ -2,6 +2,7 @@ angular.module('App').factory('DataService', ['$http', function($http){
 
   var data=[];
   var sorted=[];
+  var sortedObject={};
 
   var donorObject = {
     donors:[{
@@ -93,14 +94,22 @@ angular.module('App').factory('DataService', ['$http', function($http){
       console.log(res);
       data=res.data;
       sortData(data);
+      preconvertDates();
+      convertDates();
   }
   function handleFailure(res){
     console.log('fail', res);
   }
+  function preconvertDates(){
+    for (var i=0; i<sortedObject.sorted.length; i++){
+    var dateArray = sortedObject.sorted[i].CloseDate.split('-');
+    sortedObject.sorted[i].date = dateArray[1]+'-'+dateArray[2]+'-'+dateArray[0];
+    }
+  }
 
 function convertDates(){
-    for (var i = 0; i < donorObject.donors.length; i++){
-      donorObject.donors[i].convertedDate = new Date(donorObject.donors[i].donationDate);
+    for (var i = 0; i < sortedObject.sorted.length; i++){
+      sortedObject.sorted[i].convertedDate = new Date(sortedObject.sorted[i].date);
     }
 }
 function sortData(data){
@@ -348,10 +357,15 @@ function findLastName(donationObject){
     }
   }
 }
-convertDates();
+sortedObject.sorted = sorted;
+// preconvertDates();
+// convertDates();
 
 
   return {
+    preconvertDates: preconvertDates,
+    convertDates: convertDates,
+    sortedObject: sortedObject,
     // getDonors: getDonors,
     getData: getData,
     donorObject: donorObject
