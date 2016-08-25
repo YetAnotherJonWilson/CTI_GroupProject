@@ -15,11 +15,11 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
 //         }
 //       }
     })
-    .when('/edit', {
-      templateUrl: '/views/edit.html',
-      controller: 'EditController',
-      controllerAs: 'edit'
-    })
+    // .when('/edit', {
+    //   templateUrl: '/views/edit.html',
+    //   controller: 'EditController',
+    //   controllerAs: 'edit'
+    // })
     .when('/settings' , {
       templateUrl: '/views/settings.html',
       controller: 'SettingsController',

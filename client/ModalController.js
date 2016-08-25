@@ -3,7 +3,10 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 	var vm = this;
 
 	vm.currentTemplate = TemplateService.currentTemplate;
+  vm.imagesArray = TemplateService.imagesObject.images;
 
-  console.log('modal controller currentTemplate:', vm.currentTemplate);
+  vm.setCurrentImg = function(img){
+    TemplateService.setCurrentImg(img);
+  }
 
 }]);

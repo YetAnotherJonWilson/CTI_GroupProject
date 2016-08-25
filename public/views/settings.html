@@ -1,15 +1,15 @@
 <br />
 <br />
-<form name="myForm">
-        <br>Photo:
+<form name="photoForm">
+        <br>Upload Photo:
         <input type="file" ngf-select ng-model="picFile" name="file"
                accept="image/*" ngf-max-size="2MB" required
                ngf-model-invalid="errorFile">
-        <i ng-show="myForm.file.$error.maxSize">File too large
+        <i ng-show="photoForm.file.$error.maxSize">File too large
             {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+        <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
         <br>
-        <button ng-disabled="!myForm.$valid"
+        <button ng-disabled="!photoForm.$valid"
                 ng-click="settings.uploadPic(picFile)">Submit</button>
         <span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%"
@@ -17,5 +17,45 @@
       </span>
         <span ng-show="picFile.result">Upload Successful</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    <br>
+</form>
+
+<form name="signatureForm">
+    <br>Upload Signature:
+    <input type="file" ngf-select ng-model="sigFile" name="file"
+           accept="image/*" ngf-max-size="2MB" required
+           ngf-model-invalid="errorFile">
+    <i ng-show="signatureForm.file.$error.maxSize">File too large
+        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+    <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" class="thumb"> <button ng-click="sigFile = null" ng-show="sigFile">Remove</button>
+    <br>
+    <button ng-disabled="!signatureForm.$valid"
+            ng-click="settings.uploadSig(sigFile)">Submit</button>
+    <span class="progress" ng-show="sigFile.progress >= 0">
+        <div style="width:{{sigFile.progress}}%"
+             ng-bind="sigFile.progress + '%'"></div>
+      </span>
+    <span ng-show="sigFile.result">Upload Successful</span>
+    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    <br>
+</form>
+
+<form name="headerForm">
+    <br>Upload Header:
+    <input type="file" ngf-select ng-model="headerFile" name="file"
+           accept="image/*" ngf-max-size="2MB" required
+           ngf-model-invalid="errorFile">
+    <i ng-show="headerForm.file.$error.maxSize">File too large
+        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+    <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" class="thumb"> <button ng-click="headerFile = null" ng-show="headerFile">Remove</button>
+    <br>
+    <button ng-disabled="!headerForm.$valid"
+            ng-click="settings.uploadHeader(headerFile)">Submit</button>
+    <span class="progress" ng-show="headerFile.progress >= 0">
+        <div style="width:{{headerFile.progress}}%"
+             ng-bind="headerFile.progress + '%'"></div>
+      </span>
+    <span ng-show="headerFile.result">Upload Successful</span>
+    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     <br>
 </form>
