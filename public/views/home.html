@@ -3,32 +3,31 @@
         <h3>Search</h3>
         <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
     </div>
-
-
     <h1></h1>
-
     <table class="table">
         <thead>
             <tr>
-
                 <th>
-                    <button ng-click="home.sortBy('firstName')">First Name</button>
+                    <button ng-click="home.sortBy('firstName')">Name</button>
                     <!-- <span class="sortorder" ng-show="propertyName === 'firstName'" ng-class="{reverse: reverse}"></span> -->
+                    <!-- <button ng-click="home.sortBy('lastName')">Last Name</button> -->
                 </th>
-                <th>
-                    <button ng-click="home.sortBy('lastName')">Last Name</button>
                     <!-- <span class="sortorder" ng-show="propertyName === 'lastName'" ng-class="{reverse: reverse}"></span></th> -->
-                <th>
+                <!-- <th>
                     <button ng-click="home.sortBy('email')">Email</button>
+                </th> -->
                     <!-- <span class="sortorder" ng-show="propertyName === 'email'" ng-class="{reverse: reverse}"></span></th> -->
                 <th>
                     <button ng-click="home.sortBy('donationAmount')">Donation Amount</button>
+                </th>
                     <!-- <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th> -->
                 <th>
                     <button ng-click="home.sortBy('donationDate')">Donation Date</button>
+                </th>
                     <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
-                <th>
+                <!-- <th>
                     <button ng-click="home.sortBy('convertedDate')">Converted Date</button>
+                </th> -->
                     <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
 
                 <th>&nbsp</th>
@@ -36,23 +35,87 @@
         </thead>
         <tbody>
             <tr ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything">
-                <td>{{donor.firstName}}</td>
-                <td>{{donor.lastName}}</td>
-                <td>{{donor.email}}</td>
+                <td>{{donor.firstName + " " + donor.lastName}}</td>
+                <!-- <td>{{}}</td> -->
+                <!-- <td>{{donor.email}}</td> -->
                 <td>{{donor.donationAmount}}</td>
                 <td>{{donor.donationDate}}</td>
-                <td>{{donor.convertedDate}}</td>
+                <!-- <td>{{donor.convertedDate}}</td> -->
                 <td>
-                    <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button>
+                    <!-- <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button> -->
                     <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
 
                 </td>
             </tr>
-
         </tbody>
     </table>
 </div>
 
-<div class="col-lg-2 col-md-2"></div>
+<div class='editmain'>
+{{home.savedEmails}}
+<!--
+    <div class="editinputs">
+        <div>
+            <label for="paragraph0">Testing the font-family</label>
+            <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
+        </div>
+        <div class="paragraph1">
+            <label for="paragraph1">Paragraph 1</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p1" id="paragraph1"></textarea>
+        </div>
+        <div>
+            <label for="quote">Quote</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.quote" id="quote" /></textarea>
+        </div>
+        <div>
+            <label for="paragraph2">Paragraph 2</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p2" id="paragraph2" /></textarea>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div> -->
+    <button ng-click='home.sendMail(home.template1.p1, home.quote, home.template1.p2)'>Send</button>
+    <button ng-click='home.saveEditedEmail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q)'>Save</button>
+
+    <div class="editField">
+        <select class="form-control" ng-model="home.template" ng-options="t.name for t in home.templates">
+            <option value="">(blank)</option>
+        </select>
+
+        <div class='editview'>
+            <div>
+                <!-- <hr/> -->
+                <div class="slide-animate-container">
+                    <div class="slide-animate" ng-include="home.template.url"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+<div class='editview'>
+    <iframe id="Example2"
+    name="Example2"
+    title="Example2"
+    width="600"
+    height="800"
+    frameborder="1"
+    scrolling="no"
+    marginheight="0"
+    marginwidth="0"
+    src="emails/template_1.html">
+</iframe>
+</div> -->
 </div>
-<h1>it worked</h1>
