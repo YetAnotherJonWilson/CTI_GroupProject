@@ -351,10 +351,12 @@ function findLastName(donationObject){
     }
   }
 }
+var sortedObject={sorted: sorted};
 convertDates();
 
 
   return {
+    sortedObject: sortedObject,
     // getDonors: getDonors,
     getData: getData,
     donorObject: donorObject
