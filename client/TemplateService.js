@@ -6,6 +6,7 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 		p3: '',
 		p4: '',
 		q: '',
+		ps: '',
 		currentEdit: '',
 		img: ''
 	}
