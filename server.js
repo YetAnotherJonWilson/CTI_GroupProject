@@ -14,7 +14,8 @@ var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
 var upload = multer({ dest: './photos/' });
-
+var uploadSig = multer({ dest: './sigfile/' });
+var uploadHeader = multer({ dest: './headers/' });
 
 
 
@@ -66,11 +67,24 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.post('/photos', upload.single('file'), function (req, res) {
-  console.log(res);
+  console.log('file uploaded:', res.file);
   res.sendStatus(200);
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });
+app.post('/sigfile', uploadSig.single('file'), function (req, res) {
+  console.log('file uploaded:', res.file);
+  res.sendStatus(200);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
+app.post('/headers', uploadHeader.single('file'), function (req, res) {
+  console.log('file uploaded:', res.file);
+  res.sendStatus(200);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
+
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
