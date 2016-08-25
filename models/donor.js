@@ -2,27 +2,26 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var donorSchema = new Schema({
-    orgName: String,
-    formalGreeting: String,
-    informalGreeting: String,
-    mailStreet: String,
-    mailCity: String,
-    mailState: String,
-    mailZip: Number,
-    amount: Number,
-    giftDate: Date,
-    closeDate: Date,
-    recognition: String,
-    primaryEmail: String,
-    primaryCampaignSource: String,
-    giftType: String,
-    writtenDesignation: String,
-    honorMemorialType: String,
-    honoreeName: String,
-    stockName: String,
-    numberOfShares: Number
-    });
+  opportunityId: String,
+  contactId: String,
+  accountId: String,
+  closeDate:  Date,
+  sentDate: Date,
+  householdId: String,
+  paragraph1: String,
+  paragraph2: String,
+  paragraph3: String,
+  paragraph4: String,
+  paragraph5: String,
+  quote: String,
+  picture1: String,
+  picture2: String,
+  picture3: String,
+  picture4: String,
+  letterhead: String,
+  signature: String,
 
-var Donor = mongoose.model('Donor', donorSchema);
+});
 
-module.exports = Donor;
+
+module.exports = mongoose.model('Donor', donorSchema);
