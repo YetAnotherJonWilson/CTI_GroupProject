@@ -5,13 +5,13 @@ angular.module('App').controller('LoginController', ['$http', '$location', 'Rout
 
   vm.homeRoute = function(){
     RouteService.homeRoute();
-  }
+  };
   vm.editRoute = function(){
     RouteService.editRoute();
-  }
+  };
   vm.settingsRoute = function(){
     RouteService.settingsRoute();
-  }
+  };
 
   vm.username = '';
   vm.password = '';

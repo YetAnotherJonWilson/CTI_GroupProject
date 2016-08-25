@@ -19,8 +19,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       });
       $location.path('/');
       return;
-  };
-
+  }
 
 return {
   sendMail: sendMail
