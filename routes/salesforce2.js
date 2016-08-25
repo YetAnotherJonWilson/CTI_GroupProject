@@ -55,7 +55,7 @@ function getOpps(accessToken, instanceUrl){
    accounts =[];
    households=[];
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_from_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
