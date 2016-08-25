@@ -12,6 +12,9 @@ var app = express();
 var path = require('path');
 var request = require('request');
 var fs = require('fs');
+var multer  = require('multer');
+var upload = multer({ dest: './photos/' });
+
 
 
 
@@ -20,6 +23,7 @@ var donor = require('./routes/donor');
 var email = require('./routes/email.js');
 var User = require('./models/users');
 var login = require('./routes/login');
+var photos = require('./routes/photos');
 var salesforce = require('./routes/salesforce2.js');
 var verticleResponse = require('./routes/verticleResponse.js');
 
@@ -61,7 +65,12 @@ app.use('/donor', donor);
 app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
-
+app.post('/photos', upload.single('file'), function (req, res) {
+  console.log(res);
+  res.sendStatus(200);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){

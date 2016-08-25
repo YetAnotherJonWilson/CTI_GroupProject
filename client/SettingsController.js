@@ -1,10 +1,13 @@
 angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'Upload', '$timeout', function($http, $location, DataService, Upload, $timeout){
 
 var vm = this;
+var sendData = {};
 
     vm.uploadPic = function(file) {
+
         file.upload = Upload.upload({
             url: '/photos',
+            arrayKey: '', // default is '[i]'
             data: {file: file}
         });
 
