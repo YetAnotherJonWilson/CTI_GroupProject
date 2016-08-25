@@ -1,8 +1,10 @@
-<div class="imageModal">
-    <!-- <h3>Choose Image:</h3> -->
+<div class="imageModal modalImageWrapper">
+  <!-- <div class="page-header">
+    <h3 class="modalTitle">Choose Image:</h3>
+  </div> -->
     <ul>
-        <li ng-repeat="image in modal.imagesArray">
-            <img class="imageHover modal-image" ng-src="{{image}}" height="125px" ng-click="modal.setCurrentImg(image); $dismiss()" />
+        <li class="center" ng-repeat="image in modal.imagesArray">
+            <img class="imageHover modal-image" ng-src="{{image}}" height="150px" max-width="200px" ng-click="modal.setCurrentImg(image); $dismiss()" />
         </li>
     </ul>
     <!-- <button id="editEmail" class="btn" ng-click="$dismiss()">Ok</button> -->
