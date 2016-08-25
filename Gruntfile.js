@@ -6,7 +6,7 @@ module.exports = function(grunt) {
       files: ['Gruntfile.js', 'public/scripts/*.js', 'routes/*.js']
     },
     watch: {
-      files: ['**/*.js'],
+      files: ['client/*.js'],
       tasks: ['uglify']
     },
     copy: {

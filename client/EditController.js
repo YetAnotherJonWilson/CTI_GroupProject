@@ -5,6 +5,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 	vm.templatesObject = TemplateService.templatesObject;
 	vm.currentTemplate = TemplateService.currentTemplate;
 	vm.savedEmails = TemplateService.savedEmails;
+	vm.imagesArray = TemplateService.imagesObject.images;
 
 	vm.fieldId = '';
 
@@ -57,23 +58,19 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 
 
 
-	vm.animationsEnabled = true;
-	vm.items = ['item1', 'item2', 'item3'];
-
-
 	vm.editModal = function(id) {
 		console.log('currentTemplate:', vm.currentTemplate);
 
 		vm.fieldId = id;
 		vm.currentTemplate.currentField = id;
 		$uibModal.open({
-			animation: vm.animationsEnabled,
-			ariaLabelledBy: 'modal-title',
-			ariaDescribedBy: 'modal-body',
+			animation: true,
+			ariaLabelledBy: 'edit text modal',
+			ariaDescribedBy: 'edit text',
 			templateUrl: 'emails/edit_modal.html',
 			controller: 'ModalController',
 			controllerAs: 'modal',
-			size: 'md',
+			size: 'md'
 			// resolve: {
 			// 	items: function() {
 			// 		return vm.items;
@@ -87,6 +84,22 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 		// 	}, function() {
 		// 		$log.info('Modal dismissed at: ' + new Date());
 		// 	});
+	};
+
+
+	vm.imageModal = function(id) {
+
+		// vm.fieldId = id;
+		// vm.currentTemplate.currentField = id;
+		$uibModal.open({
+			animation: true,
+			ariaLabelledBy: 'image modal',
+			ariaDescribedBy: 'pick an image',
+			templateUrl: 'emails/image_modal.html',
+			controller: 'ModalController',
+			controllerAs: 'modal',
+			size: 'md'
+		});
 	};
 
 
