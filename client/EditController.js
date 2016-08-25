@@ -49,6 +49,9 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 	}, {
 		name: 'Template 2',
 		url: 'emails/template2EditView.html'
+	}, {
+		name: 'Template 3',
+		url: 'emails/template3EditView.html'
 	}];
 
 	vm.template = vm.templates[0];

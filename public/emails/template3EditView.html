@@ -18,28 +18,36 @@
       }
       .greeting {
         font-size: 14px;
-        padding: 25px 0 0 5px;
+        padding: 25px 0 5px 5px;
       }
       .p1 {
         font-size: 14px;
-        padding: 15px 0 0 5px;
+        padding: 15px 0 5px 5px;
       }
       .p2 {
         font-size: 14px;
-        padding: 15px 0 0 5px;
+        padding: 10px 0 10px 5px;
       }
       .imageRow {
-        padding-top: 10px;
+        padding-top: 5px;
+        width: 100%;
       }
       .imageRow img {
+        margin: 0 0 10px 5px;
         float: left;
-        margin: 10px 0 20px 5px;
-        display: inline;
+        width: 295px;
+        height: 200px;
+      }
+      .quote {
+        width: 550px;
+        margin: 0 0 15px 25px;
+        font-style: italic;
+        font-size: 14px;
+        display: inline-block;
       }
       .p3 {
         font-size: 14px;
         margin-left: 5px;
-
       }
       .closing {
         font-size: 14px;
@@ -61,15 +69,8 @@
       }
       .footer3 {
         border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
-        padding: 15px 0 5px 0;
+        padding: 15px 0 0 0;
         font-size: 11px;
-      }
-      .quote {
-        width: 225px;
-        margin: 40px 0 0 15px;
-        font-style: italic;
-        font-size: 14px;
-        display: inline-block;
       }
       #giftAmount {
         margin-bottom: 5px;
@@ -99,8 +100,6 @@
   </head>
   <body>
     <div class="previewWrapper">
-
-
     <div>
         <img  src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png" width="590px" height="120px">
         </div>
@@ -110,32 +109,24 @@
               <p class="greeting">
                 Dear {{donor}}:
               </p>
-              <p class="p1 fieldHover" ng-click="edit.editModal('p1')">{{edit.currentTemplate.p1}}</p>
-<!--
               <p class="p1">
                 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.
-              </p> -->
-              <p class="p2 fieldHover" ng-click="edit.editModal('p2')">{{edit.currentTemplate.p2}}</p>
-<!--
+              </p>
               <p class="p2">
                 It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
-              </p> -->
+              </p>
         </div>
         <div class="imageRow" >
-              <img src="{{edit.currentTemplate.img}}" alt="image" height="200px" class="imageHover" ng-click="edit.imageModal('img')">
-              <!-- <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="325px" height="200px" class="fieldHover" ng-click="edit.imageModal('img')"> -->
-              <p class="quote fieldHover" ng-click="edit.editModal('q')">{{edit.currentTemplate.q}}</p>
-
-              <!-- <p class="quote">
+              <img   src="https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg" alt="image">
+              <img   src="https://dl.dropboxusercontent.com/u/566253206/sampleimage.jpg" alt="image">
+              <p class="quote">
                   “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
-              </p> -->
+              </p>
         </div>
         <div id="clear" class="p3">
-          <p class="fieldHover" ng-click="edit.editModal('p3')">{{edit.currentTemplate.p3}}</p>
-
-          <!-- <p>
+          <p>
             Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school—or go themselves. You make success stories like Aissatou’s possible. And I can’t thank you enough.
-          </p> -->
+          </p>
         </div>
         <div class="closing">
             <p>
@@ -155,7 +146,6 @@
               Executive Director
             </p>
           </div>
-
         <div class="footer">
             <p id="giftAmount">
               Gift Amount: ${{amount}}
