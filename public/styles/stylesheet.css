@@ -106,11 +106,18 @@ header a:hover {
 }
 .donorInfoHome th {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
-.donorInfoHome tr td{
-  font-size: 18px;
+.homeDataTable tr {
+  height: 50px;
 }
+.homeDataTable:hover {
+background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*.donorInfoHome:active {
+background-color: rgba(0, 0, 0, 0.1);
+}*/
 #editEmail {
   background-color: #086A81;
   color: white;
@@ -120,7 +127,7 @@ header a:hover {
   float: right;
   background-color: #086A81;
   color: white;
-  
+
 }
 #sendEmail {
   background-color: #EB7536;
@@ -139,7 +146,7 @@ header a:hover {
   font-size: 20px;
 }
 tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ;
 }
 /*edit.html*/
 .editmain {

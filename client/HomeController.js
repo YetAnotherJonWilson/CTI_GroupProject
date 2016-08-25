@@ -1,6 +1,6 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', function($http, $location, DataService, RouteService, orderBy, $uibModal,TemplateService,EmailService) {
 
-
+	DataService.getData();
 
 	var vm = this;
 
@@ -19,7 +19,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 
-	vm.propertyName = 'donationAmount';
+	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;
 
