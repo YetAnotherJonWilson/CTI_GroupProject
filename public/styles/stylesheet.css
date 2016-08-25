@@ -38,7 +38,7 @@ body {
 .wrapper {
   width: 90%;
   height: 1100px;
-  /*margin: auto;*/
+  margin: auto;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   /*padding: 5px 10px 10px 10px;*/
@@ -48,6 +48,7 @@ header {
   width: auto;
   height: 80px;
   margin-bottom: 40px;
+  padding-right: 10px;
   border-bottom: 1px solid #086A81;
 }
 header img {
