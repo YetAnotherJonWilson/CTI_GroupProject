@@ -4,7 +4,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	var vm = this;
 
-	vm.donorList = DataService.donorObject.donors;
+	vm.donorList = DataService.sortedObject.sorted;
 
 
 	vm.homeRoute = function() {
@@ -16,7 +16,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.settingsRoute = function() {
 		RouteService.settingsRoute();
 	}
-	
+
 
 
 	vm.propertyName = 'donationAmount';
