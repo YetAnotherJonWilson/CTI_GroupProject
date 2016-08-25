@@ -116,6 +116,12 @@ header a:hover {
   color: white;
   margin-right: 5px;
   }
+#edit-modal-button {
+  float: right;
+  background-color: #086A81;
+  color: white;
+  
+}
 #sendEmail {
   background-color: #EB7536;
   color: white;
@@ -167,6 +173,8 @@ tr:nth-child(even) {
 }
 .editModal {
   margin: 10px;
+  /*clear: both;*/
+  overflow: hidden;
 }
 .imageHover {
 	opacity: 1;
@@ -187,8 +195,22 @@ tr:nth-child(even) {
   border-radius: 5px;
 }
 .modal-image {
-  float: left;
-  margin: 10px;
+  /*float: left;*/
+  /*padding: 10px;*/
+  margin: 15px;
+  /*border: solid 2px gray;*/
+  border-radius: 2px;
+  /*margin: 0px auto;*/
+  /*-webkit-box-shadow: 0px 0px 7px 4px rgba(130,123,130,1);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(130,123,130,1);*/
+  box-shadow: 0px 0px 3px 1px rgba(130,123,130,1);
+}
+.center {
+  display: inline-block;;
+}
+.modalImageWrapper {
+  text-align: center;
+  width: 100%;
 }
 .imageModal {
   overflow: scroll;
@@ -196,8 +218,8 @@ tr:nth-child(even) {
   padding: 5px;
 }
 .modalTitle {
-  font-size: 2em;
-  text-align: center;
+  font-size: 1.5em;
+  /*text-align: center;*/
 }
 
 .thumb {

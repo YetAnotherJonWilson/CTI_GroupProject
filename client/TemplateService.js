@@ -25,6 +25,7 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 			p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
 			p4: '',
 			q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
 			currentField: '',
 			img: 'assets/sampleimage3.jpg'
 		},
@@ -44,17 +45,19 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 		currentTemplate.p3 = templatesObject['template' + templateNum].p3;
 		currentTemplate.p4 = templatesObject['template' + templateNum].p4;
 		currentTemplate.q = templatesObject['template' + templateNum].q;
+		currentTemplate.ps = templatesObject['template' + templateNum].ps;
 		currentTemplate.img = templatesObject['template' + templateNum].img;
 	}
 
 
-	function saveEditedEmail(p1, p2, p3, p4, q){
+	function saveEditedEmail(p1, p2, p3, p4, q, ps){
 		savedEmails.emails.push({
 			p1: p1,
 			p2: p2,
 			p3: p3,
 			p4: p4,
 			q: q,
+			ps: ps
 		})
 	}
 

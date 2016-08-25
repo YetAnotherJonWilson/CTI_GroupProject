@@ -108,8 +108,8 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 		EmailService.sendMail(p1, q, p2);
 	}
 
-	vm.saveEditedEmail = function(p1, p2, p3, p4, q){
-		TemplateService.saveEditedEmail(p1, p2, p3, p4, q)
+	vm.saveEditedEmail = function(p1, p2, p3, p4, q, ps){
+		TemplateService.saveEditedEmail(p1, p2, p3, p4, q, ps)
 	}
 
 	function getCurrentTemplate(templateNum) {
