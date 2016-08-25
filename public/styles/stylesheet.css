@@ -178,9 +178,36 @@ tr:nth-child(even) {
 .editModal {
   margin: 10px;
 }
-.textHover:hover {
+.imageHover {
+	opacity: 1;
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+.imageHover:hover {
+	opacity: .8;
+  cursor: pointer;
+}
+.fieldHover {
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+.fieldHover:hover {
   cursor: pointer;
   background-color: #ededed;
+  border-radius: 5px;
+}
+.modal-image {
+  float: left;
+  margin: 10px;
+}
+.imageModal {
+  overflow: scroll;
+  max-height: 350px;
+  padding: 5px;
+}
+.modalTitle {
+  font-size: 2em;
+  text-align: center;
 }
 
 .thumb {
