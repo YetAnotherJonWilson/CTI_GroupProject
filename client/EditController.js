@@ -70,7 +70,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 			templateUrl: 'emails/edit_modal.html',
 			controller: 'ModalController',
 			controllerAs: 'modal',
-			size: 'md',
+			size: 'md'
 			// resolve: {
 			// 	items: function() {
 			// 		return vm.items;
