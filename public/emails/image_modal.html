@@ -1,0 +1,9 @@
+<div class="imageModal">
+    <!-- <h3>Choose Image:</h3> -->
+    <ul>
+        <li ng-repeat="image in modal.imagesArray">
+            <img class="imageHover modal-image" ng-src="{{image}}" height="125px" ng-click="modal.setCurrentImg(image); $dismiss()" />
+        </li>
+    </ul>
+    <!-- <button id="editEmail" class="btn" ng-click="$dismiss()">Ok</button> -->
+</div>
