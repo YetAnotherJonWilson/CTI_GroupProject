@@ -277,7 +277,6 @@ function findPhone(donorObject){
     for(var i = 0; i < data[3].length; i++){
       if(donorObject.householdId == data[3][i].Id){
         if(data[3][i].npo02__HouseholdPhone__c !== null){
-          console.log('house phone');
           return data[3][i].npo02__HouseholdPhone__c;
         }
         else{
@@ -288,7 +287,6 @@ function findPhone(donorObject){
     for(var j = 0; j < data[1].length; j++){
       if(donorObject.Primary_Contact__c == data[1][j].Id){
         if(data[1][j].Phone !== null){
-          console.log('contact phone');
           return data[1][j].Phone;
         }
         else{
@@ -301,7 +299,6 @@ function findPhone(donorObject){
     for(var k = 0; k < data[2].length; k++){
       if(donorObject.AccountId == data[2][k].Id){
         if(data[2][k].Phone !== null){
-          console.log('account phone');
           return data[2][k].Phone;
         }
         else{
