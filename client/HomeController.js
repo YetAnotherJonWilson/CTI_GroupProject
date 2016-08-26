@@ -30,6 +30,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		console.log('sortBy propertyName:', propertyName);
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
+
+
+	
+
 	};
 
 //////////EDIT VIEW/////////
