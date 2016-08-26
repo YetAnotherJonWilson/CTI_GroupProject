@@ -2,6 +2,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 var vm = this;
 
+    vm.photos = ['photos/photo1', 'photos/photo2', 'photos/photo3', 'photos/photo4', 'photos/photo5', 'photos/photo6'];
+
     vm.uploadPic = function(file) {
 
         file.upload = Upload.upload({

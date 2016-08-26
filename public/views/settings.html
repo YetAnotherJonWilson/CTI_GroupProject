@@ -59,3 +59,8 @@
     <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     <br>
 </form>
+
+<div ng-repeat="photo in settings.photos">
+<img ng-src="{{photo}}" alt="{{photo}}">
+</div>
+
