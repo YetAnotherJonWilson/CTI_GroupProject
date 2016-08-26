@@ -11,35 +11,15 @@ var contacts=[];
 var accounts =[];
 var households=[];
 var everything=[];
-var done=false;
-var failCount=0;
-var version=0;
-
-// router.get('/done', function(req, res){
-//   if(done){
-//     console.log(done);
-//     res.sendStatus(200);
-//   }
-//   else if(failCount>15){
-//     failCount=0;
-//     res.sendStatus(400);
-//   }
-//   else{
-//     console.log(done);
-//     failCount++;
-//     res.redirect('/salesforce/done');
-//   }
-// });
-
-
+var version= '';
 
 router.get('/data', function(request, response){
-    done=false;
     everything=[opportunities, contacts, accounts, households];
     response.send(everything);
 });
 
 router.get('/oauth2/auth', function(request, response){
+  getStartUrl();
   console.log("hellos");
   response.redirect(oauth2.getAuthorizationUrl({}));
 });
@@ -80,6 +60,19 @@ router.get('/oauth2/callback', function(request, response){
   // response.redirect('/home');
 });
 
+function getStartUrl(){
+ console.log('here');
+ request("https://cti.my.salesforce.com/services/data", function(err, response, body){
+   if(err){console.log('err', err);}
+   else{
+     var stuff=JSON.parse(response.body);
+     console.log(stuff);
+     version=stuff[stuff.length-1].url;
+     console.log(version);
+   }
+ });
+}
+
 function getOpps(accessToken, instanceUrl){
    opportunities=[];
    contacts=[];
@@ -88,7 +81,7 @@ function getOpps(accessToken, instanceUrl){
   var requestObj = {
     // url: instanceUrl + '/services/data/v37.0/limits',
     // url: instanceUrl + '/services/data/v37.0/composite/tree/Contact/',
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -117,7 +110,7 @@ function getOpps(accessToken, instanceUrl){
 }
 function getContact(accessToken, instanceUrl, record){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,MailingAddress+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,Phone+,Email+,AccountId+,Greeting__c+,Professional_Suffix__c+,Gender__c+,Salutation+,MailingAddress+,npo02__Household__c+from+Contact+where+Id+=+'"+record.Primary_Contact__c+"'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -138,7 +131,7 @@ function getContact(accessToken, instanceUrl, record){
 }
 function getHousehold(accessToken, instanceUrl, household){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npo02__Addressee__c+,npo02__Formula_MailingAddress__c+,npo02__HouseholdEmail__c+,npo02__HouseholdPhone__c+,npo02__Formal_Greeting__c+,npo02__Informal_Greeting__c+from+npo02__Household__c+where+Id+=+'"+household+"'",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npo02__Addressee__c+,npo02__Formula_MailingAddress__c+,npo02__HouseholdEmail__c+,npo02__HouseholdPhone__c+,npo02__Formal_Greeting__c+,npo02__Informal_Greeting__c+from+npo02__Household__c+where+Id+=+'"+household+"'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -158,7 +151,7 @@ function getHousehold(accessToken, instanceUrl, household){
 }
 function getAccount(accessToken, instanceUrl, AccountId){
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,BillingAddress+,Phone+,npe01__LifetimeDonationHistory_Amount__c+,npe01__LifetimeDonationHistory_Number__c+,npo02__AverageAmount__c+,Formal_Salutation__c+,Informal_Greeting__c+,Main_Contact__c+,Organization_Email__c+from+Account+where+Id+=+'"+AccountId+"'",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,BillingAddress+,Phone+,npe01__LifetimeDonationHistory_Amount__c+,npe01__LifetimeDonationHistory_Number__c+,npo02__AverageAmount__c+,Formal_Salutation__c+,Informal_Greeting__c+,Main_Contact__c+,Organization_Email__c+from+Account+where+Id+=+'"+AccountId+"'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -207,28 +200,12 @@ router.post('/overview', function(request, response, callback){
     response.send(stuff);
   });
 
-
-  // var Id = donors.donors[0].opportunityId;
-  // var requestObj = {
-  //   url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Opportunity+where+Id+=+'" + Id + "'",
-  //   headers: {
-  //     Authorization: 'Bearer ' + accessToken
-  //   },
-  //   json: true
-  // }
-  // rp(requestObj).then(function(response){
-  //   var stuff = response;
-  //   console.log('response', stuff);
-  //   response.send(stuff);
-  // }).catch(function(err){
-  //   console.log('err', err);
-  // });
 });
 
 function overviewInfo(accessToken, instanceUrl, donors){
   var Id = donors[0].opportunityId;
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Opportunity+where+Id+=+'" + Id + "'",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+from+Opportunity+where+Id+=+'" + Id + "'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -241,16 +218,6 @@ function overviewInfo(accessToken, instanceUrl, donors){
   }).catch(function(err){
     console.log('err', err);
   });
-  // , function(err, response, body){
-  //   if(err){
-  //     console.log('err', err);
-  //   }
-  //   else{
-  //     var stuff = JSON.parse(response.body);
-  //     console.log('stuff request', stuff);
-  //     return stuff;
-  //   }
-  // });
 }
 
 

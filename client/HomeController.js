@@ -3,17 +3,11 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	// DataService.getData();
 
 	var vm = this;
-<<<<<<< HEAD
+
 	vm.donorList = DataService.donorObject.donors;
 	// vm.donorList = DataService.sortedObject.sorted;
 	console.log('donor list', vm.donorList);
-=======
 
-	// vm.donorList = DataService.sortedObject.sorted;
-  vm.donorList = DataService.donorObject.donors;
-  console.log(vm.donorList);
-
->>>>>>> 4f3b5955c1e5f5bddb4e8e4bb436338f50cc182c
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
