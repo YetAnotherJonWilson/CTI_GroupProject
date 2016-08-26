@@ -25,6 +25,11 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'SettingsController',
       controllerAs: 'settings'
     })
+    .when('/donor', {
+      templateUrl: '/views/donor.html',
+      controller: 'MainController',
+      controllerAs: 'main'
+    })
 
 
     .otherwise({redirectTo:'/'});
