@@ -4,8 +4,9 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	var vm = this;
 
-	vm.donorList = DataService.sortedObject.sorted;
-
+	// vm.donorList = DataService.sortedObject.sorted;
+  vm.donorList = DataService.donorObject.donors;
+  console.log(vm.donorList);
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
