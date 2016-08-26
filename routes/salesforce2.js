@@ -88,9 +88,9 @@ function getOpps(accessToken, instanceUrl){
       var stuff = JSON.parse(response.body);
       // console.log(stuff);
       for(var i=0; i<stuff.records.length; i++){
-        if(stuff.records[i].Primary_Contact__c === null && stuff.records[i].npe01__Contact_Id_for_Role__c != null){
-          stuff.records[i].Primary_Contact__c = stuff.records[i].npe01__Contact_Id_for_Role__c;
-        }
+        // if(stuff.records[i].Primary_Contact__c === null && stuff.records[i].npe01__Contact_Id_for_Role__c != null){
+        //   stuff.records[i].Primary_Contact__c = stuff.records[i].npe01__Contact_Id_for_Role__c;
+        // }
           opportunities.push(stuff.records[i]);
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
