@@ -60,7 +60,9 @@
     <br>
 </form>
 
-<div ng-repeat="photo in settings.photos">
+
+<button ng-click="settings.showPhotos()">View Photos</button>
+<div ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
 <img ng-src="{{photo}}" alt="{{photo}}">
 </div>
 

@@ -2,6 +2,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 var vm = this;
 
+    vm.unhidePhotos = false;
+
     vm.photos = ['photos/photo1', 'photos/photo2', 'photos/photo3', 'photos/photo4', 'photos/photo5', 'photos/photo6'];
 
     vm.uploadPic = function(file) {
@@ -65,7 +67,12 @@ var vm = this;
             // Math.min is to fix IE which reports 200% sometimes
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
+    };
+
+    vm.showPhotos = function(){
+        vm.unhidePhotos = true;
     }
+
 
 
 }]);
