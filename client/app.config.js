@@ -25,6 +25,11 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'SettingsController',
       controllerAs: 'settings'
     })
+    .when('/gettingdata',{
+      templateUrl: '/views/gettingdata.html',
+      controller: 'GettingDataController',
+      controllerAs: 'getting'
+    })
     .when('/donor', {
       templateUrl: '/views/donor.html',
       controller: 'MainController',
