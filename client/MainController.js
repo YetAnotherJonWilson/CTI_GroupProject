@@ -1,4 +1,4 @@
-angular.module('App').controller('MainController', ['$http', '$location', 'DataService' , function($http, $location, DataService){
+angular.module('App').controller('MainController', ['$http', '$location', 'DonationService' , function($http, $location, DonationService){
 
     var vm = this;
 
@@ -11,11 +11,17 @@ angular.module('App').controller('MainController', ['$http', '$location', 'DataS
     }
 
     vm.overiew = function(){
-      $http.get('/salesforce/overview').then(function(response){
-        console.log('did you work');
+      // $http.get('/salesforce/overview').then(function(response){
+      //   console.log('did you work');
+      // }, function(response){
+      //   console.log('err', response);
+      // });
+      DonationService.getDonorDbStuff().then(function(response){
+        console.log('did you work?');
       }, function(response){
-        console.log('err', response);
+        console.log('worked???');
       });
+
     }
 
     vm.saveTest = function(){

@@ -4,32 +4,17 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var Donor = require('../models/donor');
 
-// router.get('/', function(request, response){
-//     Donor.find({}, function(err, donors){
-//         if(err){
-//             console.log(err);
-//             response.sendStatus(500);
-//         } else {
-//             response.send(donors);
-//         }
-//     })
-// });
-//
-// router.get('/findWithId/:id', function(request, response){
-//     console.log(request.params.id);
-//     // response.sendStatus(200);
-//
-//     Donor.findById(request.params.id, function(err, donor){
-//         if(err){
-//             console.log(err);
-//             response.sendStatus(500);
-//         } else {
-//             response.send(donor);
-//         }
-//     })
-//
-// });
-
+router.get('/sentDonors', function(request, response){
+  Donor.find({}, function(err, donors){
+    if(err){
+      console.log(err);
+      response.sendStatus(500);
+    } else {
+      console.log('donors', donors);
+      response.send(donors);
+    }
+  })
+});
 
 router.post('/createData', function(request, response, next){
   console.log('Creating data');

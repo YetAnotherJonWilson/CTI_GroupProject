@@ -20,7 +20,6 @@ var donorSchema = new Schema({
   picture4: String,
   letterhead: String,
   signature: String,
-
 });
 
 
