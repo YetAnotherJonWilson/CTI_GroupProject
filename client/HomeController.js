@@ -48,7 +48,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 
-	};
+
 
 
 	//////////EDIT VIEW/////////
