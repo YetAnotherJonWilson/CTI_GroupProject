@@ -146,12 +146,17 @@ background-color: rgba(0, 0, 0, 0.1);
 }
 #dropDown button {
   background-color: white;
-  float: right;
+  /*float: right;*/
   border: none;
   color: black;
 }
-#dropDown p {
-
+#dropDown a {
+  display: inline;
+}
+#dropDown li, #dropDown ul {
+  width: 50px;
+  margin: 0;
+  padding: 0;
 }
 
 
