@@ -138,7 +138,6 @@ background-color: rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
   padding: 10px 5px 40px 0;
-  margin-bottom: 5px;
 
 }
 #dropDown {
@@ -150,19 +149,18 @@ background-color: rgba(0, 0, 0, 0.1);
   border: none;
   color: black;
 }
-#dropDown a {
-  display: inline;
+.upCaret:after {
+  content: '\25b2';   // BLACK UP-POINTING TRIANGLE
 }
-#dropDown li, #dropDown ul {
-  width: 50px;
-  margin: 0;
-  padding: 0;
+.downCaret:after {
+  content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
 }
 
 
-/*.donorInfoHome:active {
+
+.donorInfoHome div:active {
 background-color: rgba(0, 0, 0, 0.1);
-}*/
+}
 #editEmail {
   background-color: #086A81;
   color: white;

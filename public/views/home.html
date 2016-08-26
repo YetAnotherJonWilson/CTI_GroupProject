@@ -9,21 +9,28 @@
     <div id="dropDownContainer">
         <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
 
+        <div>
 
-            <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled"><span>{{home.propertyName}}</span>
-                <span class="caret"></span>
 
-            </button>
-            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
-                <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
 
-                <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
-            </ul>
+        <button id="single-button" type="button" class="btn btn-primary"  uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
+          <span class="glyphicon glyphicon-menu-down" ng-show="home.reverse == false"></span>
+          <span class="upCaret" ng-show="home.reverse == true"></span>
+
+        </button>
         </div>
-    </div>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
+          <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
+
+          <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
+        </ul>
+      </div>
+  </div>
+
 
     <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
+
 
         <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
         <!-- <td>{{}}</td> -->
@@ -46,40 +53,7 @@
 
 <div class='editmain'>
 {{home.savedEmails}}
-<!--
-    <div class="editinputs">
-        <div>
-            <label for="paragraph0">Testing the font-family</label>
-            <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
-        </div>
-        <div class="paragraph1">
-            <label for="paragraph1">Paragraph 1</label>
-            <textarea type="text" ng-model="edit.templatesObject.template1.p1" id="paragraph1"></textarea>
-        </div>
-        <div>
-            <label for="quote">Quote</label>
-            <textarea type="text" ng-model="edit.templatesObject.template1.quote" id="quote" /></textarea>
-        </div>
-        <div>
-            <label for="paragraph2">Paragraph 2</label>
-            <textarea type="text" ng-model="edit.templatesObject.template1.p2" id="paragraph2" /></textarea>
-        </div>
-    </div> -->
 
-
-    <!-- <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Dropdown
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-    </div> -->
     <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
     {{home.savedEmails}}
 
