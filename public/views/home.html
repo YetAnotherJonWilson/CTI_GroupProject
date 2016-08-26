@@ -7,13 +7,14 @@
     <h1></h1>
 
     <div id="dropDownContainer">
-      <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
+        <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
+        <div>
+        <button id="single-button" type="button" class="btn btn-primary"  uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
+          <span class="glyphicon glyphicon-menu-down" ng-show="home.reverse == false"></span>
+          <span class="glyphicon glyphicon-menu-up" ng-show="home.reverse == true"></span>
 
-
-          <button id="single-button" type="button" class="btn btn-primary"  uib-dropdown-toggle ng-disabled="disabled"><span>{{home.propertyName}}</span>
-          <span class="caret"></span>
-
-          </button>
+        </button>
+        </div>
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
           <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
           <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
@@ -23,30 +24,35 @@
       </div>
   </div>
 
-            <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything"  ng-click="">
-                <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
-                <!-- <td>{{}}</td> -->
-                <!-- <td>{{donor.email}}</td> -->
 
-                <!-- <td>{{donor.Amount}}</td>
+    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
+
+
+        <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
+        <!-- <td>{{}}</td> -->
+        <!-- <td>{{donor.email}}</td> -->
+
+        <!-- <td>{{donor.Amount}}</td>
                 <td>{{donor.date}}</td> -->
 
-                <h3 id="date">{{donor.date}}</h3>
-                <h2 id="donationAmount">Donation:{{donor.Amount}}</h2>
+        <h3 id="date">{{donor.date}}</h3>
+        <h2 id="donationAmount">Donation:{{donor.Amount}}</h2>
 
 
-                <!-- <td>{{donor.convertedDate}}</td> -->
+        <!-- <td>{{donor.convertedDate}}</td> -->
 
-                    <!-- <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button> -->
+        <!-- <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button> -->
 
 
-            </div>
+    </div>
 </div>
 
 <div class='editmain'>
 {{home.savedEmails}}
 
-    <button ng-click='home.sendMail(home.template1.p1, home.quote, home.template1.p2)'>Send</button>
+    <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
+    {{home.savedEmails}}
+
     <button ng-click='home.saveEditedEmail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps)'>Save</button>
 
     <div class="editField">
