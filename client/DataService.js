@@ -82,10 +82,10 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
   }
 
 function checkDone(){
-  $http.get('/salesforce/done').then(success, handleFailure);
+  $http.get('/salesforce/done').then(success, failure);
 }
 function success(res){
-  $location.path('/home');
+  getData();
 }
 function failure(res){
   checkDone();
@@ -105,6 +105,7 @@ function failure(res){
         sortData(data);
         preconvertDates();
         convertDates();
+        $location.path('/home');
       }
       else{
         getData();

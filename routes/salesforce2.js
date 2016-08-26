@@ -9,20 +9,29 @@ var accounts =[];
 var households=[];
 var everything=[];
 var done=false;
+var failCount=0;
+var version=0;
 
 router.get('/done', function(req, res){
   if(done){
     console.log(done);
     res.sendStatus(200);
   }
+  else if(failCount>15){
+    failCount=0;
+    res.sendStatus(400);
+  }
   else{
     console.log(done);
+    failCount++;
     res.redirect('/salesforce/done');
   }
 })
 
 
+
 router.get('/data', function(request, response){
+    done=false;
     everything=[opportunities, contacts, accounts, households];
     response.send(everything);
 });
@@ -68,7 +77,9 @@ function getOpps(accessToken, instanceUrl){
    accounts =[];
    households=[];
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + '/services/data/v37.0/limits',
+    // url: instanceUrl + '/services/data/v37.0/composite/tree/Contact/',
+    // url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
@@ -80,13 +91,15 @@ function getOpps(accessToken, instanceUrl){
       var stuff = JSON.parse(response.body);
       // console.log(stuff);
       for(var i=0; i<stuff.records.length; i++){
+        // if(stuff.records[i].Primary_Contact__c === null && stuff.records[i].npe01__Contact_Id_for_Role__c != null){
+        //   stuff.records[i].Primary_Contact__c = stuff.records[i].npe01__Contact_Id_for_Role__c;
+        // }
           opportunities.push(stuff.records[i]);
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
-      done=true;
+      // done=true;
     }
-
   });
 }
 function getContact(accessToken, instanceUrl, record){
@@ -138,5 +151,34 @@ function getAccount(accessToken, instanceUrl, AccountId){
     }
   });
 }
+
+router.get('/overview', function(request, response){
+  console.log('access token', request.session.accessToken);
+  console.log('request url', request.session.instanceUrl);
+  accessToken = request.session.accessToken;
+  instanceUrl = request.session.instanceUrl;
+
+  overviewInfo(accessToken, instanceUrl)
+
+});
+
+function overviewInfo(accessToken, instanceUrl){
+  var requestObj = {
+    url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Opportunity',
+    headers: {
+      Authorization: 'Bearer' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){
+      console.log('err', err);
+    }
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log('stuff', stuff);
+    }
+  });
+}
+
 
 module.exports = router;
