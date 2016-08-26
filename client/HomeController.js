@@ -19,6 +19,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 
+
+
 	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;
