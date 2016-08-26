@@ -4,16 +4,17 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
 
 
 
-  function sendMail(p1, q, p2) {
+  function sendMail(p1, p2, p3, p4, q, ps, donorInfo) {
     var sendData = {};
 
     sendData.p1 = p1;
     sendData.p2 = p2;
-    // sendData.p3 = p3;
-    // sendData.p4 = p4;
+    sendData.p3 = p3;
+    sendData.p4 = p4;
     // sendData.p5 = p5;
     sendData.q = q;
-    // sendData.donor = donor;
+    sendData.ps = ps;
+    sendData.donor = donorInfo;
 
     console.log('sendData = ', sendData);
 
