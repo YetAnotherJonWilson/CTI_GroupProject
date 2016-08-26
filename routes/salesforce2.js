@@ -9,6 +9,7 @@ var accounts =[];
 var households=[];
 var everything=[];
 
+
 router.get('/data', function(request, response){
   everything=[opportunities, contacts, accounts, households];
   response.send(everything);
@@ -55,7 +56,9 @@ function getOpps(accessToken, instanceUrl){
    accounts =[];
    households=[];
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + '/services/data/v37.0/limits',
+    // url: instanceUrl + '/services/data/v37.0/composite/tree/Contact/',
+    // url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
@@ -65,12 +68,12 @@ function getOpps(accessToken, instanceUrl){
     else{
 
       var stuff = JSON.parse(response.body);
-      // console.log(stuff);
-      for(var i=0; i<stuff.records.length; i++){
-          opportunities.push(stuff.records[i]);
-          getContact(accessToken, instanceUrl, stuff.records[i]);
-          getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
-      }
+      console.log(stuff);
+      // for(var i=0; i<stuff.records.length; i++){
+      //     opportunities.push(stuff.records[i]);
+      //     getContact(accessToken, instanceUrl, stuff.records[i]);
+      //     getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+      // }
     }
   });
 }
@@ -120,6 +123,34 @@ function getAccount(accessToken, instanceUrl, AccountId){
       var stuff = JSON.parse(response.body);
       // console.log(stuff);
       accounts.push(stuff.records[0]);
+    }
+  });
+}
+
+router.get('/overview', function(request, response){
+  console.log('access token', request.session.accessToken);
+  console.log('request url', request.session.instanceUrl);
+  accessToken = request.session.accessToken;
+  instanceUrl = request.session.instanceUrl;
+
+  overviewInfo(accessToken, instanceUrl)
+
+});
+
+function overviewInfo(accessToken, instanceUrl){
+  var requestObj = {
+    url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Opportunity',
+    headers: {
+      Authorization: 'Bearer' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){
+      console.log('err', err);
+    }
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log('stuff', stuff);
     }
   });
 }

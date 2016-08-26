@@ -136,9 +136,9 @@ vm.imageModal = function(id) {
 };
 
 
-vm.sendMail = function(p1, q, p2) {
+vm.sendMail = function(p1, p2, p3, p4, q, ps, donorInfo) {
   console.log('You cliked me');
-  EmailService.sendMail(p1, q, p2);
+  EmailService.sendMail(p1, p2, p3, p4, q, ps, donorInfo);
 }
 
 vm.saveEditedEmail = function(p1, p2, p3, p4, q, ps){

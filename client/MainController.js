@@ -10,6 +10,14 @@ angular.module('App').controller('MainController', ['$http', '$location', 'DataS
       EmailService.sendMail();
     }
 
+    vm.overiew = function(){
+      $http.get('/salesforce/overview').then(function(response){
+        console.log('did you work');
+      }, function(response){
+        console.log('err', response);
+      });
+    }
+
     vm.saveTest = function(){
       var sendData = {};
       sendData.opportunityId = '';
