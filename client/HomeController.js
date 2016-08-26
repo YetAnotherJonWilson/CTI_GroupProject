@@ -1,6 +1,6 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', function($http, $location, DataService, RouteService, orderBy, $uibModal,TemplateService,EmailService) {
 
-DataService.getData();
+// DataService.getData();
 
 	var vm = this;
 
@@ -29,7 +29,7 @@ DataService.getData();
 		vm.propertyName = propertyName;
 
 
-	
+
 
 	};
 
