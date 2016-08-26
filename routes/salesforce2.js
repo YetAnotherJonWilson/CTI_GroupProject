@@ -29,6 +29,7 @@ router.get('/done', function(req, res){
 })
 
 
+
 router.get('/data', function(request, response){
     done=false;
     everything=[opportunities, contacts, accounts, households];
@@ -76,7 +77,9 @@ function getOpps(accessToken, instanceUrl){
    accounts =[];
    households=[];
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+,npe01__Contact_Id_for_Role__c+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + '/services/data/v37.0/limits',
+    // url: instanceUrl + '/services/data/v37.0/composite/tree/Contact/',
+    // url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
@@ -95,7 +98,7 @@ function getOpps(accessToken, instanceUrl){
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
-      done=true;
+      // done=true;
     }
   });
 }
@@ -145,6 +148,34 @@ function getAccount(accessToken, instanceUrl, AccountId){
       var stuff = JSON.parse(response.body);
       // console.log(stuff);
       accounts.push(stuff.records[0]);
+    }
+  });
+}
+
+router.get('/overview', function(request, response){
+  console.log('access token', request.session.accessToken);
+  console.log('request url', request.session.instanceUrl);
+  accessToken = request.session.accessToken;
+  instanceUrl = request.session.instanceUrl;
+
+  overviewInfo(accessToken, instanceUrl)
+
+});
+
+function overviewInfo(accessToken, instanceUrl){
+  var requestObj = {
+    url: instanceUrl + '/services/data/v37.0/query/?q=SELECT+Id+,Name+from+Opportunity',
+    headers: {
+      Authorization: 'Bearer' + accessToken
+    }
+  }
+  request(requestObj, function(err, response, body){
+    if(err){
+      console.log('err', err);
+    }
+    else{
+      var stuff = JSON.parse(response.body);
+      console.log('stuff', stuff);
     }
   });
 }

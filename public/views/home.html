@@ -45,9 +45,45 @@
 </div>
 
 <div class='editmain'>
+<<<<<<< HEAD
+{{home.savedEmails}}
+<!--
+    <div class="editinputs">
+        <div>
+            <label for="paragraph0">Testing the font-family</label>
+            <textarea type="text" ng-model="edit.paragraph0" id="paragraph0" /></textarea>
+        </div>
+        <div class="paragraph1">
+            <label for="paragraph1">Paragraph 1</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p1" id="paragraph1"></textarea>
+        </div>
+        <div>
+            <label for="quote">Quote</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.quote" id="quote" /></textarea>
+        </div>
+        <div>
+            <label for="paragraph2">Paragraph 2</label>
+            <textarea type="text" ng-model="edit.templatesObject.template1.p2" id="paragraph2" /></textarea>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div> -->
+    <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
     {{home.savedEmails}}
 
-    <button ng-click='home.sendMail(home.template1.p1, home.quote, home.template1.p2)'>Send</button>
     <button ng-click='home.saveEditedEmail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps)'>Save</button>
 
     <div class="editField">
