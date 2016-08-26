@@ -18,7 +18,6 @@ DataService.getData();
 	}
 
 
-
 	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;

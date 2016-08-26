@@ -21,12 +21,14 @@ var uploadHeader = multer({ dest: './headers/' });
 
 var index = require('./routes/index');
 var donor = require('./routes/donor');
-var email = require('./routes/email.js');
+var email = require('./routes/email');
 var User = require('./models/users');
 var login = require('./routes/login');
 var photos = require('./routes/photos');
-var salesforce = require('./routes/salesforce2.js');
-var verticleResponse = require('./routes/verticleResponse.js');
+var salesforce = require('./routes/salesforce2');
+var verticleResponse = require('./routes/verticleResponse');
+var Donor = require('./models/donor');
+var donor = require('./routes/donor');
 
 var app = express();
 require('dotenv').config();

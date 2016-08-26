@@ -1,63 +1,88 @@
 <div class="donorInfoHome" class="animated fadeIn">
+    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
     <div class="donorSearchDiv">
         <h3>Search</h3>
         <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
     </div>
     <h1></h1>
-    <table class="table">
+
+    <div id="dropDownContainer">
+      <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen"><p>
+        {{home.propertyName}}
+      </p>
+          <button id="single-button" type="button" class="btn btn-primary"  uib-dropdown-toggle ng-disabled="disabled">
+          <span class="caret"></span>
+
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
+          <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
+
+          <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
+        </ul>
+      </div>
+  </div>
+
+
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th>
                     <button ng-click="home.sortBy('firstName')">Name</button>
-                    <!-- <span class="sortorder" ng-show="propertyName === 'firstName'" ng-class="{reverse: reverse}"></span> -->
-                    <!-- <button ng-click="home.sortBy('lastName')">Last Name</button> -->
+                    <span class="sortorder" ng-show="propertyName === 'firstName'" ng-class="{reverse: reverse}"></span>
+                    <button ng-click="home.sortBy('lastName')">Last Name</button>
                 </th>
-                    <!-- <span class="sortorder" ng-show="propertyName === 'lastName'" ng-class="{reverse: reverse}"></span></th> -->
-                <!-- <th>
+                    <span class="sortorder" ng-show="propertyName === 'lastName'" ng-class="{reverse: reverse}"></span></th>
+                <th>
                     <button ng-click="home.sortBy('email')">Email</button>
-                </th> -->
-                    <!-- <span class="sortorder" ng-show="propertyName === 'email'" ng-class="{reverse: reverse}"></span></th> -->
-                <th>
-
-                    <button ng-click="home.sortBy('donationAmount')">Donation Amount</button>
                 </th>
-                    <!-- <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th> -->
+                    <span class="sortorder" ng-show="propertyName === 'email'" ng-class="{reverse: reverse}"></span></th>
                 <th>
-                    <button ng-click="home.sortBy('donationDate')">Donation Date</button>
+
+                    <button ng-click="home.sortBy('Amount')"> Amount</button>
+                </th>
+                    <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th>
+                <th>
+                    <button ng-click="home.sortBy('date')">Date</button>
                 </th>
 
 
+<<<<<<< HEAD
                     <!-- <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th> -->
+=======
+                    <span class="sortorder" ng-show="propertyName === 'donationAmount'" ng-class="{reverse: reverse}"></span></th>
+>>>>>>> 4c502022a7858cf5d307dd0f404283b4d61a9738
                 <th>
-                    <button ng-click="home.sortBy('date')">Donation Date</button>
+                    <button ng-click="home.sortBy('date')">Date</button>
 
-                    <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
-                <!-- <th>
+                    <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th>
+                <th>
                     <button ng-click="home.sortBy('convertedDate')">Converted Date</button>
-                </th> -->
-                    <!-- <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th> -->
+                </th>
+                    <span class="sortorder" ng-show="propertyName === 'donationDate'" ng-class="{reverse: reverse}"></span></th>
 
                 <th>&nbsp</th>
             </tr>
         </thead>
-        <tbody>
-            <tr ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything">
-
-                <td>{{donor.firstName + " " + donor.lastName}}</td>
+      </table> -->
+            <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything"  ng-click="">
+                <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
                 <!-- <td>{{}}</td> -->
                 <!-- <td>{{donor.email}}</td> -->
+<<<<<<< HEAD
                 <td>{{donor.Amount}}</td>
                 <td>{{donor.date}}</td>
+=======
+                <h3 id="date">{{donor.date}}</h3>
+                <h2 id="donationAmount">Donation:{{donor.Amount}}</h2>
+
+>>>>>>> 4c502022a7858cf5d307dd0f404283b4d61a9738
                 <!-- <td>{{donor.convertedDate}}</td> -->
 
-                <td>
                     <!-- <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button> -->
-                    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+            </div>
 </div>
 
 <div class='editmain'>
