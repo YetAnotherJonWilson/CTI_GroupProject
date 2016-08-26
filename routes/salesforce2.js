@@ -66,7 +66,7 @@ router.get('/oauth2/callback', function(request, response){
     request.session.accessToken = conn.accessToken;
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
-    getOpps(request.session.accessToken, request.session.instanceUrl);
+    // getOpps(request.session.accessToken, request.session.instanceUrl);
     response.redirect('/gettingdata');
   });
 });
