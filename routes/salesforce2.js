@@ -69,13 +69,13 @@ router.get('/oauth2/callback', function(request, response){
     request.session.accessToken = conn.accessToken;
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
+
     // getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
       // everything = everything;
       // console.log('great success');
       // response.redirect('/gettingdata');
       response.redirect('/home');
     // });
-
   });
   // response.redirect('/home');
 });
@@ -102,9 +102,6 @@ function getOpps(accessToken, instanceUrl){
       var stuff = response;
       // console.log(stuff);
       for(var i=0; i<stuff.records.length; i++){
-        // if(stuff.records[i].Primary_Contact__c === null && stuff.records[i].npe01__Contact_Id_for_Role__c != null){
-        //   stuff.records[i].Primary_Contact__c = stuff.records[i].npe01__Contact_Id_for_Role__c;
-        // }
           opportunities.push(stuff.records[i]);
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);

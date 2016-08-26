@@ -5,6 +5,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
   var sortedObject={};
 
   var donorObject = {
+<<<<<<< HEAD
    donors:[{
       AccountId: "001d000000K2KKAAA3",
       Amount: 200,
@@ -111,9 +112,118 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
       phone:"(651) 444-4444"
          }]
        }
+=======
+    donors:[{
+AccountId: "001d000000K2KKAAA3",
+Amount: 200,
+CloseDate: "2016-08-22",
+Id: "006d000000r6cKWAAY",
+Name:"Test",
+Primary_Contact__c:"003d000000V8J9gAAF",
+address:{
+  city: "Monrovia",
+  country:"Liberia",
+  countryCode:null,
+  geocodeAccuracy:null,
+  latitude:null,
+  longitude:null,
+  postalCode:null,
+  state:null,
+  stateCode:null,
+  street:"N&N Corporation",
+ },
+date:"08-22-2016",
+donationHistory: {
+  lifeTimeAmount:635,
+  lifeTimeNumber:2
+ },
+email:"dosawea@yahoo.com",
+firstName:"Christian",
+formalGreeting:"Christian Neufville",
+householdId:"a00d0000007j6fAAAQ",
+informalGreeting:"Christian",
+lastName:"Neufville",
+npe01__Contact_Id_for_Role__c:"003d000000V8J9gAAF",
+npe01__Is_Opp_From_Individual__c:"true",
+personName:"Neufville Household",
+phone:"No phone number found",
+},
+{
+AccountId:"001d0000025MIlJAAW",
+Amount:300,
+CloseDate:"2016-08-22",
+Id:"006d000000r6efMAAQ",
+Name:"Trent Test 8/22/16",
+Primary_Contact__c:"003d0000037X5z3AAC",
+address:{
+city:  "Notreal",
+country:"US",
+countryCode:null,
+geocodeAccuracy:null,
+latitude:null,
+longitude:null,
+postalCode:"55444",
+state:"MT",
+stateCode:null,
+street:"123 fake st."
+},
+date:"08-22-2016",
+donationHistory:{
+  lifeTimeAmount:1100,
+  lifeTimeNumber:2
+},
+email:"trent@fake.net",
+firstName:"Trent",
+formalGreeting:"Mr. Trent Johnson",
+householdId:"a00d000000mOdmgAAC",
+informalGreeting:"Trent",
+lastName:"Johnson",
+npe01__Contact_Id_for_Role__c:"003d0000037X5z3AAC",
+npe01__Is_Opp_From_Individual__c:"true",
+personName:"Johnson Household",
+phone:"(555) 555-3333"
+},
+{
+AccountId:"001d0000025MImRAAW",
+Amount:1234,
+CloseDate:"2016-08-22",
+Id:"006d000000r6ehSAAQ",
+Name:"Jonanthon Wilson- Donation 8/22/2016",
+Primary_Contact__c:"003d0000037X61sAAC",
+address:{
+city:"real",
+country:null,
+countryCode:null,
+geocodeAccuracy:null,
+latitude:null,
+longitude:null,
+postalCode:55707,
+state:"MN",
+stateCode:null,
+street:"74382 idk ave"
+},
+date:"08-22-2016",
+donationHistory:{
+lifeTimeAmount:11110,
+lifeTimeNumber:2
+},
+email:"jon@prime.io",
+firstName:"Jonanthon",
+formalGreeting:"Mr. Jonanthon and Mrs. Wife Wilson",
+householdId:"a00d000000mOdn5AAC",
+informalGreeting:"Jonanthon and Wife",
+lastName:"Wilson",
+npe01__Contact_Id_for_Role__c:"003d0000037X61sAAC",
+npe01__Is_Opp_From_Individual__c:"true",
+personName:"Wilson Household",
+phone:"(651) 444-4444"
+    }]
+  }
+>>>>>>> 4f3b5955c1e5f5bddb4e8e4bb436338f50cc182c
 
 function checkDone(){
-  $http.get('/salesforce/done').then(success, failure);
+  $location.path('/home');
+  // $http.get('/salesforce/done').then(success, failure);
 }
 function success(res){
   getData();

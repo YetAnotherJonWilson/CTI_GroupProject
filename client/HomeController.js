@@ -3,9 +3,17 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	// DataService.getData();
 
 	var vm = this;
+<<<<<<< HEAD
 	vm.donorList = DataService.donorObject.donors;
 	// vm.donorList = DataService.sortedObject.sorted;
 	console.log('donor list', vm.donorList);
+=======
+
+	// vm.donorList = DataService.sortedObject.sorted;
+  vm.donorList = DataService.donorObject.donors;
+  console.log(vm.donorList);
+
+>>>>>>> 4f3b5955c1e5f5bddb4e8e4bb436338f50cc182c
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
@@ -21,6 +29,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;
+	vm.dropDownName = 'Donation';
 
 	vm.sortBy = function(propertyName) {
 		console.log('donorList:', vm.donors);
@@ -28,10 +37,25 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
 
+		switch(propertyName) {
+			case "lastName":
+			vm.dropDownName = "Name";
+			break;
+			case "Amount":
+			vm.dropDownName = "Donation";
+			break;
+			case "date":
+			vm.dropDownName = "Date";
+			break;
+		}
+};
 
 
 
-	};
+
+
+
+
 
 	//////////EDIT VIEW/////////
 
@@ -52,8 +76,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempIndex;
 
 		for (var i = 0; i < vm.donorList.length; i++) {
-			if (donorList[i].id = id) {
-				tempDonor = donorList[i];
+			if (vm.donorList[i].Id == id) {
+				tempDonor = vm.donorList[i];
 				tempIndex = i;
 			}
 		}
@@ -186,7 +210,7 @@ function getCurrentTemplate(templateNum) {
 }
 
 
-
+getCurrentTemplate(1);
 
 
 }]);
