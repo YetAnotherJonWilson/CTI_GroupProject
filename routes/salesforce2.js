@@ -8,10 +8,23 @@ var contacts=[];
 var accounts =[];
 var households=[];
 var everything=[];
+var done=false;
+
+router.get('/done', function(req, res){
+  if(done){
+    console.log(done);
+    res.sendStatus(200);
+  }
+  else{
+    console.log(done);
+    res.redirect('/salesforce/done');
+  }
+})
+
 
 router.get('/data', function(request, response){
-  everything=[opportunities, contacts, accounts, households];
-  response.send(everything);
+    everything=[opportunities, contacts, accounts, households];
+    response.send(everything);
 });
 
 router.get('/oauth2/auth', function(request, response){
@@ -45,7 +58,7 @@ router.get('/oauth2/callback', function(request, response){
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
     getOpps(request.session.accessToken, request.session.instanceUrl);
-    response.redirect('/index/index');
+    response.redirect('/gettingdata');
   });
 });
 
@@ -71,7 +84,9 @@ function getOpps(accessToken, instanceUrl){
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
+      done=true;
     }
+
   });
 }
 function getContact(accessToken, instanceUrl, record){
