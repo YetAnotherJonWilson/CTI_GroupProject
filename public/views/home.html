@@ -61,7 +61,7 @@
             </tr>
         </thead>
       </table> -->
-            <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything"  ng-click="">
+            <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything"  ng-click="home.setCurrentEditView(donor.id)">
                 <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
                 <!-- <td>{{}}</td> -->
                 <!-- <td>{{donor.email}}</td> -->
