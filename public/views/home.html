@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.id)">
+    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
 
         <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
         <!-- <td>{{}}</td> -->
@@ -45,7 +45,6 @@
 </div>
 
 <div class='editmain'>
-<<<<<<< HEAD
 {{home.savedEmails}}
 <!--
     <div class="editinputs">

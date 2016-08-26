@@ -54,8 +54,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempIndex;
 
 		for (var i = 0; i < vm.donorList.length; i++) {
-			if (donorList[i].id = id) {
-				tempDonor = donorList[i];
+			if (vm.donorList[i].Id == id) {
+				tempDonor = vm.donorList[i];
 				tempIndex = i;
 			}
 		}
@@ -188,7 +188,7 @@ function getCurrentTemplate(templateNum) {
 }
 
 
-
+getCurrentTemplate(1);
 
 
 }]);
