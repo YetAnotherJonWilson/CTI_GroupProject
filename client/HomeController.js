@@ -21,17 +21,25 @@ DataService.getData();
 	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;
+	vm.dropDownName = 'Donation';
 
 	vm.sortBy = function(propertyName) {
 		console.log('donorList:', vm.donors);
 		console.log('sortBy propertyName:', propertyName);
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
-
-
-	
-
-	};
+		switch(propertyName) {
+			case "lastName":
+			vm.dropDownName = "Name";
+			break;
+			case "Amount":
+			vm.dropDownName = "Donation";
+			break;
+			case "date":
+			vm.dropDownName = "Date";
+			break;
+		}
+};
 
 //////////EDIT VIEW/////////
 
