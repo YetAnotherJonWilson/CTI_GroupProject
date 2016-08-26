@@ -1,4 +1,4 @@
-angular.module('App').factory('DataService', ['$http', function($http){
+angular.module('App').factory('DataService', ['$http','$location', function($http, $location){
 
   var data=[];
   var sorted=[];
@@ -81,7 +81,15 @@ angular.module('App').factory('DataService', ['$http', function($http){
     }]
   }
 
-
+function checkDone(){
+  $http.get('/salesforce/done').then(success, failure);
+}
+function success(res){
+  getData();
+}
+function failure(res){
+  checkDone();
+}
 
   // function getDonors(){
   //   $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
@@ -93,9 +101,15 @@ angular.module('App').factory('DataService', ['$http', function($http){
   function handleSuccess(res){
       console.log(res);
       data=res.data;
-      sortData(data);
-      preconvertDates();
-      convertDates();
+      if(data[0].length===data[3].length){
+        sortData(data);
+        preconvertDates();
+        convertDates();
+        $location.path('/home');
+      }
+      else{
+        getData();
+      }
   }
   function handleFailure(res){
     console.log('fail', res);
@@ -368,6 +382,7 @@ sortedObject.sorted = sorted;
     sortedObject: sortedObject,
     // getDonors: getDonors,
     getData: getData,
-    donorObject: donorObject
+    donorObject: donorObject,
+    checkDone: checkDone
   };
 }]);

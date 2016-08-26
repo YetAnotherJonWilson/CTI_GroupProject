@@ -1,6 +1,6 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService) {
 
-	DataService.getData();
+// DataService.getData();
 
 	var vm = this;
 
@@ -17,9 +17,6 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}
 
 
-
-
-
 	vm.propertyName = 'Amount';
 	vm.reverse = true;
 	vm.donors = vm.donorList;
@@ -29,6 +26,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		console.log('sortBy propertyName:', propertyName);
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
+
+
+
+
 	};
 
 	//////////EDIT VIEW/////////

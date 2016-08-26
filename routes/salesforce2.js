@@ -8,10 +8,31 @@ var contacts=[];
 var accounts =[];
 var households=[];
 var everything=[];
+var done=false;
+var failCount=0;
+var version=0;
+
+router.get('/done', function(req, res){
+  if(done){
+    console.log(done);
+    res.sendStatus(200);
+  }
+  else if(failCount>15){
+    failCount=0;
+    res.sendStatus(400);
+  }
+  else{
+    console.log(done);
+    failCount++;
+    res.redirect('/salesforce/done');
+  }
+})
+
 
 router.get('/data', function(request, response){
-  everything=[opportunities, contacts, accounts, households];
-  response.send(everything);
+    done=false;
+    everything=[opportunities, contacts, accounts, households];
+    response.send(everything);
 });
 
 router.get('/oauth2/auth', function(request, response){
@@ -45,7 +66,7 @@ router.get('/oauth2/callback', function(request, response){
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
     getOpps(request.session.accessToken, request.session.instanceUrl);
-    response.redirect('/index/index');
+    response.redirect('/gettingdata');
   });
 });
 
@@ -55,7 +76,7 @@ function getOpps(accessToken, instanceUrl){
    accounts =[];
    households=[];
   var requestObj = {
-    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
+    url: instanceUrl + "/services/data/v37.0/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,AccountId+,npe01__Contact_Id_for_Role__c+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
     }
@@ -67,10 +88,14 @@ function getOpps(accessToken, instanceUrl){
       var stuff = JSON.parse(response.body);
       // console.log(stuff);
       for(var i=0; i<stuff.records.length; i++){
+        if(stuff.records[i].Primary_Contact__c === null && stuff.records[i].npe01__Contact_Id_for_Role__c != null){
+          stuff.records[i].Primary_Contact__c = stuff.records[i].npe01__Contact_Id_for_Role__c;
+        }
           opportunities.push(stuff.records[i]);
           getContact(accessToken, instanceUrl, stuff.records[i]);
           getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
       }
+      done=true;
     }
   });
 }
@@ -123,5 +148,6 @@ function getAccount(accessToken, instanceUrl, AccountId){
     }
   });
 }
+
 
 module.exports = router;
