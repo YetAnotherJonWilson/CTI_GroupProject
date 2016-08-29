@@ -38,7 +38,9 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentTemplate.img = 'photos/' + img;
 	}
 
-	var savedEmails = vm.emails;
+	var savedEmails = {
+		emails: []
+	};
 
 	var templatesObject = {
 		template1: {
