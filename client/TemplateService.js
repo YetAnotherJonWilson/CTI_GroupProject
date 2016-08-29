@@ -7,12 +7,31 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 		p4: '',
 		q: '',
 		ps: '',
-		currentEdit: '',
+		currentField: '',
 		img: ''
 	}
 
-	function setCurrentImg(img){
-		currentTemplate.img = img;
+	var currentDonor = {
+		donor: [
+			{
+				donor: {}
+			}
+		]
+	}
+
+	function setCurrentImg(img) {
+		currentDonor.donor[0].donor.img = img;
+	}
+
+	function updateCurrentDonorKey(key, value){
+		console.log('TemplateService updateCurrentDonorKey');
+		currentDonor.donor[0].donor.template[key] = value;
+	}
+
+	function updateCurrentDonor(donor){
+		console.log('update current donor, donor:', donor);
+		currentDonor.donor[0].donor = donor;
+		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
 
 	var savedEmails = {
@@ -30,8 +49,26 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 			currentField: '',
 			img: 'assets/sampleimage3.jpg'
 		},
-		template2: {},
-		template3: {}
+		template2: {
+			p1: 'template2 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+			p2: 'template2 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+			p3: 'template2 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+			p4: '',
+			q: "template2 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			ps: 'template2 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+			currentField: '',
+			img: 'assets/sampleimage3.jpg'
+		},
+		template3: {
+			p1: 'template3 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+			p2: 'template3 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+			p3: 'template3 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+			p4: '',
+			q: "template3 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			ps: 'template3 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+			currentField: '',
+			img: 'assets/sampleimage3.jpg'
+		}
 	}
 
 
@@ -40,7 +77,7 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 	}
 
 
-	function getCurrentTemplate(templateNum){
+	function getCurrentTemplate(templateNum) {
 		currentTemplate.p1 = templatesObject['template' + templateNum].p1;
 		currentTemplate.p2 = templatesObject['template' + templateNum].p2;
 		currentTemplate.p3 = templatesObject['template' + templateNum].p3;
@@ -51,7 +88,7 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 	}
 
 
-	function saveEditedEmail(p1, p2, p3, p4, q, ps){
+	function saveEditedEmail(p1, p2, p3, p4, q, ps) {
 		savedEmails.emails.push({
 			p1: p1,
 			p2: p2,
@@ -63,13 +100,16 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 	}
 
 	return {
+		currentDonor: currentDonor,
 		currentTemplate: currentTemplate,
 		getCurrentTemplate: getCurrentTemplate,
 		imagesObject: imagesObject,
 		saveEditedEmail: saveEditedEmail,
 		savedEmails: savedEmails,
 		setCurrentImg: setCurrentImg,
-		templatesObject: templatesObject
+		templatesObject: templatesObject,
+		updateCurrentDonor: updateCurrentDonor,
+		updateCurrentDonorKey: updateCurrentDonorKey
 	}
 
 

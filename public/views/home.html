@@ -28,7 +28,6 @@
       </div>
   </div>
 
-
     <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
 
 
@@ -50,9 +49,9 @@
 
     </div>
 </div>
-
 <div class='editmain'>
 {{home.savedEmails}}
+
 
     <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
     {{home.savedEmails}}

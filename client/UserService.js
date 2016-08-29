@@ -1,7 +1,11 @@
 angular.module('App').factory('UserService', ['$http', function($http){
+
   var vm = this;
 
-  return {
+  var standardTemplate = { template: 1 };
 
+
+  return {
+    standardTemplate: standardTemplate
   };
 }]);
