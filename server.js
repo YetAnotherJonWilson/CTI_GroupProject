@@ -13,16 +13,12 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
-<<<<<<< HEAD
-// var upload = multer({ dest: './photos/' });
-=======
 var upload = multer({ dest: './public/photos/' });
->>>>>>> 9dd970d83ff042c875e741373888e95c2576c3b4
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 
 
-var photos = require('./routes/photos')
+var photos = require('./routes/photos');
 var index = require('./routes/index');
 var donor = require('./routes/donor');
 var email = require('./routes/email');
