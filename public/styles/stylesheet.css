@@ -42,6 +42,7 @@ body {
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   /*padding: 5px 10px 10px 10px;*/
+  overflow: hidden;
 
 }
 header {
@@ -155,9 +156,6 @@ background-color: rgba(0, 0, 0, 0.1);
 .downCaret:after {
   content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
 }
-
-
-
 .donorInfoHome div:active {
 background-color: rgba(0, 0, 0, 0.1);
 }
@@ -193,7 +191,7 @@ tr:nth-child(even) {
 }
 /*edit.html*/
 .editmain {
-  width: 50%;
+  max-width: 100%;
   /*float: left;*/
   margin-top: 100px;
   overflow: auto;
@@ -213,7 +211,7 @@ tr:nth-child(even) {
   /*border: 1px solid rgba(0, 0, 0, 0.1);*/
   margin: auto;
   margin-top: 30px;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 .editField {
   width: 620px;
@@ -248,13 +246,12 @@ tr:nth-child(even) {
 }
 .modalUploadForm {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 250px;
-  margin: 10px 0 10px 45px;
-  padding: 0 3px 40px 0;
+  width: 200px;
 }
 .modalUploadForm input {
   color: #086A81;
   margin: 0 0 5px 5px;
+  padding-bottom: 10px;
 }
 .done {
   background-color: rgb(38, 127, 147);
@@ -264,7 +261,6 @@ tr:nth-child(even) {
   background-color: #086A81;
   color: white;
   float: left;
-  margin: 5px 0 5px 45px;
 }
 #remove:hover {
   background-color: rgb(38, 127, 147);
@@ -274,17 +270,21 @@ tr:nth-child(even) {
   background-color: green;
   color: white;
   float: left;
-  margin: 5px 0 5px 20px;
 }
 #submit:hover {
   background-color: rgb(63, 219, 28);
   color: white;
 }
-
+.imageModalClass {
+  width: 225px;
+  position: fixed;
+    left: 85%;
+    /*z-index: 1050;*/
+}
 .modal-image {
   /*float: left;*/
   /*padding: 10px;*/
-  margin: 15px;
+  margin: 5px;
   /*border: solid 2px gray;*/
   border-radius: 2px;
   /*margin: 0px auto;*/
@@ -292,18 +292,18 @@ tr:nth-child(even) {
   -moz-box-shadow: 0px 0px 7px 4px rgba(130,123,130,1);*/
   box-shadow: 0px 0px 3px 1px rgba(130,123,130,1);
 }
-.center {
-  display: inline-block;;
-}
-.modalImageWrapper {
+/*.center {
+  display: inline-block;
+}*/
+/*.modalImageWrapper {
   text-align: center;
   width: 100%;
-}
-.imageModal {
+}*/
+/*.imageModal {
   overflow: scroll;
   max-height: 350px;
   padding: 5px;
-}
+}*/
 .modalTitle {
   font-size: 1.5em;
   /*text-align: center;*/
@@ -331,4 +331,35 @@ form .progress {
     font-size: smaller;
     background: orange;
     width: 0;
+}
+
+/*//////////////////Settings Page/////////////////////*/
+.settingsMenu {
+  display: inline-table;
+  float: left;
+  width: 35%;
+  margin-left: 0px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.settingsPhotoUpload {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 70px;
+  padding: 5px 5px 5px 2px;
+}
+.settingsMenu h1 {
+  font-weight: bold;
+  font-size: 20px;
+}
+.settingsPhotoUpload:hover {
+background-color: rgba(0, 0, 0, 0.1);
+}
+.settingsDisplayPhotos {
+  width: 100%;
+  height: auto;
+  overflow: scroll;
+}
+.settingsDisplayPhotos li {
+  float: left;
+  margin: 5px;
+  display: inline;
 }

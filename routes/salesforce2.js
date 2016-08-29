@@ -58,8 +58,8 @@ router.get('/oauth2/callback', function(request, response){
     // getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
       // everything = everything;
       // console.log('great success');
-      // response.redirect('/gettingdata');
-      response.redirect('/home');
+      response.redirect('/gettingdata');
+      // response.redirect('/home');
     // });
   });
   // response.redirect('/home');

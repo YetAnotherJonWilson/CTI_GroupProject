@@ -3,7 +3,8 @@
         <h3 class="modalTitle">Edit:</h3>
     </div> -->
     <div class="form-group">
-        <textarea class="form-control" rows="7" id="edit" ng-model="modal.currentTemplate[modal.currentTemplate.currentField]"></textarea>
+        <textarea class="form-control" rows="7" id="edit" ng-model="modal.currentDonor.donor.template[modal.currentField]"></textarea>
+        <!-- <textarea class="form-control" rows="7" id="edit" ng-model="modal.currentTemplate[modal.currentTemplate.currentField]"></textarea> -->
     </div>
-    <button id="edit-modal-button" class="btn" ng-click="$dismiss()">Ok</button>
+    <button id="edit-modal-button" class="btn" ng-click="modal.updateCurrentDonorKey(modal.currentField, modal.currentDonor.donor.template[modal.currentField]); $dismiss()">Ok</button>
 </div>
