@@ -15,11 +15,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 
 	function setCurrentImg(img){
-		if(img == 'assets/addPictureIcon.png'){
-			console.log(img);
-		} else {
-		currentTemplate.img = img;
-		}
+		currentTemplate.img = 'photos/' + img;
 	};
 
 	var savedEmails = {
@@ -43,18 +39,26 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 
 
+	// var imagesObject = {
+	// 	images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
+	// }
 	var imagesObject = {
-		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
+		images: []
 	}
 
-	function getPhotos() {
-		$http.get('/photos').success(function(response) {
-				console.log('response from get photos' , response);
-		});
+
+
+	function createPhotoArray(){
+			$http.get('/createphotoarray').then(handlePhotoSuccess);
 	}
+	function handlePhotoSuccess(response){
+			imagesObject.images = response.data;
+	}
+
+	createPhotoArray();
+
 
 	function uploadPic(file) {
-		console.log(file);
 			file.upload = Upload.upload({
 					url: '/photos',
 					arrayKey: '', // default is '[i]'
@@ -63,20 +67,15 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			file.upload.then(function (response) {
 					$timeout(function () {
 							file.result = response.data;
-							newImage = file.result
-							console.log('This is the file.result' ,file.result);
-							imagesObject.images.push(newImage);
-
+							createPhotoArray();
 					});
 			}, function (response) {
 					if (response.status > 0)
 							vm.errorMsg = response.status + ': ' + response.data;
-
 			}, function (evt) {
 					// Math.min is to fix IE which reports 200% sometimes
 					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 			});
-			getPhotos();
 	};
 
 
@@ -110,7 +109,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		savedEmails: savedEmails,
 		setCurrentImg: setCurrentImg,
 		templatesObject: templatesObject,
-		uploadPic: uploadPic
+		uploadPic: uploadPic,
+		createPhotoArray: createPhotoArray
 	}
 
 
