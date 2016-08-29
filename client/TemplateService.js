@@ -5,7 +5,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		p2: '',
 		p3: '',
 		p4: '',
-		q: '',
+		quote: '',
 		ps: '',
 		currentField: '',
 		img: ''
@@ -48,7 +48,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
 			p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
 			p4: '',
-			q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			quote: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
 			ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
 			currentField: '',
 			img: 'assets/sampleimage3.jpg'
@@ -58,7 +58,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			p2: 'template2 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
 			p3: 'template2 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
 			p4: '',
-			q: "template2 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			quote: "template2 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
 			ps: 'template2 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
 			currentField: '',
 			img: 'assets/sampleimage3.jpg'
@@ -68,7 +68,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			p2: 'template3 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
 			p3: 'template3 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
 			p4: '',
-			q: "template3 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+			quote: "template3 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
 			ps: 'template3 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
 			currentField: '',
 			img: 'assets/sampleimage3.jpg'
@@ -121,19 +121,19 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentTemplate.p2 = templatesObject['template' + templateNum].p2;
 		currentTemplate.p3 = templatesObject['template' + templateNum].p3;
 		currentTemplate.p4 = templatesObject['template' + templateNum].p4;
-		currentTemplate.q = templatesObject['template' + templateNum].q;
+		currentTemplate.quote = templatesObject['template' + templateNum].quote;
 		currentTemplate.ps = templatesObject['template' + templateNum].ps;
 		currentTemplate.img = templatesObject['template' + templateNum].img;
 	}
 
 
-	function saveEditedEmail(p1, p2, p3, p4, q, ps) {
+	function saveEditedEmail(p1, p2, p3, p4, quote, ps) {
 		savedEmails.emails.push({
 			p1: p1,
 			p2: p2,
 			p3: p3,
 			p4: p4,
-			q: q,
+			quote: quote,
 			ps: ps
 		})
 	}
