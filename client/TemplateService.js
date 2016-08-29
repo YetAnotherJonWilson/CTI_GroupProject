@@ -1,4 +1,4 @@
-angular.module('App').factory('TemplateService', ['$location', function($location) {
+angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', function($location, Upload, $timeout, $http) {
 
 	var currentTemplate = {
 		p1: '',
@@ -11,9 +11,16 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 		img: ''
 	}
 
+
+
+
 	function setCurrentImg(img){
+		if(img == 'assets/addPictureIcon.png'){
+			console.log(img);
+		} else {
 		currentTemplate.img = img;
-	}
+		}
+	};
 
 	var savedEmails = {
 		emails: []
@@ -35,9 +42,42 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 	}
 
 
+
 	var imagesObject = {
-		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg']
+		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
 	}
+
+	function getPhotos() {
+		$http.get('/photos').success(function(response) {
+				console.log('response from get photos' , response);
+		});
+	}
+
+	function uploadPic(file) {
+		console.log(file);
+			file.upload = Upload.upload({
+					url: '/photos',
+					arrayKey: '', // default is '[i]'
+					data: {file: file}
+			});
+			file.upload.then(function (response) {
+					$timeout(function () {
+							file.result = response.data;
+							newImage = file.result
+							console.log('This is the file.result' ,file.result);
+							imagesObject.images.push(newImage);
+
+					});
+			}, function (response) {
+					if (response.status > 0)
+							vm.errorMsg = response.status + ': ' + response.data;
+
+			}, function (evt) {
+					// Math.min is to fix IE which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+			getPhotos();
+	};
 
 
 	function getCurrentTemplate(templateNum){
@@ -69,8 +109,9 @@ angular.module('App').factory('TemplateService', ['$location', function($locatio
 		saveEditedEmail: saveEditedEmail,
 		savedEmails: savedEmails,
 		setCurrentImg: setCurrentImg,
-		templatesObject: templatesObject
+		templatesObject: templatesObject,
+		uploadPic: uploadPic
 	}
 
 
-}])
+}]);

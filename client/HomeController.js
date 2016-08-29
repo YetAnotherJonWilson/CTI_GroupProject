@@ -1,4 +1,4 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService) {
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService',function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService) {
 
 	// DataService.getData();
 
@@ -7,6 +7,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.donorList = DataService.donorObject.donors;
 	// vm.donorList = DataService.sortedObject.sorted;
 	console.log('donor list', vm.donorList);
+
+
 
 
 	vm.homeRoute = function() {
@@ -138,6 +140,12 @@ vm.templates = [{
 }, {
 	name: 'Template 3',
 	url: 'emails/template3EditView.html'
+}, {
+	name: 'Template 4',
+	url: 'emails/template4EditView.html'
+}, {
+	name: 'Template 5',
+	url: 'emails/template5EditView.html'
 }];
 
 vm.template = vm.templates[0];
@@ -205,6 +213,8 @@ function getCurrentTemplate(templateNum) {
 
 
 getCurrentTemplate(1);
+
+
 
 
 }]);

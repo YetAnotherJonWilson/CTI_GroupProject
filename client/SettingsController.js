@@ -4,7 +4,18 @@ var vm = this;
 
     vm.unhidePhotos = false;
 
-    vm.photos = ['photos/photo1', 'photos/photo2', 'photos/photo3', 'photos/photo4', 'photos/photo5', 'photos/photo6'];
+    vm.photos = [];
+
+    function createPhotoArray(){
+        $http.get('/createphotoarray').then(handlePhotoSuccess);
+    }
+
+    function handlePhotoSuccess(response){
+        console.log(response.data);
+        vm.photos = response.data;
+    }
+
+    createPhotoArray();
 
     vm.uploadPic = function(file) {
 
@@ -30,7 +41,7 @@ var vm = this;
     vm.uploadSig = function(file) {
 
         file.upload = Upload.upload({
-            url: '/sigfile',
+            url: '/photos/sigfile',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
@@ -51,7 +62,7 @@ var vm = this;
     vm.uploadHeader = function(file) {
 
         file.upload = Upload.upload({
-            url: '/headers',
+            url: '/photos/headers',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });

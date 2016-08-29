@@ -244,6 +244,43 @@ tr:nth-child(even) {
   background-color: #ededed;
   border-radius: 5px;
 }
+#uploadModalLi {
+}
+.modalUploadForm {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 250px;
+  margin: 10px 0 10px 45px;
+  padding: 0 3px 40px 0;
+}
+.modalUploadForm input {
+  color: #086A81;
+  margin: 0 0 5px 5px;
+}
+.done {
+  background-color: rgb(38, 127, 147);
+  color: white;
+}
+#remove {
+  background-color: #086A81;
+  color: white;
+  float: left;
+  margin: 5px 0 5px 45px;
+}
+#remove:hover {
+  background-color: rgb(38, 127, 147);
+  color: white;
+}
+#submit {
+  background-color: green;
+  color: white;
+  float: left;
+  margin: 5px 0 5px 20px;
+}
+#submit:hover {
+  background-color: rgb(63, 219, 28);
+  color: white;
+}
+
 .modal-image {
   /*float: left;*/
   /*padding: 10px;*/
