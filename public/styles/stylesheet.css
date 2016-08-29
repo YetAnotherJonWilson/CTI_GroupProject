@@ -341,7 +341,7 @@ form .progress {
   margin-left: 0px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-.settingsUpload {
+.settingsPhotoUpload {
   border: 1px solid rgba(0, 0, 0, 0.1);
   height: 70px;
   padding: 5px 5px 5px 2px;
@@ -350,7 +350,7 @@ form .progress {
   font-weight: bold;
   font-size: 20px;
 }
-.settingsUpload:hover {
+.settingsPhotoUpload:hover {
 background-color: rgba(0, 0, 0, 0.1);
 }
 .settingsDisplayPhotos {

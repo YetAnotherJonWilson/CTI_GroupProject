@@ -1,7 +1,8 @@
 <div class="settingsMenu" class="animated fadeIn">
-  <div class="settingsUpload">
+<div class="settingsPhotoUpload">
     <form name="photoForm">
           <h1>Upload Photo</h1>
+          <a ng-click="settings.showPhotos()">View Photos</a>
           <input type="file" ngf-select ng-model="picFile" name="file"
                  accept="image/*" ngf-max-size="2MB" required
                  ngf-model-invalid="errorFile">
@@ -18,7 +19,7 @@
           <span ng-show="picFile.result">Upload Successful</span>
           <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     </form>
-  </div>
+  </div></a>
   <div class="settingsUpload">
   <form name="signatureForm">
       <h1>Upload Signature</h1>
@@ -62,7 +63,7 @@
   </form>
 </div>
   <div class="settingsDisplayPhotos">
-    <button class="btn" ng-click="settings.showPhotos()">View Photos</button>
+
        <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
         <img ng-src="photos/{{photo}}" height="100px" width="150px" alt="photo: {{photo}}">
       </li>

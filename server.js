@@ -13,13 +13,10 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
-<<<<<<< HEAD
+
 
 var upload = multer({ dest: './public/photos/' });
 
-=======
-var upload = multer({ dest: './public/photos/' });
->>>>>>> e635522f09c3c7f91171dc8d736ed32fcab561cd
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 
