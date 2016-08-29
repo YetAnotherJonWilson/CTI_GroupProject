@@ -98,9 +98,9 @@
 
   </head>
   <body>
-    <div class="previewWrapper">
+    <div ng-hide="home.currentDonor">Choose an email to view</div>
 
-
+    <div ng-show="home.currentDonor" class="previewWrapper">
     <div>
         <img  src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png" width="590px" height="120px">
         </div>
@@ -108,30 +108,30 @@
               <p class="date">
                 {{date}}</p>
               <p class="greeting">
-                Dear {{home.currentDonor.firstName}}:
+                  Dear {{home.currentDonor.firstName}}:
               </p>
-              <p class="p1 fieldHover" ng-click="home.editModal('p1')">{{home.currentTemplate.p1}}</p>
+              <p class="p1 fieldHover" ng-click="home.editModal('p1')">{{home.currentDonor.template.p1}}</p>
 <!--
               <p class="p1">
                 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.
               </p> -->
-              <p class="p2 fieldHover" ng-click="home.editModal('p2')">{{home.currentTemplate.p2}}</p>
+              <p class="p2 fieldHover" ng-click="home.editModal('p2')">{{home.currentDonor.template.p2}}</p>
 <!--
               <p class="p2">
                 It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
               </p> -->
         </div>
         <div class="imageRow" >
-              <img src="{{home.currentTemplate.img}}" alt="image" height="200px" class="imageHover" ng-click="home.imageModal('img')">
+              <img src="{{home.currentDonor.template.img}}" alt="image" height="200px" class="imageHover" ng-click="home.imageModal('img')">
               <!-- <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="325px" height="200px" class="fieldHover" ng-click="edit.imageModal('img')"> -->
-              <p class="quote fieldHover" ng-click="home.editModal('q')">{{home.currentTemplate.q}}</p>
+              <p class="quote fieldHover" ng-click="home.editModal('q')">{{home.currentDonor.template.q}}</p>
 
               <!-- <p class="quote">
                   “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
               </p> -->
         </div>
         <div id="clear" class="p3">
-          <p class="fieldHover" ng-click="home.editModal('p3')">{{home.currentTemplate.p3}}</p>
+          <p class="fieldHover" ng-click="home.editModal('p3')">{{home.currentDonor.template.p3}}</p>
 
           <!-- <p>
             Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school—or go themselves. You make success stories like Aissatou’s possible. And I can’t thank you enough.
@@ -145,7 +145,7 @@
         <div class="signature">
             <img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px">
 
-            <p class="ps fieldHover" ng-click="home.editModal('ps')">{{home.currentTemplate.ps}}
+            <p class="ps fieldHover" ng-click="home.editModal('ps')">{{home.currentDonor.template.ps}}
             </p>
             <p>
               Alexandra Spieldoch,
@@ -157,10 +157,10 @@
 
         <div class="footer">
             <p id="giftAmount">
-              Gift Amount: ${{amount}}
+              Gift Amount: ${{home.currentDonor.Amount}}
             </p>
             <p>
-              Gift Date: {{giftDate}}
+              Gift Date: {{home.currentDonor.CloseDate}}
             </p>
         </div>
         <div class="footer3">

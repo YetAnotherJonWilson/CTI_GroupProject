@@ -3,8 +3,13 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 var vm = this;
 
     vm.unhidePhotos = false;
+    vm.unhideSignatures = false;
+    vm.unhideHeaders = false;
 
     vm.photos = [];
+    vm.signatures = [];
+    vm.headers = [];
+
 
     function createPhotoArray(){
         $http.get('/createphotoarray').then(handlePhotoSuccess);
@@ -16,6 +21,30 @@ var vm = this;
     }
 
     createPhotoArray();
+
+    function createSignatureArray(){
+        $http.get('/createsignaturearray').then(handleSignatureSuccess);
+    }
+
+    function handleSignatureSuccess(response){
+        console.log(response.data);
+        vm.signatures = response.data;
+    }
+
+    createSignatureArray();
+
+    function createHeaderArray(){
+        $http.get('/createheaderarray').then(handleHeaderSuccess);
+    }
+
+    function handleHeaderSuccess(response){
+        console.log(response.data);
+        vm.headers = response.data;
+    }
+
+    createHeaderArray();
+
+
 
     vm.uploadPic = function(file) {
 
@@ -81,7 +110,15 @@ var vm = this;
     };
 
     vm.showPhotos = function(){
-        vm.unhidePhotos = true;
+        vm.unhidePhotos = !vm.unhidePhotos;
+    };
+
+    vm.showSignatures = function(){
+        vm.unhideSignatures = !vm.unhideSignatures;
+    };
+
+    vm.showHeaders = function(){
+        vm.unhideHeaders = !vm.unhideHeaders;
     }
     // function getTemplates(){
     //   $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
