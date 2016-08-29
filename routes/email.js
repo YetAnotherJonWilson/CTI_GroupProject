@@ -16,13 +16,18 @@ var image3 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg";
 var image4 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg";
 var image5 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg";
 
+var template1 = './public/emails/customTemplate1.hjs';
+var template2 = './public/emails/customTemplate2.hjs';
+var template3 = './public/emails/customTemplate3.hjs';
+var template4 = './public/emails/customTemplate4.hjs';
+var template5 = './public/emails/customTemplate5.hjs';
 
 
 router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
 
-  var template = fs.readFileSync('./public/emails/customTemplate3.hjs', 'utf-8');
+  var template = fs.readFileSync(template1, 'utf-8');
   var compiledTemplate = Hogan.compile(template);
   console.log('ENV' , process.env.emailusername);
   // console.log(mailData.customer.customer_email);

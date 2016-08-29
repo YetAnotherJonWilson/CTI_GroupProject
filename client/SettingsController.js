@@ -26,7 +26,7 @@ var vm = this;
     vm.uploadSig = function(file) {
 
         file.upload = Upload.upload({
-            url: '/sigfile',
+            url: '/photos/sigfile',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
@@ -47,7 +47,7 @@ var vm = this;
     vm.uploadHeader = function(file) {
 
         file.upload = Upload.upload({
-            url: '/headers',
+            url: '/photos/headers',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });

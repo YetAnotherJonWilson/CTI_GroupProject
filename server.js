@@ -13,12 +13,12 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
-var upload = multer({ dest: './photos/' });
+// var upload = multer({ dest: './photos/' });
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 
 
-
+var photos = require('./routes/photos')
 var index = require('./routes/index');
 var donor = require('./routes/donor');
 var email = require('./routes/email');
@@ -68,24 +68,10 @@ app.use('/donor', donor);
 app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
-app.post('/photos', upload.single('file'), function (req, res) {
-  console.log('file uploaded:', res.file);
-  res.sendStatus(200);
-  // req.file is the `photo` file
-  // req.body will hold the text fields, if there were any
-});
-app.post('/sigfile', uploadSig.single('file'), function (req, res) {
-  console.log('file uploaded:', res.file);
-  res.sendStatus(200);
-  // req.file is the `photo` file
-  // req.body will hold the text fields, if there were any
-});
-app.post('/headers', uploadHeader.single('file'), function (req, res) {
-  console.log('file uploaded:', res.file);
-  res.sendStatus(200);
-  // req.file is the `photo` file
-  // req.body will hold the text fields, if there were any
-});
+app.use('/photos', photos);
+
+
+
 
 var db = mongoose.connect(databaseURI).connection;
 
@@ -156,7 +142,6 @@ passport.deserializeUser(function(id, done){
 });
 
 
-
 // User.create({username: 'admin', password: 'x1.f1v3' }, function(err){
 //   if(err){
 //     console.log('Create error', err);
@@ -164,6 +149,18 @@ passport.deserializeUser(function(id, done){
 //     console.log('Saved successfully');
 //   }
 // });
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
@@ -172,4 +169,3 @@ var server = app.listen(process.env.PORT || 3000, function() {
   var port = server.address().port;
   console.log("Listening on port", port);
 });
-

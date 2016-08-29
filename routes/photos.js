@@ -1,19 +1,55 @@
+var router = require('express').Router();
+var path = require('path');
+var multer  = require('multer');
+var uploadSig = multer({ dest: './sigfile/' });
+var uploadHeader = multer({ dest: './headers/' });
 
 
 
 
-// app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
-//     // req.files is array of `photos` files
-//     // req.body will contain the text fields, if there were any
-// });
-//
-// var cpUpload = upload.fields([{ name: 'photos', maxCount: 1 }, { name: 'gallery', maxCount: 8 }]);
-// app.post('/photos/more', cpUpload, function (req, res, next) {
-//     // req.files is an object (String -> Array) where fieldname is the key, and the value is array of files
-//     //
-//     // e.g.
-//     //  req.files['avatar'][0] -> File
-//     //  req.files['gallery'] -> Array
-//     //
-//     // req.body will contain the text fields, if there were any
-// });
+
+
+
+
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/assets/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '.jpg') //Appending .jpg
+    console.log(file.mimetype);
+  }
+})
+
+var upload = multer({ storage: storage });
+
+
+
+
+router.post('/', upload.single('file'), function (req, res) {
+  console.log('file uploaded:', req.file.path);
+  res.send(req.file.path);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
+router.post('/sigfile', uploadSig.single('file'), function (req, res) {
+  console.log('file uploaded:', res.file);
+  res.sendStatus(200);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
+router.post('/headers', uploadHeader.single('file'), function (req, res) {
+  console.log('file uploaded:', res.file);
+  res.sendStatus(200);
+  // req.file is the `photo` file
+  // req.body will hold the text fields, if there were any
+});
+
+
+
+
+
+
+
+module.exports = router;
