@@ -13,7 +13,9 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
+
 var upload = multer({ dest: './public/photos/' });
+
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 

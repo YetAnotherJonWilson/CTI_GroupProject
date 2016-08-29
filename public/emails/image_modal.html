@@ -1,32 +1,28 @@
 <div class="imageModal modalImageWrapper">
-  <!-- <div class="page-header">
-    <h3 class="modalTitle">Choose Image:</h3>
-  </div> -->
     <ul>
         <li class="center" ng-repeat="image in modal.imagesArray">
-            <img class="imageHover modal-image" ng-src="{{image}}" height="150px" max-width="200px" ng-click="modal.setCurrentImg(image); $dismiss()" />
+            <img class="imageHover modal-image" ng-src="photos/{{image}}" height="150px" width="200px" ng-click="modal.setCurrentImg(image); $dismiss()" />
         </li>
-        <li><a ng-click="newImage = !newImage" ng-show="!newImage"><img class="imageHover modal-image animated fadeInUp" src="./assets/addPictureIcon.png" height="175px" max-width="200px"/></a>
+        <li><a ng-click="newImage = !newImage" ng-show="!newImage"><img class="imageHover modal-image animated fadeInUp" src="./assets/addPictureIcon.png" height="175px" width="200px"/></a>
         </li>
         <li id="uploadModalLi" ng-show="newImage" >
+          <div>
           <form class='modalUploadForm' name="photoForm">
-            <button class="btn done" ng-click="newImage = !newImage">Done</button>
-                  <br>
+            <button class="btn done" ng-click="modal.">Done</button>
+            <!-- "newImage = !newImage" -->
                   <input type="file" ngf-select ng-model="picFile" name="file"
                          accept="image/*" ngf-max-size="2MB" required
                          ngf-model-invalid="errorFile">
                   <i ng-show="photoForm.file.$error.maxSize">File too large
                       {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-                  <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile"  height="150" max-width="200px"> <button id="remove" ng-click="picFile = null" class="btn" ng-show="picFile">Remove</button>
-                  <br>
+                  <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile"  height="150" width="200px"> <button id="remove" ng-click="picFile = null" class="btn" ng-show="picFile">Remove</button>
                   <button id="submit" ng-disabled="!photoForm.$valid" ng-show="picFile"
                           ng-click="modal.uploadPic(picFile)" class="btn">Submit</button>
-                </span>
                   <h1 ng-show="picFile.progress == 100" class="animated  flipInY">Upload Successful</h1>
                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
               <br>
           </form>
-        </li>
+        </div>
+      </li>
     </ul>
-    <!-- <button id="editEmail" class="btn" ng-click="$dismiss()">Ok</button> -->
 </div>

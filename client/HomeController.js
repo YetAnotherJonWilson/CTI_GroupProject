@@ -111,8 +111,6 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}
 
 
-
-
 	//Dropdown menu to choose different templates
 	vm.templates = [{
 		name: 'Template 1',

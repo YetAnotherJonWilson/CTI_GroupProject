@@ -34,9 +34,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
 
-	function setCurrentImg(img) {
+
+	function setCurrentImg(img){
 		currentTemplate.img = 'photos/' + img;
-	}
+	};
+
 
 	var savedEmails = {
 		emails: []
@@ -77,7 +79,17 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 
 
+	// var imagesObject = {
+	// 	images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
+	// }
 	var imagesObject = {
+		images: []
+	}
+
+
+
+	function createPhotoArray(){
+			$http.get('/createphotoarray').then(handlePhotoSuccess);
 		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg']
 	};
 
@@ -86,35 +98,32 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			console.log('response from get photos', response);
 		});
 	}
-
-	function uploadPic(file) {
-		console.log(file);
-		file.upload = Upload.upload({
-			url: '/photos',
-			arrayKey: '', // default is '[i]'
-			data: {
-				file: file
-			}
-		});
-		file.upload.then(function(response) {
-			$timeout(function() {
-				file.result = response.data;
-				newImage = file.result;
-				console.log('This is the file.result', file.result);
-				imagesObject.images.push(newImage);
-
-			});
-		}, function(response) {
-			if (response.status > 0)
-				vm.errorMsg = response.status + ': ' + response.data;
-
-		}, function(evt) {
-			// Math.min is to fix IE which reports 200% sometimes
-			file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-		});
-		getPhotos();
+	function handlePhotoSuccess(response){
+			imagesObject.images = response.data;
 	}
 
+	createPhotoArray();
+
+
+	function uploadPic(file) {
+			file.upload = Upload.upload({
+					url: '/photos',
+					arrayKey: '', // default is '[i]'
+					data: {file: file}
+			});
+			file.upload.then(function (response) {
+					$timeout(function () {
+							file.result = response.data;
+							createPhotoArray();
+					});
+			}, function (response) {
+					if (response.status > 0)
+							vm.errorMsg = response.status + ': ' + response.data;
+			}, function (evt) {
+					// Math.min is to fix IE which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+	};
 
 	function getCurrentTemplate(templateNum) {
 		currentTemplate.p1 = templatesObject['template' + templateNum].p1;
@@ -147,9 +156,10 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		savedEmails: savedEmails,
 		setCurrentImg: setCurrentImg,
 		templatesObject: templatesObject,
+		uploadPic: uploadPic,
+		createPhotoArray: createPhotoArray,
 		updateCurrentDonor: updateCurrentDonor,
-		updateCurrentDonorKey: updateCurrentDonorKey,
-		uploadPic: uploadPic
+		updateCurrentDonorKey: updateCurrentDonorKey
 	}
 
 

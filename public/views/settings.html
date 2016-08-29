@@ -1,74 +1,97 @@
-<br />
-<br />
-<form name="photoForm">
-        <br>Upload Photo:
-        <input type="file" ngf-select ng-model="picFile" name="file"
-               accept="image/*" ngf-max-size="2MB" required
-               ngf-model-invalid="errorFile">
-        <i ng-show="photoForm.file.$error.maxSize">File too large
-            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-        <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-        <br>
-        <button ng-disabled="!photoForm.$valid"
-                ng-click="settings.uploadPic(picFile)">Submit</button>
-        <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
-      </span>
-        <span ng-show="picFile.result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    <br>
-</form>
-<form name="signatureForm">
-    <br>Upload Signature:
-    <input type="file" ngf-select ng-model="sigFile" name="file"
-           accept="image/*" ngf-max-size="2MB" required
-           ngf-model-invalid="errorFile">
-    <i ng-show="signatureForm.file.$error.maxSize">File too large
-        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-    <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" class="thumb"> <button ng-click="sigFile = null" ng-show="sigFile">Remove</button>
-    <br>
-    <button ng-disabled="!signatureForm.$valid"
-            ng-click="settings.uploadSig(sigFile)">Submit</button>
-    <span class="progress" ng-show="sigFile.progress >= 0">
-        <div style="width:{{sigFile.progress}}%"
-             ng-bind="sigFile.progress + '%'"></div>
-      </span>
-    <span ng-show="sigFile.result">Upload Successful</span>
-    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    <br>
-</form>
-
-<form name="headerForm">
-    <br>Upload Header:
-    <input type="file" ngf-select ng-model="headerFile" name="file"
-           accept="image/*" ngf-max-size="2MB" required
-           ngf-model-invalid="errorFile">
-    <i ng-show="headerForm.file.$error.maxSize">File too large
-        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-    <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" class="thumb"> <button ng-click="headerFile = null" ng-show="headerFile">Remove</button>
-    <br>
-    <button ng-disabled="!headerForm.$valid"
-            ng-click="settings.uploadHeader(headerFile)">Submit</button>
-    <span class="progress" ng-show="headerFile.progress >= 0">
-        <div style="width:{{headerFile.progress}}%"
-             ng-bind="headerFile.progress + '%'"></div>
-      </span>
-    <span ng-show="headerFile.result">Upload Successful</span>
-    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    <br>
-</form>
-<button ng-click="settings.showPhotos()">View Photos</button>
-<div ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
-<img ng-src="photos/{{photo}}" alt="photo: {{photo}}">
+<div class="settingsMenu" class="animated fadeIn">
+  <div class="settingsUpload">
+    <form name="photoForm">
+          <h1>Upload Photo</h1>
+          <input type="file" ngf-select ng-model="picFile" name="file"
+                 accept="image/*" ngf-max-size="2MB" required
+                 ngf-model-invalid="errorFile">
+          <i ng-show="photoForm.file.$error.maxSize">File too large
+              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+          <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile" height="100" width="150"> <button class="btn" ng-click="picFile = null" ng-show="picFile">Remove</button>
+          <br>
+          <button class="btn" ng-show="picFile" ng-disabled="!photoForm.$valid"
+                  ng-click="settings.uploadPic(picFile)">Submit</button>
+          <span class="progress" ng-show="picFile.progress >= 0">
+          <div style="width:{{picFile.progress}}%"
+               ng-bind="picFile.progress + '%'"></div>
+          </span>
+          <span ng-show="picFile.result">Upload Successful</span>
+          <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </form>
+  </div>
+  <div class="settingsUpload">
+  <form name="signatureForm">
+      <h1>Upload Signature</h1>
+      <input type="file" ngf-select ng-model="sigFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="signatureForm.file.$error.maxSize">File too large
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" height="100" width="150"> <button ng-click="sigFile = null" ng-show="sigFile" class="btn">Remove</button>
+      <br>
+      <button class="btn" ng-show="sigFile" ng-disabled="!signatureForm.$valid"
+              ng-click="settings.uploadSig(sigFile)">Submit</button>
+      <span class="progress" ng-show="sigFile.progress >= 0">
+          <div style="width:{{sigFile.progress}}%"
+               ng-bind="sigFile.progress + '%'"></div>
+        </span>
+      <span ng-show="sigFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      <br>
+  </form>
+</div>
+<div class="settingsUpload">
+  <form name="headerForm">
+      <h1>Upload Header</h1>
+      <input type="file" ngf-select ng-model="headerFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="headerForm.file.$error.maxSize">File too large
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" height="100px" width="150px"> <button ng-click="headerFile = null" ng-show="headerFile" class="btn">Remove</button>
+      <br>
+      <button class="btn" ng-show="headerFile" ng-disabled="!headerForm.$valid"
+              ng-click="settings.uploadHeader(headerFile)">Submit</button>
+      <span class="progress" ng-show="headerFile.progress >= 0">
+          <div style="width:{{headerFile.progress}}%"
+               ng-bind="headerFile.progress + '%'"></div>
+        </span>
+      <span ng-show="headerFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      <br>
+  </form>
+</div>
+  <div class="settingsDisplayPhotos">
+    <button class="btn" ng-click="settings.showPhotos()">View Photos</button>
+       <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
+        <img ng-src="photos/{{photo}}" height="100px" width="150px" alt="photo: {{photo}}">
+      </li>
+  </div>
 </div>
 
-<button ng-click="settings.showSignatures()">View Signatures</button>
-<div ng-show="settings.unhideSignatures" ng-repeat="signature in settings.signatures">
-    <img ng-src="sigfile/{{signature}}" alt="signature: {{signature}}">
-</div>
+<div class='editmain'>
+{{home.savedEmails}}
 
-<button ng-click="settings.showHeaders()">View Letterheads</button>
-<div ng-show="settings.unhideHeaders" ng-repeat="header in settings.headers">
-    <img ng-src="headers/{{header}}" alt="header: {{header}}">
+
+    <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
+    {{home.savedEmails}}
+
+    <button ng-click='home.saveEditedEmail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps)'>Save</button>
+
+    <div class="editField">
+        <select class="form-control" ng-model="home.template" ng-options="t.name for t in home.templates">
+            <option value="">(blank)</option>
+        </select>
+
+        <div class='editview'>
+            <div>
+                <!-- <hr/> -->
+                <div class="slide-animate-container">
+                    <div class="slide-animate" ng-include="home.template.url"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
