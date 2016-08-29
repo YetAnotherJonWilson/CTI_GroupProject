@@ -83,7 +83,16 @@ var vm = this;
     vm.showPhotos = function(){
         vm.unhidePhotos = true;
     }
-
+    // function getTemplates(){
+    //   $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+    // }
+    // function getTemplateSuccess(res){
+    //   console.log('templates', res);
+    // }
+    // function getTemplateFailure(res){
+    //   console.log('template retrieval failure');
+    // }
+    // getTemplates();
 
 
 }]);

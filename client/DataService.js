@@ -3,6 +3,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
   var data=[];
   var sorted=[];
   var sortedObject={};
+  var templatesObject={};
 
   var donorObject = {
    donors:[{
@@ -406,6 +407,35 @@ function findLastName(donationObject){
 sortedObject.sorted = sorted;
 // preconvertDates();
 // convertDates();
+function createTemplate(){
+  var sendData={};
+  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+}
+// function handletemplatesuccess(res){
+//   console.log('Template created');
+// }
+// function handletemplatefailure(res){
+//   console.log('template create failed');
+// }
+// createTemplate();
+var templatesArray=[];
+function getTemplates(){
+  $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+}
+function getTemplateSuccess(res){
+  console.log('templates', res);
+  templatesArray= res.data;
+  console.log(templatesArray);
+  templatesObject.template1=templatesArray[0];
+  templatesObject.template2=templatesArray[1];
+  templatesObject.template3=templatesArray[2];
+  templatesObject.template4=templatesArray[3];
+  templatesObject.template5=templatesArray[4];
+  $location.path('/home');
+}
+function getTemplateFailure(res){
+  console.log('template retrieval failure');
+}
 
 
   return {
@@ -415,6 +445,8 @@ sortedObject.sorted = sorted;
     // getDonors: getDonors,
     getData: getData,
     donorObject: donorObject,
-    checkDone: checkDone
+    checkDone: checkDone,
+    templatesObject: templatesObject,
+    getTemplates: getTemplates
   };
 }]);

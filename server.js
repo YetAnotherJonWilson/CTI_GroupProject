@@ -29,6 +29,7 @@ var salesforce = require('./routes/salesforce2');
 var verticleResponse = require('./routes/verticleResponse');
 var Donor = require('./models/donor');
 var donor = require('./routes/donor');
+var template = require('./routes/template')
 
 var app = express();
 require('dotenv').config();
@@ -69,6 +70,7 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.use('/photos', photos);
+app.use('/template', template);
 
 
 

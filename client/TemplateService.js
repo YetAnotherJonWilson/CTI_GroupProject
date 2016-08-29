@@ -1,4 +1,4 @@
-angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', function($location, Upload, $timeout, $http) {
+angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', 'DataService', function($location, Upload, $timeout, $http, DataService) {
 
 	var currentTemplate = {
 		p1: '',
@@ -10,10 +10,41 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentEdit: '',
 		img: ''
 	}
+	var templatesObject=DataService.templatesObject;
+	// var templatesArray=[];
+	// function getTemplates(){
+	// 	$http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+	// }
+	// function getTemplateSuccess(res){
+	// 	console.log('templates', res);
+	// 	templatesArray= res.data;
+	// 	console.log(templatesArray);
+	// 	templatesObject.template1=templatesArray[0];
+	// 	templatesObject.template2=templatesArray[1];
+	// 	templatesObject.template3=templatesArray[2];
+	// 	templatesObject.template4=templatesArray[3];
+	// 	templatesObject.template5=templatesArray[4];
+	// }
+	// function getTemplateFailure(res){
+	// 	console.log('template retrieval failure');
+	// }
+	// getTemplates();
 
-
-
-
+	function saveTemplate(template){
+		var sendData= template;
+		$http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
+	}
+	function saveTemplateSuccess(res){
+		console.log('temp save success', res);
+	}
+	function saveTemplateFailure(res){
+		console.log('save temp failure', res);
+	}
+	function addStuff(){
+		templatesObject.template1.img4='';
+	saveTemplate(templatesObject.template1);
+}
+addStuff();
 	function setCurrentImg(img){
 		if(img == 'assets/addPictureIcon.png'){
 			console.log(img);
@@ -26,21 +57,20 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		emails: []
 	}
 
-	var templatesObject = {
-		template1: {
-			p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
-			p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
-			p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
-			p4: '',
-			q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
-			ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-			currentField: '',
-			img: 'assets/sampleimage3.jpg'
-		},
-		template2: {},
-		template3: {}
-	}
-
+	// var templatesObject = {
+	// 	template1: {
+	// 		p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+	// 		p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+	// 		p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+	// 		p4: '',
+	// 		q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+	// 		ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+	// 		currentField: '',
+	// 		img: 'assets/sampleimage3.jpg'
+	// 	},
+	// 	template2: {},
+	// 	template3: {}
+	// }
 
 
 	var imagesObject = {
@@ -85,7 +115,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentTemplate.p2 = templatesObject['template' + templateNum].p2;
 		currentTemplate.p3 = templatesObject['template' + templateNum].p3;
 		currentTemplate.p4 = templatesObject['template' + templateNum].p4;
-		currentTemplate.q = templatesObject['template' + templateNum].q;
+		currentTemplate.q = templatesObject['template' + templateNum].quote;
 		currentTemplate.ps = templatesObject['template' + templateNum].ps;
 		currentTemplate.img = templatesObject['template' + templateNum].img;
 	}
