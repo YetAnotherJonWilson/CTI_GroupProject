@@ -28,19 +28,30 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
     });
   }
 
-  function getBleh(){
-    return $http.get('/salesforce/overview').then(function(response){
-      console.log('success getting stuff form sf', response.data);
-      // $location.path('/overview');
+  // function getBleh(){
+  //   return $http.get('/salesforce/overview').then(function(response){
+  //     console.log('success getting stuff form sf', response.data);
+  //     // $location.path('/overview');
+  //   }, function(err){
+  //     console.log('major let down', err);
+  //     response.sendStatus(500);
+  //   });
+  // };
+
+  function saveToDb(sendData){
+    return $http.post('/donor/createData', sendData).then(function(response){
+      console.log('save to db success', response);
+      response.sendStatus(200);
     }, function(err){
-      console.log('major let down', err);
-      response.sendStatus(500);
+      console.log('fail saving to db', err);
+      response.sendStatus(500)
     });
   };
 
   return {
     getDonorDbStuff: getDonorDbStuff,
     getDonorsSentEmailData: getDonorsSentEmailData,
-    getBleh: getBleh
+    saveToDb: saveToDb
+    // getBleh: getBleh
   }
 }]);
