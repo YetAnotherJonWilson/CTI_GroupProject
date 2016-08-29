@@ -2,6 +2,21 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 var vm = this;
 
+    vm.unhidePhotos = false;
+
+    vm.photos = [];
+
+    function createPhotoArray(){
+        $http.get('/createphotoarray').then(handlePhotoSuccess);
+    }
+
+    function handlePhotoSuccess(response){
+        console.log(response.data);
+        vm.photos = response.data;
+    }
+
+    createPhotoArray();
+
     vm.uploadPic = function(file) {
 
         file.upload = Upload.upload({
@@ -63,7 +78,12 @@ var vm = this;
             // Math.min is to fix IE which reports 200% sometimes
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
+    };
+
+    vm.showPhotos = function(){
+        vm.unhidePhotos = true;
     }
+
 
 
 }]);

@@ -1,12 +1,12 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService',function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService) {
 
-// DataService.getData();
+	// DataService.getData();
 
 	var vm = this;
 
+	vm.donorList = DataService.donorObject.donors;
 	// vm.donorList = DataService.sortedObject.sorted;
-  vm.donorList = DataService.donorObject.donors;
-  console.log(vm.donorList);
+	console.log('donor list', vm.donorList);
 
 
 
