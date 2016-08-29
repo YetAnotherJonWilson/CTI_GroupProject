@@ -11,6 +11,11 @@ var contacts=[];
 var accounts =[];
 var households=[];
 var everything=[];
+var opportunitiesOverview = [];
+var contactsOverview = [];
+var accountsOverview = [];
+var householdsOverview = [];
+var overview = [];
 var version= '';
 
 router.get('/data', function(request, response){
@@ -66,7 +71,7 @@ function getStartUrl(){
    if(err){console.log('err', err);}
    else{
      var stuff=JSON.parse(response.body);
-     console.log(stuff);
+    //  console.log(stuff);
      version=stuff[stuff.length-1].url;
      console.log(version);
    }
@@ -177,35 +182,30 @@ router.post('/overview', function(request, response, callback){
   accessToken = request.session.accessToken;
   instanceUrl = request.session.instanceUrl;
 
-  // Donor.find({}, function(err, response){
-  //   if(err){
-  //     console.log(err);
-  //     response.sendStatus(500);
-  //   } else {
-  //     console.log('donors', response);
-  //     // var donors = response.body;
-  //     // response.send(donors);
-  //     donors = overviewInfo(accessToken, instanceUrl, response);
-  //     callback(donors);
-  //   }
-  // });
-
-  // response.send(donors);
-
-
   var donors = request.body;
   console.log('donors from db', donors);
-  overviewInfo(accessToken, instanceUrl, donors.donors).then(function(stuff) {
-    console.log('stuff post', stuff);
-    response.send(stuff);
-  });
-
+  // for(var i = 0; i < donors.length; i++){
+    overviewInfo(accessToken, instanceUrl, donors.donors).then(function(stuff) {
+      console.log('stuff post', stuff);
+      overviewInsert();
+      response.send(overview);
+    });
+  // }
 });
+
+function overviewInsert(){
+  overview = [opportunitiesOverview, contactsOverview];
+  return overview;
+}
 
 function overviewInfo(accessToken, instanceUrl, donors){
   var Id = donors[0].opportunityId;
+  var Id2 = donors[1].opportunityId;
+  var Id3 = donors[2].opportunityId;
+  // var donorListLength = donors.length;
   var requestObj = {
-    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+from+Opportunity+where+Id+=+'" + Id + "'",
+    // url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Id+=+includes+('" + Id + "'+,'" + Id2 + "'+,'" + Id3 + "')",
+  url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+,+Account.Name+,Account.npe01__LifetimeDonationHistory_Number__c+,Account.npe01__LifetimeDonationHistory_Amount__c+from+Opportunity+where+Id+=+'" + Id + "'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -213,10 +213,32 @@ function overviewInfo(accessToken, instanceUrl, donors){
   }
   return rp(requestObj).then(function(response){
     var stuff = response;
-    console.log('response', stuff);
-    return stuff;
+    console.log('opp response', stuff);
+    opportunitiesOverview.push(stuff.records[0]);
+    contactAndHouseholdOverview(accessToken, instanceUrl, stuff.records[0].Primary_Contact__c);
+    return opportunitiesOverview;
   }).catch(function(err){
-    console.log('err', err);
+    console.log('opp overview err', err);
+  });
+}
+
+function contactAndHouseholdOverview(accessToken, instanceUrl, contactId){
+  var requestObj = {
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npo02__AverageAmount__c+,npe01__Type_of_Account__c+from+Contact+where+Id+=+'" + contactId + "'",
+    headers: {
+      Authorization: 'Bearer ' + accessToken
+    },
+    json: true
+  }
+
+  return rp(requestObj).then(function(response){
+    var stuff = response;
+    console.log('contact stuff', stuff);
+    contactsOverview.push(stuff.records[0]);
+    console.log('contactsOverview', contactsOverview);
+    return contactsOverview;
+  }).catch(function(err){
+    console.log('contact overview err', err);
   });
 }
 

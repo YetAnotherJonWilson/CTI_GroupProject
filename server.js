@@ -13,26 +13,23 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
+<<<<<<< HEAD
 
 var upload = multer({ dest: './public/photos/' });
 
+=======
+var upload = multer({ dest: './public/photos/' });
+>>>>>>> e635522f09c3c7f91171dc8d736ed32fcab561cd
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 
 
-var photos = require('./routes/photos')
-var index = require('./routes/index');
+var photos = require('./routes/photos');
 var donor = require('./routes/donor');
-var email = require('./routes/email');
 var User = require('./models/users');
 var login = require('./routes/login');
-var photos = require('./routes/photos');
-var salesforce = require('./routes/salesforce2');
-var verticleResponse = require('./routes/verticleResponse');
 var Donor = require('./models/donor');
-var donor = require('./routes/donor');
 
-var app = express();
 require('dotenv').config();
 //parse request
 app.use(bodyParser.json());
@@ -77,6 +74,28 @@ app.use('/photos', photos);
 
 app.get('/createphotoarray', function(req, res) {
   fs.readdir('./public/photos', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+app.get('/createsignaturearray', function(req, res) {
+  fs.readdir('./public/sigfile', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+app.get('/createheaderarray', function(req, res) {
+  fs.readdir('./public/headers', function(err, files){
     if(!err){
       console.log(files);
       res.send(files);
