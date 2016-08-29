@@ -19,7 +19,6 @@
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     <br>
 </form>
-
 <form name="signatureForm">
     <br>Upload Signature:
     <input type="file" ngf-select ng-model="sigFile" name="file"
@@ -59,3 +58,17 @@
     <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     <br>
 </form>
+<button ng-click="settings.showPhotos()">View Photos</button>
+<div ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
+<img ng-src="photos/{{photo}}" alt="photo: {{photo}}">
+</div>
+
+<button ng-click="settings.showSignatures()">View Signatures</button>
+<div ng-show="settings.unhideSignatures" ng-repeat="signature in settings.signatures">
+    <img ng-src="sigfile/{{signature}}" alt="signature: {{signature}}">
+</div>
+
+<button ng-click="settings.showHeaders()">View Letterheads</button>
+<div ng-show="settings.unhideHeaders" ng-repeat="header in settings.headers">
+    <img ng-src="headers/{{header}}" alt="header: {{header}}">
+</div>

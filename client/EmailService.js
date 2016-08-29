@@ -32,7 +32,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       return;
   }
 
-return {
-  sendMail: sendMail
-}
+  return {
+    sendMail: sendMail
+  }
 }]);

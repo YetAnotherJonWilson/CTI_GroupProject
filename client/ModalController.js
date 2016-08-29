@@ -19,4 +19,11 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
     TemplateService.setCurrentImg(img);
   }
 
+	vm.uploadPic = function(pic) {
+		console.log('Uploading Pic', pic);
+		TemplateService.uploadPic(pic);
+	}
+
+
+
 }]);

@@ -2,6 +2,50 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 var vm = this;
 
+    vm.unhidePhotos = false;
+    vm.unhideSignatures = false;
+    vm.unhideHeaders = false;
+
+    vm.photos = [];
+    vm.signatures = [];
+    vm.headers = [];
+
+
+    function createPhotoArray(){
+        $http.get('/createphotoarray').then(handlePhotoSuccess);
+    }
+
+    function handlePhotoSuccess(response){
+        console.log(response.data);
+        vm.photos = response.data;
+    }
+
+    createPhotoArray();
+
+    function createSignatureArray(){
+        $http.get('/createsignaturearray').then(handleSignatureSuccess);
+    }
+
+    function handleSignatureSuccess(response){
+        console.log(response.data);
+        vm.signatures = response.data;
+    }
+
+    createSignatureArray();
+
+    function createHeaderArray(){
+        $http.get('/createheaderarray').then(handleHeaderSuccess);
+    }
+
+    function handleHeaderSuccess(response){
+        console.log(response.data);
+        vm.headers = response.data;
+    }
+
+    createHeaderArray();
+
+
+
     vm.uploadPic = function(file) {
 
         file.upload = Upload.upload({
@@ -26,7 +70,7 @@ var vm = this;
     vm.uploadSig = function(file) {
 
         file.upload = Upload.upload({
-            url: '/sigfile',
+            url: '/photos/sigfile',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
@@ -47,7 +91,7 @@ var vm = this;
     vm.uploadHeader = function(file) {
 
         file.upload = Upload.upload({
-            url: '/headers',
+            url: '/photos/headers',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
@@ -63,7 +107,20 @@ var vm = this;
             // Math.min is to fix IE which reports 200% sometimes
             file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
+    };
+
+    vm.showPhotos = function(){
+        vm.unhidePhotos = !vm.unhidePhotos;
+    };
+
+    vm.showSignatures = function(){
+        vm.unhideSignatures = !vm.unhideSignatures;
+    };
+
+    vm.showHeaders = function(){
+        vm.unhideHeaders = !vm.unhideHeaders;
     }
+
 
 
 }]);
