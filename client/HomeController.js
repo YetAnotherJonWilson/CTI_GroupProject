@@ -160,7 +160,9 @@ vm.imageModal = function(id) {
 		templateUrl: 'emails/image_modal.html',
 		controller: 'ModalController',
 		controllerAs: 'modal',
-		size: 'md'
+		size: 'md',
+		windowClass: 'imageModalClass'
+		
 	});
 };
 

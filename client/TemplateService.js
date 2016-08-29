@@ -59,9 +59,11 @@ addStuff();
 		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
 
-	function setCurrentImg(img) {
+
+	function setCurrentImg(img){
 		currentTemplate.img = 'photos/' + img;
-	}
+	};
+
 
 	var savedEmails = {
 		emails: []
@@ -104,7 +106,19 @@ addStuff();
 
 
 
+	// var imagesObject = {
+	// 	images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
+	// }
 	var imagesObject = {
+<<<<<<< HEAD
+		images: []
+	}
+
+
+
+	function createPhotoArray(){
+			$http.get('/createphotoarray').then(handlePhotoSuccess);
+=======
 		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg']
 	};
 
@@ -112,9 +126,36 @@ addStuff();
 		$http.get('/photos').success(function(response) {
 			console.log('response from get photos', response);
 		});
+>>>>>>> e635522f09c3c7f91171dc8d736ed32fcab561cd
+	}
+	function handlePhotoSuccess(response){
+			imagesObject.images = response.data;
 	}
 
+	createPhotoArray();
+
+
 	function uploadPic(file) {
+<<<<<<< HEAD
+			file.upload = Upload.upload({
+					url: '/photos',
+					arrayKey: '', // default is '[i]'
+					data: {file: file}
+			});
+			file.upload.then(function (response) {
+					$timeout(function () {
+							file.result = response.data;
+							createPhotoArray();
+					});
+			}, function (response) {
+					if (response.status > 0)
+							vm.errorMsg = response.status + ': ' + response.data;
+			}, function (evt) {
+					// Math.min is to fix IE which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			});
+	};
+=======
 		console.log(file);
 		file.upload = Upload.upload({
 			url: '/photos',
@@ -141,6 +182,7 @@ addStuff();
 		});
 		getPhotos();
 	}
+>>>>>>> e635522f09c3c7f91171dc8d736ed32fcab561cd
 
 
 	function getCurrentTemplate(templateNum) {
@@ -174,9 +216,14 @@ addStuff();
 		savedEmails: savedEmails,
 		setCurrentImg: setCurrentImg,
 		templatesObject: templatesObject,
+<<<<<<< HEAD
+		uploadPic: uploadPic,
+		createPhotoArray: createPhotoArray
+=======
 		updateCurrentDonor: updateCurrentDonor,
 		updateCurrentDonorKey: updateCurrentDonorKey,
 		uploadPic: uploadPic
+>>>>>>> e635522f09c3c7f91171dc8d736ed32fcab561cd
 	}
 
 
