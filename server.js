@@ -26,6 +26,9 @@ var User = require('./models/users');
 var login = require('./routes/login');
 var Donor = require('./models/donor');
 
+var donor = require('./routes/donor');
+var template = require('./routes/template')
+
 require('dotenv').config();
 //parse request
 app.use(bodyParser.json());
@@ -64,6 +67,7 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.use('/photos', photos);
+app.use('/template', template);
 
 
 

@@ -1,4 +1,4 @@
-angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', function($location, Upload, $timeout, $http) {
+angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', 'DataService', function($location, Upload, $timeout, $http, DataService) {
 
 	var currentTemplate = {
 		p1: '',
@@ -18,6 +18,31 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			donor: {}
 		}]
 	}
+
+	var templatesObject=DataService.templatesObject;
+
+	function saveTemplate(template){
+		var sendData= template;
+		$http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
+	}
+	function saveTemplateSuccess(res){
+		console.log('temp save success', res);
+	}
+	function saveTemplateFailure(res){
+		console.log('save temp failure', res);
+	}
+	function addStuff(){
+		templatesObject.template1.img4='';
+	saveTemplate(templatesObject.template1);
+}
+addStuff();
+	function setCurrentImg(img){
+		if(img == 'assets/addPictureIcon.png'){
+			console.log(img);
+		} else {
+		currentTemplate.img = img;
+		}
+	};
 
 	function setCurrentImg(img) {
 		currentDonor.donor[0].donor.img = img;
@@ -44,38 +69,40 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		emails: []
 	};
 
-	var templatesObject = {
-		template1: {
-			p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
-			p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
-			p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
-			p4: '',
-			quote: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
-			ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-			currentField: '',
-			img: 'assets/sampleimage3.jpg'
-		},
-		template2: {
-			p1: 'template2 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
-			p2: 'template2 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
-			p3: 'template2 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
-			p4: '',
-			quote: "template2 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
-			ps: 'template2 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-			currentField: '',
-			img: 'assets/sampleimage3.jpg'
-		},
-		template3: {
-			p1: 'template3 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
-			p2: 'template3 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
-			p3: 'template3 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
-			p4: '',
-			quote: "template3 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
-			ps: 'template3 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-			currentField: '',
-			img: 'assets/sampleimage3.jpg'
-		}
-	}
+
+	// var templatesObject = {
+	// 	template1: {
+	// 		p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+	// 		p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+	// 		p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+	// 		p4: '',
+	// 		q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+	// 		ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+	// 		currentField: '',
+	// 		img: 'assets/sampleimage3.jpg'
+	// 	},
+	// 	template2: {
+	// 		p1: 'template2 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+	// 		p2: 'template2 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+	// 		p3: 'template2 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+	// 		p4: '',
+	// 		q: "template2 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+	// 		ps: 'template2 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+	// 		currentField: '',
+	// 		img: 'assets/sampleimage3.jpg'
+	// 	},
+	// 	template3: {
+	// 		p1: 'template3 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+	// 		p2: 'template3 It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
+	// 		p3: 'template3 Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
+	// 		p4: '',
+	// 		q: "template3 Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
+	// 		ps: 'template3 P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+	// 		currentField: '',
+	// 		img: 'assets/sampleimage3.jpg'
+	// 	}
+	// }
+
 
 
 
