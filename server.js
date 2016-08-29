@@ -87,6 +87,17 @@ app.post('/headers', uploadHeader.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 
+app.get('/createphotoarray', function(req, res) {
+  fs.readdir('./public/photos', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
