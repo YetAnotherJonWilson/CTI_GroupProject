@@ -9,11 +9,12 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       templateUrl: '/views/home.html',
       controller: 'HomeController',
       controllerAs: 'home'
-//       resolve: {
-//         donors: function(DataService){
-//           return DataService.getDonors();
-//         }
-//       }
+      // ,
+      // resolve: {
+      //   donors: function(DataService){
+      //     return DataService.getData();
+      //   }
+      // }
     })
     // .when('/edit', {
     //   templateUrl: '/views/edit.html',
@@ -34,8 +35,18 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       templateUrl: '/views/donor.html',
       controller: 'MainController',
       controllerAs: 'main'
+      // ,
+      // resolve: {
+      //   bleh: function(DonationService){
+      //     return DataService.getBleh();
+      //   }
+      // }
     })
-
+    .when('/overview', {
+      templateUrl: '/views/overview.html',
+      controller: 'MainController',
+      controllerAs: 'main'
+    })
 
     .otherwise({redirectTo:'/'});
 
