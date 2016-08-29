@@ -9,7 +9,9 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		ps: '',
 		currentEdit: '',
 		img: ''
-	}
+	};
+
+	var vm = this;
 
 
 
@@ -20,11 +22,9 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		} else {
 		currentTemplate.img = img;
 		}
-	};
-
-	var savedEmails = {
-		emails: []
 	}
+
+	var savedEmails = vm.emails;
 
 	var templatesObject = {
 		template1: {
@@ -39,13 +39,13 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		},
 		template2: {},
 		template3: {}
-	}
+	};
 
 
 
 	var imagesObject = {
 		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
-	}
+	};
 
 	function getPhotos() {
 		$http.get('/photos').success(function(response) {
@@ -63,7 +63,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			file.upload.then(function (response) {
 					$timeout(function () {
 							file.result = response.data;
-							newImage = file.result
+							newImage = file.result;
 							console.log('This is the file.result' ,file.result);
 							imagesObject.images.push(newImage);
 
@@ -77,7 +77,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 			});
 			getPhotos();
-	};
+	}
 
 
 	function getCurrentTemplate(templateNum){
