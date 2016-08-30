@@ -3,9 +3,9 @@ angular.module('App').factory('UserService', ['$http', function($http){
   var vm = this;
 
 
-  // var photosArray = {};
-  // var signaturesArray = {};
-  // var headersArray = {};
+  var photosArray = {};
+  var signaturesArray = {};
+  var headersArray = {};
   //
   // function createPhotoArray(){
   //   $http.get('photos/createphotoarray').then(handlePhotoSuccess);
@@ -44,9 +44,9 @@ angular.module('App').factory('UserService', ['$http', function($http){
   // createHeaderArray();
 var standardTemplate = { template: 1 };
   return {
-    // photosArray: photosArray,
-    // signaturesArray: signaturesArray,
-    // headersArray: headersArray,
+    photosArray: photosArray,
+    signaturesArray: signaturesArray,
+    headersArray: headersArray,
     standardTemplate: standardTemplate
   };
 

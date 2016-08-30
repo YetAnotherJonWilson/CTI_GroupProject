@@ -73,11 +73,6 @@ app.use('/overview', overview);
 app.use('/template', template);
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 97bdf16804c98a1f46aea3356b4460270600cc7b
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
