@@ -6,6 +6,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.currentDonor;
 	vm.editedDonorsArray = [];
 	vm.editedEmails = {};
+	vm.standardTemplate = UserService.standardTemplate.template;
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
@@ -20,7 +21,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	//Creates donorList from DonarService and adds the standard template text.
 	function buildDonorList() {
 
-		var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
+		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
+		var tempStandardTemplate = DataService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
 		// var tempDonorList = DataService.sortedObject.sorted;
@@ -152,6 +154,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	//Pop up modal for choosing images
 	vm.imageModal = function(id) {
+		vm.currentDonor.template.currentField = id;
 		$uibModal.open({
 			animation: true,
 			ariaLabelledBy: 'image modal',

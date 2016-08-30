@@ -2,6 +2,7 @@ angular.module('App').factory('UserService', ['$http', function($http){
 
   var vm = this;
 
+
   var photosArray = {};
   var signaturesArray = {};
   var headersArray = {};
