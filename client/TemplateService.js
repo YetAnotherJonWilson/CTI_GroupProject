@@ -43,7 +43,7 @@ addStuff();
 
 	function setCurrentImg(img) {
 		currentDonor.donor[0].donor.img = img;
-		
+
 	}
 
 	function updateCurrentDonorKey(key, value) {
@@ -100,6 +100,7 @@ addStuff();
 	// }
 
 
+
 	var imagesObject = {
 		images: []
 	}
@@ -108,7 +109,6 @@ addStuff();
 	};
 	function handlePhotoSuccess(response){
 			imagesObject.images = response.data;
-			console.log('This is the images object' , imagesObject.images);
 	}
 	createPhotoArray();
 
