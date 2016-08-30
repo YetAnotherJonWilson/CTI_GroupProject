@@ -2,23 +2,23 @@ angular.module('App').factory('UserService', ['$http', function($http){
 
   var vm = this;
 
-  // var photosArray = {};
-  // var signaturesArray = {};
-  // var headersArray = {};
+  var photosArray = {};
+  var signaturesArray = {};
+  var headersArray = {};
 
   function createPhotoArray(){
-    $http.get('/createphotoarray').then(handlePhotoSuccess);
+    $http.get('photos/createphotoarray').then(handlePhotoSuccess);
   }
 
   function handlePhotoSuccess(response){
-    var photosArray = {photos: response.data};
+     photosArray.photos = response.data;
     console.log('photosArray in userservice:', photosArray);
   }
 
   createPhotoArray();
 
   function createSignatureArray(){
-    $http.get('/createsignaturearray').then(handleSignatureSuccess);
+    $http.get('photos/createsignaturearray').then(handleSignatureSuccess);
   }
 
   function handleSignatureSuccess(response){
@@ -29,7 +29,7 @@ angular.module('App').factory('UserService', ['$http', function($http){
   createSignatureArray();
 
   function createHeaderArray(){
-    $http.get('/createheaderarray').then(handleHeaderSuccess);
+    $http.get('photos/createheaderarray').then(handleHeaderSuccess);
   }
 
   function handleHeaderSuccess(response){
@@ -37,18 +37,15 @@ angular.module('App').factory('UserService', ['$http', function($http){
     headersArray = response.data;
   }
 
-  createHeaderArray();
-
+  // createHeaderArray();
+var standardTemplate = { template: 1 };
   return {
     photosArray: photosArray,
     signaturesArray: signaturesArray,
-    headersArray: headersArray
-  };
-
-  var standardTemplate = { template: 1 };
-
-
-  return {
+    headersArray: headersArray,
     standardTemplate: standardTemplate
   };
+
+
+
 }]);

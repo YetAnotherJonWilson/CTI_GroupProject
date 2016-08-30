@@ -74,39 +74,6 @@ app.use('/template', template);
 
 
 
-app.get('/createphotoarray', function(req, res) {
-  fs.readdir('./public/photos', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-app.get('/createsignaturearray', function(req, res) {
-  fs.readdir('./public/sigfile', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-app.get('/createheaderarray', function(req, res) {
-  fs.readdir('./public/headers', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
