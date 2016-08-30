@@ -3,13 +3,14 @@ var path = require('path');
 var multer  = require('multer');
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
+var bodyParser = require('body-parser');
+var fs = require('fs');
 
 
 
 
 
-
-
+router.use(bodyParser.json());
 
 
 var storage = multer.diskStorage({
@@ -24,6 +25,13 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+router.post('/deletePhoto', function(req, res) {
+  console.log('trying to delete');
+  console.log('req.body' , req.body.photo );
+  var filePath = "public/photos/" + req.body.photo;
+  fs.unlinkSync(filePath);
+  res.sendStatus(200);
+});
 
 
 

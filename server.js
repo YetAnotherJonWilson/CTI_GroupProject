@@ -106,6 +106,7 @@ app.get('/createheaderarray', function(req, res) {
   });
 });
 
+
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
