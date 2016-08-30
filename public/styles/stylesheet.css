@@ -343,12 +343,15 @@ form .progress {
 }
 .settingsPhotoUpload {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 70px;
+  height: 150px;
   padding: 5px 5px 5px 2px;
 }
 .settingsMenu h1 {
   font-weight: bold;
   font-size: 20px;
+}
+.settingsMenu img {
+  float: right;
 }
 .settingsPhotoUpload:hover {
 background-color: rgba(0, 0, 0, 0.1);

@@ -3,13 +3,14 @@ var path = require('path');
 var multer  = require('multer');
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
+var bodyParser = require('body-parser');
+var fs = require('fs');
 
 
 
 
 
-
-
+router.use(bodyParser.json());
 
 
 var storage = multer.diskStorage({
@@ -24,6 +25,13 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+router.post('/deletePhoto', function(req, res) {
+  console.log('trying to delete');
+  console.log('req.body' , req.body.photo );
+  var filePath = "public/photos/" + req.body.photo;
+  fs.unlinkSync(filePath);
+  res.sendStatus(200);
+});
 
 
 
@@ -45,6 +53,39 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });
+router.get('/createphotoarray', function(req, res) {
+  fs.readdir('./public/photos', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get('/createsignaturearray', function(req, res) {
+  fs.readdir('./public/sigfile', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get('/createheaderarray', function(req, res) {
+  fs.readdir('./public/headers', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 
 
 

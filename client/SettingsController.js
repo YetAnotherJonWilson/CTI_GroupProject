@@ -9,9 +9,59 @@ var vm = this;
 
     console.log(UserService.photosArray);
 
+
+    vm.deletePhoto = function(photo) {
+      deletePhoto = {};
+      id = 12345;
+      deletePhoto.photo = photo;
+      console.log('delete pushed' , deletePhoto);
+      $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
+    }
+    function handleDeleteSuccess(response){
+        console.log('Photo Deleted', response);
+        createPhotoArray();
+    }
+    function handleDeleteFailure(response){
+        console.log('Failed to delete' , response);
+    }
+
+    function createPhotoArray(){
+        $http.get('/createphotoarray').then(handlePhotoSuccess);
+    }
+    function handlePhotoSuccess(response){
+        console.log(response.data);
+        vm.photos = response.data;
+    }
+
+    createPhotoArray();
+
+    function createSignatureArray(){
+        $http.get('/createsignaturearray').then(handleSignatureSuccess);
+    }
+
+    function handleSignatureSuccess(response){
+        console.log(response.data);
+        vm.signatures = response.data;
+    }
+
+    createSignatureArray();
+
+    function createHeaderArray(){
+        $http.get('/createheaderarray').then(handleHeaderSuccess);
+    }
+
+    function handleHeaderSuccess(response){
+        console.log(response.data);
+        vm.headers = response.data;
+    }
+
+    createHeaderArray();
+
+
     vm.photos = UserService.photosArray;
     vm.signatures = UserService.signaturesArray;
     vm.headers = UserService.headersArray;
+
 
 
     vm.uploadPic = function(file) {
@@ -25,6 +75,7 @@ var vm = this;
         file.upload.then(function (response) {
             $timeout(function () {
                 file.result = response.data;
+                createPhotoArray();
             });
         }, function (response) {
             if (response.status > 0)

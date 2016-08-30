@@ -46,7 +46,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 	vm.setCurrentEditView = function(id) {
-
+	console.log('donor id' , id);
 		// console.log('set current view');
 		var tempDonor;
 		var tempIndex;
@@ -159,7 +159,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			templateUrl: 'emails/image_modal.html',
 			controller: 'ModalController',
 			controllerAs: 'modal',
-			size: 'md'
+			size: 'md',
+			windowClass: 'imageModalClass'
 		});
 	};
 

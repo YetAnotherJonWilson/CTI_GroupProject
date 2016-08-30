@@ -407,10 +407,10 @@ function findLastName(donationObject){
 sortedObject.sorted = sorted;
 // preconvertDates();
 // convertDates();
-function createTemplate(){
-  var sendData={};
-  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
-}
+// function createTemplate(){
+//   var sendData={};
+//   $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+// }
 // function handletemplatesuccess(res){
 //   console.log('Template created');
 // }

@@ -74,6 +74,8 @@ app.use('/template', template);
 
 
 
+<<<<<<< HEAD
+
 app.get('/createphotoarray', function(req, res) {
   fs.readdir('./public/photos', function(err, files){
     if(!err){
@@ -107,6 +109,9 @@ app.get('/createheaderarray', function(req, res) {
   });
 });
 
+
+=======
+>>>>>>> 927938a94b8c14b9075d83b74b9b36d8fb7fcacd
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){
