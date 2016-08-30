@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'Upload', '$timeout', function($http, $location, DataService, Upload, $timeout){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', function($http, $location, DataService, UserService, Upload, $timeout){
 
 var vm = this;
 
@@ -6,44 +6,12 @@ var vm = this;
     vm.unhideSignatures = false;
     vm.unhideHeaders = false;
 
-    vm.photos = [];
-    vm.signatures = [];
-    vm.headers = [];
 
+    console.log(UserService.photosArray);
 
-    function createPhotoArray(){
-        $http.get('/createphotoarray').then(handlePhotoSuccess);
-    }
-
-    function handlePhotoSuccess(response){
-        console.log(response.data);
-        vm.photos = response.data;
-    }
-
-    createPhotoArray();
-
-    function createSignatureArray(){
-        $http.get('/createsignaturearray').then(handleSignatureSuccess);
-    }
-
-    function handleSignatureSuccess(response){
-        console.log(response.data);
-        vm.signatures = response.data;
-    }
-
-    createSignatureArray();
-
-    function createHeaderArray(){
-        $http.get('/createheaderarray').then(handleHeaderSuccess);
-    }
-
-    function handleHeaderSuccess(response){
-        console.log(response.data);
-        vm.headers = response.data;
-    }
-
-    createHeaderArray();
-
+    vm.photos = UserService.photosArray;
+    vm.signatures = UserService.signaturesArray;
+    vm.headers = UserService.headersArray;
 
 
     vm.uploadPic = function(file) {
