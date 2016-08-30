@@ -18,7 +18,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		RouteService.settingsRoute();
 	}
 
-	//Creates donorList from DonarService and adds the standard template text.
+	//Creates donorList from DonorService and adds the standard template text.
 	function buildDonorList() {
 
 		var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
