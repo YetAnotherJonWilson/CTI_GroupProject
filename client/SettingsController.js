@@ -88,7 +88,16 @@ var vm = this;
     vm.showHeaders = function(){
         vm.unhideHeaders = !vm.unhideHeaders;
     }
-
+    // function getTemplates(){
+    //   $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+    // }
+    // function getTemplateSuccess(res){
+    //   console.log('templates', res);
+    // }
+    // function getTemplateFailure(res){
+    //   console.log('template retrieval failure');
+    // }
+    // getTemplates();
 
 
 }]);

@@ -111,10 +111,10 @@
               <p class="date">
                 {{date}}</p>
               <p class="greeting">
-                Dear {{donor}}:
+                Dear {{home.currentDonor.firstName}}:
               </p>
-              <p class="p1">
-                Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.
+              <p class="p1 fieldHover" ng-click="home.editModal('p1')">
+                {{home.currentDonor.template.p1}}
               </p>
               <p class="p2">
                 It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:

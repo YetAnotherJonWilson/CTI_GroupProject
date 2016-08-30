@@ -58,8 +58,8 @@ router.get('/oauth2/callback', function(request, response){
     // getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
       // everything = everything;
       // console.log('great success');
-      // response.redirect('/gettingdata');
-      response.redirect('/home');
+      response.redirect('/gettingdata');
+      // response.redirect('/home');
     // });
   });
   // response.redirect('/home');
@@ -85,7 +85,7 @@ function getOpps(accessToken, instanceUrl){
    households=[];
   var requestObj = {
     // url: instanceUrl + '/services/data/v37.0/limits',
-    // url: instanceUrl + '/services/data/v37.0/composite/tree/Contact/',
+    // url: instanceUrl + version + '/sobjects/Contact/003d0000037X5yoAAC',
     url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Recognition__c+=+'Email'+AND+CreatedDate+>+2016-08-20T21:04:49Z",
     headers: {
       Authorization: 'Bearer ' + accessToken
@@ -99,14 +99,15 @@ function getOpps(accessToken, instanceUrl){
       // var stuff = JSON.parse(response);
       var stuff = response;
       // console.log(stuff);
-      for(var i=0; i<stuff.records.length; i++){
-          opportunities.push(stuff.records[i]);
-          getContact(accessToken, instanceUrl, stuff.records[i]);
-          getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
-          everything=[opportunities, contacts, accounts, households];
-
-      }
-      return everything;
+      // for(var i=0; i<stuff.records.length; i++){
+          // opportunities.push(stuff.records[i]);
+      //     getContact(accessToken, instanceUrl, stuff.records[i]);
+      //     getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+      //     everything=[opportunities, contacts, accounts, households];
+      //
+      // }
+      return stuff;
+      // return everything;
       // done=true;
     // }
   }).catch(function(response){
@@ -182,30 +183,23 @@ router.post('/overview', function(request, response, callback){
   accessToken = request.session.accessToken;
   instanceUrl = request.session.instanceUrl;
 
-  var donors = request.body;
+  var donors = request.body.donors;
   console.log('donors from db', donors);
-  // for(var i = 0; i < donors.length; i++){
-    overviewInfo(accessToken, instanceUrl, donors.donors).then(function(stuff) {
-      console.log('stuff post', stuff);
-      overviewInsert();
-      response.send(overview);
-    });
-  // }
+  var array = [];
+  for(var i = 0; i < donors.length; i++){
+    array.push(overviewInfo(accessToken, instanceUrl, donors[i]));
+  }
+  Promise.all(array).then(function(overview){
+    console.log('promise', overview);
+    response.send(overview);
+  })
 });
 
-function overviewInsert(){
-  overview = [opportunitiesOverview, contactsOverview];
-  return overview;
-}
-
-function overviewInfo(accessToken, instanceUrl, donors){
-  var Id = donors[0].opportunityId;
-  var Id2 = donors[1].opportunityId;
-  var Id3 = donors[2].opportunityId;
-  // var donorListLength = donors.length;
+function overviewInfo(accessToken, instanceUrl, donor){
+  var Id = donor.opportunityId;
   var requestObj = {
     // url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+from+Opportunity+where+Id+=+includes+('" + Id + "'+,'" + Id2 + "'+,'" + Id3 + "')",
-  url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+,+Account.Name+,Account.npe01__LifetimeDonationHistory_Number__c+,Account.npe01__LifetimeDonationHistory_Amount__c+from+Opportunity+where+Id+=+'" + Id + "'",
+  url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npe01__Is_Opp_From_Individual__c+,Amount+,CloseDate+,Primary_Contact__c+,npe01__Contact_Id_for_Role__c+,AccountId+,+Account.Name+,Account.npe01__LifetimeDonationHistory_Number__c+,Account.npe01__LifetimeDonationHistory_Amount__c+,Account.Organization_Email__c+,Account.Main_Contact__c+,Account.npo02__AverageAmount__c+from+Opportunity+where+Id+=+'" + Id + "'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -213,18 +207,17 @@ function overviewInfo(accessToken, instanceUrl, donors){
   }
   return rp(requestObj).then(function(response){
     var stuff = response;
-    console.log('opp response', stuff);
-    opportunitiesOverview.push(stuff.records[0]);
-    contactAndHouseholdOverview(accessToken, instanceUrl, stuff.records[0].Primary_Contact__c);
-    return opportunitiesOverview;
+    // console.log('opp response', stuff);
+    return contactOverview(accessToken, instanceUrl, stuff.records[0]);
   }).catch(function(err){
     console.log('opp overview err', err);
   });
 }
 
-function contactAndHouseholdOverview(accessToken, instanceUrl, contactId){
+function contactOverview(accessToken, instanceUrl, record){
+  contactId = record.Primary_Contact__c;
   var requestObj = {
-    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,npo02__AverageAmount__c+,npe01__Type_of_Account__c+from+Contact+where+Id+=+'" + contactId + "'",
+    url: instanceUrl + version + "/query/?q=SELECT+Id+,Name+,Email+,npo02__AverageAmount__c+,npe01__Type_of_Account__c+,npo02__Household__r.Name+,npo02__Household__r.npo02__HouseholdEmail__c+from+Contact+where+Id+=+'" + contactId + "'",
     headers: {
       Authorization: 'Bearer ' + accessToken
     },
@@ -233,10 +226,10 @@ function contactAndHouseholdOverview(accessToken, instanceUrl, contactId){
 
   return rp(requestObj).then(function(response){
     var stuff = response;
-    console.log('contact stuff', stuff);
-    contactsOverview.push(stuff.records[0]);
-    console.log('contactsOverview', contactsOverview);
-    return contactsOverview;
+    // console.log('contact stuff', stuff);
+    record.Contact = stuff.records[0];
+
+    return record;
   }).catch(function(err){
     console.log('contact overview err', err);
   });

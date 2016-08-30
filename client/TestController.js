@@ -1,12 +1,31 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService) {
 
+	// DataService.getData();
 
 	var vm = this;
 
+	//UserService.standardTemplate;
+	vm.standardTemplate = TemplateService.currentTemplate;
+
+	// vm.donorList = DataService.sortedObject.sorted;
+	// vm.donorList = DataService.donorObject.donors;
 	vm.donorList = [];
-	vm.currentDonor;
-	vm.editedDonorsArray = [];
-	vm.editedEmails = {};
+
+	function buildDonorList() {
+		console.log('standardTemplate:', vm.standardTemplate);
+		console.log('donorList before build:', vm.donorList);
+
+		var tempDonorList = DataService.donorObject.donors;
+
+		for (var i = 0; i < tempDonorList.length; i++) {
+			tempDonorList[i].template = vm.standardTemplate;
+			tempDonorList[i].edited = false;
+		}
+
+		vm.donorList = tempDonorList;
+		console.log('donorList after build:', vm.donorList);
+	}
+
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
@@ -18,39 +37,56 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		RouteService.settingsRoute();
 	}
 
-	//Creates donorList from DonarService and adds the standard template text.
-	function buildDonorList() {
 
-		var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
+	vm.propertyName = 'Amount';
+	vm.reverse = true;
+	vm.donors = vm.donorList;
+	vm.dropDownName = 'Donation';
 
-		var tempDonorList = DataService.donorObject.donors;
 
-		for (var i = 0; i < tempDonorList.length; i++) {
-			tempDonorList[i].template = Object.assign({}, tempStandardTemplate);
+
+	vm.sortBy = function(propertyName) {
+		console.log('donorList:', vm.donors);
+		console.log('sortBy propertyName:', propertyName);
+		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
+		vm.propertyName = propertyName;
+
+		switch (propertyName) {
+			case "lastName":
+				vm.dropDownName = "Name";
+				break;
+			case "Amount":
+				vm.dropDownName = "Donation";
+				break;
+			case "date":
+				vm.dropDownName = "Date";
+				break;
 		}
-		vm.donorList = tempDonorList;
-		console.log('donorList after build:', vm.donorList);
-	}
-
+	};
 
 
 	//////////EDIT VIEW/////////
 
+
 	vm.templatesObject = TemplateService.templatesObject;
-	vm.currentTemplate = TemplateService.currentTemplate;
+	// vm.currentTemplate = TemplateService.currentTemplate;
 	vm.savedEmails = TemplateService.savedEmails;
 	vm.imagesArray = TemplateService.imagesObject.images;
 
 	vm.fieldId = '';
 
+	//I want my currentDonor to have all paragraphs in it as well.  The donorList does not have them though.
 
+
+
+	vm.currentDonor;
+	vm.editedDonorsArray = [];
 
 	vm.setCurrentEditView = function(id) {
 
 		// console.log('set current view');
 		var tempDonor;
 		var tempIndex;
-		var editedTempIndex;
 
 		if (vm.currentDonor) {
 			console.log('If vm.currentDonor');
@@ -60,7 +96,6 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			for (var i = 0; i < vm.editedDonorsArray.length; i++) {
 				if (vm.editedDonorsArray[i].Id == vm.currentDonor.Id) {
 					isInArray = true;
-					editedTempIndex = i;
 				}
 			}
 
@@ -68,12 +103,13 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			//Else add it to the edited array
 			if (isInArray) {
 				console.log('if isInArray');
-				vm.editedDonorsArray[editedTempIndex] = vm.currentDonor;
+				vm.editedDonorsArray[i] = vm.currentDonor;
 			} else {
 				console.log('if isInArray else statement');
 				vm.editedDonorsArray.push(vm.currentDonor);
 			}
 		}
+
 
 		//if there are edited donors, check that list first to get current donor info and put it in tempDonor
 		if (vm.editedDonorsArray > 0) {
@@ -97,18 +133,33 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			}
 		}
 
+		// vm.currentDonor = tempDonor;
+		// console.log('tempDonor:', tempDonor);
 		updateCurrentDonor(tempDonor);
 		getCurrentDonor();
-		console.log('editedDonorsArray:', vm.editedDonorsArray);
+		// console.log('currentDonor:', vm.currentDonor);
+
 	}
 
-	function getCurrentDonor() {
-		vm.currentDonor = TemplateService.currentDonor.donor[0].donor;
-	}
 
-	function updateCurrentDonor(donor) {
-		TemplateService.updateCurrentDonor(donor);
-	}
+		vm.updateCurrentDonorKey = function(key, value) {
+			TemplateService.updateCurrentDonorKey(key, value);
+		}
+
+		function updateCurrentDonor(donor) {
+			TemplateService.updateCurrentDonor(donor);
+		}
+
+		function getCurrentDonor() {
+			vm.currentDonor = TemplateService.currentDonor.donor;
+			// console.log('get current donor currentDonor:', vm.currentDonor);
+		}
+
+
+
+
+
+
 
 
 	//Dropdown menu to choose different templates
@@ -121,15 +172,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}, {
 		name: 'Template 3',
 		url: 'emails/template3EditView.html'
-	}, {
-		name: 'Template 4',
-		url: 'emails/template4EditView.html'
-	}, {
-		name: 'Template 5',
-		url: 'emails/template5EditView.html'
 	}];
 
 	vm.template = vm.templates[0];
+
 
 
 	//Pop up modal for editing text
@@ -150,6 +196,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		});
 	};
 
+
 	//Pop up modal for choosing images
 	vm.imageModal = function(id) {
 		$uibModal.open({
@@ -164,43 +211,23 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	};
 
 
-	vm.propertyName = 'Amount';
-	vm.reverse = true;
-	vm.donors = vm.donorList;
-	vm.dropDownName = 'Donation';
-
-	vm.sortBy = function(propertyName) {
-		console.log('donorList:', vm.donors);
-		console.log('sortBy propertyName:', propertyName);
-		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
-		vm.propertyName = propertyName;
-
-		switch (propertyName) {
-			case "lastName":
-				vm.dropDownName = "Name";
-				break;
-			case "Amount":
-				vm.dropDownName = "Donation";
-				break;
-			case "date":
-				vm.dropDownName = "Date";
-				break;
-		}
-	};
 
 
-	vm.saveEditedEmail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4) {
-		vm.editedEmails.p1 = p1;
-		vm.editedEmails.p2 = p2;
-		vm.editedEmails.p3 = p3;
-		vm.editedEmails.p4 = p4;
-		vm.editedEmails.ps = ps;
-		vm.editedEmails.img = img;
-		vm.editedEmails.img2 = img2;
-		vm.editedEmails.img3 = img3;
-		vm.editedEmails.img4 = img4;
+	vm.sendMail = function(p1, p2, p3, p4, q, ps, donorInfo) {
+		console.log('You cliked me');
+		EmailService.sendMail(p1, p2, p3, p4, q, ps, donorInfo);
 	}
 
+	vm.saveEditedEmail = function(p1, p2, p3, p4, q, ps) {
+		TemplateService.saveEditedEmail(p1, p2, p3, p4, q, ps)
+	}
 
+	function getCurrentTemplate(templateNum) {
+		console.log('Im getting the current template');
+		TemplateService.getCurrentTemplate(templateNum);
+	}
+
+	getCurrentTemplate(1)
 	buildDonorList();
+
 }]);

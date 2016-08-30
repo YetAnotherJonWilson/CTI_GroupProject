@@ -43,6 +43,12 @@ angular.module('App').factory('UserService', ['$http', function($http){
     photosArray: photosArray,
     signaturesArray: signaturesArray,
     headersArray: headersArray
-  }
+  };
 
+  var standardTemplate = { template: 1 };
+
+
+  return {
+    standardTemplate: standardTemplate
+  };
 }]);

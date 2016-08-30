@@ -13,7 +13,10 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
+
+
 var upload = multer({ dest: './public/photos/' });
+
 var uploadSig = multer({ dest: './sigfile/' });
 var uploadHeader = multer({ dest: './headers/' });
 
@@ -23,6 +26,10 @@ var donor = require('./routes/donor');
 var User = require('./models/users');
 var login = require('./routes/login');
 var Donor = require('./models/donor');
+var donor = require('./routes/donor');
+var overview = require('./routes/overview');
+var template = require('./routes/template')
+
 
 require('dotenv').config();
 //parse request
@@ -62,7 +69,8 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.use('/photos', photos);
-
+app.use('/overview', overview);
+app.use('/template', template);
 
 
 
