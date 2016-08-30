@@ -26,9 +26,10 @@ var donor = require('./routes/donor');
 var User = require('./models/users');
 var login = require('./routes/login');
 var Donor = require('./models/donor');
-
 var donor = require('./routes/donor');
+var overview = require('./routes/overview');
 var template = require('./routes/template')
+
 
 require('dotenv').config();
 //parse request
@@ -68,43 +69,9 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.use('/photos', photos);
+app.use('/overview', overview);
 app.use('/template', template);
 
-
-
-
-app.get('/createphotoarray', function(req, res) {
-  fs.readdir('./public/photos', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-app.get('/createsignaturearray', function(req, res) {
-  fs.readdir('./public/sigfile', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
-
-app.get('/createheaderarray', function(req, res) {
-  fs.readdir('./public/headers', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-});
 
 var db = mongoose.connect(databaseURI).connection;
 

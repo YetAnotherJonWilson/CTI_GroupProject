@@ -19,7 +19,7 @@
           <span ng-show="picFile.result">Upload Successful</span>
           <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     </form>
-  </div></a>
+  </div>
   <div class="settingsUpload">
   <form name="signatureForm">
       <h1>Upload Signature</h1>
@@ -66,21 +66,22 @@
 
        <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
         <img ng-src="photos/{{photo}}" height="100px" width="150px" alt="photo: {{photo}}">
+        <button ng-click="settings.deletePhoto(photo)">Delete</button>
       </li>
   </div>
 </div>
 
 <div class='editmain'>
-{{home.savedEmails}}
+{{settings.savedEmails}}
 
 
-    <button ng-click='home.sendMail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps, donor)'>Send</button>
-    {{home.savedEmails}}
+    <button ng-click='settings.sendMail(settings.currentTemplate.p1, settings.currentTemplate.p2, settings.currentTemplate.p3, settings.currentTemplate.p4, settings.currentTemplate.q, settings.currentTemplate.ps, donor)'>Send</button>
+    {{settings.savedEmails}}
 
-    <button ng-click='home.saveEditedEmail(home.currentTemplate.p1, home.currentTemplate.p2, home.currentTemplate.p3, home.currentTemplate.p4, home.currentTemplate.q, home.currentTemplate.ps)'>Save</button>
+    <button ng-click='settings.saveEditedEmail(settings.currentTemplate.p1, settings.currentTemplate.p2, settings.currentTemplate.p3, settings.currentTemplate.p4, settings.currentTemplate.q, settings.currentTemplate.ps)'>Save</button>
 
     <div class="editField">
-        <select class="form-control" ng-model="home.template" ng-options="t.name for t in home.templates">
+        <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
             <option value="">(blank)</option>
         </select>
 
@@ -88,7 +89,7 @@
             <div>
                 <!-- <hr/> -->
                 <div class="slide-animate-container">
-                    <div class="slide-animate" ng-include="home.template.url"></div>
+                    <div class="slide-animate" ng-include="settings.template.url"></div>
                 </div>
             </div>
 

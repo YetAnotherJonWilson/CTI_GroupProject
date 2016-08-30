@@ -1,5 +1,4 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
-
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
 
 	var vm = this;
 
@@ -26,6 +25,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempStandardTemplate = DataService.templatesObject[vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
+		// var tempDonorList = DataService.sortedObject.sorted;
 
 		for (var i = 0; i < tempDonorList.length; i++) {
 			tempDonorList[i].template = Object.assign({}, tempStandardTemplate);
@@ -48,7 +48,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 	vm.setCurrentEditView = function(id) {
-
+	console.log('donor id' , id);
 		// console.log('set current view');
 		var tempDonor;
 		var tempIndex;
@@ -162,7 +162,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			templateUrl: 'emails/image_modal.html',
 			controller: 'ModalController',
 			controllerAs: 'modal',
-			size: 'md'
+			size: 'md',
+			windowClass: 'imageModalClass'
 		});
 	};
 

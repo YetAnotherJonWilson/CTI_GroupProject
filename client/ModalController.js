@@ -4,9 +4,8 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 
 	vm.currentDonor = TemplateService.currentDonor.donor[0];
 	vm.currentField = TemplateService.currentDonor.donor[0].donor.template.currentField;
-	// vm.currentTemplate = TemplateService.currentTemplate;
+	vm.currentTemplate = TemplateService.currentTemplate;
   vm.imagesArray = TemplateService.imagesObject.images;
-
 
 	vm.updateCurrentDonorKey = function(key, value) {
 		console.log('modal.currentDonor:', vm.currentDonor);
@@ -18,6 +17,7 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
   // vm.setCurrentImg = function(img){
   //   TemplateService.setCurrentImg(img);
   // }
+
 
 	vm.uploadPic = function(pic) {
 		console.log('Uploading Pic', pic);
