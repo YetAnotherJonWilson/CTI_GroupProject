@@ -19,7 +19,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		}]
 	}
 
-	var templatesObject=DataService.templatesObject;
+	var templatesObject = DataService.templatesObject;
 
 	function saveTemplate(template){
 		var sendData= template;
@@ -47,8 +47,9 @@ addStuff();
 	}
 
 	function updateCurrentDonorKey(key, value) {
-		console.log('TemplateService updateCurrentDonorKey');
 		currentDonor.donor[0].donor.template[key] = value;
+
+		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
 	function updateCurrentDonor(donor) {
@@ -105,10 +106,11 @@ addStuff();
 		images: []
 	}
 	function createPhotoArray(){
-			$http.get('/createphotoarray').then(handlePhotoSuccess);
+			$http.get('photos/createphotoarray').then(handlePhotoSuccess);
 	};
 	function handlePhotoSuccess(response){
 			imagesObject.images = response.data;
+
 	}
 	createPhotoArray();
 

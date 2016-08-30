@@ -2,6 +2,7 @@ angular.module('App').factory('UserService', ['$http', function($http){
 
   var vm = this;
 
+
   // var photosArray = {};
   // var signaturesArray = {};
   // var headersArray = {};
@@ -36,6 +37,9 @@ angular.module('App').factory('UserService', ['$http', function($http){
   //   //console.log(response.data);
   //   headersArray = response.data;
   // }
+
+
+
 
   // createHeaderArray();
 var standardTemplate = { template: 1 };
