@@ -1,14 +1,14 @@
 <div class="imageModal modalImageWrapper">
     <ul>
         <li class="center" ng-repeat="image in modal.imagesArray">
-            <img class="imageHover modal-image" ng-src="photos/{{image}}" height="150px" width="200px" ng-click="modal.setCurrentImg(image); $dismiss()" />
+            <img class="imageHover modal-image" ng-src="photos/{{image}}" height="150px" width="200px" ng-click="modal.updateCurrentDonorKey(modal.currentField, 'assets/' + image); $dismiss()" />
         </li>
         <li><a ng-click="newImage = !newImage" ng-show="!newImage"><img class="imageHover modal-image animated fadeInUp" src="./assets/addPictureIcon.png" height="175px" width="200px"/></a>
         </li>
         <li id="uploadModalLi" ng-show="newImage" >
           <div>
           <form class='modalUploadForm' name="photoForm">
-            <button class="btn done" ng-click="modal.">Done</button>
+            <button class="btn done">Done</button>
             <!-- "newImage = !newImage" -->
                   <input type="file" ngf-select ng-model="picFile" name="file"
                          accept="image/*" ngf-max-size="2MB" required
