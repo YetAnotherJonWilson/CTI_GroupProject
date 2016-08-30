@@ -26,9 +26,10 @@ var donor = require('./routes/donor');
 var User = require('./models/users');
 var login = require('./routes/login');
 var Donor = require('./models/donor');
-
 var donor = require('./routes/donor');
+var overview = require('./routes/overview');
 var template = require('./routes/template')
+
 
 require('dotenv').config();
 //parse request
@@ -68,10 +69,12 @@ app.use('/email', email);
 app.use('/verticleResponse', verticleResponse);
 app.use('/login', login);
 app.use('/photos', photos);
+app.use('/overview', overview);
 app.use('/template', template);
 
 
 
+<<<<<<< HEAD
 
 app.get('/createphotoarray', function(req, res) {
   fs.readdir('./public/photos', function(err, files){
@@ -107,6 +110,8 @@ app.get('/createheaderarray', function(req, res) {
 });
 
 
+=======
+>>>>>>> 927938a94b8c14b9075d83b74b9b36d8fb7fcacd
 var db = mongoose.connect(databaseURI).connection;
 
 db.on('error', function(err){

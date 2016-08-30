@@ -4,13 +4,14 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var Donor = require('../models/donor');
 
+
 router.get('/sentDonors', function(request, response){
   Donor.find({}, function(err, donors){
     if(err){
       console.log(err);
       response.sendStatus(500);
     } else {
-      console.log('donors', donors);
+      // console.log('donors', donors);
       response.send(donors);
     }
   })

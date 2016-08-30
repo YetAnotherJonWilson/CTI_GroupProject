@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'Upload', '$timeout', function($http, $location, DataService, Upload, $timeout){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', function($http, $location, DataService, UserService, Upload, $timeout){
 
 var vm = this;
 
@@ -6,9 +6,8 @@ var vm = this;
     vm.unhideSignatures = false;
     vm.unhideHeaders = false;
 
-    vm.photos = [];
-    vm.signatures = [];
-    vm.headers = [];
+
+    console.log(UserService.photosArray);
 
 
     vm.deletePhoto = function(photo) {
@@ -57,6 +56,11 @@ var vm = this;
     }
 
     createHeaderArray();
+
+
+    vm.photos = UserService.photosArray;
+    vm.signatures = UserService.signaturesArray;
+    vm.headers = UserService.headersArray;
 
 
 

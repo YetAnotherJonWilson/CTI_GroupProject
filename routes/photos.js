@@ -53,6 +53,39 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });
+router.get('/createphotoarray', function(req, res) {
+  fs.readdir('./public/photos', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get('/createsignaturearray', function(req, res) {
+  fs.readdir('./public/sigfile', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get('/createheaderarray', function(req, res) {
+  fs.readdir('./public/headers', function(err, files){
+    if(!err){
+      console.log(files);
+      res.send(files);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 
 
 
