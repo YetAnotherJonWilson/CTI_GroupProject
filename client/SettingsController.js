@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'Upload', '$timeout', function($http, $location, DataService, Upload, $timeout){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', function($http, $location, DataService, UserService, Upload, $timeout){
 
 var vm = this;
 
@@ -6,15 +6,28 @@ var vm = this;
     vm.unhideSignatures = false;
     vm.unhideHeaders = false;
 
-    vm.photos = [];
-    vm.signatures = [];
-    vm.headers = [];
+
+    // console.log(UserService.photosArray);
 
 
-    function createPhotoArray(){
-        $http.get('/createphotoarray').then(handlePhotoSuccess);
+    vm.deletePhoto = function(photo) {
+      deletePhoto = {};
+      id = 12345;
+      deletePhoto.photo = photo;
+      console.log('delete pushed' , deletePhoto);
+      $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
+    }
+    function handleDeleteSuccess(response){
+        console.log('Photo Deleted', response);
+        createPhotoArray();
+    }
+    function handleDeleteFailure(response){
+        console.log('Failed to delete' , response);
     }
 
+    function createPhotoArray(){
+        $http.get('photos/createphotoarray').then(handlePhotoSuccess);
+    }
     function handlePhotoSuccess(response){
         console.log(response.data);
         vm.photos = response.data;
@@ -23,18 +36,18 @@ var vm = this;
     createPhotoArray();
 
     function createSignatureArray(){
-        $http.get('/createsignaturearray').then(handleSignatureSuccess);
+        $http.get('photos/createsignaturearray').then(handleSignatureSuccess);
     }
 
     function handleSignatureSuccess(response){
-        console.log(response.data);
+        console.log('What is this!!!!!!!!!' ,response.data);
         vm.signatures = response.data;
     }
 
     createSignatureArray();
 
     function createHeaderArray(){
-        $http.get('/createheaderarray').then(handleHeaderSuccess);
+        $http.get('photos/createheaderarray').then(handleHeaderSuccess);
     }
 
     function handleHeaderSuccess(response){
@@ -43,6 +56,11 @@ var vm = this;
     }
 
     createHeaderArray();
+
+
+    vm.photos = UserService.photosArray;
+    vm.signatures = UserService.signaturesArray;
+    vm.headers = UserService.headersArray;
 
 
 
@@ -57,6 +75,7 @@ var vm = this;
         file.upload.then(function (response) {
             $timeout(function () {
                 file.result = response.data;
+                createPhotoArray();
             });
         }, function (response) {
             if (response.status > 0)

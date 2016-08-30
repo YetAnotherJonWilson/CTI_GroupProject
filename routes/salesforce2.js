@@ -55,12 +55,12 @@ router.get('/oauth2/callback', function(request, response){
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
 
-    getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
-      everything = everything;
-      console.log('great success');
-      response.redirect('/gettingdata');
-      // response.redirect('/home');
-    });
+    // getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
+    //   everything = everything;
+    //   console.log('great success');
+    //   response.redirect('/gettingdata');
+      response.redirect('/home');
+    // });
   });
   // response.redirect('/home');
 });
@@ -99,15 +99,15 @@ function getOpps(accessToken, instanceUrl){
       // var stuff = JSON.parse(response);
       var stuff = response;
       // console.log(stuff);
-      for(var i=0; i<stuff.records.length; i++){
-          opportunities.push(stuff.records[i]);
-          getContact(accessToken, instanceUrl, stuff.records[i]);
-          getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
-          everything=[opportunities, contacts, accounts, households];
-
-      }
-      // return stuff;
-      return everything;
+      // for(var i=0; i<stuff.records.length; i++){
+      //     opportunities.push(stuff.records[i]);
+      //     getContact(accessToken, instanceUrl, stuff.records[i]);
+      //     getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+      //     everything=[opportunities, contacts, accounts, households];
+      //
+      // }
+      return stuff;
+      // return everything;
       // done=true;
     // }
   }).catch(function(response){

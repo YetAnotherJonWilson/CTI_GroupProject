@@ -14,7 +14,7 @@ var image1 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage.jpg";
 var image2 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage2.jpg";
 var image3 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg";
 var image4 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg";
-var image5 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg";
+var image5 = "https://dl.dropboxusercontent.com/u/566253206/ + {{image}}sampleimage5.jpg";
 
 var template1 = './public/emails/customTemplate1.hjs';
 var template2 = './public/emails/customTemplate2.hjs';

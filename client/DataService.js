@@ -113,36 +113,18 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
          }]
        }
 
-function checkDone(){
-  $location.path('/home');
-  // $http.get('/salesforce/done').then(success, failure);
-}
-function success(res){
-  getData();
-}
-function failure(res){
-  checkDone();
-}
 
-  // function getDonors(){
-  //   $http.get('/salesforce/oauth2/auth').then(getData, handleFailure);
-  // }
   function getData(){
-    $http.get('/salesforce/data').then(handleSuccess, handleFailure);
+  return  $http.get('/salesforce/data').then(handleSuccess, handleFailure);
   }
 
   function handleSuccess(res){
       console.log(res);
       data=res.data;
-      // if(data[0].length===data[3].length){
         sortData(data);
         preconvertDates();
         convertDates();
         $location.path('/home');
-      // }
-      // else{
-        // getData();
-      // }
   }
   function handleFailure(res){
     console.log('fail', res);
@@ -407,10 +389,10 @@ function findLastName(donationObject){
 sortedObject.sorted = sorted;
 // preconvertDates();
 // convertDates();
-function createTemplate(){
-  var sendData={};
-  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
-}
+// function createTemplate(){
+//   var sendData={};
+//   $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+// }
 // function handletemplatesuccess(res){
 //   console.log('Template created');
 // }
@@ -420,7 +402,7 @@ function createTemplate(){
 // createTemplate();
 var templatesArray=[];
 function getTemplates(){
-  $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+    return $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
 }
 function getTemplateSuccess(res){
   console.log('templates', res);
@@ -445,7 +427,6 @@ function getTemplateFailure(res){
     // getDonors: getDonors,
     getData: getData,
     donorObject: donorObject,
-    checkDone: checkDone,
     templatesObject: templatesObject,
     getTemplates: getTemplates
   };

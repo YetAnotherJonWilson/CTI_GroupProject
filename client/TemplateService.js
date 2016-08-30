@@ -19,7 +19,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		}]
 	}
 
-	var templatesObject=DataService.templatesObject;
+	var templatesObject = DataService.templatesObject;
 
 	function saveTemplate(template){
 		var sendData= template;
@@ -36,21 +36,20 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	saveTemplate(templatesObject.template1);
 }
 addStuff();
-	function setCurrentImg(img){
-		if(img == 'assets/addPictureIcon.png'){
-			console.log(img);
-		} else {
-		currentTemplate.img = img;
-		}
-	};
+	// function setCurrentImg(img){
+	// 	currentTemplate.img = "photos/" + img;
+	// 	console.log('currentTemplate.img' , currentTemplate.img);
+	// };
 
 	function setCurrentImg(img) {
 		currentDonor.donor[0].donor.img = img;
+
 	}
 
 	function updateCurrentDonorKey(key, value) {
-		console.log('TemplateService updateCurrentDonorKey');
 		currentDonor.donor[0].donor.template[key] = value;
+
+		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
 	function updateCurrentDonor(donor) {
@@ -60,9 +59,7 @@ addStuff();
 	}
 
 
-	function setCurrentImg(img){
-		currentTemplate.img = 'photos/' + img;
-	};
+
 
 
 	var savedEmails = {
@@ -105,30 +102,16 @@ addStuff();
 
 
 
-
-	// var imagesObject = {
-	// 	images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg' ]
-	// }
 	var imagesObject = {
 		images: []
 	}
-
-
-
 	function createPhotoArray(){
-			$http.get('/createphotoarray').then(handlePhotoSuccess);
-		images: ['assets/sampleimage.jpg', 'assets/sampleimage2.jpg', 'assets/sampleimage3.jpg', 'assets/sampleimage4.jpg', 'assets/sampleimage5.jpg', 'assets/sampleimage0.jpg', 'assets/sampleimage20.jpg', 'assets/sampleimage30.jpg', 'assets/sampleimage40.jpg', 'assets/sampleimage50.jpg']
+			$http.get('photos/createphotoarray').then(handlePhotoSuccess);
 	};
-
-	function getPhotos() {
-		$http.get('/photos').success(function(response) {
-			console.log('response from get photos', response);
-		});
-	}
 	function handlePhotoSuccess(response){
 			imagesObject.images = response.data;
-	}
 
+	}
 	createPhotoArray();
 
 
@@ -152,15 +135,15 @@ addStuff();
 			});
 	};
 
-	function getCurrentTemplate(templateNum) {
-		currentTemplate.p1 = templatesObject['template' + templateNum].p1;
-		currentTemplate.p2 = templatesObject['template' + templateNum].p2;
-		currentTemplate.p3 = templatesObject['template' + templateNum].p3;
-		currentTemplate.p4 = templatesObject['template' + templateNum].p4;
-		currentTemplate.quote = templatesObject['template' + templateNum].quote;
-		currentTemplate.ps = templatesObject['template' + templateNum].ps;
-		currentTemplate.img = templatesObject['template' + templateNum].img;
-	}
+	// function getCurrentTemplate(templateNum) {
+	// 	currentTemplate.p1 = templatesObject['template' + templateNum].p1;
+	// 	currentTemplate.p2 = templatesObject['template' + templateNum].p2;
+	// 	currentTemplate.p3 = templatesObject['template' + templateNum].p3;
+	// 	currentTemplate.p4 = templatesObject['template' + templateNum].p4;
+	// 	currentTemplate.quote = templatesObject['template' + templateNum].quote;
+	// 	currentTemplate.ps = templatesObject['template' + templateNum].ps;
+	// 	currentTemplate.img = templatesObject['template' + templateNum].img;
+	// }
 
 
 	function saveEditedEmail(p1, p2, p3, p4, quote, ps) {
@@ -177,7 +160,7 @@ addStuff();
 	return {
 		currentDonor: currentDonor,
 		currentTemplate: currentTemplate,
-		getCurrentTemplate: getCurrentTemplate,
+		// getCurrentTemplate: getCurrentTemplate,
 		imagesObject: imagesObject,
 		saveEditedEmail: saveEditedEmail,
 		savedEmails: savedEmails,
