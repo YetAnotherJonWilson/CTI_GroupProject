@@ -1,5 +1,4 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
-
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
 
 	var vm = this;
 
@@ -24,6 +23,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
 
 		var tempDonorList = DataService.donorObject.donors;
+		// var tempDonorList = DataService.sortedObject.sorted;
 
 		for (var i = 0; i < tempDonorList.length; i++) {
 			tempDonorList[i].template = Object.assign({}, tempStandardTemplate);

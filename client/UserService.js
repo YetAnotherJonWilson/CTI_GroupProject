@@ -22,7 +22,7 @@ angular.module('App').factory('UserService', ['$http', function($http){
   }
 
   function handleSignatureSuccess(response){
-    //console.log(response.data);
+    console.log(response.data);
     signaturesArray = response.data;
   }
 
@@ -33,7 +33,7 @@ angular.module('App').factory('UserService', ['$http', function($http){
   }
 
   function handleHeaderSuccess(response){
-    //console.log(response.data);
+    console.log(response.data);
     headersArray = response.data;
   }
 

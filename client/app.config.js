@@ -8,7 +8,14 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
     .when('/home', {
       templateUrl: '/views/home.html',
       controller: 'HomeController',
-      controllerAs: 'home'
+      controllerAs: 'home',
+      resolve: {
+        someting: ['DataService', function(DataService){
+          return DataService.getData();
+        }],stuff: ['DataService', function(DataService){
+          return DataService.getTemplates();
+        }]
+      }
     })
     // .when('/edit', {
     //   templateUrl: '/views/edit.html',
