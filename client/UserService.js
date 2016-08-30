@@ -2,16 +2,16 @@ angular.module('App').factory('UserService', ['$http', function($http){
 
   var vm = this;
 
-  // var photosArray = {};
-  // var signaturesArray = {};
-  // var headersArray = {};
+  var photosArray = {};
+  var signaturesArray = {};
+  var headersArray = {};
 
   function createPhotoArray(){
     $http.get('/createphotoarray').then(handlePhotoSuccess);
   }
 
   function handlePhotoSuccess(response){
-    var photosArray = {photos: response.data};
+    photosArray = {photos: response.data};
     console.log('photosArray in userservice:', photosArray);
   }
 
