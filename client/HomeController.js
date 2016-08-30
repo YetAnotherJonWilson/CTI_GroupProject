@@ -22,7 +22,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	function buildDonorList() {
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
-		var tempStandardTemplate = DataService.templatesObject[vm.standardTemplate];
+		var tempStandardTemplate = DataService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
 		// var tempDonorList = DataService.sortedObject.sorted;
