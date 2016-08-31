@@ -123,7 +123,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
       data=res.data;
         sortData(data);
         preconvertDates();
-        convertDates();
+        // convertDates();
         $location.path('/home');
   }
   function handleFailure(res){
@@ -136,11 +136,11 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
     }
   }
 
-function convertDates(){
-    for (var i = 0; i < sortedObject.sorted.length; i++){
-      sortedObject.sorted[i].convertedDate = new Date(sortedObject.sorted[i].date);
-    }
-}
+// function convertDates(){
+//     for (var i = 0; i < sortedObject.sorted.length; i++){
+//       sortedObject.sorted[i].convertedDate = new Date(sortedObject.sorted[i].date);
+//     }
+// }
 function sortData(data){
   for (var i=0; i<data[0].length; i++){
     sorted.push(data[0][i]);
@@ -422,7 +422,7 @@ function getTemplateFailure(res){
 
   return {
     preconvertDates: preconvertDates,
-    convertDates: convertDates,
+    // convertDates: convertDates,
     sortedObject: sortedObject,
     // getDonors: getDonors,
     getData: getData,

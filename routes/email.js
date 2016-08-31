@@ -27,9 +27,12 @@ router.post('/sendMail', function(request, response){
   var data = request.body;
   console.log('sendMail request.body', request.body);
 
-  var template = fs.readFileSync(template1, 'utf-8');
+  // var template = fs.readFileSync(template1, 'utf-8');
+  var temp = data.template;
+  var template = fs.readFileSync('./public/emails/customTemplate'+temp+'.hjs', 'utf-8');
+  console.log(template);
   var compiledTemplate = Hogan.compile(template);
-  console.log('ENV' , process.env.emailusername);
+  console.log('ENV' , process.env.emailuser);
   // console.log(mailData.customer.customer_email);
 
   var transporter = nodemailer.createTransport({
@@ -46,13 +49,15 @@ router.post('/sendMail', function(request, response){
     text: 'Thank You for donating!',
 
     html: compiledTemplate.render({
-    para1: data.p1,
-    para2: data.p2,
+    p1: data.p1,
+    p2: data.p2,
+    p3: data.p3,
+    p4: data.p4,
     quote: data.q,
-    image: image2,
-    imageL: image1,
-    imageR: image5
-    // para3: chosenTemplate.p3,
+    img: data.img,
+    img2: data.img2,
+    img3: data.img3,
+    img4: data.img4
     }),
 };
 

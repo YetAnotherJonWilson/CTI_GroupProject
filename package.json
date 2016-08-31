@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
+    "angular-moment": "^1.0.0-beta.6",
     "angular-route": "^1.5.8",
     "angular-ui-bootstrap": "^2.1.2",
     "bcrypt": "^0.8.7",
@@ -23,6 +24,7 @@
     "hogan": "^1.0.2",
     "hogan.js": "^3.0.2",
     "jsforce": "^1.7.0",
+    "moment": "^2.14.1",
     "mongo": "^0.1.0",
     "mongoose": "^4.5.9",
     "multer": "^1.2.0",

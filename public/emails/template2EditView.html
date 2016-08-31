@@ -116,15 +116,21 @@
               <p class="p1 fieldHover" ng-click="home.editModal('p1')">
                 {{home.currentDonor.template.p1}}
               </p>
-              <p class="p2">
-                It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
+              <p class="p2 fieldHover" ng-click="home.editModal('p2')">
+                {{home.currentDonor.template.p2}}
               </p>
+              <!-- <p class="p2">
+                It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
+              </p> -->
         </div>
         <div class="imageRow" >
-              <img   src="https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg" alt="image">
-              <p class="quote">
-                  “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
+              <img src="{{home.currentDonor.template.img}}" alt="image" class="imageHover" ng-click="home.imageModal('img')">
+              <p class="quote fieldHover" ng-click="home.imageModal('q')">
+                {{home.currentDonor.template.quote}}
               </p>
+              <!-- <p class="quote">
+                  “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
+              </p> -->
         </div>
         <div id="clear" class="p3">
           <p>
