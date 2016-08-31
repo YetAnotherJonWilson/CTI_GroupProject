@@ -99,7 +99,8 @@ router.post('/createData', function(request, response, next){
     picture3: data.picture3,
     picture4: data.picture4,
     letterhead: data.letterhead,
-    signature: data.signature
+    signature: data.signature,
+    template: data.template
   }, function(err){
     if(err){
       console.log('donor create error', err);

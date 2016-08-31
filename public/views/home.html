@@ -53,9 +53,8 @@
 <div ng-show="home.currentDonor" class='editmain'>
 
 
-    <button ng-click='home.sendMail(home.currentDonor.template.p1, home.currentDonor.template.p2, home.currentDonor.template.p3, home.currentDonor.template.p4, home.currentDonor.template.quote, home.currentDonor.template.ps, home.currentDonor.template.img, home.currentDonor.template.img2, home.currentDonor.template.img3, home.currentDonor.template.img4, home.currentDonor.template.temp)'>Send</button>
+    <button ng-click='home.sendMail(home.currentDonor)'>Send</button>
 
-    <button ng-click='home.saveEditedEmail(home.currentDonor.template.p1, home.currentDonor.template.p2, home.currentDonor.template.p3, home.currentDonor.template.p4, home.currentDonor.template.quote, home.currentDonor.template.ps, home.currentDonor.template.img, home.currentDonor.template.img2, home.currentDonor.template.img3)'>Save</button>
 
     <div class="editField">
         <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates">
