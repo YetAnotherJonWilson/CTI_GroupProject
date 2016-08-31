@@ -16,16 +16,18 @@ var contactsOverview = [];
 var accountsOverview = [];
 var householdsOverview = [];
 var overview = [];
+var dbDonors = {};
 var version= '';
 
 router.get('/data', function(request, response){
-    everything=[opportunities, contacts, accounts, households];
-    response.send(everything);
+  everything=[opportunities, contacts, accounts, households];
+  response.send(everything);
 });
 
 router.get('/oauth2/auth', function(request, response){
   getStartUrl();
   console.log("hellos");
+  getSentDbStuff('/sentDonors');
   response.redirect(oauth2.getAuthorizationUrl({}));
 });
 
@@ -98,14 +100,21 @@ function getOpps(accessToken, instanceUrl){
 
       // var stuff = JSON.parse(response);
       var stuff = response;
-      // console.log(stuff);
-      // for(var i=0; i<stuff.records.length; i++){
-      //     opportunities.push(stuff.records[i]);
-      //     getContact(accessToken, instanceUrl, stuff.records[i]);
-      //     getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
-      //     everything=[opportunities, contacts, accounts, households];
-      //
-      // }
+      // console.log(stuff.records.length);
+
+      for(var i=0; i<stuff.records.length; i++){
+        for(var j = 0; j < dbDonors.length; j++){
+          if(dbDonors[j].opportunityId == stuff.records[i].Id){
+            stuff.records.splice(i, 1);
+            j = -1;
+          }
+        }
+        opportunities.push(stuff.records[i]);
+        getContact(accessToken, instanceUrl, stuff.records[i]);
+        getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+        // everything=[opportunities, contacts, accounts, households];
+
+      }
       return stuff;
       // return everything;
       // done=true;
@@ -232,6 +241,21 @@ function contactOverview(accessToken, instanceUrl, record){
     return record;
   }).catch(function(err){
     console.log('contact overview err', err);
+  });
+}
+
+function getSentDbStuff(){
+  dbDonors = {};
+  Donor.find({}, function(err, donors){
+    if(err){
+      console.log('err getting sent donors', err);
+      return err;
+    }
+    else{
+      // console.log('sent donors from db', donors);
+      dbDonors = donors;
+      return donors;
+    }
   });
 }
 

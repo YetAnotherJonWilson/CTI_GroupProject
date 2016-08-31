@@ -2,15 +2,15 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
   var vm = this;
 
   var donorObject = {};
+  var dbDonors = {};
   var overview = [];
 
   function getDonorDbStuff(){
     return $http.get('/donor/sentDonors').then(function(response){
-      console.log('donors', response.data);
+      console.log('db donors', response.data);
       // console.log('maybe?');
-      var tempDonors = {};
-      tempDonors.donors = response.data;
-      getDonorsSentEmailData(tempDonors);
+      dbDonors.donors = response.data;
+      getDonorsSentEmailData(dbDonors);
     }, function(err){
       console.log('err', err);
       response.sendStatus(500);
@@ -60,6 +60,8 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
       overview[i].AverageAmount = overviewAverageAmount(overview[i], donors[i]);
       overview[i].TotalAmount = overviewTotalAmount(overview[i], donors[i]);
       overview[i].TotalNumber = overviewTotalNumber(overview[i], donors[i]);
+      overview[i].FirstName = overviewFirstName(overview[i], donors[i]);
+      overview[i].LastName = overviewLastName(overview[i], donors[i]);
     }
     return overview;
   }
@@ -136,6 +138,32 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
       return donor.Account.npe01__LifetimeDonationHistory_Number__c;
     }
     return 'No Lifetime Total Number Found';
+  }
+
+  function overviewFirstName(overview, donor){
+    if(donor.Contact.Name != null){
+      var names = donor.Contact.Name.split(' ');
+      return names[0];
+    }
+    else if(donor.Account.Name != null){
+      return donor.Account.Name;
+    }
+    else{
+      return 'No First Name Found';
+    }
+  }
+
+  function overviewLastName(overview, donor){
+    if(donor.Contact.Name != null){
+      var names = donor.Contact.Name.split(' ');
+      return names[1];
+    }
+    else if(donor.Account.Name != null){
+      return '(Company)';
+    }
+    else{
+      return 'No Last Name Found';
+    }
   }
 
   return {

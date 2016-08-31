@@ -40,7 +40,6 @@ angular.module('App').factory('UserService', ['$http', function($http){
 
 
 
-
   // createHeaderArray();
 var standardTemplate = { template: 1 };
   return {

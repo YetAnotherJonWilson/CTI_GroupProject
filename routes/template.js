@@ -16,7 +16,8 @@ var Template = require('../models/template');
     img: 'assets/sampleimage3.jpg',
     img2: '',
     img3: '',
-    img4: ''
+    img4: '',
+    temp: '1'
   };
   var template2= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -28,7 +29,8 @@ var Template = require('../models/template');
     img: 'assets/sampleimage4.jpg',
     img2: '',
     img3: '',
-    img4: ''
+    img4: '',
+    temp: '2'
   };
   var template3= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -40,7 +42,8 @@ var Template = require('../models/template');
     img: 'assets/sampleimage5.jpg',
     img2: 'assets/sampleimage0.jpg',
     img3: '',
-    img4: ''
+    img4: '',
+    temp: '3'
   };
   var template4= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -52,7 +55,8 @@ var Template = require('../models/template');
     img: 'assets/sampleimage20.jpg',
     img2: 'assets/sampleimage3.jpg',
     img3: 'assets/sampleimage4.jpg',
-    img4: 'assets/sampleimage5.jpg'
+    img4: 'assets/sampleimage5.jpg',
+    temp: '4'
   };
   var template5= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -64,7 +68,8 @@ var Template = require('../models/template');
     img: 'assets/sampleimage20.jpg',
     img2: 'assets/sampleimage3.jpg',
     img3: 'assets/sampleimage4.jpg',
-    img4: 'assets/sampleimage5.jpg'
+    img4: 'assets/sampleimage5.jpg',
+    temp: '5'
   };
 router.post('/addtemplates', function(request, response){
   var data = template1;
@@ -81,7 +86,8 @@ router.post('/addtemplates', function(request, response){
     img: data.img,
     img2: data.img2,
     img3: data.img3,
-    img4: data.img4
+    img4: data.img4,
+    temp: data.temp
   }, function(err){
     if(err){
       console.log('add template err');
@@ -99,7 +105,8 @@ router.post('/addtemplates', function(request, response){
     img: data2.img,
     img2: data2.img2,
     img3: data2.img3,
-    img4: data2.img4
+    img4: data2.img4,
+    temp: data2.temp
   }, function(err){
     if(err){
       console.log('add template err');
@@ -117,7 +124,8 @@ router.post('/addtemplates', function(request, response){
     img: data3.img,
     img2: data3.img2,
     img3: data3.img3,
-    img4: data3.img4
+    img4: data3.img4,
+    temp: data3.temp
   }, function(err){
     if(err){
       console.log('add template err');
@@ -135,7 +143,8 @@ router.post('/addtemplates', function(request, response){
     img: data4.img,
     img2: data4.img2,
     img3: data4.img3,
-    img4: data4.img4
+    img4: data4.img4,
+    temp: data4.temp
   }, function(err){
     if(err){
       console.log('add template err');
@@ -153,7 +162,8 @@ router.post('/addtemplates', function(request, response){
     img: data5.img,
     img2: data5.img2,
     img3: data5.img3,
-    img4: data5.img4
+    img4: data5.img4,
+    temp: data5.temp
   }, function(err){
     if(err){
       console.log('add template err');

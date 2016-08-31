@@ -31,11 +31,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	function saveTemplateFailure(res){
 		console.log('save temp failure', res);
 	}
-	function addStuff(){
-		templatesObject.template1.img4='';
-	saveTemplate(templatesObject.template1);
-}
-addStuff();
+// 	function addStuff(){
+// 		templatesObject.template1.templateNum='1';
+// 	saveTemplate(templatesObject.template1);
+// }
+// addStuff();
 	// function setCurrentImg(img){
 	// 	currentTemplate.img = "photos/" + img;
 	// 	console.log('currentTemplate.img' , currentTemplate.img);
@@ -50,6 +50,10 @@ addStuff();
 		currentDonor.donor[0].donor.template[key] = value;
 
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
+	}
+
+	function updateCurrentDonorTemplate(templateNum){
+		currentDonor.donor[0].donor.template.temp = templateNum;
 	}
 
 	function updateCurrentDonor(donor) {
@@ -169,7 +173,8 @@ addStuff();
 		uploadPic: uploadPic,
 		createPhotoArray: createPhotoArray,
 		updateCurrentDonor: updateCurrentDonor,
-		updateCurrentDonorKey: updateCurrentDonorKey
+		updateCurrentDonorKey: updateCurrentDonorKey,
+		updateCurrentDonorTemplate: updateCurrentDonorTemplate
 	}
 
 

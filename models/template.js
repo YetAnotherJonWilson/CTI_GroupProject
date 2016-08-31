@@ -10,7 +10,8 @@ var templateSchema = new Schema({
   img: String,
   img2: String,
   img3: String,
-  img4: String
+  img4: String,
+  temp: String
 });
 
 module.exports = mongoose.model('Template', templateSchema);
