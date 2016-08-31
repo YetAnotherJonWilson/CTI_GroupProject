@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', function($http, $location, DataService, UserService, Upload, $timeout){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal){
 
 var vm = this;
 
@@ -151,5 +151,70 @@ var vm = this;
     // }
     // getTemplates();
 
+    vm.templatesList;
+    vm.currentTemplate = 1;
+
+    function buildTemplateObject(){
+      var tempTemplateList = DataService.templatesObject;
+      vm.templatesList = Object.assign({}, tempTemplateList)
+    }
+
+
+
+    //Pop up modal for editing text
+  	vm.editModal = function(id) {
+  		console.log('templatesList:', vm.templatesList);
+
+  		vm.fieldId = id;
+  		// vm.currentDonor.template.currentField = id;
+  		$uibModal.open({
+  			animation: true,
+  			ariaLabelledBy: 'edit text modal',
+  			ariaDescribedBy: 'edit text',
+  			templateUrl: 'emails/edit_modal.html',
+  			controller: 'ModalController',
+  			controllerAs: 'modal',
+  			size: 'md'
+  		});
+  	};
+
+  	//Pop up modal for choosing images
+  	vm.imageModal = function(id) {
+  		// vm.currentDonor.template.currentField = id;
+  		$uibModal.open({
+  			animation: true,
+  			ariaLabelledBy: 'image modal',
+  			ariaDescribedBy: 'pick an image',
+  			templateUrl: 'emails/image_modal.html',
+  			controller: 'ModalController',
+  			controllerAs: 'modal',
+  			size: 'md',
+  			windowClass: 'imageModalClass'
+  		});
+  	};
+
+
+    //Dropdown menu to choose different templates
+    vm.templates = [{
+      name: 'Template 1',
+      url: 'emails/template1SettingsView.html'
+    }, {
+      name: 'Template 2',
+      url: 'emails/template2SettingsView.html'
+    }, {
+      name: 'Template 3',
+      url: 'emails/template3SettingsView.html'
+    }, {
+      name: 'Template 4',
+      url: 'emails/template4SettingsView.html'
+    }, {
+      name: 'Template 5',
+      url: 'emails/template5SettingsView.html'
+    }];
+
+    vm.selectedTemplate = vm.templates[0];
+
+// DataService.getTemplates();
+buildTemplateObject();
 
 }]);

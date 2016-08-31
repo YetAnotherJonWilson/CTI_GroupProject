@@ -52,12 +52,9 @@
         </li>
     </div>
   </div>
+
   <!-- This is the edit template view -->
   <div class='editmain' ng-show="template">
-  {{settings.savedEmails}}
-      <button ng-click='settings.sendMail(settings.currentTemplate.p1, settings.currentTemplate.p2, settings.currentTemplate.p3, settings.currentTemplate.p4, settings.currentTemplate.q, settings.currentTemplate.ps, donor)'>Send</button>
-      {{settings.savedEmails}}
-      <button ng-click='settings.saveEditedEmail(settings.currentTemplate.p1, settings.currentTemplate.p2, settings.currentTemplate.p3, settings.currentTemplate.p4, settings.currentTemplate.q, settings.currentTemplate.ps)'>Save</button>
       <div class="editField">
           <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
               <option value="">(blank)</option>
@@ -72,8 +69,9 @@
           </div>
       </div>
   </div>
+
   <!-- settings view to display uploaded signatures -->
-    <div class="settingsUploadSigniture" ng-show="signatures">
+    <div class="settingsUploadSignature" ng-show="signatures">
       <form name="signatureForm">
         <input type="file" ngf-select ng-model="sigFile" name="file"
              accept="image/*" ngf-max-size="2MB" required

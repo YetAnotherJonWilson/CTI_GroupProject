@@ -25,7 +25,12 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
     .when('/settings' , {
       templateUrl: '/views/settings.html',
       controller: 'SettingsController',
-      controllerAs: 'settings'
+      controllerAs: 'settings',
+      resolve: {
+        getTemplates: ['DataService', function(DataService){
+          return DataService.getTemplates();
+        }]
+      }
     })
     .when('/gettingdata',{
       templateUrl: '/views/gettingdata.html',
