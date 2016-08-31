@@ -13,6 +13,8 @@ var path = require('path');
 var request = require('request');
 var fs = require('fs');
 var multer  = require('multer');
+// var moment = require('moment');
+// moment().format();
 
 
 var upload = multer({ dest: './public/photos/' });

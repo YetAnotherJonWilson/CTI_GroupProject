@@ -7,6 +7,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.editedDonorsArray = [];
 	vm.editedEmails = {};
 	vm.standardTemplate = UserService.standardTemplate.template;
+	// vm.todaysDate = moment(new Date(), 'MM-DD-YYYY');
 
 	vm.homeRoute = function() {
 		RouteService.homeRoute();
@@ -29,6 +30,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 		for (var i = 0; i < tempDonorList.length; i++) {
 			tempDonorList[i].template = Object.assign({}, tempStandardTemplate);
+			tempDonorList[i].template.templateNum = tempStandardTemplate;
 		}
 		vm.donorList = tempDonorList;
 		console.log('donorList after build:', vm.donorList);
@@ -47,62 +49,90 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 
+	//Check if there is a current donor.  If there is, replace that donor in the donorList.  Pull the new donor into the currentDonor.
 	vm.setCurrentEditView = function(id) {
-	console.log('donor id' , id);
-		// console.log('set current view');
-		var tempDonor;
+
+		console.log('selectedTemplate:', vm.selectedTemplate);
+
 		var tempIndex;
-		var editedTempIndex;
+		var tempDonor;
 
 		if (vm.currentDonor) {
-			console.log('If vm.currentDonor');
-			var isInArray;
-
-			//check if this donor is in editedDonorsArray.
-			for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-				if (vm.editedDonorsArray[i].Id == vm.currentDonor.Id) {
-					isInArray = true;
-					editedTempIndex = i;
-				}
-			}
-
-			//if the donor is in editedDonorsArray, replace it with the current edit.
-			//Else add it to the edited array
-			if (isInArray) {
-				console.log('if isInArray');
-				vm.editedDonorsArray[editedTempIndex] = vm.currentDonor;
-			} else {
-				console.log('if isInArray else statement');
-				vm.editedDonorsArray.push(vm.currentDonor);
-			}
-		}
-
-		//if there are edited donors, check that list first to get current donor info and put it in tempDonor
-		if (vm.editedDonorsArray > 0) {
-			console.log('if vm.editedDonorsArray > 0');
-			for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-				if (vm.editedDonorsArray[i].Id == id) {
-					tempDonor = vm.editedDonorsArray[i];
-					tempIndex = i;
-				}
-			}
-		}
-
-		//If there was no match in the edited Array, then find the donor info in the donorList
-		if (!tempDonor) {
-			console.log('if !tempDonor');
 			for (var i = 0; i < vm.donorList.length; i++) {
-				if (vm.donorList[i].Id == id) {
-					tempDonor = vm.donorList[i];
+				if (vm.donorList[i].Id == vm.currentDonor.Id) {
 					tempIndex = i;
 				}
 			}
+			vm.donorList[tempIndex] = vm.currentDonor;
 		}
 
+		for (var i = 0; i < vm.donorList.length; i++) {
+			if (vm.donorList[i].Id == id) {
+				tempDonor = vm.donorList[i];
+			}
+		}
 		updateCurrentDonor(tempDonor);
 		getCurrentDonor();
-		console.log('editedDonorsArray:', vm.editedDonorsArray);
 	}
+
+
+
+	// vm.setCurrentEditView1 = function(id) {
+	// 	console.log('donor id', id);
+	// 	// console.log('set current view');
+	// 	var tempDonor;
+	// 	var tempIndex;
+	// 	var editedTempIndex;
+	//
+	// 	if (vm.currentDonor) {
+	// 		console.log('If vm.currentDonor');
+	// 		var isInArray;
+	//
+	// 		//check if this donor is in editedDonorsArray.
+	// 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
+	// 			if (vm.editedDonorsArray[i].Id == vm.currentDonor.Id) {
+	// 				isInArray = true;
+	// 				editedTempIndex = i;
+	// 			}
+	// 		}
+	//
+	// 		//if the donor is in editedDonorsArray, replace it with the current edit.
+	// 		//Else add it to the edited array
+	// 		if (isInArray) {
+	// 			console.log('if isInArray');
+	// 			vm.editedDonorsArray[editedTempIndex] = vm.currentDonor;
+	// 		} else {
+	// 			console.log('if isInArray else statement');
+	// 			vm.editedDonorsArray.push(vm.currentDonor);
+	// 		}
+	// 	}
+	//
+	// 	//if there are edited donors, check that list first to get current donor info and put it in tempDonor
+	// 	if (vm.editedDonorsArray > 0) {
+	// 		console.log('if vm.editedDonorsArray > 0');
+	// 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
+	// 			if (vm.editedDonorsArray[i].Id == id) {
+	// 				tempDonor = vm.editedDonorsArray[i];
+	// 				tempIndex = i;
+	// 			}
+	// 		}
+	// 	}
+	//
+	// 	//If there was no match in the edited Array, then find the donor info in the donorList
+	// 	if (!tempDonor) {
+	// 		console.log('if !tempDonor');
+	// 		for (var i = 0; i < vm.donorList.length; i++) {
+	// 			if (vm.donorList[i].Id == id) {
+	// 				tempDonor = vm.donorList[i];
+	// 				tempIndex = i;
+	// 			}
+	// 		}
+	// 	}
+	//
+	// 	updateCurrentDonor(tempDonor);
+	// 	getCurrentDonor();
+	// 	console.log('editedDonorsArray:', vm.editedDonorsArray);
+	// }
 
 	function getCurrentDonor() {
 		vm.currentDonor = TemplateService.currentDonor.donor[0].donor;
@@ -131,7 +161,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		url: 'emails/template5EditView.html'
 	}];
 
-	vm.template = vm.templates[0];
+	vm.selectedTemplate = vm.templates[0];
 
 
 	//Pop up modal for editing text

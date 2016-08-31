@@ -1,1 +1,1 @@
-angular.module('App', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
+angular.module('App', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'angularMoment']);

@@ -26,7 +26,7 @@ var vm = this;
     }
 
     function createPhotoArray(){
-        $http.get('/createphotoarray').then(handlePhotoSuccess);
+        $http.get('photos/createphotoarray').then(handlePhotoSuccess);
     }
     function handlePhotoSuccess(response){
         console.log(response.data);
@@ -36,7 +36,7 @@ var vm = this;
     createPhotoArray();
 
     function createSignatureArray(){
-        $http.get('/createsignaturearray').then(handleSignatureSuccess);
+        $http.get('photos/createsignaturearray').then(handleSignatureSuccess);
     }
 
     function handleSignatureSuccess(response){
@@ -47,7 +47,7 @@ var vm = this;
     createSignatureArray();
 
     function createHeaderArray(){
-        $http.get('/createheaderarray').then(handleHeaderSuccess);
+        $http.get('photos/createheaderarray').then(handleHeaderSuccess);
     }
 
     function handleHeaderSuccess(response){
