@@ -45,8 +45,10 @@
     </div>
     <div class="settingsDisplayPhotos">
           <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
-          <img ng-src="photos/{{photo}}" alt="photo: {{photo}}">
+
+          <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
           <span id="settingsDeletePhoto"  ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+
         </li>
     </div>
   </div>

@@ -13,8 +13,9 @@ var vm = this;
     vm.deletePhoto = function(photo) {
       deletePhoto = {};
       id = 12345;
-      deletePhoto.photo = photo;
-      console.log('delete pushed' , deletePhoto);
+      console.log('photo.id', photo.id);
+      deletePhoto.id = photo.id;
+      // console.log('delete pushed' , deletePhoto);
       $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
     }
     function handleDeleteSuccess(response){
