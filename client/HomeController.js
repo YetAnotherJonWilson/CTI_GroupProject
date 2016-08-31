@@ -1,4 +1,4 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService) {
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route','DonationService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService, $route, DonationService) {
 
 	var vm = this;
 
@@ -253,11 +253,12 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}
 
 
-	vm.sendMail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date) {
+	vm.sendMail = function(donor) {
 		console.log('You cliked me');
 		updateCurrentDonorTemplate(vm.selectedTemplate.name);
 		var template = vm.currentDonor.template.temp;
-		EmailService.sendMail(p1, p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date, template);
+		EmailService.sendMail(donor);
+		DonationService.saveEmail(donor);
 	};
 
 	buildDonorList();

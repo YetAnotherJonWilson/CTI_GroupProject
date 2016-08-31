@@ -67,15 +67,10 @@ router.post('/', upload.single('file'), function (req, res) {
 //     else{
 //       console.log('doc', doc);
 //       for(var i = 0; i < doc.length; i++){
-<<<<<<< HEAD
-//         base64.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
-//       }
-=======
 //         base64[i].photo.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
 //         base64[i].id = doc[i].img._id;
 //       }
 //       console.log('doc id', base64[0].id);
->>>>>>> bb19288c4ec8211416a0b7ae7567890925282ef7
 //       res.contentType(doc[0].img.contentType);
 //       res.send(base64);
 //     }

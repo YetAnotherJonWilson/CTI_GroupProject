@@ -3,27 +3,26 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
   var email = {};
 
 
-  function sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date, template) {
+  function sendMail(donor) {
     var sendData = {};
 
-    sendData.p1 = p1;
-    sendData.p2 = p2;
-    sendData.p3 = p3;
-    sendData.p4 = p4;
-    sendData.q = q;
-    sendData.ps = ps;
-    sendData.img = img;
-    sendData.img2 = img2;
-    sendData.img3 = img3;
-    sendData.img4 = img4;
-    sendData.template = template;
-    sendData.ps = ps;
-    sendData.senderName = senderName;
-    sendData.senderTitle = senderTitle;
-    sendData.email = email;
-    sendData.firstName = firstName;
-    sendData.amount = amount;
-    sendData.date = date;
+    sendData.p1 = donor.template.p1;
+    sendData.p2 = donor.template.p2;
+    sendData.p3 = donor.template.p3;
+    sendData.p4 = donor.template.p4;
+    sendData.q = donor.template.quote;
+    sendData.ps = donor.template.ps;
+    sendData.img = donor.template.img;
+    sendData.img2 = donor.template.img2;
+    sendData.img3 = donor.template.img3;
+    sendData.img4 = donor.template.img4;
+    sendData.template = donor.template.temp;
+    sendData.senderName = donor.template.senderName;
+    sendData.senderTitle = donor.template.senderTitle;
+    sendData.email = donor.email;
+    sendData.firstName = donor.firstName;
+    sendData.amount = donor.Amount;
+    sendData.date = donor.date;
 
     console.log('sendData = ', sendData);
 

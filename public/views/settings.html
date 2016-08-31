@@ -45,15 +45,8 @@
     </div>
     <div class="settingsDisplayPhotos">
           <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
-<<<<<<< HEAD
-          <img ng-src="{{photo}}" height="100px" width="150px" alt="{{photo}}">
-          <button class="btn" id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)">Delete</button>
-=======
-
           <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
           <span id="settingsDeletePhoto"  ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
-
->>>>>>> bb19288c4ec8211416a0b7ae7567890925282ef7
         </li>
     </div>
   </div>

@@ -413,7 +413,7 @@ function getTemplateSuccess(res){
   templatesObject.template3=templatesArray[2];
   templatesObject.template4=templatesArray[3];
   templatesObject.template5=templatesArray[4];
-  $location.path('/home');
+  // $location.path('/home');
 }
 function getTemplateFailure(res){
   console.log('template retrieval failure');
