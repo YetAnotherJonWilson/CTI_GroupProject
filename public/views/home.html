@@ -1,5 +1,5 @@
 <div class="donorInfoHome" class="animated fadeIn">
-    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send All</button>
     <div class="donorSearchDiv">
         <h3>Search</h3>
         <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
@@ -35,7 +35,8 @@
                 <td>{{donor.date}}</td> -->
 
         <h3 id="date">{{donor.date}}</h3>
-        <h2 id="donationAmount">Donation:{{donor.Amount}}</h2>
+        <h2 id="donationAmount">Donation: ${{donor.Amount}}</h2>
+        <h2 id="numberOfDonations">Times Donated: {{donor.donationHistory.lifeTimeNumber}}</h2>
 
 
         <!-- <td>{{donor.convertedDate}}</td> -->

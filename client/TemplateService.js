@@ -28,11 +28,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	function saveTemplateSuccess(res){
 		console.log('temp save success', res);
 	}
-	function saveTemplateFailure(res){
-		console.log('save temp failure', res);
-	}
+// 	function saveTemplateFailure(res){
+// 		console.log('save temp failure', res);
+// 	}
 // 	function addStuff(){
-// 		templatesObject.template1.templateNum='1';
+// 		templatesObject.template1.img2='';
 // 	saveTemplate(templatesObject.template1);
 // }
 // addStuff();
