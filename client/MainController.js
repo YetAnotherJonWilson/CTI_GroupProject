@@ -44,6 +44,7 @@ angular.module('App').controller('MainController', ['$http', '$location', 'Donat
       sendData.picture4 = '/path/to/pic4';
       sendData.letterhead = '/path/to/letterhead';
       sendData.signature = '/path/to/signature';
+      sendData.template = './emails/template#OverView';
       console.log('test button');
       // $http.post('/donor/createData', sendData).then(function(response){
       //   console.log('test success', response);

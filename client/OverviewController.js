@@ -19,7 +19,7 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
 
   vm.bleh = function(){
     console.log('do it');
-    // console.log('Db donor list', vm.donorList);
-    // console.log('sf donor list', vm.sfDonor);
+    console.log('Db donor list', vm.donorList);
+    console.log('sf donor list', vm.sfDonor);
   }
 }]);
