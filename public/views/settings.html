@@ -39,7 +39,7 @@
     </div>
     <div class="settingsDisplayPhotos">
           <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
-          <img ng-src="photos/{{photo}}" height="100px" width="150px" alt="photo: {{photo}}">
+          <img ng-src="{{photo.photo}}" height="100px" width="150px" alt="{{photo.photo}}">
           <button class="btn" id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)">Delete</button>
         </li>
     </div>

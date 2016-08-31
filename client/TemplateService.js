@@ -113,6 +113,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			$http.get('photos/createphotoarray').then(handlePhotoSuccess);
 	};
 	function handlePhotoSuccess(response){
+		console.log('response.data', response.data);
 			imagesObject.images = response.data;
 
 	}
