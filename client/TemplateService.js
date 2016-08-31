@@ -52,6 +52,10 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
+	function updateCurrentDonorTemplate(templateNum){
+		currentDonor.donor[0].donor.template.temp = templateNum;
+	}
+
 	function updateCurrentDonor(donor) {
 		console.log('update current donor, donor:', donor);
 		currentDonor.donor[0].donor = donor;
@@ -169,7 +173,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		uploadPic: uploadPic,
 		createPhotoArray: createPhotoArray,
 		updateCurrentDonor: updateCurrentDonor,
-		updateCurrentDonorKey: updateCurrentDonorKey
+		updateCurrentDonorKey: updateCurrentDonorKey,
+		updateCurrentDonorTemplate: updateCurrentDonorTemplate
 	}
 
 

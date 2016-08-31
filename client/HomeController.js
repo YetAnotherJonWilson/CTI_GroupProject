@@ -30,7 +30,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 		for (var i = 0; i < tempDonorList.length; i++) {
 			tempDonorList[i].template = Object.assign({}, tempStandardTemplate);
-			tempDonorList[i].template.templateNum = tempStandardTemplate;
+			// tempDonorList[i].template.templateNum = tempStandardTemplate.temp;
 		}
 		vm.donorList = tempDonorList;
 		console.log('donorList after build:', vm.donorList);
@@ -58,6 +58,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempDonor;
 
 		if (vm.currentDonor) {
+			updateCurrentDonorTemplate(vm.selectedTemplate.name);
+
 			for (var i = 0; i < vm.donorList.length; i++) {
 				if (vm.donorList[i].Id == vm.currentDonor.Id) {
 					tempIndex = i;
@@ -71,11 +73,15 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 				tempDonor = vm.donorList[i];
 			}
 		}
+
 		updateCurrentDonor(tempDonor);
 		getCurrentDonor();
+		setSelectedTemplate(vm.currentDonor.template.temp);
 	}
 
-
+	function setSelectedTemplate(templateNum){
+		vm.selectedTemplate = vm.templates[templateNum - 1];
+	}
 
 	// vm.setCurrentEditView1 = function(id) {
 	// 	console.log('donor id', id);
@@ -142,6 +148,13 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		TemplateService.updateCurrentDonor(donor);
 	}
 
+	function updateCurrentDonorTemplate(template){
+		console.log('template name:', template);
+		var splitTemplate = template.split(' ');
+		var templateNum = splitTemplate[1];
+		TemplateService.updateCurrentDonorTemplate(templateNum);
+	}
+
 
 	//Dropdown menu to choose different templates
 	vm.templates = [{
@@ -162,6 +175,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}];
 
 	vm.selectedTemplate = vm.templates[0];
+
+	vm.updateTemplateNum = function(){
+		console.log('You clicked the template');
+	}
 
 
 	//Pop up modal for editing text
@@ -234,9 +251,12 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.editedEmails.img3 = img3;
 		vm.editedEmails.img4 = img4;
 	}
-	vm.sendMail = function(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template) {
+	
+	vm.sendMail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4) {
 		console.log('You cliked me');
-		EmailService.sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template);
+		updateCurrentDonorTemplate(vm.selectedTemplate.name);
+		var template = vm.currentDonor.template.temp;
+		EmailService.sendMail(p1, p2, p3, p4, q, ps, img, img2, img3, img4, template);
 	};
 
 
