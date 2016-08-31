@@ -4,6 +4,8 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
   vm.donorList = DonationService.donorObject;
   vm.currentDonor;
   vm.sfDonor = DonationService.overview;
+  // vm.pic = '';
+  vm.edit = true;
   console.log('db donor list', vm.donorList);
   console.log('sf donor list', vm.sfDonor);
 
@@ -17,9 +19,20 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
 		RouteService.settingsRoute();
 	}
 
+  // vm.bleh = function(){
+  //   console.log('do it');
+  //   console.log('Db donor list', vm.donorList);
+  //   console.log('sf donor list', vm.sfDonor);
+  // }
+
   vm.bleh = function(){
-    console.log('do it');
-    console.log('Db donor list', vm.donorList);
-    console.log('sf donor list', vm.sfDonor);
+    $http.get('/photos/getDbImages').then(function(response){
+      console.log('found db images', response);
+      vm.pics = response.data;
+      vm.edit = !vm.edit;
+      console.log('vm.edit', vm.edit);
+    }, function(err){
+      console.log('err getting db images', err);
+    });
   }
 }]);

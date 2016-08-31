@@ -1,5 +1,11 @@
 <div>
   <button ng-click="over.bleh()">bleh</button>
+  <!-- <img ng-hide="over.edit" src="{{over.pic}}" width="590px" height="120px"/> -->
+  <ul ng-repeat="pic in over.pics track by $index">
+    <li>
+      <img ng-hide="over.edit" src="{{pic}}" height="200"/>
+    </li>
+  </ul>
 </div>
 <div class="donorInfoHome" class="animated fadeIn">
     <div class="donorSearchDiv">
