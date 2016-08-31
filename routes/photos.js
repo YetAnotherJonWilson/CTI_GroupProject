@@ -24,10 +24,16 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.post('/deletePhoto', function(req, res) {
+  console.log('remove req', req.body);
+  Img.findByIdAndRemove(req.body.id, function(response){
+    console.log('successful remove of stuff', response);
+  }, function(err){
+    console.log('boo you suck....at removing pics', err);
+  });
   console.log('trying to delete');
-  console.log('req.body' , req.body.photo );
-  var filePath = "public/photos/" + req.body.photo;
-  fs.unlinkSync(filePath);
+  // console.log('req.body' , req.body._id );
+  // var filePath = "public/photos/" + req.body.photo;
+  // fs.unlinkSync(filePath);
   res.sendStatus(200);
 });
 
@@ -61,8 +67,15 @@ router.post('/', upload.single('file'), function (req, res) {
 //     else{
 //       console.log('doc', doc);
 //       for(var i = 0; i < doc.length; i++){
+<<<<<<< HEAD
 //         base64.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
 //       }
+=======
+//         base64[i].photo.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
+//         base64[i].id = doc[i].img._id;
+//       }
+//       console.log('doc id', base64[0].id);
+>>>>>>> bb19288c4ec8211416a0b7ae7567890925282ef7
 //       res.contentType(doc[0].img.contentType);
 //       res.send(base64);
 //     }
@@ -90,6 +103,8 @@ router.get('/createphotoarray', function(req, res) {
   //     console.log(err);
   //   }
   // });
+  var photos = [];
+  var photo = {};
   Img.find({}, function(err, doc){
     if(err){
       return next(err);
@@ -97,9 +112,21 @@ router.get('/createphotoarray', function(req, res) {
     else{
       var photos = [];
       console.log('doc', doc);
+      // photos = doc;
       for(var i = 0; i < doc.length; i++){
-        photos.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
+        photo = {};
+        // var base64 = doc[i].img.data.toString('base64');
+        photo.photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        photo.id = doc[i]._id;
+        // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        // photos[i].id = doc[i].id;
+        photos.push(photo);
+        // console.log('photos.id', photos[i].id);
       }
+      for(var i = 0; i < photos.length; i++){
+        console.log('photos.id', photos[i].id);
+      }
+      // console.log('photos', photos);
       res.contentType(doc[0].img.contentType);
       res.send(photos);
     }

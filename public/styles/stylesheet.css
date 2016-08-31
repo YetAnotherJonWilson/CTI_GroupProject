@@ -42,7 +42,7 @@ body {
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   /*padding: 5px 10px 10px 10px;*/
-  overflow: hidden;
+  overflow: auto;
 
 }
 header {
@@ -315,7 +315,6 @@ background-color: rgba(0, 0, 0, 0.1);
   height: auto;
   overflow: scroll;*/
 }
-
 .settingsViewDiv {
   max-width: 100%;
   /*float: left;*/
@@ -326,15 +325,17 @@ background-color: rgba(0, 0, 0, 0.1);
   height: 200px;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 .done {
   background-color: rgb(38, 127, 147);
   color: white;
 }
 #remove {
-  background-color: #086A81;
+  background-color: #EB7536;
   color: white;
-  float: left;
+  margin: 5px 10px 0 5px;
+
 }
 #remove:hover {
   background-color: rgb(38, 127, 147);
@@ -343,21 +344,16 @@ background-color: rgba(0, 0, 0, 0.1);
 #submit {
   background-color: green;
   color: white;
-  float: left;
+  margin: 5px 0 0 0;
 }
 #submit:hover {
   background-color: rgb(63, 219, 28);
   color: white;
 }
-#settingsDeletePhoto {
-  background-color: #EB7536;
-  margin: 3px 0 0 45px;
-  color: white;
-}
+
 .thumb {
-    height: 100px;
-    width: 150px;
-    margin: 10px 0 0 10px;
+    height: 125px;
+    width: 175px;
     border: 1px solid grey;
     webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
@@ -368,20 +364,44 @@ background-color: rgba(0, 0, 0, 0.1);
   margin: 10px 0 0 45px;
 }
 .settingsDisplayPhotos li {
-  height: 150px;
-  width: 152px;
-  margin: 15px 0 0 25px;
+  height: 125px;
+  width: 177px;
+  margin: 30px 0 0 30px;
   border: 1px solid rgb(96, 96, 96);
   float: left;
   display: inline;
-  webkit-box-shadow: -1px 1px 5px 4px rgb(0, 0, 0, 0.2);
-  -moz-box-shadow: -1px 1px 5px 4px rgb(0, 0, 0, 0.2);
-  box-shadow: -1px 1px 3px 2px rgb(0, 0, 0, 0.2);
-  background-color: #086A81;
+  webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.4);
+
+}
+#settingsDeletePhoto {
+  position: relative;
+  padding: 2px;
+  top: -128px;
+  right: 1px;
+  color: #EB7536;
+  background-color: rgba(25, 20, 20,.9);
+  border-radius: 0 0 5px 0;
+  box-shadow: none;
+}
+.glyphicon-remove{
 }
 .settingsDisplayPhotos img {
-  height: 100px;
-  width: 150px;
+  height: 125px;
+  width: 175px;
   border-bottom: 1px solid rgb(96, 96, 96);
-
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    margin: 5px 0 5px 0;
+    padding: 10px 12px;
+    cursor: pointer;
+    background: #086A81;
+    border-radius: 5px;
+    color: white;
+}
+input[type="file"] {
+    display: none;
 }

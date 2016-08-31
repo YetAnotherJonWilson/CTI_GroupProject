@@ -45,8 +45,9 @@
 
     </div>
 </div>
-<div class='editmain'>
-  {{home.editedEmails}}
+<div class="editmain" ng-hide="home.currentDonor"><h1>Choose an email to view</h1></div>
+
+<div ng-show="home.currentDonor" class='editmain'>
 
 
     <button ng-click='home.sendMail(home.currentDonor.template.p1, home.currentDonor.template.p2, home.currentDonor.template.p3, home.currentDonor.template.p4, home.currentDonor.template.quote, home.currentDonor.template.ps, home.currentDonor.template.img, home.currentDonor.template.img2, home.currentDonor.template.img3, home.currentDonor.template.img4, home.currentDonor.template.senderName, home.currentDonor.template.senderTitle, home.currentDonor.email, home.currentDonor.firstName, home.currentDonor.Amount, home.currentDonor.CloseDate)'>Send</button>
