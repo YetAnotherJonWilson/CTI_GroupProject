@@ -57,10 +57,11 @@ router.get('/oauth2/callback', function(request, response){
     request.session.instanceUrl = conn.instanceUrl;
     console.log('work please');
 
-    getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
-      // everything = everything;
-      console.log('great success');
-      // response.redirect('/gettingdata');
+
+    // getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
+    //   everything = everything;
+      // console.log('great success');
+    //   response.redirect('/gettingdata');
       response.redirect('/home');
     });
   });
@@ -102,6 +103,7 @@ function getOpps(accessToken, instanceUrl){
       var stuff = response;
       // console.log(stuff.records.length);
 
+      var promisesToWaitFor = []
       for(var i=0; i<stuff.records.length; i++){
         for(var j = 0; j < dbDonors.length; j++){
           if(dbDonors[j].opportunityId == stuff.records[i].Id){
@@ -110,12 +112,12 @@ function getOpps(accessToken, instanceUrl){
           }
         }
         opportunities.push(stuff.records[i]);
-        getContact(accessToken, instanceUrl, stuff.records[i]);
-        getAccount(accessToken, instanceUrl, stuff.records[i].AccountId);
+        promisesToWaitFor.push(getContact(accessToken, instanceUrl, stuff.records[i]));
+        promisesToWaitFor.push(getAccount(accessToken, instanceUrl, stuff.records[i].AccountId));
         // everything=[opportunities, contacts, accounts, households];
 
       }
-      return stuff;
+      return Promise.all(promisesToWaitFor);
       // return everything;
       // done=true;
     // }
@@ -137,8 +139,8 @@ function getContact(accessToken, instanceUrl, record){
       var stuff = response;
       // console.log(stuff);
       contacts.push(stuff.records[0]);
-      getHousehold(accessToken, instanceUrl, stuff.records[0].npo02__Household__c);
-      return contacts;
+
+      return getHousehold(accessToken, instanceUrl, stuff.records[0].npo02__Household__c);
     // }
   }).catch(function(err){
     console.log('another err', err);
