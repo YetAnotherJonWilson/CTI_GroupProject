@@ -19,16 +19,19 @@
   <!-- This displays the uploaded photos and the upload form -->
     <div class="settingsUploadeImageForm" ng-show="images">
       <form name="photoForm">
+        <label class="custom-file-upload">
+
+          Upload Photo
+
           <input type="file" ngf-select ng-model="picFile" name="file"
                  accept="image/*" ngf-max-size="2MB" required
                  ngf-model-invalid="errorFile">
+
+           </label>
           <i ng-show="photoForm.file.$error.maxSize">File too large
               {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
           <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
-          <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile">Remove</button>
-          <br>
-          <button class="btn" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid"
-                  ng-click="settings.uploadPic(picFile)">Submit</button>
+
           <!-- <span class="progress" ng-show="picFile.progress >= 0">
           <div style="width:{{picFile.progress}}%"
                ng-bind="picFile.progress + '%'"></div>
@@ -36,11 +39,14 @@
           <h1 class="sucess" ng-show="picFile.result">Upload Successful</h1>
           <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       </form>
+      <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile">Remove</button>
+      <button class="btn" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid"
+              ng-click="settings.uploadPic(picFile)">Save</button>
     </div>
     <div class="settingsDisplayPhotos">
           <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
-          <img ng-src="photos/{{photo}}" height="100px" width="150px" alt="photo: {{photo}}">
-          <button class="btn" id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)">Delete</button>
+          <img ng-src="photos/{{photo}}" alt="photo: {{photo}}">
+          <span id="settingsDeletePhoto"  ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
         </li>
     </div>
   </div>
