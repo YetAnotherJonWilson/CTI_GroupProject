@@ -40,12 +40,13 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
     .when('/overview', {
       templateUrl: '/views/overview.html',
       controller: 'OverviewController',
-      controllerAs: 'over',
-      resolve: {
-        bleh: ['DonationService', function(DonationService){
-          return DonationService.getDonorDbStuff();
-        }]
-      }
+      controllerAs: 'over'
+      // ,
+      // resolve: {
+      //   bleh: ['DonationService', function(DonationService){
+      //     return DonationService.getDonorDbStuff();
+      //   }]
+      // }
     })
 
     .otherwise({redirectTo:'/'});
