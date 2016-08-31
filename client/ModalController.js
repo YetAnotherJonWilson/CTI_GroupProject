@@ -19,11 +19,11 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
   // }
 
 
-	vm.uploadPic = function(pic) {
-		console.log('Uploading Pic', pic);
-		TemplateService.uploadPic(pic);
-		TemplateService.createPhotoArray();
-	}
+	// vm.uploadPic = function(pic) {
+	// 	console.log('Uploading Pic', pic);
+	// 	TemplateService.uploadPic(pic);
+	// 	TemplateService.createPhotoArray();
+	// }
 
 
 

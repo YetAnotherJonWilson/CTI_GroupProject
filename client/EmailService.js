@@ -4,17 +4,20 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
 
 
 
-  function sendMail(p1, p2, p3, p4, q, ps, donorInfo) {
+  function sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template) {
     var sendData = {};
 
     sendData.p1 = p1;
     sendData.p2 = p2;
     sendData.p3 = p3;
     sendData.p4 = p4;
-    // sendData.p5 = p5;
     sendData.q = q;
     sendData.ps = ps;
-    sendData.donor = donorInfo;
+    sendData.img = img;
+    sendData.img2 = img2;
+    sendData.img3 = img3;
+    sendData.img4 = img4;
+    sendData.template = template;
 
     console.log('sendData = ', sendData);
 
@@ -28,7 +31,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
           //   repsonse.sendStatus(500);
           // });
       });
-      $location.path('/');
+      $location.path('/home');
       return;
   }
 

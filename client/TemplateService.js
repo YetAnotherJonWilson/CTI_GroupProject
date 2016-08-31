@@ -31,11 +31,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	function saveTemplateFailure(res){
 		console.log('save temp failure', res);
 	}
-	function addStuff(){
-		templatesObject.template1.img4='';
-	saveTemplate(templatesObject.template1);
-}
-addStuff();
+// 	function addStuff(){
+// 		templatesObject.template1.templateNum='1';
+// 	saveTemplate(templatesObject.template1);
+// }
+// addStuff();
 	// function setCurrentImg(img){
 	// 	currentTemplate.img = "photos/" + img;
 	// 	console.log('currentTemplate.img' , currentTemplate.img);
@@ -48,7 +48,7 @@ addStuff();
 
 	function updateCurrentDonorKey(key, value) {
 		currentDonor.donor[0].donor.template[key] = value;
-		
+
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
@@ -101,6 +101,7 @@ addStuff();
 	// }
 
 
+
 	var imagesObject = {
 		images: []
 	}
@@ -109,7 +110,7 @@ addStuff();
 	};
 	function handlePhotoSuccess(response){
 			imagesObject.images = response.data;
-			// console.log('This is the images object' , imagesObject.images);
+
 	}
 	createPhotoArray();
 

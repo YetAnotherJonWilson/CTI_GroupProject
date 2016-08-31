@@ -7,7 +7,7 @@ var vm = this;
     vm.unhideHeaders = false;
 
 
-    console.log(UserService.photosArray);
+    // console.log(UserService.photosArray);
 
 
     vm.deletePhoto = function(photo) {
@@ -40,7 +40,7 @@ var vm = this;
     }
 
     function handleSignatureSuccess(response){
-        console.log(response.data);
+        console.log('What is this!!!!!!!!!' ,response.data);
         vm.signatures = response.data;
     }
 
