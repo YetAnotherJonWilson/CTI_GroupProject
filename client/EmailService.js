@@ -3,8 +3,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
   var email = {};
 
 
-
-  function sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template) {
+  function sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date, template) {
     var sendData = {};
 
     sendData.p1 = p1;
@@ -18,6 +17,13 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.img3 = img3;
     sendData.img4 = img4;
     sendData.template = template;
+    sendData.ps = ps;
+    sendData.senderName = senderName;
+    sendData.senderTitle = senderTitle;
+    sendData.email = email;
+    sendData.firstName = firstName;
+    sendData.amount = amount;
+    sendData.date = date;
 
     console.log('sendData = ', sendData);
 

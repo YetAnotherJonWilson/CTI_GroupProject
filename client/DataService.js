@@ -65,7 +65,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
        lifeTimeAmount:1100,
        lifeTimeNumber:2
       },
-      email:"trent@fake.net",
+      email:"tdjohnson0722@gmail.com",
       firstName:"Trent",
       formalGreeting:"Mr. Trent Johnson",
       householdId:"a00d000000mOdmgAAC",

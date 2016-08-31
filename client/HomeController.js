@@ -252,11 +252,11 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.editedEmails.img4 = img4;
 	}
 	
-	vm.sendMail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4) {
+	vm.sendMail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date) {
 		console.log('You cliked me');
 		updateCurrentDonorTemplate(vm.selectedTemplate.name);
 		var template = vm.currentDonor.template.temp;
-		EmailService.sendMail(p1, p2, p3, p4, q, ps, img, img2, img3, img4, template);
+		EmailService.sendMail(p1, p2, p3, p4, q, ps, img, img2, img3, img4, senderName, senderTitle, email, firstName, amount, date, template);
 	};
 
 

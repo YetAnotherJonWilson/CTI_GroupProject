@@ -52,22 +52,22 @@ router.post('/', upload.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 
-router.get('/getDbImages', function(req, res, next){
-  var base64 = [];
-  Img.find({}, function(err, doc){
-    if(err){
-      return next(err);
-    }
-    else{
-      console.log('doc', doc);
-      for(var i = 0; i < doc.length; i++){
-        base64.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
-      }
-      res.contentType(doc[0].img.contentType);
-      res.send(base64);
-    }
-  });
-});
+// router.get('/getDbImages', function(req, res, next){
+//   var base64 = [];
+//   Img.find({}, function(err, doc){
+//     if(err){
+//       return next(err);
+//     }
+//     else{
+//       console.log('doc', doc);
+//       for(var i = 0; i < doc.length; i++){
+//         base64.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
+//       }
+//       res.contentType(doc[0].img.contentType);
+//       res.send(base64);
+//     }
+//   });
+// });
 
 router.post('/sigfile', uploadSig.single('file'), function (req, res) {
   console.log('file uploaded:', res.file);

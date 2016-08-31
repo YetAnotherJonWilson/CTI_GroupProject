@@ -17,7 +17,10 @@ var Template = require('../models/template');
     img2: '',
     img3: '',
     img4: '',
-    temp: '1'
+    temp: '1',
+    ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+    senderName:'Alexandra Spieldoch',
+    senderTitle: 'Executive Director'
   };
   var template2= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -30,7 +33,10 @@ var Template = require('../models/template');
     img2: '',
     img3: '',
     img4: '',
-    temp: '2'
+    temp: '2',
+    ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+    senderName:'Alexandra Spieldoch',
+    senderTitle: 'Executive Director'
   };
   var template3= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -43,7 +49,10 @@ var Template = require('../models/template');
     img2: 'assets/sampleimage0.jpg',
     img3: '',
     img4: '',
-    temp: '3'
+    temp: '3',
+    ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+    senderName:'Alexandra Spieldoch',
+    senderTitle: 'Executive Director'
   };
   var template4= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -56,7 +65,10 @@ var Template = require('../models/template');
     img2: 'assets/sampleimage3.jpg',
     img3: 'assets/sampleimage4.jpg',
     img4: 'assets/sampleimage5.jpg',
-    temp: '4'
+    temp: '4',
+    ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+    senderName:'Alexandra Spieldoch',
+    senderTitle: 'Executive Director'
   };
   var template5= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -69,7 +81,10 @@ var Template = require('../models/template');
     img2: 'assets/sampleimage3.jpg',
     img3: 'assets/sampleimage4.jpg',
     img4: 'assets/sampleimage5.jpg',
-    temp: '5'
+    temp: '5',
+    ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+    senderName:'Alexandra Spieldoch',
+    senderTitle: 'Executive Director'
   };
 router.post('/addtemplates', function(request, response){
   var data = template1;
@@ -87,7 +102,10 @@ router.post('/addtemplates', function(request, response){
     img2: data.img2,
     img3: data.img3,
     img4: data.img4,
-    temp: data.temp
+    temp: data.temp,
+    ps: data.ps,
+    senderName: data.senderName,
+    senderTitle: data.senderTitle
   }, function(err){
     if(err){
       console.log('add template err');
@@ -106,7 +124,10 @@ router.post('/addtemplates', function(request, response){
     img2: data2.img2,
     img3: data2.img3,
     img4: data2.img4,
-    temp: data2.temp
+    temp: data2.temp,
+    ps: data2.ps,
+    senderName: data2.senderName,
+    senderTitle: data2.senderTitle
   }, function(err){
     if(err){
       console.log('add template err');
@@ -125,7 +146,10 @@ router.post('/addtemplates', function(request, response){
     img2: data3.img2,
     img3: data3.img3,
     img4: data3.img4,
-    temp: data3.temp
+    temp: data3.temp,
+    ps: data3.ps,
+    senderName: data3.senderName,
+    senderTitle: data3.senderTitle
   }, function(err){
     if(err){
       console.log('add template err');
@@ -144,7 +168,10 @@ router.post('/addtemplates', function(request, response){
     img2: data4.img2,
     img3: data4.img3,
     img4: data4.img4,
-    temp: data4.temp
+    temp: data4.temp,
+    ps: data4.ps,
+    senderName: data4.senderName,
+    senderTitle: data4.senderTitle
   }, function(err){
     if(err){
       console.log('add template err');
@@ -163,7 +190,10 @@ router.post('/addtemplates', function(request, response){
     img2: data5.img2,
     img3: data5.img3,
     img4: data5.img4,
-    temp: data5.temp
+    temp: data5.temp,
+    ps: data5.ps,
+    senderName: data5.senderName,
+    senderTitle: data5.senderTitle
   }, function(err){
     if(err){
       console.log('add template err');
