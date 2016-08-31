@@ -204,6 +204,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.editedEmails.img3 = img3;
 		vm.editedEmails.img4 = img4;
 	}
+	vm.sendMail = function(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template) {
+		console.log('You cliked me');
+		EmailService.sendMail(p1,p2, p3, p4, q, ps, img, img2, img3, img4, template);
+	};
 
 
 	buildDonorList();
