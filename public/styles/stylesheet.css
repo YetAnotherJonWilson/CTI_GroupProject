@@ -102,8 +102,11 @@ header a:hover {
   display: inline-table;
   float: left;
   width: 35%;
+  height: 1100px;
   margin-left: 0px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+  box-shadow: -5 -5 0 rgba(0, 0, 0, 0.1);
 }
 .donorInfoHome th {
   font-weight: bold;
@@ -139,7 +142,6 @@ background-color: rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
   padding: 10px 5px 40px 0;
-
 }
 #dropDown {
   float: right;
@@ -156,9 +158,8 @@ background-color: rgba(0, 0, 0, 0.1);
 .downCaret:after {
   content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
 }
-.donorInfoHome div:active {
-background-color: rgba(0, 0, 0, 0.1);
-}
+
+
 #editEmail {
   background-color: #086A81;
   color: white;
@@ -185,9 +186,6 @@ background-color: rgba(0, 0, 0, 0.1);
   width: 200px;
   margin: auto;
   font-size: 20px;
-}
-tr:nth-child(even) {
-    background-color: ;
 }
 /*edit.html*/
 .editmain {
@@ -253,28 +251,7 @@ tr:nth-child(even) {
   margin: 0 0 5px 5px;
   padding-bottom: 10px;
 }
-.done {
-  background-color: rgb(38, 127, 147);
-  color: white;
-}
-#remove {
-  background-color: #086A81;
-  color: white;
-  float: left;
-}
-#remove:hover {
-  background-color: rgb(38, 127, 147);
-  color: white;
-}
-#submit {
-  background-color: green;
-  color: white;
-  float: left;
-}
-#submit:hover {
-  background-color: rgb(63, 219, 28);
-  color: white;
-}
+
 .imageModalClass {
   width: 225px;
   position: fixed;
@@ -309,41 +286,18 @@ tr:nth-child(even) {
   /*text-align: center;*/
 }
 
-.thumb {
-    width: 24px;
-    height: 24px;
-    float: none;
-    position: relative;
-    top: 7px;
-}
-
-form .progress {
-    line-height: 15px;
-}
-
-.progress {
-    display: inline-block;
-    width: 100px;
-    border: 3px groove #CCC;
-}
-
-.progress div {
-    font-size: smaller;
-    background: orange;
-    width: 0;
-}
-
 /*//////////////////Settings Page/////////////////////*/
 .settingsMenu {
   display: inline-table;
   float: left;
   width: 35%;
+  height: 1100px;
   margin-left: 0px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-.settingsPhotoUpload {
+.settingsMenuPhotoUpload, .settingsMenuSignatureUpload, .settingsMenuHeaderUpload {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 150px;
+  height: 100px;
   padding: 5px 5px 5px 2px;
 }
 .settingsMenu h1 {
@@ -353,16 +307,81 @@ form .progress {
 .settingsMenu img {
   float: right;
 }
-.settingsPhotoUpload:hover {
+.settingsMenuPhotoUpload:hover,.settingsMenuSignatureUpload:hover,.settingsMenuHeaderUpload:hover {
 background-color: rgba(0, 0, 0, 0.1);
 }
 .settingsDisplayPhotos {
-  width: 100%;
+  /*width: 100%;
   height: auto;
-  overflow: scroll;
+  overflow: scroll;*/
+}
+
+.settingsViewDiv {
+  max-width: 100%;
+  /*float: left;*/
+  margin-top: 100px;
+  overflow: auto;
+}
+.settingsUploadeImageForm {
+  height: 200px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.done {
+  background-color: rgb(38, 127, 147);
+  color: white;
+}
+#remove {
+  background-color: #086A81;
+  color: white;
+  float: left;
+}
+#remove:hover {
+  background-color: rgb(38, 127, 147);
+  color: white;
+}
+#submit {
+  background-color: green;
+  color: white;
+  float: left;
+}
+#submit:hover {
+  background-color: rgb(63, 219, 28);
+  color: white;
+}
+#settingsDeletePhoto {
+  background-color: #EB7536;
+  margin: 3px 0 0 45px;
+  color: white;
+}
+.thumb {
+    height: 100px;
+    width: 150px;
+    margin: 10px 0 0 10px;
+    border: 1px solid grey;
+    webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.2);
+}
+.settingsUploadeImageForm h1 {
+  display: inline-block;
+  margin: 10px 0 0 45px;
 }
 .settingsDisplayPhotos li {
+  height: 150px;
+  width: 152px;
+  margin: 15px 0 0 25px;
+  border: 1px solid rgb(96, 96, 96);
   float: left;
-  margin: 5px;
   display: inline;
+  webkit-box-shadow: -1px 1px 5px 4px rgb(0, 0, 0, 0.2);
+  -moz-box-shadow: -1px 1px 5px 4px rgb(0, 0, 0, 0.2);
+  box-shadow: -1px 1px 3px 2px rgb(0, 0, 0, 0.2);
+  background-color: #086A81;
+}
+.settingsDisplayPhotos img {
+  height: 100px;
+  width: 150px;
+  border-bottom: 1px solid rgb(96, 96, 96);
+
 }
