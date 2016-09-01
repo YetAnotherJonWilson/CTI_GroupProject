@@ -31,9 +31,10 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	function saveTemplateSuccess(res) {
 		console.log('temp save success', res);
 	}
-		function saveTemplateFailure(res){
-			console.log('save temp failure', res);
-		}
+
+	function saveTemplateFailure(res) {
+		console.log('save temp failure', res);
+	}
 	// 	function addStuff(){
 	// 		templatesObject.template1.img='1';
 	// 	saveTemplate(templatesObject.template1);
@@ -50,9 +51,9 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	}
 
 	function updateCurrentDonorKey(key, value) {
-		console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
+		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
 		currentDonor.donor[0].donor.template[key] = value;
-		console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
+		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
 
 
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
@@ -107,76 +108,79 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		// bleh();
 
 	}
-	createPhotoArray();
+	// createPhotoArray();
 
 	function bleh() {
 		console.log('bleh', templatesObject);
 		console.log('images object', imagesObject);
-		var templateImages = {};
-		// console.log('template service templatesObject.img', templatesObject.template1.img);
-		templateImages.t1 = {};
-		templateImages.t2 = {};
+		var templateImage = {};
+		console.log('template service templatesObject.img', templatesObject.template1.img);
+		templateImage.t1 = {};
+		templateImage.t2 = {};
+		templateImage.t3 = {};
+		templateImage.t4 = {};
+		templateImage.t5 = {};
 		console.log('templatesObject.template1.img', templatesObject.template1.img);
-		templateImages.t1.img = templatesObject.template1.img.split('/');
-		templateImages.t2.img = templatesObject.template2.img.split('/');
-		// templateImages.t3.img = templatesObject.template3.img.split('/');
-		// templateImages.t3.img2 = templatesObject.template3.img2.split('/');
-		// templateImages.t4.img = templatesObject.template4.img.split('/');
-		// templateImages.t4.img2 = templatesObject.template4.img2.split('/');
-		// templateImages.t4.img3 = templatesObject.template4.img3.split('/');
-		// templateImages.t4.img4 = templatesObject.template4.img4.split('/');
-		// templateImages.t5.img = templatesObject.template5.img.split('/');
-		// templateImages.t5.img2 = templatesObject.template5.img2.split('/');
-		// templateImages.t5.img3 = templatesObject.template5.img3.split('/');
-		// templateImages.t5.img4 = templatesObject.template5.img4.split('/');
+		templateImage.t1.img = templatesObject.template1.img.split('/');
+		templateImage.t2.img = templatesObject.template2.img.split('/');
+		templateImage.t3.img = templatesObject.template3.img.split('/');
+		templateImage.t3.img2 = templatesObject.template3.img2.split('/');
+		templateImage.t4.img = templatesObject.template4.img.split('/');
+		templateImage.t4.img2 = templatesObject.template4.img2.split('/');
+		templateImage.t4.img3 = templatesObject.template4.img3.split('/');
+		templateImage.t4.img4 = templatesObject.template4.img4.split('/');
+		templateImage.t5.img = templatesObject.template5.img.split('/');
+		templateImage.t5.img2 = templatesObject.template5.img2.split('/');
+		templateImage.t5.img3 = templatesObject.template5.img3.split('/');
+		templateImage.t5.img4 = templatesObject.template5.img4.split('/');
 		for (i = 0; i < imagesObject.images.length; i++) {
 			console.log('imagesObject.images', imagesObject.images);
-			if (templateImages.t1.img[2] == imagesObject.images[i].id) {
+			if (templateImage.t1.img[2] == imagesObject.images[i].id) {
 				templatesObject.template1.img = imagesObject.images[i];
 				break;
 			}
 		}
 		for (j = 0; j < imagesObject.images.length; j++) {
-			if (templateImages.t2.img[2] == imagesObject.images[j].id) {
+			if (templateImage.t2.img[2] == imagesObject.images[j].id) {
 				templatesObject.template2.img = imagesObject.images[j];
 			}
 		}
 		console.log('template service templates object bleh', templatesObject);
 		// return templatesObject;
-		// for(k = 0; k < imagesObject.images.length; k++){
-		// 	if(templatesImages.t3.img[2] == imagesObject.images[k].id){
-		// 		templatesObject.template3.img = imagesObject.images[k];
-		// 	}
-		// 	if(templatesImages.t3.img2[2] == imagesObject.images[k].id){
-		// 		templatesObject.template1.img2 = imagesObject.images[k];
-		// 	}
-		// }
-		// for(m = 0; m < imagesObject.images.length; m++){
-		// 	if(templatesImages.t4.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template4.img = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t4.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template4.img2 = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t4.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template4.img3 = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t4.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template4.img4 = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t5.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template5.img = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t5.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template5.img2 = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t5.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template5.img3 = imagesObject.images[m];
-		// 	}
-		// 	if(templatesImages.t5.img[2] == imagesObject.images[m].id){
-		// 		templatesObject.template5.img4 = imagesObject.images[m];
-		// 	}
-		// }
+		for (k = 0; k < imagesObject.images.length; k++) {
+			if (templateImage.t3.img[2] == imagesObject.images[k].id) {
+				templatesObject.template3.img = imagesObject.images[k];
+			}
+			if (templateImage.t3.img2[2] == imagesObject.images[k].id) {
+				templatesObject.template3.img2 = imagesObject.images[k];
+			}
+		}
+		for (m = 0; m < imagesObject.images.length; m++) {
+			if (templateImage.t4.img[2] == imagesObject.images[m].id) {
+				templatesObject.template4.img = imagesObject.images[m];
+			}
+			if (templateImage.t4.img2[2] == imagesObject.images[m].id) {
+				templatesObject.template4.img2 = imagesObject.images[m];
+			}
+			if (templateImage.t4.img3[2] == imagesObject.images[m].id) {
+				templatesObject.template4.img3 = imagesObject.images[m];
+			}
+			if (templateImage.t4.img4[2] == imagesObject.images[m].id) {
+				templatesObject.template4.img4 = imagesObject.images[m];
+			}
+			if (templateImage.t5.img[2] == imagesObject.images[m].id) {
+				templatesObject.template5.img = imagesObject.images[m];
+			}
+			if (templateImage.t5.img2[2] == imagesObject.images[m].id) {
+				templatesObject.template5.img2 = imagesObject.images[m];
+			}
+			if (templateImage.t5.img3[2] == imagesObject.images[m].id) {
+				templatesObject.template5.img3 = imagesObject.images[m];
+			}
+			if (templateImage.t5.img4[2] == imagesObject.images[m].id) {
+				templatesObject.template5.img4 = imagesObject.images[m];
+			}
+		}
 	}
 
 
@@ -219,7 +223,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		templatesObject.template5 = templatesArray[4];
 		// console.log('templates object gettemplatesuccess', templatesObject);
 		// bleh(templatesObject);
-		bleh();
+		// bleh();
 	}
 
 	function getTemplateFailure(res) {
@@ -247,7 +251,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 			ps: ps
 		})
 	}
-
+	// bleh();
 	return {
 		currentDonor: currentDonor,
 		currentTemplate: currentTemplate,

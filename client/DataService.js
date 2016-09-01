@@ -124,7 +124,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
         sortData(data);
         preconvertDates();
         // convertDates();
-        $location.path('/home');
+        // $location.path('/home');
   }
   function handleFailure(res){
     console.log('fail', res);
