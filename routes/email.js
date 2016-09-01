@@ -44,7 +44,7 @@ router.post('/sendMail', function(request, response){
   });
   var mailOptions = {
     from: 'CTI GROUP <ctithankyou@gmail.com',
-    to: 'ctithankyou@outlook.com',
+    to: request.body.email,
     subject: 'Thank You',
     text: 'Thank You for donating!',
 
@@ -57,7 +57,13 @@ router.post('/sendMail', function(request, response){
     img: data.img,
     img2: data.img2,
     img3: data.img3,
-    img4: data.img4
+    img4: data.img4,
+    ps: data.ps,
+    senderName: data.senderName,
+    senderTitle: data.senderTitle,
+    name: data.firstName,
+    amount: data.amount,
+    date: data.date
     }),
 };
 

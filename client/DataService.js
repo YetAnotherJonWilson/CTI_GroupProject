@@ -30,7 +30,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
        lifeTimeAmount:635,
        lifeTimeNumber:2
       },
-      email:"dosawea@yahoo.com",
+      email:"ctithankyou@outlook.com",
       firstName:"Christian",
       formalGreeting:"Christian Neufville",
       householdId:"a00d0000007j6fAAAQ",
@@ -63,9 +63,9 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
       date:"08-22-2016",
       donationHistory:{
        lifeTimeAmount:1100,
-       lifeTimeNumber:2
+       lifeTimeNumber:8
       },
-      email:"trent@fake.net",
+      email:"tdjohnson0722@gmail.com",
       firstName:"Trent",
       formalGreeting:"Mr. Trent Johnson",
       householdId:"a00d000000mOdmgAAC",
@@ -81,7 +81,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
       Amount:1234,
       CloseDate:"2016-08-22",
       Id:"006d000000r6ehSAAQ",
-      Name:"Jonanthon Wilson- Donation 8/22/2016",
+      Name:"Jonathon Wilson- Donation 8/22/2016",
       Primary_Contact__c:"003d0000037X61sAAC",
       address:{
       city:"real",
@@ -100,11 +100,11 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
       lifeTimeAmount:11110,
       lifeTimeNumber:2
       },
-      email:"jon@prime.io",
-      firstName:"Jonanthon",
-      formalGreeting:"Mr. Jonanthon and Mrs. Wife Wilson",
+      email:"ctithankyou@outlook.com",
+      firstName:"Jonathan",
+      formalGreeting:"Mr. Jonathan and Mrs. Wife Wilson",
       householdId:"a00d000000mOdn5AAC",
-      informalGreeting:"Jonanthon and Wife",
+      informalGreeting:"Jonathan and Wife",
       lastName:"Wilson",
       npe01__Contact_Id_for_Role__c:"003d0000037X61sAAC",
       npe01__Is_Opp_From_Individual__c:"true",
@@ -413,7 +413,6 @@ function getTemplateSuccess(res){
   templatesObject.template3=templatesArray[2];
   templatesObject.template4=templatesArray[3];
   templatesObject.template5=templatesArray[4];
-  $location.path('/home');
 }
 function getTemplateFailure(res){
   console.log('template retrieval failure');

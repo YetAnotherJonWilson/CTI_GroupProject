@@ -8,7 +8,6 @@
     <button ng-click="settings.settingsClick('signature')" class="settingsMenuSignatureUpload">
         <h1>Upload Signature</h1>
     </button>
-
     <button ng-click="settings.settingsClick('header')" class="settingsMenuHeaderUpload">
         <h1>Upload Header</h1>
     </button>
@@ -62,6 +61,40 @@
     <form name="signatureForm">
         <input type="file" ngf-select ng-model="sigFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
         <i ng-show="signatureForm.file.$error.maxSize">File too large
+  </div>
+
+  <!-- This is the edit template view -->
+  <div class='editmain' ng-show="template">
+<button ng-click="settings.setCurrentTemplate('1')">template 1</button>
+<button ng-click="settings.setCurrentTemplate('2')">template 2</button>
+<button ng-click="settings.setCurrentTemplate('3')">template 3</button>
+<button ng-click="settings.setCurrentTemplate('4')">template 4</button>
+<button ng-click="settings.setCurrentTemplate('5')">template 5</button>
+<button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+<button ng-click="settings.saveAllTemplates()">Save All</button>
+
+      <div class="editField">
+          <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
+              <option value="">(blank)</option>
+          </select> -->
+          <div class='editview'>
+              <div>
+                  <!-- <hr/> -->
+                  <div class="slide-animate-container">
+                      <div class="slide-animate" ng-include="settings.selectedTemplate.url"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- settings view to display uploaded signatures -->
+    <div class="settingsUploadSignature" ng-show="signatures">
+      <form name="signatureForm">
+        <input type="file" ngf-select ng-model="sigFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+             <i ng-show="signatureForm.file.$error.maxSize">File too large
           {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
         <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" height="100" width="150">
         <button ng-click="sigFile = null" ng-show="sigFile" class="btn">Remove</button>

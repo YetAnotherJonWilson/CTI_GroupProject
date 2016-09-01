@@ -1,7 +1,8 @@
 <div class="imageModal modalImageWrapper">
     <ul>
-        <li class="center" ng-repeat="image in modal.imagesArray">
-            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="modal.updateCurrentDonorKey(modal.currentField, 'assets/' + image); $dismiss()" />
+
+        <li class="center" ng-repeat="image in settingsModal.imagesArray">
+            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="settingsModal.updateCurrentDonorKey(settingsModal.currentField, 'assets/' + image); $dismiss()" />
         </li>
         <!-- <li><a ng-click="newImage = !newImage" ng-show="!newImage"><img class="imageHover modal-image animated fadeInUp" src="./assets/addPictureIcon.png" height="175px" width="200px"/></a>
         </li> -->
@@ -20,7 +21,7 @@
                   <img ng-show="photoForm.file.$valid" ngf-thumbnail="picFile"  height="150" width="200px"> <button id="remove" ng-click="picFile = null" class="btn" ng-show="picFile">Remove</button>
                   <br>
                   <button id="submit" ng-disabled="!photoForm.$valid" ng-show="picFile"
-                          ng-click="modal.uploadPic(picFile)" class="btn">Submit</button>
+                          ng-click="settingsModal.uploadPic(picFile)" class="btn">Submit</button>
                   <h1 ng-show="picFile.progress == 100" class="animated  flipInY">Upload Successful</h1>
                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 

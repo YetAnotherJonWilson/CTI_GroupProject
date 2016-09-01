@@ -41,14 +41,45 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
   //     response.sendStatus(500);
   //   });
   // };
+  function saveEmail(donor){
+    var sendData = {};
+    sendData.opportunityId = donor.Id;
+    sendData.contactId = donor.Primary_Contact__c;
+    sendData.accountId = donor.AccountId;
+    sendData.closeDate = donor.CloseDate;
+    sendData.sentDate = '';
+    sendData.householdId = donor.householdId;
+    sendData.paragraph1 = donor.template.p1;
+    sendData.paragraph2 = donor.template.p2;
+    sendData.paragraph3 = donor.template.p3;
+    sendData.paragraph4 = donor.template.p4;
+    sendData.paragraph5 = "";
+    sendData.quote = donor.template.quote;
+    sendData.picture1 = donor.template.img;
+    sendData.picture2 = donor.template.img2;
+    sendData.picture3 = donor.template.img3;
+    sendData.picture4 = donor.template.img4;
+    sendData.letterhead = '/path/to/letterhead';
+    sendData.signature = '/path/to/signature';
+    sendData.template = donor.template.temp;
+    console.log('test button');
+    // $http.post('/donor/createData', sendData).then(function(response){
+    //   console.log('test success', response);
+    // }, function(response){
+    //   console.log('test fail', response);
+    // });
+    return saveToDb(sendData).then(function(response){
+      console.log('test save success', response);
+    }, function(err){
+      console.log('test save fail', err);
+    });
+  }
 
   function saveToDb(sendData){
     return $http.post('/donor/createData', sendData).then(function(response){
       console.log('save to db success', response);
-      response.sendStatus(200);
     }, function(err){
       console.log('fail saving to db', err);
-      response.sendStatus(500)
     });
   };
 
@@ -169,7 +200,8 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
   return {
     getDonorDbStuff: getDonorDbStuff,
     getDonorsSentEmailData: getDonorsSentEmailData,
-    saveToDb: saveToDb
+    saveToDb: saveToDb,
+    saveEmail: saveEmail
     // getBleh: getBleh
   }
 }]);

@@ -1,5 +1,5 @@
 <div class="donorInfoHome" class="animated fadeIn">
-    <button id="sendEmail" class="btn" ng-click="home.sendEmail()">Send</button>
+    <button id="sendEmail" class="btn" ng-click="home.sendAll()">Send All</button>
     <div class="donorSearchDiv">
         <h3>Search</h3>
         <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
@@ -7,21 +7,21 @@
     <h1></h1>
 
     <div id="dropDownContainer">
-      <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
-        <div>
-        <button id="single-button" type="button" class="btn btn-primary"  uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
+        <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
+            <div>
+                <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
           <span class="glyphicon glyphicon-menu-down" ng-show="home.reverse == false"></span>
           <span class="glyphicon glyphicon-menu-up" ng-show="home.reverse == true"></span>
 
         </button>
-        </div>
-          <ul class="dropdown-menu" uib-dropdown-menu   role="menu" aria-labelledby="single-button">
-          <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
-          <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
+            </div>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
+                <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
 
-          <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
-          </ul>
-      </div>
+                <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
@@ -36,7 +36,9 @@
 
         <h3 id="date">{{donor.date}}</h3>
         <h2 id="donationAmount">Donation: ${{donor.Amount}}</h2>
-        <h2 id="numberOfDonations"># of donations: {{donor.donationHistory.lifeTimeNumber}}</h2>
+
+        <h2 id="numberOfDonations">Times Donated: {{donor.donationHistory.lifeTimeNumber}}</h2>
+
 
 
         <!-- <td>{{donor.convertedDate}}</td> -->
@@ -46,13 +48,19 @@
 
     </div>
 </div>
-<div class='editmain'>
-  {{home.editedEmails}}
 
 
-    <button ng-click='home.sendMail(home.currentDonor.template.p1, home.currentDonor.template.p2, home.currentDonor.template.p3, home.currentDonor.template.p4, home.currentDonor.template.quote, home.currentDonor.template.ps, home.currentDonor.template.img, home.currentDonor.template.img2, home.currentDonor.template.img3, home.currentDonor.template.img4, home.currentDonor.template.temp)'>Send</button>
+<div class="editmainback" ng-hide="home.currentDonor">
+    <h1 ng-hide="home.messageSent">Choose an Email to View</h1>
+    <h1 id="sentMessage" ng-show="home.messageSent"><span class="glyphicon glyphicon-ok"></span> Message Sent</h1>
+    <img src="/assets/CTI_logo_text.png" alt="cti logo"/>
+  </div>
 
-    <button ng-click='home.saveEditedEmail(home.currentDonor.template.p1, home.currentDonor.template.p2, home.currentDonor.template.p3, home.currentDonor.template.p4, home.currentDonor.template.quote, home.currentDonor.template.ps, home.currentDonor.template.img, home.currentDonor.template.img2, home.currentDonor.template.img3)'>Save</button>
+<div ng-show="home.currentDonor" class='editmain'>
+
+
+    <button ng-click='home.sendMail(home.currentDonor)'>Send</button>
+
 
     <div class="editField">
         <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates">
