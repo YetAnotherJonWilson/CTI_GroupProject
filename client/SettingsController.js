@@ -11,12 +11,14 @@ var vm = this;
 
 
     vm.deletePhoto = function(photo) {
+      swal({title: "Are you sure?",   text: "You will not be able to recover this image!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false }, function(){   swal("Deleted!", "Your image has been deleted.", "success");
       deletePhoto = {};
       id = 12345;
       console.log('photo.id', photo.id);
       deletePhoto.id = photo.id;
       // console.log('delete pushed' , deletePhoto);
       $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
+      });
     }
     function handleDeleteSuccess(response){
         console.log('Photo Deleted', response);
@@ -129,17 +131,17 @@ var vm = this;
         });
     };
 
-    vm.showPhotos = function(){
-        vm.unhidePhotos = !vm.unhidePhotos;
-    };
-
-    vm.showSignatures = function(){
-        vm.unhideSignatures = !vm.unhideSignatures;
-    };
-
-    vm.showHeaders = function(){
-        vm.unhideHeaders = !vm.unhideHeaders;
-    }
+    // vm.showPhotos = function(){
+    //     vm.unhidePhotos = !vm.unhidePhotos;
+    // };
+    //
+    // vm.showSignatures = function(){
+    //     vm.unhideSignatures = !vm.unhideSignatures;
+    // };
+    //
+    // vm.showHeaders = function(){
+    //     vm.unhideHeaders = !vm.unhideHeaders;
+    // }
     // function getTemplates(){
     //   $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
     // }
@@ -150,6 +152,24 @@ var vm = this;
     //   console.log('template retrieval failure');
     // }
     // getTemplates();
+
+    vm.settingsClick = function(id){
+      vm.showSettings.photo = false;
+      vm.showSettings.template = false;
+      vm.showSettings.signature = false;
+      vm.showSettings.header = false;
+      vm.showSettings[id] = true;
+      console.log("this is the id", id);
+      console.log("vm.showSettings", vm.showSettings);
+      console.log("vm.showSettings[id]" , vm.showSettings[id]);
+    }
+
+    vm.showSettings = {
+      photo: false,
+      template: false,
+      signature: false,
+      header: false
+    }
 
 
 }]);

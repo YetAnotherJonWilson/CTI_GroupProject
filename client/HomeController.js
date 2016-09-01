@@ -71,6 +71,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		for (var i = 0; i < vm.donorList.length; i++) {
 			if (vm.donorList[i].Id == id) {
 				tempDonor = vm.donorList[i];
+				console.log(tempDonor);
 			}
 		}
 
@@ -251,7 +252,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.editedEmails.img3 = img3;
 		vm.editedEmails.img4 = img4;
 	}
-	
+
 	vm.sendMail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4) {
 		console.log('You cliked me');
 		updateCurrentDonorTemplate(vm.selectedTemplate.name);
