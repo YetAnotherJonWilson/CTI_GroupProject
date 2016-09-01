@@ -480,3 +480,6 @@ color: #EB7536;
 input[type="file"] {
     display: none;
 }
+.imgHighlight {
+  opacity: .8;
+}

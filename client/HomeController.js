@@ -1,11 +1,9 @@
-angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route','DonationService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService, $route, DonationService) {
+angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route', 'DonationService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService, $route, DonationService) {
 
 	var vm = this;
 
-
 	vm.donorList = [];
 	vm.currentDonor;
-	vm.editedDonorsArray = [];
 	vm.editedEmails = {};
 	vm.messageSent = false;
 	vm.standardTemplate = UserService.standardTemplate.template;
@@ -26,7 +24,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	function buildDonorList() {
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
-		var tempStandardTemplate = TemplateService.templatesObject['template' + vm.standardTemplate];
+		var tempStandardTemplate = DataService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
 		// var tempDonorList = DataService.sortedObject.sorted;
@@ -37,7 +35,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		}
 		vm.donorList = tempDonorList;
 		console.log('donorList after build:', vm.donorList);
-		console.log('DataService.templatesObject:', TemplateService.templatesObject);
+		console.log('DataService.templatesObject:', DataService.templatesObject);
 	}
 
 
@@ -83,66 +81,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		setSelectedTemplate(vm.currentDonor.template.temp);
 	}
 
-	function setSelectedTemplate(templateNum){
+	function setSelectedTemplate(templateNum) {
 		vm.selectedTemplate = vm.templates[templateNum - 1];
 	}
 
-	// vm.setCurrentEditView1 = function(id) {
-	// 	console.log('donor id', id);
-	// 	// console.log('set current view');
-	// 	var tempDonor;
-	// 	var tempIndex;
-	// 	var editedTempIndex;
-	//
-	// 	if (vm.currentDonor) {
-	// 		console.log('If vm.currentDonor');
-	// 		var isInArray;
-	//
-	// 		//check if this donor is in editedDonorsArray.
-	// 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-	// 			if (vm.editedDonorsArray[i].Id == vm.currentDonor.Id) {
-	// 				isInArray = true;
-	// 				editedTempIndex = i;
-	// 			}
-	// 		}
-	//
-	// 		//if the donor is in editedDonorsArray, replace it with the current edit.
-	// 		//Else add it to the edited array
-	// 		if (isInArray) {
-	// 			console.log('if isInArray');
-	// 			vm.editedDonorsArray[editedTempIndex] = vm.currentDonor;
-	// 		} else {
-	// 			console.log('if isInArray else statement');
-	// 			vm.editedDonorsArray.push(vm.currentDonor);
-	// 		}
-	// 	}
-	//
-	// 	//if there are edited donors, check that list first to get current donor info and put it in tempDonor
-	// 	if (vm.editedDonorsArray > 0) {
-	// 		console.log('if vm.editedDonorsArray > 0');
-	// 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-	// 			if (vm.editedDonorsArray[i].Id == id) {
-	// 				tempDonor = vm.editedDonorsArray[i];
-	// 				tempIndex = i;
-	// 			}
-	// 		}
-	// 	}
-	//
-	// 	//If there was no match in the edited Array, then find the donor info in the donorList
-	// 	if (!tempDonor) {
-	// 		console.log('if !tempDonor');
-	// 		for (var i = 0; i < vm.donorList.length; i++) {
-	// 			if (vm.donorList[i].Id == id) {
-	// 				tempDonor = vm.donorList[i];
-	// 				tempIndex = i;
-	// 			}
-	// 		}
-	// 	}
-	//
-	// 	updateCurrentDonor(tempDonor);
-	// 	getCurrentDonor();
-	// 	console.log('editedDonorsArray:', vm.editedDonorsArray);
-	// }
 
 	function getCurrentDonor() {
 		vm.currentDonor = TemplateService.currentDonor.donor[0].donor;
@@ -152,7 +94,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		TemplateService.updateCurrentDonor(donor);
 	}
 
-	function updateCurrentDonorTemplate(template){
+	function updateCurrentDonorTemplate(template) {
 		console.log('template name:', template);
 		var splitTemplate = template.split(' ');
 		var templateNum = splitTemplate[1];
@@ -180,8 +122,13 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	vm.selectedTemplate = vm.templates[0];
 
-	vm.updateTemplateNum = function(){
-		console.log('You clicked the template');
+	vm.setCurrentTemplate = function(template) {
+		vm.selectedTemplate = vm.templates[template - 1];
+
+		TemplateService.updateCurrentDonorTemplate(template);
+
+		console.log('currentTemplate:', vm.currentTemplate);
+		console.log('template selected:', template);
 	}
 
 
@@ -244,53 +191,44 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	};
 
 
-	vm.saveEditedEmail = function(p1, p2, p3, p4, q, ps, img, img2, img3, img4) {
-		vm.editedEmails.p1 = p1;
-		vm.editedEmails.p2 = p2;
-		vm.editedEmails.p3 = p3;
-		vm.editedEmails.p4 = p4;
-		vm.editedEmails.ps = ps;
-		vm.editedEmails.img = img;
-		vm.editedEmails.img2 = img2;
-		vm.editedEmails.img3 = img3;
-		vm.editedEmails.img4 = img4;
-	}
-
-
 	vm.sendMail = function(donor) {
-			console.log('You cliked me');
-			updateCurrentDonorTemplate(vm.selectedTemplate.name);
-			var template = vm.currentDonor.template.temp;
-			EmailService.sendMail(donor);
-			DonationService.saveEmail(donor);
-			removeDonor(donor);
+		console.log('You cliked me');
+		updateCurrentDonorTemplate(vm.selectedTemplate.name);
+		var template = vm.currentDonor.template.temp;
+		EmailService.sendMail(donor);
+		DonationService.saveEmail(donor);
+		removeDonor(donor);
 	};
 
 	function removeDonor(donor) {
-			var index = vm.donorList.indexOf(donor);
-			vm.donorList.splice(index, 1);
-			vm.currentDonor = undefined;
-			vm.messageSent = true;
+		var index = vm.donorList.indexOf(donor);
+		vm.donorList.splice(index, 1);
+		vm.currentDonor = undefined;
+		vm.messageSent = true;
 	}
+
 	vm.sendAll = function() {
-			swal({
-					title: "Are you sure?",
-					text: "Do You Want to Send Messages With current formats?",
-					type: "warning",
-					showCancelButton: true,
-					confirmButtonColor: "#DD6B55",
-					confirmButtonText: "Yes, Send Messages",
-					closeOnConfirm: false
-			}, function() {
-				for (var i = 0; i < vm.donorList.length; i++) {
-						EmailService.sendMail(vm.donorList[i]);
-						DonationService.saveEmail(vm.donorList[i]);
-						vm.messageSent = true;
-				}
-				vm.currentDonor = undefined;
-				vm.donorList = [];
-					swal("Sent!", "Your Messages Have Been Sent", "success");
-			});
+		swal({
+			title: "Are you sure?",
+			text: "Do You Want to Send Messages With current formats?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, Send Messages",
+			closeOnConfirm: false
+		}, function() {
+			for (var i = 0; i < vm.donorList.length; i++) {
+				EmailService.sendMail(vm.donorList[i]);
+				DonationService.saveEmail(vm.donorList[i]);
+				vm.messageSent = true;
+			}
+			vm.currentDonor = undefined;
+			vm.donorList = [];
+			swal("Sent!", "Your Messages Have Been Sent", "success");
+		});
 	}
+
+
 	buildDonorList();
+
 }]);
