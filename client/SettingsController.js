@@ -155,7 +155,7 @@ var vm = this;
     vm.currentTemplate = 1;
 
     function buildTemplateObject(){
-      var tempTemplateList = DataService.templatesObject;
+      var tempTemplateList = TemplateService.templatesObject;
       vm.templatesList = Object.assign({}, tempTemplateList)
     }
 

@@ -2,11 +2,13 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	var vm = this;
 
+
 	vm.donorList = [];
 	vm.currentDonor;
 	vm.editedDonorsArray = [];
 	vm.editedEmails = {};
 	vm.standardTemplate = UserService.standardTemplate.template;
+	TemplateService.bleh();
 	// vm.todaysDate = moment(new Date(), 'MM-DD-YYYY');
 
 	vm.homeRoute = function() {
@@ -23,7 +25,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	function buildDonorList() {
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
-		var tempStandardTemplate = DataService.templatesObject['template' + vm.standardTemplate];
+		var tempStandardTemplate = TemplateService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
 		// var tempDonorList = DataService.sortedObject.sorted;
@@ -34,7 +36,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		}
 		vm.donorList = tempDonorList;
 		console.log('donorList after build:', vm.donorList);
-		console.log('DataService.templatesObject:', DataService.templatesObject);
+		console.log('DataService.templatesObject:', TemplateService.templatesObject);
 	}
 
 

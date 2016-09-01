@@ -37,8 +37,6 @@ router.post('/deletePhoto', function(req, res) {
   res.sendStatus(200);
 });
 
-
-
 router.post('/', upload.single('file'), function (req, res) {
   var image = new Img;
   imgPath = req.file.path;
@@ -58,24 +56,27 @@ router.post('/', upload.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 
-// router.get('/getDbImages', function(req, res, next){
-//   var base64 = [];
-//   Img.find({}, function(err, doc){
-//     if(err){
-//       return next(err);
-//     }
-//     else{
-//       console.log('doc', doc);
-//       for(var i = 0; i < doc.length; i++){
-//         base64[i].photo.push('data:image/jpeg;base64,' + doc[i].img.data.toString('base64'));
-//         base64[i].id = doc[i].img._id;
-//       }
-//       console.log('doc id', base64[0].id);
-//       res.contentType(doc[0].img.contentType);
-//       res.send(base64);
-//     }
-//   });
-// });
+router.post('/getDbImages/:id', function(req, res, next){
+  var base64 = [];
+  var id = req.params.id;
+  console.log('bleh id', req.params);
+  Img.findById(id, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      console.log('doc', doc);
+      var photo = {};
+      // for(var i = 0; i < doc.length; i++){
+        photo.photo = 'data:image/jpeg;base64,' + doc.img.data.toString('base64');
+        photo.id = doc._id;
+      // }
+      console.log('doc id', photo.id);
+      res.contentType(doc.img.contentType);
+      res.send(photo);
+    }
+  });
+});
 
 router.post('/sigfile', uploadSig.single('file'), function (req, res) {
   console.log('file uploaded:', res.file);
