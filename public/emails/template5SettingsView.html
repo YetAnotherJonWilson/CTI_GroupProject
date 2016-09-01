@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <style>
+        .previewWrapper {
+            width: 600px;
+            margin: auto;
+            font-family: "PT SANS", "OPEN SANS", "MAKO";
+        }
+
+        .date {
+            font-size: 14px;
+            padding: 40px 0 0 5px;
+        }
+
+        .greeting {
+            font-size: 14px;
+            padding: 15px 0 5px 5px;
+        }
+
+        .p1 {
+            font-size: 14px;
+            padding: 10px 0 5px 5px;
+        }
+
+        .p2 {
+            font-size: 14px;
+            padding: 10px 0 10px 5px;
+        }
+
+        .imageRow {
+            padding-top: 5px;
+            width: 100%;
+        }
+
+        .quote {
+            width: 550px;
+            margin: 10px 0 15px 20px;
+            font-style: italic;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .p3 {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .closing {
+            font-size: 14px;
+            margin: 50px 0 0 5px;
+        }
+
+        .signature {
+            font-size: 14px;
+            margin: 15px 0 10px 5px;
+        }
+
+        .footer {
+            border-top: 1px dotted rgba(0, 0, 0, 0.1);
+            padding: 10px 0 0 5px;
+            margin: 0 0 5px 0;
+            font-size: 11px;
+        }
+
+        .footer2 {
+            padding: 10px 0 5px 5px;
+            font-size: 11px;
+        }
+
+        .footer3 {
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+            padding: 15px 0 0 0;
+            font-size: 11px;
+        }
+
+        #giftAmount {
+            margin-bottom: 5px;
+        }
+
+        .ps {
+            float: right;
+            width: 200px;
+            font-size: 12px;
+            margin-right: 15px;
+        }
+
+        .address {
+            font-family: "Trebuchet MS", "Calibri";
+            font-size: 10.5px;
+            padding: 10px 0 5px 0;
+            color: #086A81;
+        }
+
+        #email {
+            text-decoration: none;
+            color: #086A81;
+        }
+
+        #clear {
+            clear: both;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="previewWrapper">
+        <div>
+            <img src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png" width="590px" height="120px">
+        </div>
+        <div>
+            <p class="date">
+                {{settings.todaysDate}}
+            </p>
+            <p class="greeting">
+                Dear {{settings.currentTemplate.firstName}}:
+            </p>
+            <p class="p1 fieldHover" ng-click="settings.editModal('p1')">
+                {{settings.currentTemplate.p1}}
+            </p>
+            <!-- <p class="p1">
+                Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.
+              </p> -->
+
+            <p class="p2 fieldHover" ng-click="settings.editModal('p2')">
+                {{settings.currentTemplate.p2}}
+            </p>
+            <!-- <p class="p2">
+                It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
+              </p> -->
+        </div>
+        <div class="imageRow">
+            <img src="{{settings.currentTemplate.img}}" width="145px" height="95px" alt="image" class="imageHover" ng-click="settings.imageModal('img')">
+            <img src="{{settings.currentTemplate.img2}}" width="145px" height="95px" alt="image2" class="imageHover" ng-click="settings.imageModal('img2')">
+            <img src="{{settings.currentTemplate.img3}}" width="145px" height="95px" alt="image3" class="imageHover" ng-click="settings.imageModal('img3')">
+            <img src="{{settings.currentTemplate.img4}}" width="145px" height="95px" alt="image4" class="imageHover" ng-click="settings.imageModal('img4')">
+            <!-- <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage2.jpg" alt="image" width="145px" height="95px">
+                <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="145px" height="95px">
+                <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg" alt="image" width="145px" height="95px">
+                <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg" alt="image" width="145px" height="95px"> -->
+            <p class="quote fieldHover" ng-click="settings.editModal('quote')">
+                {{settings.currentTemplate.quote}}
+            </p>
+            <!-- <p class="quote">
+                  “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
+              </p> -->
+        </div>
+        <div id="clear" class="p3">
+            <p class="fieldHover" ng-click="settings.editModal('p3')">
+                {{settings.currentTemplate.p3}}
+            </p>
+            <!-- <p>
+            Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school—or go themselves. You make success stories like Aissatou’s possible. And I can’t thank you enough.
+          </p> -->
+        </div>
+        <div class="closing">
+            <p>
+                Sincerely,
+            </p>
+        </div>
+        <div class="signature">
+            <img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px">
+
+            <p class="ps fieldHover" ng-click="settings.editModal('ps')">
+                {{settings.currentTemplate.ps}}
+            </p>
+            <!-- <p class="ps">
+              P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!
+            </p> -->
+            <p>
+                Alexandra Spieldoch,
+            </p>
+            <p>
+                Executive Director
+            </p>
+        </div>
+        <div class="footer">
+            <p id="giftAmount">
+                Gift Amount: ${{settings.currentTemplate.Amount}}
+            </p>
+            <p>
+                Gift Date: {{settings.currentTemplate.CloseDate}}
+            </p>
+        </div>
+        <div class="footer3">
+            <p align="center">
+                CTI is a 501(c)(3) non-profit &#9679; No goods or services have been provided in exchange for your contribution
+            </p>
+        </div>
+        <div class="address">
+            <p align="center">
+                800 TRANSFER ROAD SUITE 6, SAINT PAUL, MN 55114 • PHONE: 651.632.3912 • <br /><span id="email">COMPATIBLETECHNOLOGY.ORG</span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

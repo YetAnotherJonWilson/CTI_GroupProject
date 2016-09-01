@@ -126,17 +126,17 @@
                 {{settings.todaysDate}}
               </p>
             <p class="greeting">
-                Dear {{settings.currentDonor.firstName}}:
+                Dear {{settings.currentTemplate.firstName}}:
             </p>
             <p class="p1 fieldHover" ng-click="settings.editModal('p1')">
-                {{settings.currentDonor.template.p1}}
+                {{settings.currentTemplate.p1}}
             </p>
             <!--
               <p class="p1">
                 Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.
               </p> -->
             <p class="p2 fieldHover" ng-click="settings.editModal('p2')">
-                {{settings.currentDonor.template.p2}}
+                {{settings.currentTemplate.p2}}
             </p>
             <!--
               <p class="p2">
@@ -144,10 +144,10 @@
               </p> -->
         </div>
         <div class="imageRow">
-            <img src="{{settings.currentDonor.template.img}}" alt="image" height="200px" class="imageHover" ng-click="settings.imageModal('img')">
+            <img src="{{settings.currentTemplate.img}}" alt="image" height="200px" class="imageHover" ng-click="settings.imageModal('img')">
             <!-- <img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="325px" height="200px" class="fieldHover" ng-click="edit.imageModal('img')"> -->
             <p class="quote fieldHover" ng-click="settings.editModal('quote')">
-              {{settings.currentDonor.template.quote}}
+              {{settings.currentTemplate.quote}}
             </p>
 
             <!-- <p class="quote">
@@ -156,7 +156,7 @@
         </div>
         <div id="clear" class="p3">
             <p class="fieldHover" ng-click="settings.editModal('p3')">
-                {{settings.currentDonor.template.p3}}
+                {{settings.currentTemplate.p3}}
             </p>
 
             <!-- <p>
@@ -172,7 +172,7 @@
             <img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px">
 
             <p class="ps fieldHover" ng-click="settings.editModal('ps')">
-                {{settings.currentDonor.template.ps}}
+                {{settings.currentTemplate.ps}}
             </p>
             <!-- <p class="ps">
               P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!
@@ -187,10 +187,10 @@
 
         <div class="footer">
             <p id="giftAmount">
-                Gift Amount: ${{settings.currentDonor.Amount}}
+                Gift Amount: ${{settings.currentTemplate.Amount}}
             </p>
             <p>
-                Gift Date: {{settings.currentDonor.CloseDate}}
+                Gift Date: {{settings.currentTemplate.CloseDate}}
             </p>
         </div>
         <div class="footer3">

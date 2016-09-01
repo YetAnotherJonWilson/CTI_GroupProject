@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService){
 
 var vm = this;
 
@@ -11,12 +11,14 @@ var vm = this;
 
 
     vm.deletePhoto = function(photo) {
+      swal({title: "Are you sure?",   text: "You will not be able to recover this image!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false }, function(){   swal("Deleted!", "Your image has been deleted.", "success");
       deletePhoto = {};
       id = 12345;
       console.log('photo.id', photo.id);
       deletePhoto.id = photo.id;
       // console.log('delete pushed' , deletePhoto);
       $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
+      });
     }
     function handleDeleteSuccess(response){
         console.log('Photo Deleted', response);
@@ -129,17 +131,17 @@ var vm = this;
         });
     };
 
-    vm.showPhotos = function(){
-        vm.unhidePhotos = !vm.unhidePhotos;
-    };
-
-    vm.showSignatures = function(){
-        vm.unhideSignatures = !vm.unhideSignatures;
-    };
-
-    vm.showHeaders = function(){
-        vm.unhideHeaders = !vm.unhideHeaders;
-    }
+    // vm.showPhotos = function(){
+    //     vm.unhidePhotos = !vm.unhidePhotos;
+    // };
+    //
+    // vm.showSignatures = function(){
+    //     vm.unhideSignatures = !vm.unhideSignatures;
+    // };
+    //
+    // vm.showHeaders = function(){
+    //     vm.unhideHeaders = !vm.unhideHeaders;
+    // }
     // function getTemplates(){
     //   $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
     // }
@@ -151,29 +153,54 @@ var vm = this;
     // }
     // getTemplates();
 
+    vm.settingsClick = function(id){
+      vm.showSettings.photo = false;
+      vm.showSettings.template = false;
+      vm.showSettings.signature = false;
+      vm.showSettings.header = false;
+      vm.showSettings[id] = true;
+      console.log("this is the id", id);
+      console.log("vm.showSettings", vm.showSettings);
+      console.log("vm.showSettings[id]" , vm.showSettings[id]);
+    }
+
+    vm.showSettings = {
+      photo: false,
+      template: false,
+      signature: false,
+      header: false
+    }
+
     vm.templatesList;
-    vm.currentTemplate = 1;
+    vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
+    vm.fieldId = '';
 
     function buildTemplateObject(){
       var tempTemplateList = TemplateService.templatesObject;
       vm.templatesList = Object.assign({}, tempTemplateList)
+      console.log('vm.currentTemplate:', vm.currentTemplate);
+    }
+
+    function getCurrentTemplate(){
+      vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
     }
 
 
 
     //Pop up modal for editing text
   	vm.editModal = function(id) {
-  		console.log('templatesList:', vm.templatesList);
+  		console.log('SettingsService.currentTemplate:', SettingsService.currentTemplate);
+      console.log('vm.currentTemplate:', vm.currentTemplate);
 
   		vm.fieldId = id;
-  		// vm.currentDonor.template.currentField = id;
+  		vm.currentTemplate.currentField = id;
   		$uibModal.open({
   			animation: true,
   			ariaLabelledBy: 'edit text modal',
   			ariaDescribedBy: 'edit text',
-  			templateUrl: 'emails/edit_modal.html',
-  			controller: 'ModalController',
-  			controllerAs: 'modal',
+  			templateUrl: 'emails/edit_settings_modal.html',
+  			controller: 'SettingsModalController',
+  			controllerAs: 'settingsModal',
   			size: 'md'
   		});
   	};
@@ -185,9 +212,9 @@ var vm = this;
   			animation: true,
   			ariaLabelledBy: 'image modal',
   			ariaDescribedBy: 'pick an image',
-  			templateUrl: 'emails/image_modal.html',
-  			controller: 'ModalController',
-  			controllerAs: 'modal',
+  			templateUrl: 'emails/image_settings_modal.html',
+  			controller: 'SettingsModalController',
+  			controllerAs: 'settingsModal',
   			size: 'md',
   			windowClass: 'imageModalClass'
   		});
@@ -214,7 +241,29 @@ var vm = this;
 
     vm.selectedTemplate = vm.templates[0];
 
+    vm.setCurrentTemplate = function(template){
+      vm.selectedTemplate = vm.templates[template - 1];
+      // vm.currentTemplate = vm.templatesList['template' + template];
+      SettingsService.currentTemplate.template[0].template = vm.templatesList['template' + template];
+      getCurrentTemplate();
+
+      console.log('currentTemplate:', vm.currentTemplate);
+      console.log('template selected:', template);
+    }
+
+
+    vm.saveTemplate = function(template){
+      console.log('saved template:', template);
+      //function(template.id, template.img, template.img2, template.img3, template.img4, template.p1, template.p2, template.p3, template.p4, template.quote, template.temp)
+    }
+
+    vm.saveAllTemplates = function(){
+      console.log('save all templates:', vm.templatesList);
+    }
+
 // DataService.getTemplates();
 buildTemplateObject();
+getCurrentTemplate();
+
 
 }]);
