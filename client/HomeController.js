@@ -292,5 +292,4 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
         });
     }
     buildDonorList();
->>>>>>> 46b98e255a9d007c0b5cc2ab5eb570b8b8ee73a4
 }]);
