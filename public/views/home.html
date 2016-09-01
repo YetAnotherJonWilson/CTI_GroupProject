@@ -63,7 +63,7 @@
 
 
     <div class="editField">
-        <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates">
+        <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates" ng-change="home.changeTemplate();">
             <!-- <option value="">(blank)</option> -->
         </select>
 

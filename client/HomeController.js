@@ -292,5 +292,12 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 					swal("Sent!", "Your Messages Have Been Sent", "success");
 			});
 	}
+	vm.changeTemplate = function(){
+		var splitTemplate = vm.selectedTemplate.name.split(' ');
+		var templateNum = splitTemplate[1];
+		TemplateService.updateCurrentDonorTemplate(templateNum);
+		// vm.currentDonor.template = vm.selectedTemplate;
+		// console.log(vm.selectedTemplate);
+	}
 	buildDonorList();
 }]);

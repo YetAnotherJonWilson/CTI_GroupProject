@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', 'TemplateService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService, TemplateService){
 
 var vm = this;
 

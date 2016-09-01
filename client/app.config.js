@@ -18,7 +18,7 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
         }],
         stuff: ['TemplateService', function(TemplateService){
           return TemplateService.getTemplates();
-        }] 
+        }]
       }
     })
     // .when('/edit', {
@@ -31,8 +31,8 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'SettingsController',
       controllerAs: 'settings',
       resolve: {
-        getTemplates: ['DataService', function(DataService){
-          return DataService.getTemplates();
+        getTemplates: ['TemplateService', function(TemplateService){
+          return TemplateService.getTemplates();
         }]
       }
     })
