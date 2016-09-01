@@ -179,8 +179,11 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
     vm.selectedTemplate = vm.templates[0];
 
-    vm.updateTemplateNum = function() {
-        console.log('You clicked the template');
+    vm.setCurrentTemplate = function(template){
+      vm.selectedTemplate = vm.templates[template - 1];
+
+      console.log('currentTemplate:', vm.currentTemplate);
+      console.log('template selected:', template);
     }
 
 

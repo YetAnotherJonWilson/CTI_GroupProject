@@ -63,9 +63,14 @@
 
 
     <div class="editField">
-        <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates">
-            <!-- <option value="">(blank)</option> -->
-        </select>
+        <!-- <select class="form-control" ng-model="home.selectedTemplate" ng-options="t.name for t in home.templates">
+        </select> -->
+
+        <img src="assets/template1.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('1')">
+        <img src="assets/template2.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('2')">
+        <img src="assets/template3.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('3')">
+        <img src="assets/template4.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('4')">
+        <img src="assets/template5.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('5')">
 
         <div class='editview'>
             <div>
