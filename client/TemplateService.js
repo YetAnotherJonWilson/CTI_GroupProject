@@ -25,7 +25,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 	function saveTemplate(template){
 		var sendData= template;
-		$http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
+
+		return $http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
 	}
 	function saveTemplateSuccess(res){
 		console.log('temp save success', res);
@@ -49,9 +50,9 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	}
 
 	function updateCurrentDonorKey(key, value) {
-		console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
+		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
 		currentDonor.donor[0].donor.template[key] = value;
-		console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
+		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
 
 
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);

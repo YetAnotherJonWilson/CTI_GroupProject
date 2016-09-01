@@ -55,10 +55,18 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
     sendData.paragraph4 = donor.template.p4;
     sendData.paragraph5 = "";
     sendData.quote = donor.template.quote;
-    sendData.picture1 = donor.template.img;
-    sendData.picture2 = donor.template.img2;
-    sendData.picture3 = donor.template.img3;
-    sendData.picture4 = donor.template.img4;
+    if(donor.template.img != null | donor.template.img != ''){
+      sendData.picture1 = 'photos/getDbImages/' + donor.template.img.id;
+    }
+    if(donor.template.img2 != null | donor.template.img2 != ''){
+      sendData.picture2 = 'photos/getDbImages/' + donor.template.img2.id;
+    }
+    if(donor.template.img3 != null | donor.template.img3 != ''){
+      sendData.picture3 = 'photos/getDbImages/' + donor.template.img3.id;
+    }
+    if(donor.template.img4 != null | donor.template.img4 != ''){
+      sendData.picture4 = 'photos/getDbImages' + donor.template.img4.id;
+    }
     sendData.letterhead = '/path/to/letterhead';
     sendData.signature = '/path/to/signature';
     sendData.template = donor.template.temp;
