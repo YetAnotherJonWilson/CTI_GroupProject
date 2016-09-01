@@ -1,4 +1,4 @@
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal){
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService){
 
 var vm = this;
 
@@ -152,28 +152,35 @@ var vm = this;
     // getTemplates();
 
     vm.templatesList;
-    vm.currentTemplate = 1;
+    vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
+    vm.fieldId = '';
 
     function buildTemplateObject(){
       var tempTemplateList = DataService.templatesObject;
       vm.templatesList = Object.assign({}, tempTemplateList)
+      console.log('vm.currentTemplate:', vm.currentTemplate);
+    }
+
+    function getCurrentTemplate(){
+      vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
     }
 
 
 
     //Pop up modal for editing text
   	vm.editModal = function(id) {
-  		console.log('templatesList:', vm.templatesList);
+  		console.log('SettingsService.currentTemplate:', SettingsService.currentTemplate);
+      console.log('vm.currentTemplate:', vm.currentTemplate);
 
   		vm.fieldId = id;
-  		// vm.currentDonor.template.currentField = id;
+  		vm.currentTemplate.currentField = id;
   		$uibModal.open({
   			animation: true,
   			ariaLabelledBy: 'edit text modal',
   			ariaDescribedBy: 'edit text',
-  			templateUrl: 'emails/edit_modal.html',
-  			controller: 'ModalController',
-  			controllerAs: 'modal',
+  			templateUrl: 'emails/edit_settings_modal.html',
+  			controller: 'SettingsModalController',
+  			controllerAs: 'settingsModal',
   			size: 'md'
   		});
   	};
@@ -185,9 +192,9 @@ var vm = this;
   			animation: true,
   			ariaLabelledBy: 'image modal',
   			ariaDescribedBy: 'pick an image',
-  			templateUrl: 'emails/image_modal.html',
-  			controller: 'ModalController',
-  			controllerAs: 'modal',
+  			templateUrl: 'emails/image_settings_modal.html',
+  			controller: 'SettingsModalController',
+  			controllerAs: 'settingsModal',
   			size: 'md',
   			windowClass: 'imageModalClass'
   		});
@@ -214,7 +221,28 @@ var vm = this;
 
     vm.selectedTemplate = vm.templates[0];
 
+    vm.setCurrentTemplate = function(template){
+      vm.selectedTemplate = vm.templates[template - 1];
+      // vm.currentTemplate = vm.templatesList['template' + template];
+      SettingsService.currentTemplate.template[0].template = vm.templatesList['template' + template];
+      getCurrentTemplate();
+
+      console.log('currentTemplate:', vm.currentTemplate);
+      console.log('template selected:', template);
+    }
+
+
+    vm.saveTemplate = function(template){
+      console.log('saved template:', template);
+      //function(template.id, template.img, template.img2, template.img3, template.img4, template.p1, template.p2, template.p3, template.p4, template.quote, template.temp)
+    }
+
+    vm.saveAllTemplates = function(){
+      console.log('save all templates:', vm.templatesList);
+    }
+
 // DataService.getTemplates();
 buildTemplateObject();
+getCurrentTemplate();
 
 }]);
