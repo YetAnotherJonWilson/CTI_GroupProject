@@ -4,7 +4,6 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 
 	vm.currentDonor = TemplateService.currentDonor.donor[0];
 	vm.currentField = TemplateService.currentDonor.donor[0].donor.template.currentField;
-	// vm.currentField = TemplateService.currentDonor == true ? TemplateService.currentDonor.donor[0].donor.template.currentField : null;
 	vm.currentTemplate = TemplateService.currentTemplate;
 	vm.imagesArray = TemplateService.imagesObject.images;
 

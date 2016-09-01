@@ -135,6 +135,9 @@ background-color: rgba(0, 0, 0, 0.1);
   font-size: 18px;
   float: left;
 }
+#numberOfDonations{
+  float: right;
+}
 .table {
   margin-bottom: 5px;
 }
