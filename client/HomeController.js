@@ -177,6 +177,15 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
         url: 'emails/template5EditView.html'
     }];
 
+
+    vm.setCurrentTemplate = function(template) {
+		vm.selectedTemplate = vm.templates[template - 1];
+
+		TemplateService.updateCurrentDonorTemplate(template);
+	  }
+
+
+
     vm.selectedTemplate = vm.templates[0];
 
     vm.updateTemplateNum = function() {
