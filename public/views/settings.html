@@ -1,5 +1,5 @@
 <div class="settingsMenu" class="animated fadeIn">
-    <button ng-click="settings.showPhotos(); settings.settingsClick('photo')"  class="settingsMenuPhotoUpload">
+    <button ng-click="settings.showPhotos(); settings.settingsClick('photo')" class="settingsMenuPhotoUpload">
         <h1>Upload Photo</h1>
     </button>
     <button ng-click="settings.settingsClick('template')" class="settingsMenuPhotoUpload">
@@ -42,36 +42,36 @@
             </li>
         </div>
     </div>
-<!-- This is the edit template view -->
-    <div class="editField" ng-show="settings.showSettings.template">
-        <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
+    <!-- This is the edit template view -->
+    <!-- <div class="editField" ng-show="settings.showSettings.template"> -->
+    <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
             <option value="">(blank)</option>
-        </select>
-        <div class='editview'>
-            <div>
-                <!-- <hr/> -->
-                <div class="slide-animate-container">
-                    <div class="slide-animate" ng-include="settings.template.url"></div>
-                </div>
+        </select> -->
+    <div class='editview'>
+        <div>
+            <!-- <hr/> -->
+            <div class="slide-animate-container">
+                <div class="slide-animate" ng-include="settings.template.url"></div>
             </div>
         </div>
     </div>
-<!-- settings view to display uploaded signatures -->
-<div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
-    <form name="signatureForm">
-        <input type="file" ngf-select ng-model="sigFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-        <i ng-show="signatureForm.file.$error.maxSize">File too large
-  </div>
+    <!-- settings view to display uploaded signatures -->
+    <div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
+        <form name="signatureForm">
+            <input type="file" ngf-select ng-model="sigFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+            <i ng-show="signatureForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
 
+        </form>
+    </div>
   <!-- This is the edit template view -->
-  <div class='editmain' ng-show="template">
-<button ng-click="settings.setCurrentTemplate('1')">template 1</button>
-<button ng-click="settings.setCurrentTemplate('2')">template 2</button>
-<button ng-click="settings.setCurrentTemplate('3')">template 3</button>
-<button ng-click="settings.setCurrentTemplate('4')">template 4</button>
-<button ng-click="settings.setCurrentTemplate('5')">template 5</button>
-<button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
-<button ng-click="settings.saveAllTemplates()">Save All</button>
+  <div class='editmain' ng-show="settings.showSettings.template">
+            <button ng-click="settings.setCurrentTemplate('1')">template 1</button>
+            <button ng-click="settings.setCurrentTemplate('2')">template 2</button>
+            <button ng-click="settings.setCurrentTemplate('3')">template 3</button>
+            <button ng-click="settings.setCurrentTemplate('4')">template 4</button>
+            <button ng-click="settings.setCurrentTemplate('5')">template 5</button>
+            <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+            <button ng-click="settings.saveAllTemplates()">Save All</button>
 
       <div class="editField">
           <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
@@ -96,38 +96,38 @@
              ngf-model-invalid="errorFile">
              <i ng-show="signatureForm.file.$error.maxSize">File too large
           {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-        <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" height="100" width="150">
-        <button ng-click="sigFile = null" ng-show="sigFile" class="btn">Remove</button>
-        <br>
-        <button class="btn" ng-show="sigFile" ng-disabled="!signatureForm.$valid" ng-click="settings.uploadSig(sigFile)">Submit</button>
-        <span class="progress" ng-show="sigFile.progress >= 0">
+            <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" height="100" width="150">
+            <button ng-click="sigFile = null" ng-show="sigFile" class="btn">Remove</button>
+            <br>
+            <button class="btn" ng-show="sigFile" ng-disabled="!signatureForm.$valid" ng-click="settings.uploadSig(sigFile)">Submit</button>
+            <span class="progress" ng-show="sigFile.progress >= 0">
           <div style="width:{{sigFile.progress}}%"
                ng-bind="sigFile.progress + '%'"></div>
              </span>
-        <span ng-show="sigFile.result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-        <br>
-    </form>
-      <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile">Remove</button>
-      <button class="btn" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid" ng-click="settings.uploadPic(picFile)">Save</button>
-</div>
-<!-- uploade new headers and display current headers -->
-<div class="settingsUplaodHeader" ng-show="settings.showSettings.header">
-    <form name="headerForm">
-        <input type="file" ngf-select ng-model="headerFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-        <i ng-show="headerForm.file.$error.maxSize">File too large
+            <span ng-show="sigFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            <br>
+        </form>
+        <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile">Remove</button>
+        <button class="btn" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid" ng-click="settings.uploadPic(picFile)">Save</button>
+    </div>
+    <!-- uploade new headers and display current headers -->
+    <div class="settingsUplaodHeader" ng-show="settings.showSettings.header">
+        <form name="headerForm">
+            <input type="file" ngf-select ng-model="headerFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+            <i ng-show="headerForm.file.$error.maxSize">File too large
             {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-        <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" height="100px" width="150px">
-        <button ng-click="headerFile = null" ng-show="headerFile" class="btn">Remove</button>
-        <br>
-        <button class="btn" ng-show="headerFile" ng-disabled="!headerForm.$valid" ng-click="settings.uploadHeader(headerFile)">Submit</button>
-        <span class="progress" ng-show="headerFile.progress >= 0">
+            <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" height="100px" width="150px">
+            <button ng-click="headerFile = null" ng-show="headerFile" class="btn">Remove</button>
+            <br>
+            <button class="btn" ng-show="headerFile" ng-disabled="!headerForm.$valid" ng-click="settings.uploadHeader(headerFile)">Submit</button>
+            <span class="progress" ng-show="headerFile.progress >= 0">
             <div style="width:{{headerFile.progress}}%"
                  ng-bind="headerFile.progress + '%'"></div>
           </span>
-        <span ng-show="headerFile.result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-        <br>
-    </form>
-  </div>
+            <span ng-show="headerFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            <br>
+        </form>
+    </div>
 </div>
