@@ -261,9 +261,14 @@ var vm = this;
       console.log('save all templates:', vm.templatesList);
     }
 
+    function setTemplateOnLoad(){
+      SettingsService.currentTemplate.template[0].template = vm.templatesList['template1'];
+      console.log('SettingsService.currentTemplate.template[0].template:', SettingsService.currentTemplate.template[0].template);
+    }
+
 // DataService.getTemplates();
 buildTemplateObject();
+setTemplateOnLoad();
 getCurrentTemplate();
-
 
 }]);
