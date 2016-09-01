@@ -14,9 +14,9 @@ router.use(bodyParser.json());
 
 
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/photos/');
-  },
+  // destination: function (req, file, cb) {
+  //   cb(null, 'public/photos/');
+  // },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '.jpg'); //Appending .jpg
     console.log(file.mimetype);
@@ -42,6 +42,7 @@ router.post('/deletePhoto', function(req, res) {
 
 
 router.post('/', upload.single('file'), function (req, res) {
+  console.log('this is upload req' , req.file.path);
   var image = new Img;
   imgPath = req.file.path;
   image.img.data = fs.readFileSync(imgPath);
