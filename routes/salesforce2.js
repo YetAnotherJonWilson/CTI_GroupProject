@@ -63,7 +63,7 @@ router.get('/oauth2/callback', function(request, response){
       // console.log('great success');
     //   response.redirect('/gettingdata');
       response.redirect('/home');
-    });
+    // });
   });
   // response.redirect('/home');
 });

@@ -2,7 +2,7 @@
   <div ng-click="settings.showPhotos(); images = !images" class="settingsMenuPhotoUpload">
       <h1>Upload Photo</h1>
   </div>
-  <div ng-click=" template = !template" class="settingsMenuPhotoUpload">
+  <div ng-click="template = !template" class="settingsMenuPhotoUpload">
       <h1>Edit Template</h1>
   </div>
   <div ng-click="signatures = !signatures" class="settingsMenuSignatureUpload">
@@ -45,23 +45,33 @@
     </div>
     <div class="settingsDisplayPhotos">
           <li ng-show="settings.unhidePhotos" ng-repeat="photo in settings.photos">
+
           <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
           <span id="settingsDeletePhoto"  ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+
         </li>
     </div>
   </div>
 
   <!-- This is the edit template view -->
   <div class='editmain' ng-show="template">
+<button ng-click="settings.setCurrentTemplate('1')">template 1</button>
+<button ng-click="settings.setCurrentTemplate('2')">template 2</button>
+<button ng-click="settings.setCurrentTemplate('3')">template 3</button>
+<button ng-click="settings.setCurrentTemplate('4')">template 4</button>
+<button ng-click="settings.setCurrentTemplate('5')">template 5</button>
+<button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+<button ng-click="settings.saveAllTemplates()">Save All</button>
+
       <div class="editField">
-          <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
+          <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
               <option value="">(blank)</option>
-          </select>
+          </select> -->
           <div class='editview'>
               <div>
                   <!-- <hr/> -->
                   <div class="slide-animate-container">
-                      <div class="slide-animate" ng-include="settings.template.url"></div>
+                      <div class="slide-animate" ng-include="settings.selectedTemplate.url"></div>
                   </div>
               </div>
           </div>

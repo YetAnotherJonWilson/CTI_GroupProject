@@ -3,9 +3,10 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 	var vm = this;
 
 	vm.currentDonor = TemplateService.currentDonor.donor[0];
-	// vm.currentField = TemplateService.currentDonor.donor[0].donor.template.currentField;
+	vm.currentField = TemplateService.currentDonor.donor[0].donor.template.currentField;
+	// vm.currentField = TemplateService.currentDonor == true ? TemplateService.currentDonor.donor[0].donor.template.currentField : null;
 	vm.currentTemplate = TemplateService.currentTemplate;
-  vm.imagesArray = TemplateService.imagesObject.images;
+	vm.imagesArray = TemplateService.imagesObject.images;
 
 	vm.updateCurrentDonorKey = function(key, value) {
 		console.log('modal.currentDonor:', vm.currentDonor);
@@ -14,9 +15,9 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 		TemplateService.updateCurrentDonorKey(key, value);
 	}
 
-  // vm.setCurrentImg = function(img){
-  //   TemplateService.setCurrentImg(img);
-  // }
+	// vm.setCurrentImg = function(img){
+	//   TemplateService.setCurrentImg(img);
+	// }
 
 
 	// vm.uploadPic = function(pic) {
