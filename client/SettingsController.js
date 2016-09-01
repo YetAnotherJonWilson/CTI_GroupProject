@@ -176,7 +176,7 @@ var vm = this;
     vm.fieldId = '';
 
     function buildTemplateObject(){
-      var tempTemplateList = DataService.templatesObject;
+      var tempTemplateList = TemplateService.templatesObject;
       vm.templatesList = Object.assign({}, tempTemplateList)
       console.log('vm.currentTemplate:', vm.currentTemplate);
     }

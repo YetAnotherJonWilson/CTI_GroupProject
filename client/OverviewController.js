@@ -6,8 +6,8 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
   vm.sfDonor = DonationService.overview;
   // vm.pic = '';
   vm.edit = true;
-  console.log('db donor list', vm.donorList);
-  console.log('sf donor list', vm.sfDonor);
+  // console.log('db donor list', vm.donorList);
+  // console.log('sf donor list', vm.sfDonor);
 
   vm.homeRoute = function() {
 		RouteService.homeRoute();
@@ -26,13 +26,22 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
   // }
 
   vm.bleh = function(){
-    $http.get('/photos/getDbImages').then(function(response){
-      console.log('found db images', response);
-      vm.pics = response.data;
-      vm.edit = !vm.edit;
-      console.log('vm.edit', vm.edit);
+    console.log('test');
+  //   $http.get('/photos/getDbImages').then(function(response){
+  //     console.log('found db images', response);
+  //     vm.pics = response.data;
+  //     vm.edit = !vm.edit;
+  //     console.log('vm.edit', vm.edit);
+  //   }, function(err){
+  //     console.log('err getting db images', err);
+  //   });
+  // }
+    var id = '57c6229c67c3eed5198b9e47';
+    console.log('id', id);
+    $http.post('photos/getDbImages/' + id).then(function(response){
+      console.log('response', response);
     }, function(err){
-      console.log('err getting db images', err);
+      console.log('err', err);
     });
   }
 }]);

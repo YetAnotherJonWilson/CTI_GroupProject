@@ -8,6 +8,7 @@ angular.module('App').controller('ModalController', ['$http', '$location', '$uib
 	vm.imagesArray = TemplateService.imagesObject.images;
 
 	vm.updateCurrentDonorKey = function(key, value) {
+		console.log('key and the value', key, value);
 		console.log('modal.currentDonor:', vm.currentDonor);
 		console.log('modal TemplateService.currentDonor:', TemplateService.currentDonor);
 		// console.log('modal updatecurrentkey:', key, value);
