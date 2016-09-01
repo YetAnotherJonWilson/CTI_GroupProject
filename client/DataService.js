@@ -30,7 +30,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
        lifeTimeAmount:635,
        lifeTimeNumber:2
       },
-      email:"dosawea@yahoo.com",
+      email:"ctithankyou@outlook.com",
       firstName:"Christian",
       formalGreeting:"Christian Neufville",
       householdId:"a00d0000007j6fAAAQ",

@@ -223,13 +223,16 @@ router.post('/saveTemplate', function(req, res){
   updateObj.p3= req.body.p3;
   updateObj.p4= req.body.p4;
   updateObj.quote = req.body.quote;
+  updateObj.ps = req.body.ps;
   updateObj.img = req.body.img;
   updateObj.img2 = req.body.img2;
   updateObj.img3 = req.body.img3;
   updateObj.img4 = req.body.img4;
+  updateObj.senderTitle = req.body.senderTitle;
+  updateObj.senderName = req.body.senderName;
   console.log(updateObj);
   // res.sendStatus(200);
-  Template.findByIdAndUpdate(id, {$set:{p1: updateObj.p1, p2: updateObj.p2, p3: updateObj.p3, p4: updateObj.p4, quote: updateObj.quote, img: updateObj.img, img2: updateObj.img2, img3: updateObj.img3, img4: updateObj.img4}}, function(err, response){
+  Template.findByIdAndUpdate(id, {$set:{p1: updateObj.p1, p2: updateObj.p2, p3: updateObj.p3, p4: updateObj.p4, quote: updateObj.quote, ps:updateObj.ps, img: updateObj.img, img2: updateObj.img2, img3: updateObj.img3, img4: updateObj.img4, senderName: updateObj.senderName, senderTitle: updateObj.senderTitle}}, function(err, response){
     if(err){
       console.log('here', err);
     }else{
