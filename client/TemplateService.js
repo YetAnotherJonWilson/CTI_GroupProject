@@ -1,7 +1,6 @@
 angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', 'DataService', function($location, Upload, $timeout, $http, DataService) {
 
 	var templatesObject = {};
-
 	// var currentTemplate = {
 	// 	// p1: '',
 	// 	// p2: '',
@@ -292,6 +291,10 @@ function awesome(){
 			ps: ps
 		})
 	}
+	function updateCurrentTemplateKey(key, value, num){
+		console.log(key, value, num);
+		templatesObject["template"+num][key] = value;
+	}
 	// bleh();
 	return {
 		currentDonor: currentDonor,
@@ -311,7 +314,8 @@ function awesome(){
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
 		awesome: awesome,
-		saveTemplate: saveTemplate
+		saveTemplate: saveTemplate,
+		updateCurrentTemplateKey: updateCurrentTemplateKey
 	}
 
 

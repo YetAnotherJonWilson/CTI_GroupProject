@@ -80,10 +80,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		// 		tempDonor = vm.donorList[i];
 		// 	}
 		// }
-
+		var num= donor.templateNum;
 		updateCurrentDonor(donor);
 		vm.currentDonor = donor;
-		setSelectedTemplate(donor.template1.temp);
+		setSelectedTemplate(donor["template"+num].temp);
 	}
 
 	function setSelectedTemplate(templateNum) {
@@ -241,7 +241,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		});
 	}
 
-  
+
 	buildDonorList();
 
 

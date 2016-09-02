@@ -1,11 +1,11 @@
 <div class="imageModal modalImageWrapper">
     <ul>
 
-        <li class="center" ng-repeat="image in modal.imagesArray">
-            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="modal.updateCurrentDonorKey(modal.currentField, 'assets/' + image); $dismiss()" />
+        <!-- <li class="center" ng-repeat="image in modal.imagesArray">
+            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="modal.updateCurrentDonorKey(modal.currentField, + image); $dismiss()" /> -->
 
         <li class="center" ng-repeat="image in settingsModal.imagesArray">
-            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="settingsModal.updateCurrentDonorKey(settingsModal.currentField, 'assets/' + image); $dismiss()" />
+            <img class="imageHover modal-image" ng-src="{{image.photo}}" height="150px" width="200px" ng-click="settingsModal.updateCurrentTemplateKey(settingsModal.currentField, image); $dismiss()" />
 
         </li>
         <!-- <li><a ng-click="newImage = !newImage" ng-show="!newImage"><img class="imageHover modal-image animated fadeInUp" src="./assets/addPictureIcon.png" height="175px" width="200px"/></a>

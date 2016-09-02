@@ -47,6 +47,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handlePhotoSuccess(response) {
 		vm.photos = response.data;
+		TemplateService.imagesObject.images = response.data;
 	}
 
 	createPhotoArray();
@@ -224,7 +225,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	//Pop up modal for choosing images
 	vm.imageModal = function(id) {
-		// vm.currentDonor.template.currentField = id;
+		vm.fieldId = id;
+		vm.currentTemplate.currentField = id;
 		$uibModal.open({
 			animation: true,
 			ariaLabelledBy: 'image modal',
