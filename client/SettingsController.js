@@ -6,6 +6,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	vm.unhidePhotos = false;
 	vm.unhideSignatures = false;
 	vm.unhideHeaders = false;
+	vm.templateSaved = false;
 
 
 	// console.log(UserService.photosArray);
@@ -58,7 +59,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.signatures = response.data;
 	}
 
-	createSignatureArray();
+	// createSignatureArray();
 
 	function createHeaderArray() {
 		$http.get('photos/createheaderarray').then(handleHeaderSuccess);
@@ -68,7 +69,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.headers = response.data;
 	}
 
-	createHeaderArray();
+	// createHeaderArray();
 
 
 	vm.photos = UserService.photosArray;
@@ -262,16 +263,13 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		// vm.currentTemplate = vm.templatesList['template' + template];
 		SettingsService.currentTemplate.template[0].template = vm.templatesList['template' + template];
 		getCurrentTemplate();
+		vm.templateSaved = false;
 
 		console.log('currentTemplate:', vm.currentTemplate);
 		console.log('template selected:', template);
 	}
 
 
-	vm.saveTemplate = function(template) {
-		console.log('saved template:', template);
-		//function(template.id, template.img, template.img2, template.img3, template.img4, template.p1, template.p2, template.p3, template.p4, template.quote, template.temp)
-	}
 
 	vm.saveAllTemplates = function() {
 		console.log('save all templates:', vm.templatesList);
@@ -297,6 +295,11 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.templateHighlight.template4 = '';
 		vm.templateHighlight.template5 = '';
 		vm.templateHighlight['template' + id] = 'orange-highlight';
+	}
+	vm.saveTemplate = function(template){
+		console.log(template);
+		TemplateService.saveTemplate(template);
+		vm.templateSaved= true;
 	}
 
 	// DataService.getTemplates();

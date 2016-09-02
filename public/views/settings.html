@@ -51,12 +51,12 @@
     </div>
 
 
-    <!-- <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
-    <button ng-click="settings.saveAllTemplates()">Save All</button> -->
+    <!-- <button ng-click="settings.saveAllTemplates()">Save All</button> -->
   <!-- This is the edit template view -->
   <div class='editMainSettings' ng-show="settings.showSettings.template">
     <div class="templateSelectorWrapper">
-
+      <button class="btn btnharvest"ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+      <h3 class="text-success" ng-show="settings.templateSaved">Template Saved</h3>
         <div class="templateButtonsSettings">
           <img class="TemplateSelector {{settings.templateHighlight.template1}}" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1'); settings.setHighlight('1')">
           <img class="TemplateSelector {{settings.templateHighlight.template2}}" src="assets/template2.png"    ng-click="settings.setCurrentTemplate('2'); settings.setHighlight('2')">
