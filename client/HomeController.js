@@ -243,5 +243,5 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	buildDonorList();
 
->>>>>>> b1d2e07ad018116c07dc18528666fe2b206885e8
+
 }]);
