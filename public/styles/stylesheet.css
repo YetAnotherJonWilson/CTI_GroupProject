@@ -55,9 +55,9 @@ header {
 header a {
   display: inline;
   float: right;
-  font-size: 14px;
-  margin: 103px 30px 0 0px;
-  color: white;
+  font-size: 16px;
+  margin: 65px 20px 0 0px;
+  color: gray;
 }
 header a:first-child {
   margin-right: 20px;
@@ -246,7 +246,9 @@ background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
 }
 .TemplateSelector:hover {
-  border: 3px solid #EB7536;
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
 }
 .TemplateSelector_last {
   margin-right: 0px;
@@ -260,7 +262,9 @@ background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
 }
 .TemplateSelector_last:hover {
-  border: 3px solid #EB7536;
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
 }
 .templateButtonsSettings {
   width: 610px;
@@ -557,4 +561,11 @@ input[type="file"] {
 }
 .glyphicon-home,.glyphicon-cog {
   margin-right: 3px;
+}
+.orange-highlight {
+  border: 3px solid #EB7536;
+}
+.orange-underline {
+  border-bottom: 2px solid #EB7536;
+  background-color: blue;
 }
