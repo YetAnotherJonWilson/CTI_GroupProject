@@ -1,7 +1,7 @@
 angular.module('App').controller('ModalController', ['$http', '$location', '$uibModal', 'DataService', 'TemplateService', 'EmailService', function($http, $location, $uibModal, DataService, TemplateService, EmailService) {
 
 	var vm = this;
-	vm.currentTemplate = TemplateService.shitty();
+	vm.currentTemplate = TemplateService.awesome();
 	// console.log('shit', shit);
 	vm.currentDonor = vm.currentTemplate;
 	vm.currentField = vm.currentTemplate.currentField;
