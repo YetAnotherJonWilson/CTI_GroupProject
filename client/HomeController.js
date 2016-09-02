@@ -35,6 +35,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			tempDonorList[i].template3 = Object.assign({},TemplateService.templatesObject.template3);
 			tempDonorList[i].template4 = Object.assign({},TemplateService.templatesObject.template4);
 			tempDonorList[i].template5 = Object.assign({},TemplateService.templatesObject.template5);
+			tempDonorList[i].templateNum = vm.standardTemplate;
 			// tempDonorList[i].template.templateNum = tempStandardTemplate.temp;
 		}
 		vm.donorList = tempDonorList;
@@ -126,11 +127,12 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	vm.setCurrentTemplate = function(template) {
 		setSelectedTemplate(template);
-
 		// TemplateService.updateCurrentDonorTemplate(template);
-
-		console.log('currentTemplate:', vm.currentTemplate);
-		console.log('template selected:', template);
+		console.log(vm.currentDonor.templateNum);
+		vm.currentDonor.templateNum = template;
+		console.log("vm.current tempnum", vm.currentDonor.templateNum);
+		// console.log('currentTemplate:', vm.currentTemplate);
+		// console.log('template selected:', template);
 	}
 
 
@@ -202,8 +204,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		console.log('You cliked me', vm.selectedTemplate);
 		// updateCurrentDonorTemplate(vm.selectedTemplate.name);
 		// var template = vm.currentDonor.template.temp;
-		var splitTemplate = template.split(' ');
-		var templateNum = splitTemplate[1];
+		var templateNum = donor.templateNum;
 		EmailService.sendMail(donor, templateNum);
 		DonationService.saveEmail(donor, templateNum);
 		removeDonor(donor);
@@ -227,8 +228,9 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			closeOnConfirm: false
 		}, function() {
 			for (var i = 0; i < vm.donorList.length; i++) {
-				EmailService.sendMail(vm.donorList[i]);
-				DonationService.saveEmail(vm.donorList[i]);
+				var num = vm.donorList[i].templateNum;
+				EmailService.sendMail(vm.donorList[i], num);
+				DonationService.saveEmail(vm.donorList[i], num);
 				vm.messageSent = true;
 			}
 			vm.currentDonor = undefined;

@@ -3,22 +3,22 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
   var email = {};
 
 
-  function sendMail(donor) {
+  function sendMail(donor, num) {
     var sendData = {};
-
-    sendData.p1 = donor.template.p1;
-    sendData.p2 = donor.template.p2;
-    sendData.p3 = donor.template.p3;
-    sendData.p4 = donor.template.p4;
-    sendData.q = donor.template.quote;
-    sendData.ps = donor.template.ps;
-    sendData.img = donor.template.img;
-    sendData.img2 = donor.template.img2;
-    sendData.img3 = donor.template.img3;
-    sendData.img4 = donor.template.img4;
-    sendData.template = donor.template.temp;
-    sendData.senderName = donor.template.senderName;
-    sendData.senderTitle = donor.template.senderTitle;
+    console.log(donor);
+    sendData.p1 = donor["template"+num].p1;
+    sendData.p2 = donor["template"+num].p2;
+    sendData.p3 = donor["template"+num].p3;
+    sendData.p4 = donor["template"+num].p4;
+    sendData.q = donor["template"+num].quote;
+    sendData.ps = donor["template"+num].ps;
+    sendData.img = "";
+    sendData.img2 = "";
+    sendData.img3 = "";
+    sendData.img4 = "";
+    sendData.template = donor["template"+num].temp;
+    sendData.senderName = donor["template"+num].senderName;
+    sendData.senderTitle = donor["template"+num].senderTitle;
     sendData.email = donor.email;
     sendData.firstName = donor.firstName;
     sendData.amount = donor.Amount;
