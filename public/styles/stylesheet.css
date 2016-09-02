@@ -138,7 +138,7 @@ background-color: rgba(0, 0, 0, 0.1);
   font-size: 20px;
   float: left;
   margin-left: 5px;
-  color:
+  /*color:*/
 }
 #date {
   font-size: 16px;
@@ -302,12 +302,12 @@ background-color: rgba(0, 0, 0, 0.1);
   margin-top: 10px;
 }
 .editmainback {
-    float: left;
+    /*float: left;*/
     position: relative;
     overflow: hidden;
     height: 600px;
     width: 450px;
-    margin: 50px 0 0 350px;
+    margin: 50px auto 0 auto;
 }
 .editmainback h1 {
     position: relative;
@@ -399,6 +399,10 @@ background-color: rgba(0, 0, 0, 0.1);
   /*-webkit-box-shadow: 0px 0px 7px 4px rgba(130,123,130,1);
   -moz-box-shadow: 0px 0px 7px 4px rgba(130,123,130,1);*/
   box-shadow: 0px 0px 3px 1px rgba(130,123,130,1);
+}
+.btnharvest{
+  background-color: #eb7536;
+  color: #086a81;
 }
 /*.center {
   display: inline-block;

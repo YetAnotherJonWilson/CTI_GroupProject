@@ -33,12 +33,14 @@
             <button class="btn" ng-hide="picFile.result" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid" ng-click="settings.uploadPic(picFile)">Save</button>
         </div>
         <div class="settingsDisplayPhotos">
-            <li ng-repeat="photo in settings.photos">
+            <ul>
+                <li ng-repeat="photo in settings.photos">
 
-                <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
-                <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+                    <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
+                    <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
 
-            </li>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -51,12 +53,12 @@
     </div>
 
 
-    <!-- <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
-    <button ng-click="settings.saveAllTemplates()">Save All</button> -->
+    <!-- <button ng-click="settings.saveAllTemplates()">Save All</button> -->
   <!-- This is the edit template view -->
   <div class='editMainSettings' ng-show="settings.showSettings.template">
     <div class="templateSelectorWrapper">
-
+      <button class="btn btnharvest"ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+      <h3 class="text-success" ng-show="settings.templateSaved">Template Saved</h3>
         <div class="templateButtonsSettings">
           <img class="TemplateSelector {{settings.templateHighlight.template1}}" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1'); settings.setTemplateHighlight('1')">
           <img class="TemplateSelector {{settings.templateHighlight.template2}}" src="assets/template2.png"    ng-click="settings.setCurrentTemplate('2'); settings.setTemplateHighlight('2')">
