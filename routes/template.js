@@ -216,7 +216,7 @@ router.get('/getTemplates', function(req, res){
 });
 router.post('/saveTemplate', function(req, res){
   console.log(req.body);
-  var id=req.body._id;
+  var id=req.body.id;
   var updateObj={};
   updateObj.p1=req.body.p1;
   updateObj.p2=req.body.p2;
