@@ -41,7 +41,7 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
   //     response.sendStatus(500);
   //   });
   // };
-  function saveEmail(donor){
+  function saveEmail(donor, num){
     var sendData = {};
     sendData.opportunityId = donor.Id;
     sendData.contactId = donor.Primary_Contact__c;
@@ -49,27 +49,27 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
     sendData.closeDate = donor.CloseDate;
     sendData.sentDate = '';
     sendData.householdId = donor.householdId;
-    sendData.paragraph1 = donor.template.p1;
-    sendData.paragraph2 = donor.template.p2;
-    sendData.paragraph3 = donor.template.p3;
-    sendData.paragraph4 = donor.template.p4;
+    sendData.paragraph1 = donor["template"+num].p1;
+    sendData.paragraph2 = donor["template"+num].p2;
+    sendData.paragraph3 = donor["template"+num].p3;
+    sendData.paragraph4 = donor["template"+num].p4;
     sendData.paragraph5 = "";
-    sendData.quote = donor.template.quote;
-    if(donor.template.img != null | donor.template.img != ''){
-      sendData.picture1 = 'photos/getDbImages/' + donor.template.img.id;
+    sendData.quote = donor["template"+num].quote;
+    if(donor["template"+num].img != null | donor["template"+num].img != ''){
+      sendData.picture1 = 'photos/getDbImages/' + donor["template"+num].img.id;
     }
-    if(donor.template.img2 != null | donor.template.img2 != ''){
-      sendData.picture2 = 'photos/getDbImages/' + donor.template.img2.id;
+    if(donor["template"+num].img2 != null | donor["template"+num].img2 != ''){
+      sendData.picture2 = 'photos/getDbImages/' + donor["template"+num].img2.id;
     }
-    if(donor.template.img3 != null | donor.template.img3 != ''){
-      sendData.picture3 = 'photos/getDbImages/' + donor.template.img3.id;
+    if(donor["template"+num].img3 != null | donor["template"+num].img3 != ''){
+      sendData.picture3 = 'photos/getDbImages/' + donor["template"+num].img3.id;
     }
-    if(donor.template.img4 != null | donor.template.img4 != ''){
-      sendData.picture4 = 'photos/getDbImages' + donor.template.img4.id;
+    if(donor["template"+num].img4 != null | donor["template"+num].img4 != ''){
+      sendData.picture4 = 'photos/getDbImages/' + donor["template"+num].img4.id;
     }
     sendData.letterhead = '/path/to/letterhead';
     sendData.signature = '/path/to/signature';
-    sendData.template = donor.template.temp;
+    sendData.template = donor["template"+num].temp;
     console.log('test button');
     // $http.post('/donor/createData', sendData).then(function(response){
     //   console.log('test success', response);

@@ -96,12 +96,12 @@ var currentTemplate = {key: 'bleh'};
 			 console.log('currenttemp tempserv',currentTemplate);
 			 return currentTemplate;
 		}, function(response){
-			console.log('boo i suck');
+			console.log('f');
 		});
 
 	}
 
-function shitty(){
+function awesome(){
 	return currentTemplate;
 }
 

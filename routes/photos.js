@@ -143,11 +143,11 @@ router.get('/createphotoarray', function(req, res) {
       //   return;
       //   res.send('');
       // }
-      if(doc.length == ''){
-        console.log('stuff');
-        return;
-        res.send('');
-      }
+      // if(doc.length == ''){
+      //   console.log('stuff');
+      //   return;
+      //   res.send('');
+      // }
       // if(doc.length == null){
       //   console.log('null');
       // }
