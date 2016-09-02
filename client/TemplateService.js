@@ -1,5 +1,9 @@
 angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', 'DataService', function($location, Upload, $timeout, $http, DataService) {
 
+	// top level object that contains all service data
+	var data = {};
+
+	//TODO rename to data.templatesObject
 	var templatesObject = {};
 
 	// var currentTemplate = {
@@ -15,6 +19,7 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 	var vm = this;
 
+	// TODO should hang off of data
 	var currentDonor = {
 		donor: [{
 			donor: {}
@@ -88,21 +93,21 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentDonor.donor[0].donor =  donor;
 		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
-var currentTemplate = {key: 'bleh'};
+ 	data.currentTemplate = {key: 'bleh'};
 	function updateCurrentDonorTemplate(num){
-		currentTemplate = {};
-		return $http.get('/template/bleh').then(function(response){
-			currentTemplate =	currentDonor.donor[0].donor["template"+num];
-			 console.log('currenttemp tempserv',currentTemplate);
-			 return currentTemplate;
-		}, function(response){
-			console.log('f');
-		});
+		data.currentTemplate = {};
+		// return $http.get('/template/bleh').then(function(response){
+			data.currentTemplate =	currentDonor.donor[0].donor["template"+num];
+			 console.log('currenttemp tempserv', data.currentTemplate);
+			 return data.currentTemplate;
+		// }, function(response){
+			// console.log('f');
+		// });
 
 	}
 
 function awesome(){
-	return currentTemplate;
+	return data.currentTemplate;
 }
 
 
@@ -273,7 +278,8 @@ function awesome(){
 	// bleh();
 	return {
 		currentDonor: currentDonor,
-		currentTemplate: currentTemplate,
+		//currentTemplate: currentTemplate,
+		data: data,
 		// getCurrentTemplate: getCurrentTemplate,
 		imagesObject: imagesObject,
 		saveEditedEmail: saveEditedEmail,
@@ -288,7 +294,7 @@ function awesome(){
 		bleh: bleh,
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
-		shitty: shitty
+		awesome: awesome
 	}
 
 
