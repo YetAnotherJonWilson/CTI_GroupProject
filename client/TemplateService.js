@@ -23,9 +23,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 	// var templatesObject = DataService.templatesObject;
 
-	function saveTemplate(template) {
-		var sendData = template;
-		$http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
+
+	function saveTemplate(template){
+		var sendData= template;
+
+		return $http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
 	}
 
 	function saveTemplateSuccess(res) {

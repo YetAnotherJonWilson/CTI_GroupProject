@@ -17,6 +17,9 @@ var vm = this;
       console.log('photo.id', photo.id);
       deletePhoto.id = photo.id;
       // console.log('delete pushed' , deletePhoto);
+      if(vm.photos.length == 1){
+        sweetAlert("Sorry!!", "You can't delete the last photo.", "error");
+      }
       $http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
       });
     }
