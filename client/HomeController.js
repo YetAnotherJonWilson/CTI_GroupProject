@@ -1,5 +1,6 @@
 angular.module('App').controller('HomeController', ['$http', '$location', 'DataService', 'RouteService', 'orderByFilter', '$uibModal', 'TemplateService', 'EmailService', 'UserService', '$route', 'DonationService', function($http, $location, DataService, RouteService, orderBy, $uibModal, TemplateService, EmailService, UserService, $route, DonationService) {
 
+
 	var vm = this;
 
 	vm.donorList = [];
@@ -24,6 +25,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	function buildDonorList() {
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
+
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
@@ -247,7 +249,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		});
 	}
 
-
+  
 	buildDonorList();
+
 
 }]);
