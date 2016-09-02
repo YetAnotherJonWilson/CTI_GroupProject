@@ -53,11 +53,19 @@
       <div class="editField">
           <div class="templateSelectorWrapperHome">
             <div class="templateButtonsSettings">
-            <img class="TemplateSelector" src="assets/template1.png" ng-click="home.setCurrentTemplate('1')">
+
+
+              <img class="TemplateSelector {{home.templateHighlight.template1}}" src="assets/template1.png" ng-click="home.setCurrentTemplate('1'); home.setHighlight('1')">
+              <img class="TemplateSelector {{home.templateHighlight.template2}}" src="assets/template2.png"    ng-click="home.setCurrentTemplate('2'); home.setHighlight('2')">
+              <img class="TemplateSelector {{home.templateHighlight.template3}}" src="assets/template3.png" ng-click="home.setCurrentTemplate('3'); home.setHighlight('3')">
+              <img class="TemplateSelector {{home.templateHighlight.template4}}" src="assets/template4.png"  ng-click="home.setCurrentTemplate('4'); home.setHighlight('4')">
+              <img class="TemplateSelector_last {{home.templateHighlight.template5}}" src="assets/template5.png" ng-click="home.setCurrentTemplate('5'); home.setHighlight('5')">
+
+            <!-- <img class="TemplateSelector" src="assets/template1.png" ng-click="home.setCurrentTemplate('1')">
             <img class="TemplateSelector" src="assets/template2.png"    ng-click="home.setCurrentTemplate('2')">
             <img class="TemplateSelector" src="assets/template3.png" ng-click="home.setCurrentTemplate('3')">
             <img class="TemplateSelector" src="assets/template4.png"  ng-click="home.setCurrentTemplate('4')">
-            <img class="TemplateSelector_last" src="assets/template5.png" ng-click="home.setCurrentTemplate('5')">
+            <img class="TemplateSelector_last" src="assets/template5.png" ng-click="home.setCurrentTemplate('5')"> -->
           </div>
         </div>
 

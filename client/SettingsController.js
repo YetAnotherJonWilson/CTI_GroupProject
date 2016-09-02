@@ -44,7 +44,6 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	}
 
 	function handlePhotoSuccess(response) {
-		console.log(response.data);
 		vm.photos = response.data;
 	}
 
@@ -55,7 +54,6 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	}
 
 	function handleSignatureSuccess(response) {
-		console.log('What is this!!!!!!!!!', response.data);
 		vm.signatures = response.data;
 	}
 
