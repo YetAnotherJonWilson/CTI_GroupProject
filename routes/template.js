@@ -240,4 +240,8 @@ router.post('/saveTemplate', function(req, res){
     }
   })
 })
+
+router.get('/bleh', function(request, response){
+  response.send('i really do suck');
+});
 module.exports = router;

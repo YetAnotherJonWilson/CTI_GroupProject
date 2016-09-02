@@ -2,16 +2,16 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 	var templatesObject = {};
 
-	var currentTemplate = {
-		p1: '',
-		p2: '',
-		p3: '',
-		p4: '',
-		quote: '',
-		ps: '',
-		currentField: '',
-		img: ''
-	};
+	// var currentTemplate = {
+	// 	// p1: '',
+	// 	// p2: '',
+	// 	// p3: '',
+	// 	// p4: '',
+	// 	// quote: '',
+	// 	// ps: '',
+	// 	// currentField: '',
+	// 	// img: ''
+	// };
 
 	var vm = this;
 
@@ -50,41 +50,58 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 	}
 
-	function updateCurrentDonorKey(key, value) {
+	function updateCurrentDonorKey(key, value, num) {
+		console.log('key', key);
+		console.log('vlaue', value);
+		console.log('num', num);
+		console.log('bjljfkldaskdf', currentDonor.donor[0].donor["template"+num]);
+		currentDonor.donor[0].donor["template"+num][key] = value;
 		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
-		currentDonor.donor[0].donor.template[key] = value;
-		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
-
 
 		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
-	function updateCurrentDonorTemplate(templateNum) {
-		switch (templateNum) {
-			case "1":
-				currentDonor.donor[0].donor.template = templatesObject.template1;
-				break;
-			case "2":
-				currentDonor.donor[0].donor.template = templatesObject.template2;
-				break;
-			case "3":
-				currentDonor.donor[0].donor.template = templatesObject.template3;
-				break;
-			case "4":
-				currentDonor.donor[0].donor.template = templatesObject.template4;
-				break;
-			case "5":
-				currentDonor.donor[0].donor.template = templatesObject.template5;
-				break;
-		}
-	}
+	// function updateCurrentDonorTemplate(templateNum) {
+	// 	switch (templateNum) {
+	// 		case "1":
+	// 			currentDonor.donor[0].donor.template = templatesObject.template1;
+	// 			break;
+	// 		case "2":
+	// 			currentDonor.donor[0].donor.template = templatesObject.template2;
+	// 			break;
+	// 		case "3":
+	// 			currentDonor.donor[0].donor.template = templatesObject.template3;
+	// 			break;
+	// 		case "4":
+	// 			currentDonor.donor[0].donor.template = templatesObject.template4;
+	// 			break;
+	// 		case "5":
+	// 			currentDonor.donor[0].donor.template = templatesObject.template5;
+	// 			break;
+	// 	}
+	// }
 
 	function updateCurrentDonor(donor) {
 		console.log('update current donor, donor:', donor);
-		currentDonor.donor[0].donor = donor;
+		currentDonor.donor[0].donor =  donor;
 		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
+var currentTemplate = {key: 'bleh'};
+	function updateCurrentDonorTemplate(num){
+		currentTemplate = {};
+		return $http.get('/template/bleh').then(function(response){
+			currentTemplate =	currentDonor.donor[0].donor["template"+num];
+			 console.log('currenttemp tempserv',currentTemplate);
+			 return currentTemplate;
+		}, function(response){
+			console.log('boo i suck');
+		});
 
+	}
+
+function shitty(){
+	return currentTemplate;
+}
 
 
 
@@ -216,11 +233,11 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		console.log('templates data service', res);
 		templatesArray = res.data;
 		console.log('templates array', templatesArray);
-		templatesObject.template1 = templatesArray[0];
-		templatesObject.template2 = templatesArray[1];
-		templatesObject.template3 = templatesArray[2];
-		templatesObject.template4 = templatesArray[3];
-		templatesObject.template5 = templatesArray[4];
+		templatesObject.template1 = Object.assign({},templatesArray[0]);
+		templatesObject.template2 = Object.assign({},templatesArray[1]);
+		templatesObject.template3 = Object.assign({},templatesArray[2]);
+		templatesObject.template4 = Object.assign({},templatesArray[3]);
+		templatesObject.template5 = Object.assign({},templatesArray[4]);
 		// console.log('templates object gettemplatesuccess', templatesObject);
 		// bleh(templatesObject);
 		// bleh();
@@ -268,7 +285,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		updateCurrentDonorTemplate: updateCurrentDonorTemplate,
 		bleh: bleh,
 		getTemplates: getTemplates,
-		templatesObject: templatesObject
+		templatesObject: templatesObject,
+		shitty: shitty
 	}
 
 
