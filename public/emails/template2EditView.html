@@ -131,28 +131,28 @@
             <p class="greeting">
                 Dear {{home.currentDonor.firstName}}:
             </p>
-            <p class="p1 fieldHover" ng-click="home.editModal('p1')">
-                {{home.currentDonor.template.p1}}
+            <p class="p1 fieldHover" ng-click="home.editModal('p1', 2)">
+                {{home.currentDonor.template2.p1}}
             </p>
-            <p class="p2 fieldHover" ng-click="home.editModal('p2')">
-                {{home.currentDonor.template.p2}}
+            <p class="p2 fieldHover" ng-click="home.editModal('p2', 2)">
+                {{home.currentDonor.template2.p2}}
             </p>
             <!-- <p class="p2">
                 It’s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone’s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:
               </p> -->
         </div>
         <div class="imageRow">
-            <img src="{{home.currentDonor.template.img}}" alt="image" class="imageHover" ng-click="home.imageModal('img')">
-            <p class="quote fieldHover" ng-click="home.editModal('q')">
-                {{home.currentDonor.template.quote}}
+            <img src="{{home.currentDonor.template2.img.photo}}" alt="image" class="imageHover" ng-click="home.imageModal('img', 2)">
+            <p class="quote fieldHover" ng-click="home.editModal('q', 2)">
+                {{home.currentDonor.template2.quote}}
             </p>
             <!-- <p class="quote">
                   “Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I’m proud, as a woman, to be a leader and have respect in my community. I’m proud that I don’t need to ask for help.”
               </p> -->
         </div>
         <div id="clear" class="p3">
-            <p class="fieldHover" ng-click="home.editModal('p3')">
-                {{home.currentDonor.template.p3}}
+            <p class="fieldHover" ng-click="home.editModal('p3', 2)">
+                {{home.currentDonor.template2.p3}}
             </p>
 
             <!-- <p>
@@ -167,8 +167,8 @@
         <div class="signature">
             <img src='https://dl.dropboxusercontent.com/u/566253206/Alexandra.png' width="200px" height="50px">
 
-            <p class="ps fieldHover" ng-click="home.editModal('ps')">
-                {{home.currentDonor.template.ps}}
+            <p class="ps fieldHover" ng-click="home.editModal('ps', 2)">
+                {{home.currentDonor.template2.ps}}
             </p>
             <p>
                 Alexandra Spieldoch,

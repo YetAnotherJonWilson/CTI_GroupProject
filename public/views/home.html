@@ -16,9 +16,12 @@
             <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
         </div>
 
+
           <button id="sendEmail" class="btn" ng-click="home.sendAll()">Send All</button>
     </div>
     <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
+
+
 
 
         <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
@@ -42,8 +45,6 @@
     <img src="/assets/CTI_logo_text.png" alt="cti logo" />
 </div>
 
-
-
 <div ng-show="home.currentDonor" class='editmain'>
     <!-- <button ng-click='home.sendMail(home.currentDonor)'>Send</button> -->
       <!-- <div class="editField"> -->
@@ -56,18 +57,12 @@
               <img class="TemplateSelector {{home.templateHighlight.template3}}" src="assets/template3.png" ng-click="home.setCurrentTemplate('3'); home.setHighlight('3')">
               <img class="TemplateSelector {{home.templateHighlight.template4}}" src="assets/template4.png"  ng-click="home.setCurrentTemplate('4'); home.setHighlight('4')">
               <img class="TemplateSelector_last {{home.templateHighlight.template5}}" src="assets/template5.png" ng-click="home.setCurrentTemplate('5'); home.setHighlight('5')">
-
-            <!-- <img class="TemplateSelector" src="assets/template1.png" ng-click="home.setCurrentTemplate('1')">
-            <img class="TemplateSelector" src="assets/template2.png"    ng-click="home.setCurrentTemplate('2')">
-            <img class="TemplateSelector" src="assets/template3.png" ng-click="home.setCurrentTemplate('3')">
-            <img class="TemplateSelector" src="assets/template4.png"  ng-click="home.setCurrentTemplate('4')">
-            <img class="TemplateSelector_last" src="assets/template5.png" ng-click="home.setCurrentTemplate('5')"> -->
           </div>
         </div>
-      <!-- </div> -->
+
         <div class='editview'>
             <div>
-                <!-- <hr/> -->
+          
                 <div class="slide-animate-container">
                     <div class="slide-animate" ng-include="home.selectedTemplate.url">
                     </div>

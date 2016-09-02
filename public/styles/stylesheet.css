@@ -596,3 +596,6 @@ input[type="file"] {
   border-bottom: 2px solid #EB7536;
   background-color: blue;
 }
+.imgHighlight {
+  opacity: .8;
+}

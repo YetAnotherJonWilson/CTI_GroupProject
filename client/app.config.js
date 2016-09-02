@@ -12,8 +12,12 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       resolve: {
         someting: ['DataService', function(DataService){
           return DataService.getData();
-        }],stuff: ['DataService', function(DataService){
-          return DataService.getTemplates();
+        }],
+        bleh: ['TemplateService', function(TemplateService){
+          return TemplateService.createPhotoArray();
+        }],
+        stuff: ['TemplateService', function(TemplateService){
+          return TemplateService.getTemplates();
         }]
       }
     })
@@ -27,8 +31,8 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'SettingsController',
       controllerAs: 'settings',
       resolve: {
-        getTemplates: ['DataService', function(DataService){
-          return DataService.getTemplates();
+        getTemplates: ['TemplateService', function(TemplateService){
+          return TemplateService.getTemplates();
         }]
       }
     })

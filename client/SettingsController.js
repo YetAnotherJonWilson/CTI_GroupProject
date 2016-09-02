@@ -1,3 +1,4 @@
+
 angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService) {
 
 	var vm = this;
@@ -302,7 +303,5 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	buildTemplateObject();
 	setTemplateOnLoad();
 	getCurrentTemplate();
-
-
 
 }]);

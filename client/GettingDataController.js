@@ -1,4 +1,4 @@
-angular.module('App').controller('GettingDataController',['DataService', function(DataService){
+angular.module('App').controller('GettingDataController',['DataService', 'TemplateService', function(DataService, TemplateService){
   DataService.getData();
-  DataService.getTemplates();
+  TemplateService.getTemplates();
 }]);

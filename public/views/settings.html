@@ -50,6 +50,7 @@
         </div>
     </div>
 
+
     <!-- <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
     <button ng-click="settings.saveAllTemplates()">Save All</button> -->
   <!-- This is the edit template view -->
@@ -68,6 +69,7 @@
         <div class="editField">
             <div class='editview'>
                 <div>
+
                     <div class="slide-animate-container">
                         <div class="slide-animate" ng-include="settings.selectedTemplate.url"></div>
                     </div>
@@ -77,6 +79,7 @@
     </div>
 
     <!-- settings view to display uploaded signatures -->
+
     <div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
         <div class="settingsUploadeImageForm">
             <form name="signatureForm">
@@ -107,6 +110,8 @@
                 <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
             </li>
         </div>
+
+
     </div>
     <!-- uploade new headers and display current headers -->
     <div class="settingsUplaodHeader" ng-show="settings.showSettings.header">

@@ -124,7 +124,7 @@ angular.module('App').factory('DataService', ['$http','$location', function($htt
         sortData(data);
         preconvertDates();
         // convertDates();
-        $location.path('/home');
+        // $location.path('/home');
   }
   function handleFailure(res){
     console.log('fail', res);
@@ -400,23 +400,23 @@ sortedObject.sorted = sorted;
 //   console.log('template create failed');
 // }
 // createTemplate();
-var templatesArray=[];
-function getTemplates(){
-    return $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
-}
-function getTemplateSuccess(res){
-  console.log('templates', res);
-  templatesArray= res.data;
-  console.log(templatesArray);
-  templatesObject.template1=templatesArray[0];
-  templatesObject.template2=templatesArray[1];
-  templatesObject.template3=templatesArray[2];
-  templatesObject.template4=templatesArray[3];
-  templatesObject.template5=templatesArray[4];
-}
-function getTemplateFailure(res){
-  console.log('template retrieval failure');
-}
+// var templatesArray=[];
+// function getTemplates(){
+//     return $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
+// }
+// function getTemplateSuccess(res){
+//   console.log('templates data service', res);
+//   templatesArray = res.data;
+//   console.log(templatesArray);
+//   templatesObject.template1=templatesArray[0];
+//   templatesObject.template2=templatesArray[1];
+//   templatesObject.template3=templatesArray[2];
+//   templatesObject.template4=templatesArray[3];
+//   templatesObject.template5=templatesArray[4];
+// }
+// function getTemplateFailure(res){
+//   console.log('template retrieval failure');
+// }
 
 
   return {
@@ -425,8 +425,10 @@ function getTemplateFailure(res){
     sortedObject: sortedObject,
     // getDonors: getDonors,
     getData: getData,
-    donorObject: donorObject,
-    templatesObject: templatesObject,
-    getTemplates: getTemplates
+    donorObject: donorObject
+    // ,
+    // templatesObject: templatesObject
+    // ,
+    // getTemplates: getTemplates
   };
 }]);
