@@ -32,8 +32,30 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 
 	function saveTemplate(template){
-		var sendData= template;
-
+		var sendData= {};
+		sendData.id = template._id;
+		sendData.p1 = template.p1;
+    sendData.p2 = template.p2;
+    sendData.p3 = template.p3;
+    sendData.p4 = template.p4;
+    sendData.quote = template.quote;
+		sendData.ps = template.ps;
+    if(template.img != null | template.img != ''){
+      sendData.img = 'photos/getDbImages/' + template.img.id;
+    }
+    if(template.img2 != null | template.img2 != ''){
+      sendData.img2 = 'photos/getDbImages/' + template.img2.id;
+    }
+    if(template.img3 != null | template.img3 != ''){
+      sendData.img3 = 'photos/getDbImages/' + template.img3.id;
+    }
+    if(template.img4 != null | template.img4 != ''){
+      sendData.img4 = 'photos/getDbImages/' + template.img4.id;
+    }
+    sendData.template = template.temp;
+		sendData.senderTitle = template.senderTitle;
+		sendData.senderName = template.senderName;
+		console.log('senddata',sendData);
 		return $http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
 	}
 
@@ -140,13 +162,13 @@ function awesome(){
 		console.log('bleh', templatesObject);
 		console.log('images object', imagesObject);
 		var templateImage = {};
-		console.log('template service templatesObject.img', templatesObject.template1.img);
+		console.log('template service templatesObject.img', templatesObject.template5);
 		templateImage.t1 = {};
 		templateImage.t2 = {};
 		templateImage.t3 = {};
 		templateImage.t4 = {};
 		templateImage.t5 = {};
-		console.log('templatesObject.template1.img', templatesObject.template1.img);
+		console.log('templatesObject.template1.img', templatesObject.template5.img);
 		templateImage.t1.img = templatesObject.template1.img.split('/');
 		templateImage.t2.img = templatesObject.template2.img.split('/');
 		templateImage.t3.img = templatesObject.template3.img.split('/');
@@ -296,7 +318,8 @@ function awesome(){
 		bleh: bleh,
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
-		awesome: awesome
+		awesome: awesome,
+		saveTemplate: saveTemplate
 	}
 
 
