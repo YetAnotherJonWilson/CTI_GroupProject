@@ -33,12 +33,14 @@
             <button class="btn" ng-hide="picFile.result" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid" ng-click="settings.uploadPic(picFile)">Save</button>
         </div>
         <div class="settingsDisplayPhotos">
-            <li ng-repeat="photo in settings.photos">
+            <ul>
+                <li ng-repeat="photo in settings.photos">
 
-                <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
-                <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+                    <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
+                    <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
 
-            </li>
+                </li>
+            </ul>
         </div>
     </div>
 

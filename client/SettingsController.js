@@ -46,6 +46,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handlePhotoSuccess(response) {
 		vm.photos = response.data;
+		TemplateService.imagesObject.images = response.data;
 	}
 
 	createPhotoArray();
@@ -58,7 +59,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.signatures = response.data;
 	}
 
-	createSignatureArray();
+	//createSignatureArray();
 
 	function createHeaderArray() {
 		$http.get('photos/createheaderarray').then(handleHeaderSuccess);
@@ -68,7 +69,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.headers = response.data;
 	}
 
-	createHeaderArray();
+	//createHeaderArray();
 
 
 	vm.photos = UserService.photosArray;
