@@ -58,6 +58,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleSignatureSuccess(response) {
 		vm.signatures = response.data;
+		TemplateService.data.signatures = vm.signatures;
+		// console.log('tempalteservice.data.signatures', TemplateService.data.signatures);
 	}
 
 	// createSignatureArray();
@@ -68,6 +70,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleHeaderSuccess(response) {
 		vm.headers = response.data;
+		TemplateService.data.headers = vm.headers;
+		console.log('templateservice.data.headers', TemplateService.data.headers);
 	}
 
 
@@ -117,13 +121,20 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		file.upload.then(function(response) {
 			$timeout(function() {
 				file.result = response.data;
+				// createSignatureArray();
 			});
+			if(response.status == 200){
+				createSignatureArray();
+			}
 		}, function(response) {
-			if (response.status > 0)
+			console.log('response fjklasjflsajklsa', response);
+			if (response.status > 0){
 				vm.errorMsg = response.status + ': ' + response.data;
+			}
 		}, function(evt) {
 			// Math.min is to fix IE which reports 200% sometimes
 			file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			console.log('1', file.progress);
 		});
 	};
 
@@ -141,6 +152,9 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 			$timeout(function() {
 				file.result = response.data;
 			});
+			if(response.status == 200){
+				createHeaderArray();
+			}
 		}, function(response) {
 			if (response.status > 0)
 				vm.errorMsg = response.status + ': ' + response.data;
