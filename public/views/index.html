@@ -28,8 +28,9 @@
 
 
           <img id="logo1" src="/assets/Logo_1.png" alt="cti logo"/>
-          <a href="/settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
-          <a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a>
+
+          <h3 ng-click="main.menuClick('settings'); main.settingsRoute()"><span ng-class="{menuActive: main.isActive('/settings')}" class="glyphicon glyphicon-cog"></span>Settings</h3>
+          <h3 ng-click="main.menuClick('home'); main.homeRoute()"><span ng-class="{menuActive: main.isActive('/home')}" class="glyphicon glyphicon-home"></span>Home</h3>
 
           <!-- <a href="/logout">Log Out</a> -->
           <!-- <a href="/overview">Overview</a> -->

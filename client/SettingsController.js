@@ -169,15 +169,22 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	// }
 	// getTemplates();
 
+
+	//Sets view of menu item and highlights that item
 	vm.settingsClick = function(id) {
 		vm.showSettings.photo = false;
 		vm.showSettings.template = false;
 		vm.showSettings.signature = false;
 		vm.showSettings.header = false;
 		vm.showSettings[id] = true;
-		console.log("this is the id", id);
-		console.log("vm.showSettings", vm.showSettings);
-		console.log("vm.showSettings[id]", vm.showSettings[id]);
+
+		vm.menuHighlight.photo = '',
+		vm.menuHighlight.template = '',
+		vm.menuHighlight.signature = '',
+		vm.menuHighlight.header = '',
+		vm.menuHighlight[id] = 'menu-highlight'
+		console.log('showsettings:', vm.showSettings);
+		console.log('menuHighlight:', vm.menuHighlight);
 	}
 
 	vm.showSettings = {
@@ -186,6 +193,15 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		signature: false,
 		header: false
 	}
+
+	vm.menuHighlight = {
+		photo: 'menu-highlight',
+		template: '',
+		signature: '',
+		header: ''
+	}
+
+
 
 	vm.templatesList;
 	vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
@@ -290,7 +306,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
     template5: ''
   }
 
-	vm.setHighlight = function(id) {
+	vm.setTemplateHighlight = function(id) {
 		vm.templateHighlight.template1 = '';
 		vm.templateHighlight.template2 = '';
 		vm.templateHighlight.template3 = '';
@@ -299,6 +315,10 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.templateHighlight['template' + id] = 'orange-highlight';
 	}
 
+	vm.isActive = function(route) {
+			return route === $location.path();
+	}
+	
 	// DataService.getTemplates();
 	buildTemplateObject();
 	setTemplateOnLoad();

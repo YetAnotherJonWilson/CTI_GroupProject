@@ -1,10 +1,15 @@
-angular.module('App').controller('MainController', ['$http', '$location', 'DonationService' , function($http, $location, DonationService){
+angular.module('App').controller('MainController', ['$http', '$location', 'DonationService', 'RouteService', function($http, $location, DonationService, RouteService){
 
     var vm = this;
 
     vm.message = "CTI Thank You Email System";
 
-
+    vm.homeRoute = function(){
+      RouteService.homeRoute();
+    }
+    vm.settingsRoute = function(){
+      RouteService.settingsRoute();
+    }
 
     vm.sendMail = function(){
       EmailService.sendMail();
@@ -56,6 +61,24 @@ angular.module('App').controller('MainController', ['$http', '$location', 'Donat
       }, function(err){
         console.log('test save fail', err);
       });
+    }
+
+
+    //Highlight home or settings buttons
+    // vm.menuClick = function(id) {
+    //   vm.mainNavHighlight.home = '',
+    //   vm.mainNavHighlight.settings = '',
+    //   vm.mainNavHighlight[id] = 'mainNavHighlight'
+    //   console.log('mainNavHighlight:', vm.mainNavHighlight);
+    // }
+    //
+    // vm.mainNavHighlight = {
+    //   home: 'mainNavHighlight',
+    //   settings: ''
+    // }
+
+    vm.isActive = function(route) {
+        return route === $location.path();
     }
 
 }]);

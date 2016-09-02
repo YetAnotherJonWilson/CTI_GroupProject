@@ -241,7 +241,29 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		});
 	}
 
-  
+	vm.isActive = function(id) {
+		if(vm.currentDonor){
+			return id === vm.currentDonor.Id;
+		}
+	}
+
+	vm.templateHighlight = {
+    template1: 'orange-highlight',
+    template2: '',
+    template3: '',
+    template4: '',
+    template5: ''
+  }
+
+	vm.setTemplateHighlight = function(id) {
+		vm.templateHighlight.template1 = '';
+		vm.templateHighlight.template2 = '';
+		vm.templateHighlight.template3 = '';
+		vm.templateHighlight.template4 = '';
+		vm.templateHighlight.template5 = '';
+		vm.templateHighlight['template' + id] = 'orange-highlight';
+	}
+
 	buildDonorList();
 
 
