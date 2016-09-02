@@ -169,7 +169,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.imageModal = function(id, num) {
 		vm.currentDonor["template"+num].currentField = id;
 		// console.log('about to update current donor template');
-		TemplateService.updateCurrentDonorTemplate(num).then(function(response){
+		TemplateService.updateCurrentDonorTemplate(num);
+		// .then(function(response){
 		console.log('opening modal');
 		$uibModal.open({
 			animation: true,
@@ -181,7 +182,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			size: 'md',
 			windowClass: 'imageModalClass'
 		});
-	});
+	// });
 	};
 
 
