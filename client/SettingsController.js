@@ -307,4 +307,5 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	getCurrentTemplate();
 
 
+
 }]);
