@@ -55,9 +55,9 @@ header {
 header a {
   display: inline;
   float: right;
-  font-size: 14px;
-  margin: 103px 30px 0 0px;
-  color: white;
+  font-size: 16px;
+  margin: 65px 20px 0 0px;
+  color: gray;
 }
 header a:first-child {
   margin-right: 20px;
@@ -104,13 +104,19 @@ header a:active, header a:focus {
 .donorInfoHome {
   display: inline-table;
   float: left;
-  width: 35%;
+  width: 30%;
   min-width: 380px;
   height: 1200px;
   margin-left: 0px;
   border-right: 1px solid rgba(0, 0, 0, 0.3);
   overflow: scroll;
-  box-shadow: -5 -5 0 rgba(0, 0, 0, 0.1);
+  webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.2);
+  webkit-box-shadow: 2px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.2);
+
 }
 .donorInfoHome th {
   font-weight: bold;
@@ -228,7 +234,6 @@ background-color: rgba(0, 0, 0, 0.1);
   height: 34px;
   width: 100%;
   background-color: #50504F;
-  margin-bottom: 10px;
 }
 .editmain {
   width: 100%;
@@ -247,7 +252,9 @@ background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
 }
 .TemplateSelector:hover {
-  border: 3px solid #EB7536;
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
 }
 .TemplateSelector_last {
   margin-right: 0px;
@@ -262,7 +269,9 @@ background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
 }
 .TemplateSelector_last:hover {
-  border: 3px solid #EB7536;
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
 }
 .templateButtonsSettings {
   width: 620px;
@@ -274,6 +283,11 @@ background-color: rgba(0, 0, 0, 0.1);
   margin-top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
+}
+.templateSelectorWrapperHome {
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.1);
+  float: left;
 }
 .editinputs {
   float: left;
@@ -317,15 +331,14 @@ background-color: rgba(0, 0, 0, 0.1);
 }
 .editview {
   width: 70%;
+  float: left;
   /*border: 1px solid rgba(0, 0, 0, 0.1);*/
-  /*margin: auto;*/
-  /*overflow: auto;*/
+  margin-top: 20px;
+
 }
 .editField {
-  width: 620px;
+  width: 100%;
   margin: auto;
-  /*margin-top: 30px;*/
-  overflow: auto;
 }
 .editModal {
   margin: 10px;
@@ -581,4 +594,11 @@ input[type="file"] {
 }
 .glyphicon-home,.glyphicon-cog {
   margin-right: 3px;
+}
+.orange-highlight {
+  border: 3px solid #EB7536;
+}
+.orange-underline {
+  border-bottom: 2px solid #EB7536;
+  background-color: blue;
 }

@@ -86,62 +86,6 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
         vm.selectedTemplate = vm.templates[templateNum - 1];
     }
 
-    // vm.setCurrentEditView1 = function(id) {
-    // 	console.log('donor id', id);
-    // 	// console.log('set current view');
-    // 	var tempDonor;
-    // 	var tempIndex;
-    // 	var editedTempIndex;
-    //
-    // 	if (vm.currentDonor) {
-    // 		console.log('If vm.currentDonor');
-    // 		var isInArray;
-    //
-    // 		//check if this donor is in editedDonorsArray.
-    // 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-    // 			if (vm.editedDonorsArray[i].Id == vm.currentDonor.Id) {
-    // 				isInArray = true;
-    // 				editedTempIndex = i;
-    // 			}
-    // 		}
-    //
-    // 		//if the donor is in editedDonorsArray, replace it with the current edit.
-    // 		//Else add it to the edited array
-    // 		if (isInArray) {
-    // 			console.log('if isInArray');
-    // 			vm.editedDonorsArray[editedTempIndex] = vm.currentDonor;
-    // 		} else {
-    // 			console.log('if isInArray else statement');
-    // 			vm.editedDonorsArray.push(vm.currentDonor);
-    // 		}
-    // 	}
-    //
-    // 	//if there are edited donors, check that list first to get current donor info and put it in tempDonor
-    // 	if (vm.editedDonorsArray > 0) {
-    // 		console.log('if vm.editedDonorsArray > 0');
-    // 		for (var i = 0; i < vm.editedDonorsArray.length; i++) {
-    // 			if (vm.editedDonorsArray[i].Id == id) {
-    // 				tempDonor = vm.editedDonorsArray[i];
-    // 				tempIndex = i;
-    // 			}
-    // 		}
-    // 	}
-    //
-    // 	//If there was no match in the edited Array, then find the donor info in the donorList
-    // 	if (!tempDonor) {
-    // 		console.log('if !tempDonor');
-    // 		for (var i = 0; i < vm.donorList.length; i++) {
-    // 			if (vm.donorList[i].Id == id) {
-    // 				tempDonor = vm.donorList[i];
-    // 				tempIndex = i;
-    // 			}
-    // 		}
-    // 	}
-    //
-    // 	updateCurrentDonor(tempDonor);
-    // 	getCurrentDonor();
-    // 	console.log('editedDonorsArray:', vm.editedDonorsArray);
-    // }
 
     function getCurrentDonor() {
         vm.currentDonor = TemplateService.currentDonor.donor[0].donor;
