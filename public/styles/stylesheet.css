@@ -69,10 +69,10 @@ header a:active, header a:focus {
   color: #eb7536;
 }
 #logo1 {
-  height: 84px;
-  width: 72px;
+  height: 67px;
+  width: 57px;
   float: left;
-  margin: 3px 0 0 3px;
+  margin: 7px 0 0 10px;
 }
 /*login.html*/
 #loginwrapper {
@@ -442,7 +442,7 @@ background-color: rgba(0, 0, 0, 0.1);
 }
 
 .settingsMenu h1 {
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 15px;
   display: inline;
   margin: 3px 0 0 0;

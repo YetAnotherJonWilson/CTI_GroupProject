@@ -244,5 +244,24 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
             swal("Sent!", "Your Messages Have Been Sent", "success");
         });
     }
+
+    vm.templateHighlight = {
+      template1: 'orange-highlight',
+      template2: '',
+      template3: '',
+      template4: '',
+      template5: ''
+    }
+
+  	vm.setHighlight = function(id) {
+  		vm.templateHighlight.template1 = '';
+  		vm.templateHighlight.template2 = '';
+  		vm.templateHighlight.template3 = '';
+  		vm.templateHighlight.template4 = '';
+  		vm.templateHighlight.template5 = '';
+  		vm.templateHighlight['template' + id] = 'orange-highlight';
+  	}
+
+
     buildDonorList();
 }]);
