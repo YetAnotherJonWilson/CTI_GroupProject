@@ -406,7 +406,7 @@ background-color: rgba(0, 0, 0, 0.1);
   height: 25px;
   width: 145px;
   border: none;
-  margin-top: 3px;
+  margin-top: 4px;
   background-color: #50504F;
   /*webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
@@ -417,7 +417,7 @@ background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);*/
 }
 .settingsMenu h1 {
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 15px;
   display: inline;
   margin: 3px 0 0 0;
