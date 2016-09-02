@@ -6,6 +6,8 @@ var uploadHeader = multer({ dest: './headers/' });
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var Img = require('../models/image');
+var Sig = require('../models/sig');
+var Letterhead = require('../models/Letterhead');
 //var Sig = require('../models/signature');
 //var Letterhead = require('../models/letterhead);
 
@@ -100,6 +102,8 @@ router.post('/sigfile', uploadSig.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 
+
+
 router.post('/headers', uploadHeader.single('file'), function (req, res) {
   var header = new Letterhead;
   imgPath = req.file.path;
@@ -138,6 +142,19 @@ router.get('/createphotoarray', function(req, res) {
       var photos = [];
       console.log('doc', doc);
       // photos = doc;
+      // if(doc.length == undefined){
+      //   console.log('kfjldsa;jklsadf');
+      //   return;
+      //   res.send('');
+      // }
+      // if(doc.length == ''){
+      //   console.log('stuff');
+      //   return;
+      //   res.send('');
+      // }
+      // if(doc.length == null){
+      //   console.log('null');
+      // }
       for(var i = 0; i < doc.length; i++){
         photo = {};
         // var base64 = doc[i].img.data.toString('base64');
@@ -160,6 +177,7 @@ router.get('/createphotoarray', function(req, res) {
 
 router.get('/createsignaturearray', function(req, res) {
 
+
   // fs.readdir('./public/sigfile', function(err, files){
   //   if(!err){
   //     console.log(files);
@@ -170,13 +188,13 @@ router.get('/createsignaturearray', function(req, res) {
   // });
   var signatures = [];
   var signature = {};
-  Img.find({}, function(err, doc){
+  Sig.find({}, function(err, doc){
     if(err){
       return next(err);
     }
     else{
       var signatures = [];
-      console.log('doc', doc);
+      console.log('signatures', doc);
       // photos = doc;
       for(var i = 0; i < doc.length; i++){
         signature = {};
@@ -196,6 +214,34 @@ router.get('/createsignaturearray', function(req, res) {
       res.send(signatures);
     }
   });
+  // var signatures = [];
+  // var signature = {};
+  // Img.find({}, function(err, doc){
+  //   if(err){
+  //     return next(err);
+  //   }
+  //   else{
+  //     var signatures = [];
+  //     console.log('doc', doc);
+  //     // photos = doc;
+  //     for(var i = 0; i < doc.length; i++){
+  //       signature = {};
+  //       // var base64 = doc[i].img.data.toString('base64');
+  //       signature.signature = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+  //       signature.id = doc[i]._id;
+  //       // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+  //       // photos[i].id = doc[i].id;
+  //       signatures.push(signature);
+  //       // console.log('photos.id', photos[i].id);
+  //     }
+  //     for(var i = 0; i < signatures.length; i++){
+  //       console.log('signatures.id', signatures[i].id);
+  //     }
+  //     // console.log('photos', photos);
+  //     res.contentType(doc[0].img.contentType);
+  //     res.send(signatures);
+  //   }
+  // });
 });
 
 router.get('/createheaderarray', function(req, res) {
@@ -209,7 +255,7 @@ router.get('/createheaderarray', function(req, res) {
   // });
   var headers = [];
   var header = {};
-  Img.find({}, function(err, doc){
+  Letterhead.find({}, function(err, doc){
     if(err){
       return next(err);
     }
@@ -235,6 +281,34 @@ router.get('/createheaderarray', function(req, res) {
       res.send(headers);
     }
   });
+  // var headers = [];
+  // var header = {};
+  // Img.find({}, function(err, doc){
+  //   if(err){
+  //     return next(err);
+  //   }
+  //   else{
+  //     var header = [];
+  //     console.log('doc', doc);
+  //     // photos = doc;
+  //     for(var i = 0; i < doc.length; i++){
+  //       header = {};
+  //       // var base64 = doc[i].img.data.toString('base64');
+  //       header.header = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+  //       header.id = doc[i]._id;
+  //       // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+  //       // photos[i].id = doc[i].id;
+  //       headers.push(header);
+  //       // console.log('photos.id', photos[i].id);
+  //     }
+  //     for(var i = 0; i < headers.length; i++){
+  //       console.log('headers.id', headers[i].id);
+  //     }
+  //     // console.log('photos', photos);
+  //     res.contentType(doc[0].img.contentType);
+  //     res.send(headers);
+  //   }
+  // });
 });
 
 

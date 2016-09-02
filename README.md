@@ -23,7 +23,6 @@ BODY//
 PT SANS - regular
 
 
-Template images - https://logomakr.com/5BNkwz
-
+template images - https://logomakr.com/7RTZfX
 
 -->

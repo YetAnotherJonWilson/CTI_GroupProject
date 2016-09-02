@@ -29,9 +29,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 /*Everthing above is the reset. DONT CHANGE*/
 /*index.html and main layout*/
+
 body {
   font-family: 'PT SANS';
 }
@@ -45,34 +45,34 @@ body {
   webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
   box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.2);
-
 }
 header {
   width: auto;
-  height: 80px;
-  margin-bottom: 100px;
-  padding-right: 10px;
-  border-bottom: 1px solid #086A81;
-}
-header img {
-  height: 140px;
-  width: 120px;
-  float: left;
+  height: 95px;
+  border-bottom: 2px solid #50504F;
 }
 header a {
-  font-family: mako;
   display: inline;
   float: right;
-  font-size: 20px;
-  margin: 50px 0 0 20px;
-  color: #086A81;
+  font-size: 16px;
+  margin: 65px 20px 0 0px;
+  color: gray;
 }
 header a:first-child {
   margin-right: 20px;
 }
 header a:hover {
-  color: #faae18;
+  color: #eb7536;
   text-decoration: none;
+}
+header a:active, header a:focus {
+  color: #eb7536;
+}
+#logo1 {
+  height: 67px;
+  width: 57px;
+  float: left;
+  margin: 7px 0 0 10px;
 }
 /*login.html*/
 #loginwrapper {
@@ -103,12 +103,19 @@ header a:hover {
 .donorInfoHome {
   display: inline-table;
   float: left;
-  width: 35%;
-  height: 1100px;
+  width: 30%;
+  min-width: 380px;
+  height: 1200px;
   margin-left: 0px;
   border-right: 1px solid rgba(0, 0, 0, 0.3);
   overflow: scroll;
-  box-shadow: -5 -5 0 rgba(0, 0, 0, 0.1);
+  webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 1px 3px 2px rgba(0, 0, 0, 0.2);
+  webkit-box-shadow: 2px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 1px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.2);
+
 }
 .donorInfoHome th {
   font-weight: bold;
@@ -119,6 +126,7 @@ header a:hover {
   padding: 5px 5px 5px 2px;
   height: 70px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .homeDataTable:hover {
 background-color: rgba(0, 0, 0, 0.1);
@@ -126,36 +134,45 @@ background-color: rgba(0, 0, 0, 0.1);
 #donorName {
   font-size: 20px;
   float: left;
+  margin-left: 5px;
+  color:
 }
 #date {
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   float: right;
 }
 #donationAmount {
   clear: both;
-  font-size: 18px;
+  font-size: 16px;
   float: left;
+  margin-left: 5px;
+  color: #50504F;
 }
 #numberOfDonations {
   float: right;
+  font-style: italic;
+  color: #50504F;
 }
 .table {
   margin-bottom: 5px;
 }
-#dropDownContainer {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  width: 100%;
-  padding: 10px 5px 40px 0;
-}
 #dropDown {
-  float: right;
+  float: left;
+  height: 30px;
 }
 #dropDown button {
-  background-color: white;
-  /*float: right;*/
+  background-color: #50504F;
+  /*float: left;*/
   border: none;
-  color: black;
+  color: white;
+}
+#dropDown button:hover {
+  color: #faae18;
+}
+.dropdown-menu {
+  font-size: 14px;
+  width: 80px;
 }
 .upCaret:after {
   content: '\25b2';   // BLACK UP-POINTING TRIANGLE
@@ -174,40 +191,120 @@ background-color: rgba(0, 0, 0, 0.1);
   color: white;
 }
 #sendEmail {
-  background-color: #EB7536;
+  display: inline;
+  float: right;
+  background-color: #50504F;
   color: white;
 }
+#sendEmail:hover {
+  color: #faae18;
+}
+#sendSingleMessageButton {
+  float: left;
+  font-size: 14px;
+  margin: 7px 0 0 5px;
+  background-color: #50504F;
+  color: white;
+  border: none;
+}
 .donorSearchDiv {
-  text-align: center;
-  width: 300px;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  /*text-align: center;*/
+  width: 200px;
+  height: 35px;
+  float: left;
+  margin-left: auto;
+  /*margin: auto;*/
+  /*margin-top: 15px;
+  margin-bottom: 15px;*/
 }
 .donorSearchDiv input {
+  float: left;
   width: 200px;
-  margin: auto;
+  height: 32px;
   font-size: 20px;
 }
-/*edit.html*/
+.actionItemsHome {
+  height: 34px;
+  width: 100%;
+  background-color: #50504F;
+  margin-bottom: 20px;
+}
+.actionItemsHome2 {
+  height: 34px;
+  width: 100%;
+  background-color: #50504F;
+}
 .editmain {
   max-width: 70%;
-  /*float: left;*/
-  margin-top: 100px;
-  overflow: auto;
+  overflow: hidden;
+}
+.TemplateSelector {
+  height: 120px;
+  width: 100px;
+  margin-right: 15px;
+  padding: 5px;
+  background-color: white;
+  border: 4px solid #50504F;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
+  -moz-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
+  box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
+}
+.TemplateSelector:hover {
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
+}
+.TemplateSelector_last {
+  margin-right: 0px;
+  height: 120px;
+  width: 100px;
+  padding: 5px;
+  border: 4px solid #50504F;
+  background-color: white;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
+  -moz-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
+  box-shadow: 1px 2px 3px 1px rgba(130,123,130,1);
+}
+.TemplateSelector_last:hover {
+  /*border: 3px solid #EB7536;*/
+  transform: scale(1.03);
+  cursor: pointer;
+}
+.templateButtonsSettings {
+  width: 620px;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.templateSelectorWrapper {
+  margin-top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.templateSelectorWrapperHome {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  float: left;
+}
+.editMainSettings {
+  width: 100%;
+  overflow: hidden;
 }
 .editinputs {
   float: left;
   width: 50%;
-  max-width: 600px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .editmainback {
+    float: left;
     position: relative;
     overflow: hidden;
     height: 600px;
     width: 450px;
-    margin: 100px auto 0 auto;
+    margin: 50px 0 0 350px;
 }
 .editmainback h1 {
     position: relative;
@@ -237,16 +334,11 @@ background-color: rgba(0, 0, 0, 0.1);
   border: none;
 }
 .editview {
-  width: 70%;
-  /*border: 1px solid rgba(0, 0, 0, 0.1);*/
-  /*margin: auto;*/
-  margin-top: 30px;
-  /*overflow: auto;*/
+  width: 100%;
 }
 .editField {
   width: 620px;
   margin: auto;
-  margin-top: 30px;
   overflow: auto;
 }
 .editModal {
@@ -273,7 +365,6 @@ background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
 .homeimg{
-
   height: 200px;
   width: 200px;
 }
@@ -325,32 +416,37 @@ background-color: rgba(0, 0, 0, 0.1);
 
 /*//////////////////Settings Page/////////////////////*/
 .settingsMenu {
-  display: inline-table;
-  float: left;
-  width: 30%;
-  height: 1123px;
-  margin-left:1px;
+  width: 100%;
+  height: 33px;
+  background-color: #50504F;
 }
 .settingsMenuPhotoUpload, .settingsMenuSignatureUpload, .settingsMenuHeaderUpload {
-  height: 100px;
-  width: 100%;
-  padding: 5px 5px 5px 1px;
-  margin-bottom: 10px;
+  height: 33px;
+  width: 145px;
+  border: none;
+  margin-bottom: 3px;
+  padding: 3px;
   background-color: #50504F;
-  webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
-  webkit-box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
+/*.settingsMenuPhotoUpload:hover,.settingsMenuSignatureUpload:hover, .settingsMenuHeaderUpload:hover{
+  background-color: #E6E6E6;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}*/
+.settingsMenuPhotoUpload:focus{
+  background-color: #E6E6E6;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
 .settingsMenu h1 {
-  font-weight: bold;
-  font-size: 40px;
-  display: inline-block;
-  margin: 20px 0 0 30px;
-  color: rgb(204, 204, 204);
+  /*font-weight: bold;*/
+  font-size: 15px;
+  display: inline;
+  margin: 3px 0 0 0;
+  color: white;
 }
 .settingsMenu img {
   float: right;
@@ -375,15 +471,18 @@ color: #EB7536;
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);*/
 }
 .settingsViewDiv {
-  float: left;
-  max-width: 68%;
-  margin: 0 0 10px 15px;
+  width: 100%;
+  height: 1200px;
+  margin: auto;
 
 }
 .settingsUploadeImageForm {
   /*height: 250px;*/
   width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
+  background-color: #E6E6E6;
 }
 .done {
   background-color: rgb(38, 127, 147);
@@ -408,8 +507,8 @@ color: #EB7536;
   color: #EB7536;
 }
 .thumb {
-    height: 150px;
-    width: 200px;
+    height: 175px;
+    width: 255px;
     border: 1px solid grey;
     webkit-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: -1px 1px 5px 4px rgba(0, 0, 0, 0.2);
@@ -420,9 +519,9 @@ color: #EB7536;
   margin: 10px 0 0 45px;
 }
 .settingsDisplayPhotos li {
-  height: 150px;
-  width: 200px;
-  margin: 20px 0 0 23px;
+  height: 175px;
+  width: 255px;
+  margin: 20px 10px 0 15px;
   border: 1px solid rgb(96, 96, 96);
   float: left;
   display: inline;
@@ -434,7 +533,7 @@ color: #EB7536;
 #settingsDeletePhoto {
   position: relative;
   padding: 2px;
-  top: -152px;
+  top: -178px;
   right: 1px;
   color: rgb(204, 204, 204);
   background-color: #50504F;
@@ -447,8 +546,8 @@ color: #EB7536;
 .glyphicon-remove{
 }
 .settingsDisplayPhotos img {
-  height: 150px;
-  width: 198px;
+  height: 175px;
+  width: 253px;
   border-bottom: 1px solid rgb(96, 96, 96);
 }
 .custom-file-upload {
@@ -479,6 +578,23 @@ color: #EB7536;
 }
 input[type="file"] {
     display: none;
+}
+.success {
+  display: inline-block;
+  padding-right: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3ce50d;
+}
+.glyphicon-home,.glyphicon-cog {
+  margin-right: 3px;
+}
+.orange-highlight {
+  border: 3px solid #EB7536;
+}
+.orange-underline {
+  border-bottom: 2px solid #EB7536;
+  background-color: blue;
 }
 .imgHighlight {
   opacity: .8;

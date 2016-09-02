@@ -55,7 +55,7 @@ var Template = require('../models/template');
     senderTitle: 'Executive Director'
   };
   var template4= {
-    p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
+    p1: 'Test. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
     p2: 'It\'s clear that you see the value in helping people help themselves. But I want you to know what a profound impact your gift can have on someone\'s life. Read what Aissatou Ly, Senegalese farmer and business owner, told us:',
     p3: 'Your gift helps women like Aissatou start businesses, earn an income, and send their kids to school-or go themselves. You make success stories like Aissatou\'s possible. And I can\'t thank you enough.',
     p4: '',
@@ -240,4 +240,8 @@ router.post('/saveTemplate', function(req, res){
     }
   })
 })
+
+router.get('/bleh', function(request, response){
+  response.sendStatus(200);
+});
 module.exports = router;

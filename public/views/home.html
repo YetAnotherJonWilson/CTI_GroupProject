@@ -1,20 +1,10 @@
-<div class="donorInfoHome" class="animated fadeIn">
-    <button id="sendEmail" class="btn" ng-click="home.sendAll()">Send All</button>
-    <div class="donorSearchDiv">
-        <h3>Search</h3>
-        <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
-    </div>
-    <h1></h1>
-
-    <div id="dropDownContainer">
+  <div class="donorInfoHome" class="animated fadeIn">
+      <div class="actionItemsHome">
         <div id="dropDown" class="btn-group" uib-dropdown is-open="status.isopen">
-            <div>
-                <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
-          <span class="glyphicon glyphicon-menu-down" ng-show="home.reverse == false"></span>
-          <span class="glyphicon glyphicon-menu-up" ng-show="home.reverse == true"></span>
-
-        </button>
-            </div>
+            <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled"><span>{{home.dropDownName}}</span>
+                <span class="glyphicon glyphicon-menu-down" ng-show="home.reverse == false"></span>
+                <span class="glyphicon glyphicon-menu-up" ng-show="home.reverse == true"></span>
+            </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                 <li role="menuitem"><a ng-click="home.sortBy('lastName')">Name</a></li>
                 <li role="menuitem"><a ng-click="home.sortBy('Amount')">Donation</a></li>
@@ -22,34 +12,33 @@
                 <li role="menuitem"><a ng-click="home.sortBy('date')">Date</a></li>
             </ul>
         </div>
-    </div>
+        <div class="donorSearchDiv">
+            <input class="form-control" type="text" placeholder="Search" data-ng-model="Enter_Anything" />
+        </div>
 
-    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
+
+          <button id="sendEmail" class="btn" ng-click="home.sendAll()">Send All</button>
+    </div>
+    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor)">
+
+
 
 
         <h1 id="donorName">{{donor.firstName + " " + donor.lastName}}</h1>
         <!-- <td>{{}}</td> -->
         <!-- <td>{{donor.email}}</td> -->
-
         <!-- <td>{{donor.Amount}}</td>
                 <td>{{donor.date}}</td> -->
-
         <h3 id="date">{{donor.date}}</h3>
         <h2 id="donationAmount">Donation: ${{donor.Amount}}</h2>
-
         <h2 id="numberOfDonations">Times Donated: {{donor.donationHistory.lifeTimeNumber}}</h2>
-
-
-
         <!-- <td>{{donor.convertedDate}}</td> -->
-
         <!-- <button id="editEmail" class="btn" ng-click="home.editRoute()">Edit</button> -->
-
-
     </div>
 </div>
-
-
+<div class="actionItemsHome2">
+<button id="sendSingleMessageButton" ng-click='home.sendMail(home.currentDonor)'>Send</button>
+</div>
 <div class="editmainback" ng-hide="home.currentDonor">
     <h1 ng-hide="home.messageSent">Choose an Email to View</h1>
     <h1 id="sentMessage" ng-show="home.messageSent"><span class="glyphicon glyphicon-ok"></span> Message Sent</h1>
@@ -57,26 +46,27 @@
 </div>
 
 <div ng-show="home.currentDonor" class='editmain'>
+    <!-- <button ng-click='home.sendMail(home.currentDonor)'>Send</button> -->
+      <!-- <div class="editField"> -->
+          <div class="templateSelectorWrapperHome">
+            <div class="templateButtonsSettings">
 
-    <button ng-click='home.sendMail(home.currentDonor)'>Send</button>
 
-    <div class="editField">
-
-        <img src="assets/template1.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('1')">
-        <img src="assets/template2.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('2')">
-        <img src="assets/template3.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('3')">
-        <img src="assets/template4.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('4')">
-        <img src="assets/template5.png" width="60px" height="65px" ng-click="home.setCurrentTemplate('5')">
+              <img class="TemplateSelector {{home.templateHighlight.template1}}" src="assets/template1.png" ng-click="home.setCurrentTemplate('1'); home.setHighlight('1')">
+              <img class="TemplateSelector {{home.templateHighlight.template2}}" src="assets/template2.png"    ng-click="home.setCurrentTemplate('2'); home.setHighlight('2')">
+              <img class="TemplateSelector {{home.templateHighlight.template3}}" src="assets/template3.png" ng-click="home.setCurrentTemplate('3'); home.setHighlight('3')">
+              <img class="TemplateSelector {{home.templateHighlight.template4}}" src="assets/template4.png"  ng-click="home.setCurrentTemplate('4'); home.setHighlight('4')">
+              <img class="TemplateSelector_last {{home.templateHighlight.template5}}" src="assets/template5.png" ng-click="home.setCurrentTemplate('5'); home.setHighlight('5')">
+          </div>
+        </div>
 
         <div class='editview'>
             <div>
-                <!-- <hr/> -->
+
                 <div class="slide-animate-container">
-                    <div class="slide-animate" ng-include="home.selectedTemplate.url"></div>
+                    <div class="slide-animate" ng-include="home.selectedTemplate.url">
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-
 </div>
