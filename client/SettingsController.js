@@ -6,9 +6,7 @@ var vm = this;
     vm.unhideSignatures = false;
     vm.unhideHeaders = false;
 
-
     // console.log(UserService.photosArray);
-
 
     vm.deletePhoto = function(photo) {
       swal({title: "Are you sure?",   text: "You will not be able to recover this image!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false }, function(){   swal("Deleted!", "Your image has been deleted.", "success");
@@ -28,6 +26,8 @@ var vm = this;
         console.log('Failed to delete' , response);
     }
 
+
+    ///createPhotoArray///
     function createPhotoArray(){
         $http.get('photos/createphotoarray').then(handlePhotoSuccess);
     }
@@ -35,37 +35,34 @@ var vm = this;
         console.log(response.data);
         vm.photos = response.data;
     }
-
     createPhotoArray();
 
+
+    ///createSignatureArray///
     function createSignatureArray(){
         $http.get('photos/createsignaturearray').then(handleSignatureSuccess);
     }
-
     function handleSignatureSuccess(response){
-        console.log('What is this!!!!!!!!!' ,response.data);
+        console.log('Signature Success' ,response.data);
         vm.signatures = response.data;
     }
-
     createSignatureArray();
 
+
+    ///createHeaderArray///
     function createHeaderArray(){
         $http.get('photos/createheaderarray').then(handleHeaderSuccess);
     }
-
     function handleHeaderSuccess(response){
         console.log(response.data);
         vm.headers = response.data;
     }
-
     createHeaderArray();
 
 
     vm.photos = UserService.photosArray;
     vm.signatures = UserService.signaturesArray;
     vm.headers = UserService.headersArray;
-
-
 
     vm.uploadPic = function(file) {
 
@@ -90,13 +87,11 @@ var vm = this;
     };
 
     vm.uploadSig = function(file) {
-
         file.upload = Upload.upload({
             url: '/photos/sigfile',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
-
         file.upload.then(function (response) {
             $timeout(function () {
                 file.result = response.data;
@@ -110,14 +105,13 @@ var vm = this;
         });
     };
 
-    vm.uploadHeader = function(file) {
 
+    vm.uploadHeader = function(file) {
         file.upload = Upload.upload({
             url: '/photos/headers',
             arrayKey: '', // default is '[i]'
             data: {file: file}
         });
-
         file.upload.then(function (response) {
             $timeout(function () {
                 file.result = response.data;

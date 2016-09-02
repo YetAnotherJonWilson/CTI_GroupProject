@@ -6,6 +6,8 @@ var uploadHeader = multer({ dest: './headers/' });
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var Img = require('../models/image');
+var Sig = require('../models/sig');
+var Letterhead = require('../models/Letterhead');
 //var Sig = require('../models/signature');
 //var Letterhead = require('../models/letterhead);
 
@@ -99,6 +101,8 @@ router.post('/sigfile', uploadSig.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 
+
+
 router.post('/headers', uploadHeader.single('file'), function (req, res) {
   var header = new Letterhead;
   imgPath = req.file.path;
@@ -169,13 +173,13 @@ router.get('/createsignaturearray', function(req, res) {
   // });
   var signatures = [];
   var signature = {};
-  Img.find({}, function(err, doc){
+  Sig.find({}, function(err, doc){
     if(err){
       return next(err);
     }
     else{
       var signatures = [];
-      console.log('doc', doc);
+      console.log('signatures', doc);
       // photos = doc;
       for(var i = 0; i < doc.length; i++){
         signature = {};
@@ -208,7 +212,7 @@ router.get('/createheaderarray', function(req, res) {
   // });
   var headers = [];
   var header = {};
-  Img.find({}, function(err, doc){
+  Letterhead.find({}, function(err, doc){
     if(err){
       return next(err);
     }

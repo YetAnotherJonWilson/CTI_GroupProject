@@ -5,10 +5,10 @@
     <button ng-click="settings.settingsClick('template')" class="settingsMenuPhotoUpload">
         <h1>Edit Template</h1>
     </button>
-    <button ng-click="settings.settingsClick('signature')" class="settingsMenuSignatureUpload">
+    <button ng-click="settings.settingsClick('signature')" class="settingsMenuPhotoUpload">
         <h1>Upload Signature</h1>
     </button>
-    <button ng-click="settings.settingsClick('header')" class="settingsMenuHeaderUpload">
+    <button ng-click="settings.settingsClick('header')" class="settingsMenuPhotoUpload">
         <h1>Upload Header</h1>
     </button>
 </div>
@@ -49,86 +49,105 @@
         </select> -->
     <div class='editview'>
         <div>
-            <!-- <hr/> -->
             <div class="slide-animate-container">
                 <div class="slide-animate" ng-include="settings.template.url"></div>
             </div>
         </div>
     </div>
     <!-- settings view to display uploaded signatures -->
-    <div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
+    <!-- <div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
         <form name="signatureForm">
             <input type="file" ngf-select ng-model="sigFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
             <i ng-show="signatureForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
 
         </form>
-    </div>
-  <!-- This is the edit template view -->
-  <div class='editmain' ng-show="settings.showSettings.template">
-        <div class="templateButtonsSettings">
-          <img class="TemplateSelector" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1')">
-          <img class="TemplateSelector" src="assets/template2.png"    ng-click="settings.setCurrentTemplate('2')">
-          <img class="TemplateSelector" src="assets/template3.png" ng-click="settings.setCurrentTemplate('3')">
-          <img class="TemplateSelector" src="assets/template4.png"  ng-click="settings.setCurrentTemplate('4')">
-          <img class="TemplateSelector_last" src="assets/template5.png" ng-click="settings.setCurrentTemplate('5')">
-          <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
-            <button ng-click="settings.saveAllTemplates()">Save All</button>
+    </div> -->
+    <!-- <button ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
+      <button ng-click="settings.saveAllTemplates()">Save All</button> -->
+    <!-- This is the edit template view -->
+    <div class='editmain' ng-show="settings.showSettings.template">
+        <div class="templateSelectorWrapper">
+
+            <div class="templateButtonsSettings">
+                <img class="TemplateSelector" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1')">
+                <img class="TemplateSelector" src="assets/template2.png" ng-click="settings.setCurrentTemplate('2')">
+                <img class="TemplateSelector" src="assets/template3.png" ng-click="settings.setCurrentTemplate('3')">
+                <img class="TemplateSelector" src="assets/template4.png" ng-click="settings.setCurrentTemplate('4')">
+                <img class="TemplateSelector_last" src="assets/template5.png" ng-click="settings.setCurrentTemplate('5')">
+            </div>
         </div>
-      <div class="editField">
-          <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
+        <div class="editField">
+            <!-- <select class="form-control" ng-model="settings.template" ng-options="t.name for t in settings.templates">
               <option value="">(blank)</option>
           </select> -->
-          <div class='editview'>
-              <div>
-                  <!-- <hr/> -->
-                  <div class="slide-animate-container">
-                      <div class="slide-animate" ng-include="settings.selectedTemplate.url"></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+            <div class='editview'>
+                <div>
+                    <!-- <hr/> -->
+                    <div class="slide-animate-container">
+                        <div class="slide-animate" ng-include="settings.selectedTemplate.url"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <!-- settings view to display uploaded signatures -->
-    <div class="settingsUploadSignature" ng-show="signatures">
-      <form name="signatureForm">
-        <input type="file" ngf-select ng-model="sigFile" name="file"
-             accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFile">
-             <i ng-show="signatureForm.file.$error.maxSize">File too large
-          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-            <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" height="100" width="150">
-            <button ng-click="sigFile = null" ng-show="sigFile" class="btn">Remove</button>
-            <br>
-            <button class="btn" ng-show="sigFile" ng-disabled="!signatureForm.$valid" ng-click="settings.uploadSig(sigFile)">Submit</button>
-            <span class="progress" ng-show="sigFile.progress >= 0">
-          <div style="width:{{sigFile.progress}}%"
-               ng-bind="sigFile.progress + '%'"></div>
-             </span>
-            <span ng-show="sigFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-            <br>
-        </form>
-        <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile">Remove</button>
-        <button class="btn" id="submit" ng-show="picFile" ng-disabled="!photoForm.$valid" ng-click="settings.uploadPic(picFile)">Save</button>
+    <!-- settings view to display uploaded signatures -->
+    <div class="settingsUploadSignature" ng-show="settings.showSettings.signature">
+        <div class="settingsUploadeImageForm">
+            <form name="signatureForm">
+
+
+                <label class="custom-file-upload">
+                    <h1 id="uploadPhotoBtn">Browse</h1>
+                    <input type="file" ngf-select ng-model="sigFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+                </label>
+                <i ng-show="signatureForm.file.$error.maxSize">File too large
+                      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+
+                <img ng-show="signatureForm.file.$valid" ngf-thumbnail="sigFile" class="thumb">
+                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            </form>
+
+            <h1 class="success animated tada" ng-show="picFile.result">Upload Successful</h1>
+
+            <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile" ng-hide="picFile.result">Remove</button>
+
+            <button class="btn" ng-hide="picFile.result" id="submit" ng-show="picFile" ng-disabled="!signatureForm.$valid" ng-click="settings.uploadSig(sigFile)">Save</button>
+
+        </div>
+        <div class="settingsDisplayPhotos">
+            <li ng-repeat="signature in settings.signatures">
+                <img ng-src="{{signature.signature}}" alt="{{photo.photo}}">
+                <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+            </li>
+        </div>
     </div>
     <!-- uploade new headers and display current headers -->
     <div class="settingsUplaodHeader" ng-show="settings.showSettings.header">
-        <form name="headerForm">
-            <input type="file" ngf-select ng-model="headerFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-            <i ng-show="headerForm.file.$error.maxSize">File too large
-            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-            <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" height="100px" width="150px">
-            <button ng-click="headerFile = null" ng-show="headerFile" class="btn">Remove</button>
-            <br>
-            <button class="btn" ng-show="headerFile" ng-disabled="!headerForm.$valid" ng-click="settings.uploadHeader(headerFile)">Submit</button>
-            <span class="progress" ng-show="headerFile.progress >= 0">
-            <div style="width:{{headerFile.progress}}%"
-                 ng-bind="headerFile.progress + '%'"></div>
-          </span>
-            <span ng-show="headerFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-            <br>
+        <div class="settingsUploadeImageForm">
+            <form name="headerForm">
+                <label class="custom-file-upload">
+                    <h1 id="uploadPhotoBtn">Browse</h1>
+                    <input type="file" ngf-select ng-model="headerFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+                </label>
+                <i ng-show="headerForm.file.$error.maxSize">File too large
+                  {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                <img ng-show="headerForm.file.$valid" ngf-thumbnail="headerFile" class="thumb">
+                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            </form>
+            <h1 class="success animated tada" ng-show="picFile.result">Upload Successful</h1>
+            <button class="btn" id="remove" ng-click="picFile = null" ng-show="picFile" ng-hide="picFile.result">Remove</button>
+
+            <button class="btn" ng-hide="picFile.result" id="submit" ng-show="picFile" ng-disabled="!headerForm.$valid" ng-click="settings.uploadHeader(headerFile)">Save</button>
+        </div>
+        <div class="settingsDisplayPhotos">
+            <li ng-repeat="header in settings.headers">
+                <img ng-src="{{header.header}}" alt="{{header.header}}">
+                <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
+            </li>
+        </div>
+
         </form>
     </div>
 </div>

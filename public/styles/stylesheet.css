@@ -239,6 +239,7 @@ background-color: rgba(0, 0, 0, 0.1);
   width: 100px;
   margin-right: 15px;
   padding: 5px;
+  background-color: white;
   border: 4px solid #50504F;
   border-radius: 8px;
   -webkit-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
@@ -254,6 +255,7 @@ background-color: rgba(0, 0, 0, 0.1);
   width: 100px;
   padding: 5px;
   border: 4px solid #50504F;
+  background-color: white;
   border-radius: 8px;
   -webkit-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
   -moz-box-shadow: 1px 2px 7px 4px rgba(130,123,130,1);
@@ -263,8 +265,15 @@ background-color: rgba(0, 0, 0, 0.1);
   border: 3px solid #EB7536;
 }
 .templateButtonsSettings {
-  width: 610px;
+  width: 620px;
   margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.templateSelectorWrapper {
+  margin-top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .editinputs {
   float: left;
@@ -310,7 +319,6 @@ background-color: rgba(0, 0, 0, 0.1);
   width: 70%;
   /*border: 1px solid rgba(0, 0, 0, 0.1);*/
   /*margin: auto;*/
-  margin-top: 30px;
   /*overflow: auto;*/
 }
 .editField {
@@ -395,14 +403,15 @@ background-color: rgba(0, 0, 0, 0.1);
 /*//////////////////Settings Page/////////////////////*/
 .settingsMenu {
   width: 100%;
-  height: 34px;
+  height: 33px;
   background-color: #50504F;
 }
 .settingsMenuPhotoUpload, .settingsMenuSignatureUpload, .settingsMenuHeaderUpload {
-  height: 25px;
+  height: 33px;
   width: 145px;
   border: none;
-  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 3px;
   background-color: #50504F;
   /*webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.4);
@@ -412,6 +421,19 @@ background-color: rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 0px 2px 2px rgba(0, 0, 0, 0.2);*/
 }
+/*.settingsMenuPhotoUpload:hover,.settingsMenuSignatureUpload:hover, .settingsMenuHeaderUpload:hover{
+  background-color: #E6E6E6;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}*/
+.settingsMenuPhotoUpload:focus{
+  background-color: #E6E6E6;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
 .settingsMenu h1 {
   font-weight: bold;
   font-size: 15px;
@@ -450,8 +472,10 @@ color: #EB7536;
 .settingsUploadeImageForm {
   /*height: 250px;*/
   width: 100%;
-  margin: 30px 0 0 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
+  background-color: #E6E6E6;
 }
 .done {
   background-color: rgb(38, 127, 147);
