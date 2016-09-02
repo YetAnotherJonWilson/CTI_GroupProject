@@ -286,7 +286,7 @@ function awesome(){
 		bleh: bleh,
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
-		shitty: shitty
+		awesome: awesome
 	}
 
 
