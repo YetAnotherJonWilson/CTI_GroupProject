@@ -299,12 +299,12 @@ background-color: rgba(0, 0, 0, 0.1);
   margin-top: 10px;
 }
 .editmainback {
-    float: left;
+    /*float: left;*/
     position: relative;
     overflow: hidden;
     height: 600px;
     width: 450px;
-    margin: 50px 50px 0 350px;
+    margin: 50px auto 0 auto;
 }
 .editmainback h1 {
     position: relative;
