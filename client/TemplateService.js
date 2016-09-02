@@ -18,6 +18,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	// };
 
 	var vm = this;
+	data.signatures = {};
+	data.headers = {};
 
 	// TODO should hang off of data
 	var currentDonor = {
