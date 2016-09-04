@@ -223,8 +223,9 @@ background-color: rgba(0, 0, 0, 0.1);
 .donorSearchDiv input {
   float: left;
   width: 200px;
-  height: 32px;
+  height: 31px;
   font-size: 20px;
+  margin-top: 1px;
 }
 .actionItemsHome {
   height: 34px;
