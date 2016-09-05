@@ -84,6 +84,34 @@ router.post('/getDbImages/:id', function(req, res, next){
 });
 
 router.post('/sigfile', uploadSig.single('file'), function (req, res) {
+  var signatures = [];
+  var signature = {};
+  // Sig.find({}, function(err, doc){
+  //   if(err){
+  //     return next(err);
+  //   }
+  //   else{
+  //     for(var i = 0; i < doc.length; i++){
+  //       signature = {};
+  //       signature.id = doc[i]._id;
+  //       console.log('sig id of sig to be removed', signature.id);
+  //     }
+  //   }
+  // });
+  // Sig.findByIdAndRemove(signature.id, function(response){
+  //   console.log('successful remove of old signature', response);
+  // }, function(err){
+  //   console.log('failed at remove old signature', err);
+  // });
+  Sig.remove({}, function(err, response){
+    if(err){
+      return next(err);
+    }
+    else{
+      console.log('success');
+    }
+  });
+
   var signature = new Sig;
   imgPath = req.file.path;
   signature.img.data = fs.readFileSync(imgPath);
@@ -94,10 +122,11 @@ router.post('/sigfile', uploadSig.single('file'), function (req, res) {
     }
     else{
       console.log('success saving signature to mongdb');
+      res.sendStatus(200);
     }
   });
   console.log('file uploaded:', req.file.path);
-  res.send(req.file.path);
+  // res.send(req.file.path);
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });
@@ -105,6 +134,15 @@ router.post('/sigfile', uploadSig.single('file'), function (req, res) {
 
 
 router.post('/headers', uploadHeader.single('file'), function (req, res) {
+  Letterhead.remove({}, function(err, response){
+    if(err){
+      return next(err);
+    }
+    else{
+      console.log('success');
+    }
+  });
+
   var header = new Letterhead;
   imgPath = req.file.path;
   header.img.data = fs.readFileSync(imgPath);
@@ -115,10 +153,11 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
     }
     else{
       console.log('success saving header to mongdb');
+      res.sendStatus(200);
     }
   });
   console.log('file uploaded:', req.file.path);
-  res.send(req.file.path);
+  // res.send(req.file.path);
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });

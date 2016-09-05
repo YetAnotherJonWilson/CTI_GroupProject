@@ -1,6 +1,7 @@
 angular.module('App').controller('ModalController', ['$http', '$location', '$uibModal', 'DataService', 'TemplateService', 'EmailService', function($http, $location, $uibModal, DataService, TemplateService, EmailService) {
 
 	var vm = this;
+	console.log('temp service.currentTemplate, in modal ctrl', TemplateService.data.currentTemplate);
 	vm.currentTemplate = TemplateService.awesome();
 	// console.log('shit', shit);
 	vm.currentDonor = vm.currentTemplate;

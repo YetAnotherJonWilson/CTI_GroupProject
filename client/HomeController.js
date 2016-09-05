@@ -25,6 +25,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	function buildDonorList() {
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + UserService.standardTemplate.template]
+
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + vm.standardTemplate];
 
 		var tempDonorList = DataService.donorObject.donors;
@@ -79,10 +80,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		// 		tempDonor = vm.donorList[i];
 		// 	}
 		// }
-
+		var num= donor.templateNum;
 		updateCurrentDonor(donor);
 		vm.currentDonor = donor;
-		setSelectedTemplate(donor.template1.temp);
+		setSelectedTemplate(donor["template"+num].temp);
 	}
 
 	function setSelectedTemplate(templateNum) {
@@ -142,9 +143,13 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.fieldId = id;
 		// vm.currentTemplate.currentField = id;
 		vm.currentDonor["template"+num].currentField = id;
+		console.log('about to update current donor template');
 
-		TemplateService.updateCurrentDonorTemplate(num).then(function(response){
-			console.log('response', response);
+		TemplateService.updateCurrentDonorTemplate(num)
+		// .then(function(response){
+		console.log('finished updating current donor template');
+
+			// console.log('response', response);
 			$uibModal.open({
 				animation: true,
 				ariaLabelledBy: 'edit text modal',
@@ -154,14 +159,19 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 				controllerAs: 'modal',
 				size: 'md'
 			});
-		});
+			console.log('finished updating current donor template');
+
+		// });
 
 	};
 
 	//Pop up modal for choosing images
 	vm.imageModal = function(id, num) {
 		vm.currentDonor["template"+num].currentField = id;
-		TemplateService.updateCurrentDonorTemplate(num).then(function(response){
+		// console.log('about to update current donor template');
+		TemplateService.updateCurrentDonorTemplate(num);
+		// .then(function(response){
+		console.log('opening modal');
 		$uibModal.open({
 			animation: true,
 			ariaLabelledBy: 'image modal',
@@ -172,7 +182,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			size: 'md',
 			windowClass: 'imageModalClass'
 		});
-	});
+	// });
 	};
 
 
@@ -240,6 +250,28 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		});
 	}
 
+	vm.isActive = function(id) {
+		if(vm.currentDonor){
+			return id === vm.currentDonor.Id;
+		}
+	}
+
+	vm.templateHighlight = {
+    template1: 'orange-highlight',
+    template2: '',
+    template3: '',
+    template4: '',
+    template5: ''
+  }
+
+	vm.setTemplateHighlight = function(id) {
+		vm.templateHighlight.template1 = '';
+		vm.templateHighlight.template2 = '';
+		vm.templateHighlight.template3 = '';
+		vm.templateHighlight.template4 = '';
+		vm.templateHighlight.template5 = '';
+		vm.templateHighlight['template' + id] = 'orange-highlight';
+	}
 
 	buildDonorList();
 

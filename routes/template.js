@@ -13,10 +13,17 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+<<<<<<< HEAD
     img: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img2: '',
     img3: '',
     img4: '',
+=======
+    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
+    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
+    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
+    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+>>>>>>> 6156346eef77cf63654f9eaf0b9b8b8e9e8e1399
     temp: '1',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
@@ -29,10 +36,17 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+<<<<<<< HEAD
     img: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img2: '',
     img3: '',
     img4: '',
+=======
+    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
+    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
+    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
+    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+>>>>>>> 6156346eef77cf63654f9eaf0b9b8b8e9e8e1399
     temp: '2',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
@@ -45,10 +59,17 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+<<<<<<< HEAD
     img: 'photos/getDbImages/photos/getDbImages/57c85d8d5919a24a02d01770',
     img2: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img3: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img4: '',
+=======
+    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
+    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
+    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
+    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+>>>>>>> 6156346eef77cf63654f9eaf0b9b8b8e9e8e1399
     temp: '3',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
@@ -61,10 +82,17 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+<<<<<<< HEAD
     img: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img2: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img3: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img4: 'photos/getDbImages/57c85d8d5919a24a02d01770',
+=======
+    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
+    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
+    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
+    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+>>>>>>> 6156346eef77cf63654f9eaf0b9b8b8e9e8e1399
     temp: '4',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
@@ -77,10 +105,17 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
+<<<<<<< HEAD
     img: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img2: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img3: 'photos/getDbImages/57c85d8d5919a24a02d01770',
     img4: 'photos/getDbImages/57c85d8d5919a24a02d01770',
+=======
+    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
+    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
+    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
+    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+>>>>>>> 6156346eef77cf63654f9eaf0b9b8b8e9e8e1399
     temp: '5',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
@@ -216,7 +251,7 @@ router.get('/getTemplates', function(req, res){
 });
 router.post('/saveTemplate', function(req, res){
   console.log(req.body);
-  var id=req.body._id;
+  var id=req.body.id;
   var updateObj={};
   updateObj.p1=req.body.p1;
   updateObj.p2=req.body.p2;

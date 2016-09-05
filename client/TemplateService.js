@@ -1,7 +1,10 @@
 angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeout', '$http', 'DataService', function($location, Upload, $timeout, $http, DataService) {
 
-	var templatesObject = {};
+	// top level object that contains all service data
+	var data = {};
 
+	//TODO rename to data.templatesObject
+	var templatesObject = {};
 	// var currentTemplate = {
 	// 	// p1: '',
 	// 	// p2: '',
@@ -14,7 +17,10 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	// };
 
 	var vm = this;
+	data.signatures = {};
+	data.headers = {};
 
+	// TODO should hang off of data
 	var currentDonor = {
 		donor: [{
 			donor: {}
@@ -25,8 +31,30 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 
 
 	function saveTemplate(template){
-		var sendData= template;
-
+		var sendData= {};
+		sendData.id = template._id;
+		sendData.p1 = template.p1;
+    sendData.p2 = template.p2;
+    sendData.p3 = template.p3;
+    sendData.p4 = template.p4;
+    sendData.quote = template.quote;
+		sendData.ps = template.ps;
+    if(template.img != null | template.img != ''){
+      sendData.img = 'photos/getDbImages/' + template.img.id;
+    }
+    if(template.img2 != null | template.img2 != ''){
+      sendData.img2 = 'photos/getDbImages/' + template.img2.id;
+    }
+    if(template.img3 != null | template.img3 != ''){
+      sendData.img3 = 'photos/getDbImages/' + template.img3.id;
+    }
+    if(template.img4 != null | template.img4 != ''){
+      sendData.img4 = 'photos/getDbImages/' + template.img4.id;
+    }
+    sendData.template = template.temp;
+		sendData.senderTitle = template.senderTitle;
+		sendData.senderName = template.senderName;
+		console.log('senddata',sendData);
 		return $http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
 	}
 
@@ -88,21 +116,21 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 		currentDonor.donor[0].donor =  donor;
 		console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
-var currentTemplate = {key: 'bleh'};
+ 	data.currentTemplate = {key: 'bleh'};
 	function updateCurrentDonorTemplate(num){
-		currentTemplate = {};
-		return $http.get('/template/bleh').then(function(response){
-			currentTemplate =	currentDonor.donor[0].donor["template"+num];
-			 console.log('currenttemp tempserv',currentTemplate);
-			 return currentTemplate;
-		}, function(response){
-			console.log('f');
-		});
+		data.currentTemplate = {};
+		// return $http.get('/template/bleh').then(function(response){
+			data.currentTemplate =	currentDonor.donor[0].donor["template"+num];
+			 console.log('currenttemp tempserv', data.currentTemplate);
+			 return data.currentTemplate;
+		// }, function(response){
+			// console.log('f');
+		// });
 
 	}
 
 function awesome(){
-	return currentTemplate;
+	return data.currentTemplate;
 }
 
 
@@ -133,13 +161,13 @@ function awesome(){
 		console.log('bleh', templatesObject);
 		console.log('images object', imagesObject);
 		var templateImage = {};
-		console.log('template service templatesObject.img', templatesObject.template1.img);
+		console.log('template service templatesObject.img', templatesObject.template5);
 		templateImage.t1 = {};
 		templateImage.t2 = {};
 		templateImage.t3 = {};
 		templateImage.t4 = {};
 		templateImage.t5 = {};
-		console.log('templatesObject.template1.img', templatesObject.template1.img);
+		console.log('templatesObject.template1.img', templatesObject.template5.img);
 		templateImage.t1.img = templatesObject.template1.img.split('/');
 		templateImage.t2.img = templatesObject.template2.img.split('/');
 		templateImage.t3.img = templatesObject.template3.img.split('/');
@@ -270,10 +298,15 @@ function awesome(){
 			ps: ps
 		})
 	}
+	function updateCurrentTemplateKey(key, value, num){
+		console.log(key, value, num);
+		templatesObject["template"+num][key] = value;
+	}
 	// bleh();
 	return {
 		currentDonor: currentDonor,
-		currentTemplate: currentTemplate,
+		//currentTemplate: currentTemplate,
+		data: data,
 		// getCurrentTemplate: getCurrentTemplate,
 		imagesObject: imagesObject,
 		saveEditedEmail: saveEditedEmail,
@@ -288,7 +321,9 @@ function awesome(){
 		bleh: bleh,
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
-		awesome: awesome
+		awesome: awesome,
+		saveTemplate: saveTemplate,
+		updateCurrentTemplateKey: updateCurrentTemplateKey
 	}
 
 

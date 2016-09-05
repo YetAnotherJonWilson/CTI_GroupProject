@@ -1,11 +1,12 @@
-
 angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', 'TemplateService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService, TemplateService) {
 
 	var vm = this;
 
+	TemplateService.bleh();
 	vm.unhidePhotos = false;
 	vm.unhideSignatures = false;
 	vm.unhideHeaders = false;
+	vm.templateSaved = false;
 
 
 	// console.log(UserService.photosArray);
@@ -46,6 +47,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handlePhotoSuccess(response) {
 		vm.photos = response.data;
+		TemplateService.imagesObject.images = response.data;
 	}
 
 	createPhotoArray();
@@ -56,9 +58,11 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleSignatureSuccess(response) {
 		vm.signatures = response.data;
+		TemplateService.data.signatures = vm.signatures;
+		// console.log('tempalteservice.data.signatures', TemplateService.data.signatures);
 	}
 
-	createSignatureArray();
+	// createSignatureArray();
 
 	function createHeaderArray() {
 		$http.get('photos/createheaderarray').then(handleHeaderSuccess);
@@ -66,9 +70,12 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleHeaderSuccess(response) {
 		vm.headers = response.data;
+		TemplateService.data.headers = vm.headers;
+		console.log('templateservice.data.headers', TemplateService.data.headers);
 	}
 
-	createHeaderArray();
+
+	// createHeaderArray();
 
 
 	vm.photos = UserService.photosArray;
@@ -114,13 +121,20 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		file.upload.then(function(response) {
 			$timeout(function() {
 				file.result = response.data;
+				// createSignatureArray();
 			});
+			if(response.status == 200){
+				createSignatureArray();
+			}
 		}, function(response) {
-			if (response.status > 0)
+			console.log('response fjklasjflsajklsa', response);
+			if (response.status > 0){
 				vm.errorMsg = response.status + ': ' + response.data;
+			}
 		}, function(evt) {
 			// Math.min is to fix IE which reports 200% sometimes
 			file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+			console.log('1', file.progress);
 		});
 	};
 
@@ -138,6 +152,9 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 			$timeout(function() {
 				file.result = response.data;
 			});
+			if(response.status == 200){
+				createHeaderArray();
+			}
 		}, function(response) {
 			if (response.status > 0)
 				vm.errorMsg = response.status + ': ' + response.data;
@@ -169,15 +186,22 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	// }
 	// getTemplates();
 
+
+	//Sets view of menu item and highlights that item
 	vm.settingsClick = function(id) {
 		vm.showSettings.photo = false;
 		vm.showSettings.template = false;
 		vm.showSettings.signature = false;
 		vm.showSettings.header = false;
 		vm.showSettings[id] = true;
-		console.log("this is the id", id);
-		console.log("vm.showSettings", vm.showSettings);
-		console.log("vm.showSettings[id]", vm.showSettings[id]);
+
+		vm.menuHighlight.photo = '',
+		vm.menuHighlight.template = '',
+		vm.menuHighlight.signature = '',
+		vm.menuHighlight.header = '',
+		vm.menuHighlight[id] = 'menu-highlight'
+		console.log('showsettings:', vm.showSettings);
+		console.log('menuHighlight:', vm.menuHighlight);
 	}
 
 	vm.showSettings = {
@@ -186,6 +210,15 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		signature: false,
 		header: false
 	}
+
+	vm.menuHighlight = {
+		photo: 'menu-highlight',
+		template: '',
+		signature: '',
+		header: ''
+	}
+
+
 
 	vm.templatesList;
 	vm.currentTemplate = SettingsService.currentTemplate.template[0].template;
@@ -223,7 +256,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	//Pop up modal for choosing images
 	vm.imageModal = function(id) {
-		// vm.currentDonor.template.currentField = id;
+		vm.fieldId = id;
+		vm.currentTemplate.currentField = id;
 		$uibModal.open({
 			animation: true,
 			ariaLabelledBy: 'image modal',
@@ -262,16 +296,13 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		// vm.currentTemplate = vm.templatesList['template' + template];
 		SettingsService.currentTemplate.template[0].template = vm.templatesList['template' + template];
 		getCurrentTemplate();
+		vm.templateSaved = false;
 
 		console.log('currentTemplate:', vm.currentTemplate);
 		console.log('template selected:', template);
 	}
 
 
-	vm.saveTemplate = function(template) {
-		console.log('saved template:', template);
-		//function(template.id, template.img, template.img2, template.img3, template.img4, template.p1, template.p2, template.p3, template.p4, template.quote, template.temp)
-	}
 
 	vm.saveAllTemplates = function() {
 		console.log('save all templates:', vm.templatesList);
@@ -290,13 +321,22 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
     template5: ''
   }
 
-	vm.setHighlight = function(id) {
+	vm.setTemplateHighlight = function(id) {
 		vm.templateHighlight.template1 = '';
 		vm.templateHighlight.template2 = '';
 		vm.templateHighlight.template3 = '';
 		vm.templateHighlight.template4 = '';
 		vm.templateHighlight.template5 = '';
 		vm.templateHighlight['template' + id] = 'orange-highlight';
+	}
+	vm.saveTemplate = function(template){
+		console.log(template);
+		TemplateService.saveTemplate(template);
+		vm.templateSaved= true;
+	}
+
+	vm.isActive = function(route) {
+			return route === $location.path();
 	}
 
 	// DataService.getTemplates();
