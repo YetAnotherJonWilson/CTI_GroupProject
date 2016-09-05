@@ -41,7 +41,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		}
 		vm.donorList = tempDonorList;
 		console.log('donorList after build:', vm.donorList);
-		console.log('DataService.templatesObject:', DataService.templatesObject);
+		console.log('DataService.templatesObject:', TemplateService.templatesObject);
 	}
 
 

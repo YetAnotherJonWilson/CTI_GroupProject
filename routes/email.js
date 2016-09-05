@@ -14,7 +14,8 @@ var image1 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage.jpg";
 var image2 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage2.jpg";
 var image3 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg";
 var image4 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage4.jpg";
-var image5 = "https://dl.dropboxusercontent.com/u/566253206/ + {{image}}sampleimage5.jpg";
+var image5 = "https://dl.dropboxusercontent.com/u/566253206/sampleimage5.jpg";
+
 
 var template1 = './public/emails/customTemplate1.hjs';
 var template2 = './public/emails/customTemplate2.hjs';
@@ -42,6 +43,7 @@ router.post('/sendMail', function(request, response){
       pass: process.env.emailpass,
     }
   });
+
   var mailOptions = {
     from: 'CTI GROUP <ctithankyou@gmail.com',
     to: request.body.email,
@@ -54,7 +56,7 @@ router.post('/sendMail', function(request, response){
     p3: data.p3,
     p4: data.p4,
     quote: data.q,
-    img: data.img,
+    img1: data.img,
     img2: data.img2,
     img3: data.img3,
     img4: data.img4,
@@ -66,8 +68,6 @@ router.post('/sendMail', function(request, response){
     date: data.date
     }),
 };
-
-
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
       console.log('There was an error', error);

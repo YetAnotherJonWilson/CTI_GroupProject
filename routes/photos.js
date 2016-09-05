@@ -122,7 +122,6 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
 });
-
 router.get('/createphotoarray', function(req, res) {
   // fs.readdir('./public/photos', function(err, files){
   //   if(!err){
@@ -311,7 +310,20 @@ router.get('/createheaderarray', function(req, res) {
   // });
 });
 
-
+router.get('/:photoId', function(req, res, next){
+  var emailImage = req.params.photoId;
+  console.log('This is the photo requested from email' , req.params.photoId);
+  Img.findById(emailImage, function(err, img){
+    if(err) {
+      console.log("search photo err" , err);
+      res.sendStatus(500);
+    }else {
+      console.log('mongo photo response????', img);
+      var photo = "data:image/jpeg;base64," + img.img.data.toString('base64');
+      res.send(photo);
+    }
+  })
+});
 
 
 

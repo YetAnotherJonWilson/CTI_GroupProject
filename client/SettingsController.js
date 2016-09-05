@@ -1,5 +1,5 @@
 
-angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService) {
+angular.module('App').controller('SettingsController', ['$http', '$location', 'DataService', 'UserService', 'Upload', '$timeout', '$uibModal', 'SettingsService', 'TemplateService', function($http, $location, DataService, UserService, Upload, $timeout, $uibModal, SettingsService, TemplateService) {
 
 	var vm = this;
 
@@ -9,7 +9,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 
 	// console.log(UserService.photosArray);
-
+  TemplateService.bleh();
 
 	vm.deletePhoto = function(photo) {
 		swal({
@@ -192,7 +192,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	vm.fieldId = '';
 
 	function buildTemplateObject() {
-		var tempTemplateList = DataService.templatesObject;
+		var tempTemplateList = TemplateService.templatesObject;
 		vm.templatesList = Object.assign({}, tempTemplateList)
 		console.log('vm.currentTemplate:', vm.currentTemplate);
 	}

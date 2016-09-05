@@ -19,7 +19,7 @@
 
           <button id="sendEmail" class="btn" ng-click="home.sendAll()">Send All</button>
     </div>
-    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor.Id)">
+    <div class="homeDataTable" ng-repeat="donor in home.donorList | orderBy:home.propertyName:home.reverse | filter:Enter_Anything" ng-click="home.setCurrentEditView(donor)">
 
 
 
@@ -62,7 +62,7 @@
 
         <div class='editview'>
             <div>
-          
+
                 <div class="slide-animate-container">
                     <div class="slide-animate" ng-include="home.selectedTemplate.url">
                     </div>
