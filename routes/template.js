@@ -13,14 +13,16 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
-    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
-    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
-    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+    img: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img2: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img3: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img4: 'photos/getDbImages/57c8ed452586803009a805a7',
     temp: '1',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
-    senderTitle: 'Executive Director'
+    senderTitle: 'Executive Director',
+    sig: 'photos/createsignaturearray/57c9e85e2d4b1f9d0781bead',
+    header: 'photos/createheaderarray/57c9e8cdfab8e7a807e17af8'
   };
   var template2= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -29,14 +31,16 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
-    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
-    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
-    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+    img: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img2: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img3: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img4: 'photos/getDbImages/57c8ed452586803009a805a7',
     temp: '2',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
-    senderTitle: 'Executive Director'
+    senderTitle: 'Executive Director',
+    sig: 'photos/createsignaturearray/57c9e85e2d4b1f9d0781bead',
+    header: 'photos/createheaderarray/57c9e8cdfab8e7a807e17af8'
   };
   var template3= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -45,14 +49,16 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
-    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
-    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
-    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+    img: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img2: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img3: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img4: 'photos/getDbImages/57c8ed452586803009a805a7',
     temp: '3',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
-    senderTitle: 'Executive Director'
+    senderTitle: 'Executive Director',
+    sig: 'photos/createsignaturearray/57c9e85e2d4b1f9d0781bead',
+    header: 'photos/createheaderarray/57c9e8cdfab8e7a807e17af8'
   };
   var template4= {
     p1: 'Test. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -61,14 +67,16 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
-    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
-    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
-    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+    img: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img2: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img3: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img4: 'photos/getDbImages/57c8ed392586803009a805a6',
     temp: '4',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
-    senderTitle: 'Executive Director'
+    senderTitle: 'Executive Director',
+    sig: 'photos/createsignaturearray/57c9e85e2d4b1f9d0781bead',
+    header: 'photos/createheaderarray/57c9e8cdfab8e7a807e17af8'
   };
   var template5= {
     p1: 'Thank you for believing in a world without hunger and poverty. And not just believing in such a world, but making it possible. Because of your generosity, communities around the world are gaining safe water and putting more food on the table.',
@@ -77,14 +85,16 @@ var Template = require('../models/template');
     p4: '',
     q: "Six months ago I bought a CTI grinder. I provide grinding services to other women and grind about 10 kg of peanut butter a day and sell it at the weekly market. I'm proud, as a woman, to be a leader and have respect in my community. I'm proud that I don't need to ask for help.",
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
-    img: 'photos/getDbImages/57c760172a95cd350ad4466e',
-    img2: 'photos/getDbImages/57c9c5411975acb82578ad5d',
-    img3: 'photos/getDbImages/57c9c7f6c6e487d725fd4e78',
-    img4: 'photos/getDbImages/57c9c808c6e487d725fd4e79',
+    img: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img2: 'photos/getDbImages/57c8ed452586803009a805a7',
+    img3: 'photos/getDbImages/57c8ed392586803009a805a6',
+    img4: 'photos/getDbImages/57c8ed452586803009a805a7',
     temp: '5',
     ps: 'P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!',
     senderName:'Alexandra Spieldoch',
-    senderTitle: 'Executive Director'
+    senderTitle: 'Executive Director',
+    sig: 'photos/createsignaturearray/57c9e85e2d4b1f9d0781bead',
+    header: 'photos/createheaderarray/57c9e8cdfab8e7a807e17af8'
   };
 router.post('/addtemplates', function(request, response){
   var data = template1;
@@ -105,7 +115,9 @@ router.post('/addtemplates', function(request, response){
     temp: data.temp,
     ps: data.ps,
     senderName: data.senderName,
-    senderTitle: data.senderTitle
+    senderTitle: data.senderTitle,
+    sig: data.sig,
+    header: data.header
   }, function(err){
     if(err){
       console.log('add template err');
@@ -127,7 +139,9 @@ router.post('/addtemplates', function(request, response){
     temp: data2.temp,
     ps: data2.ps,
     senderName: data2.senderName,
-    senderTitle: data2.senderTitle
+    senderTitle: data2.senderTitle,
+    sig: data2.sig,
+    header: data2.header
   }, function(err){
     if(err){
       console.log('add template err');
@@ -149,7 +163,9 @@ router.post('/addtemplates', function(request, response){
     temp: data3.temp,
     ps: data3.ps,
     senderName: data3.senderName,
-    senderTitle: data3.senderTitle
+    senderTitle: data3.senderTitle,
+    sig: data3.sig,
+    header: data3.header
   }, function(err){
     if(err){
       console.log('add template err');
@@ -171,7 +187,9 @@ router.post('/addtemplates', function(request, response){
     temp: data4.temp,
     ps: data4.ps,
     senderName: data4.senderName,
-    senderTitle: data4.senderTitle
+    senderTitle: data4.senderTitle,
+    sig: data4.sig,
+    header: data4.header
   }, function(err){
     if(err){
       console.log('add template err');
@@ -193,7 +211,9 @@ router.post('/addtemplates', function(request, response){
     temp: data5.temp,
     ps: data5.ps,
     senderName: data5.senderName,
-    senderTitle: data5.senderTitle
+    senderTitle: data5.senderTitle,
+    sig: data5.sig,
+    header: data5.header
   }, function(err){
     if(err){
       console.log('add template err');
@@ -230,9 +250,11 @@ router.post('/saveTemplate', function(req, res){
   updateObj.img4 = req.body.img4;
   updateObj.senderTitle = req.body.senderTitle;
   updateObj.senderName = req.body.senderName;
+  updateObj.sig = req.body.sig;
+  updateObj.header = req.body.header;
   console.log(updateObj);
   // res.sendStatus(200);
-  Template.findByIdAndUpdate(id, {$set:{p1: updateObj.p1, p2: updateObj.p2, p3: updateObj.p3, p4: updateObj.p4, quote: updateObj.quote, ps:updateObj.ps, img: updateObj.img, img2: updateObj.img2, img3: updateObj.img3, img4: updateObj.img4, senderName: updateObj.senderName, senderTitle: updateObj.senderTitle}}, function(err, response){
+  Template.findByIdAndUpdate(id, {$set:{p1: updateObj.p1, p2: updateObj.p2, p3: updateObj.p3, p4: updateObj.p4, quote: updateObj.quote, ps:updateObj.ps, img: updateObj.img, img2: updateObj.img2, img3: updateObj.img3, img4: updateObj.img4, senderName: updateObj.senderName, senderTitle: updateObj.senderTitle, sig: updateObj.sig, header: updateObj.header}}, function(err, response){
     if(err){
       console.log('here', err);
     }else{

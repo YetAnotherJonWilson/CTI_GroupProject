@@ -162,6 +162,10 @@ function awesome(){
 		console.log('bleh', templatesObject);
 		console.log('images object', imagesObject);
 		var templateImage = {};
+		var templateSig = {};
+		var templateHeader = {};
+		console.log('tempservice sigObject', templatesObject.template1.sig);
+		console.log('tempservice headerObject', templatesObject.template2.header);
 		console.log('template service templatesObject.img', templatesObject.template5);
 		templateImage.t1 = {};
 		templateImage.t2 = {};
@@ -181,6 +185,16 @@ function awesome(){
 		templateImage.t5.img2 = templatesObject.template5.img2.split('/');
 		templateImage.t5.img3 = templatesObject.template5.img3.split('/');
 		templateImage.t5.img4 = templatesObject.template5.img4.split('/');
+		templateSig.sig = templatesObject.template1.sig.split('/');
+		templateHeader.header = templatesObject.template1.header.split('/');
+		templateSig.sig = templatesObject.template2.sig.split('/');
+		templateHeader.header = templatesObject.template2.header.split('/');
+		templateSig.sig = templatesObject.template3.sig.split('/');
+		templateHeader.header = templatesObject.template3.header.split('/');
+		templateSig.sig = templatesObject.template4.sig.split('/');
+		templateHeader.header = templatesObject.template4.header.split('/');
+		templateSig.sig = templatesObject.template5.sig.split('/');
+		templateHeader.header = templatesObject.template5.header.split('/');
 		for (i = 0; i < imagesObject.images.length; i++) {
 			console.log('imagesObject.images', imagesObject.images);
 			if (templateImage.t1.img[2] == imagesObject.images[i].id) {
@@ -193,7 +207,6 @@ function awesome(){
 				templatesObject.template2.img = imagesObject.images[j];
 			}
 		}
-		console.log('template service templates object bleh', templatesObject);
 		// return templatesObject;
 		for (k = 0; k < imagesObject.images.length; k++) {
 			if (templateImage.t3.img[2] == imagesObject.images[k].id) {
@@ -229,6 +242,41 @@ function awesome(){
 				templatesObject.template5.img4 = imagesObject.images[m];
 			}
 		}
+		for(n = 0; n < 5; n++){
+			if(templateSig.sig[2] == templatesObject.template1.sig.id){
+				templatesObject.template1.sig = data.signatures;
+			}
+			if(templateSig.sig[2] == templatesObject.template2.sig.id){
+				templatesObject.template2.sig = data.signatures;
+			}
+			if(templateSig.sig[2] == templatesObject.template3.sig.id){
+				templatesObject.template3.sig = data.signatures;
+			}
+			if(templateSig.sig[2] == templatesObject.template4.sig.id){
+				templatesObject.template4.sig = data.signatures;
+			}
+			if(templateSig.sig[2] == templatesObject.template5.sig.id){
+				templatesObject.template5.sig = data.signatures;
+			}
+		}
+		for(o = 0; o < 5; o++){
+			if(templateHeader.header[2] == templatesObject.template1.header.id){
+				templatesObject.template1.header = data.headers;
+			}
+			if(templateHeader.header[2] == templatesObject.template2.header.id){
+				templatesObject.template2.header = data.headers;
+			}
+			if(templateHeader.header[2] == templatesObject.template3.header.id){
+				templatesObject.template3.header = data.headers;
+			}
+			if(templateHeader.header[2] == templatesObject.template4.header.id){
+				templatesObject.template4.header = data.headers;
+			}
+			if(templateHeader.header[2] == templatesObject.template5.header.id){
+				templatesObject.template5.header = data.headers;
+			}
+		}
+		console.log('template service templates object bleh', templatesObject);
 	}
 
 
@@ -299,6 +347,26 @@ function awesome(){
 			ps: ps
 		})
 	}
+
+	function getSigArray(){
+		return $http.get('/photos/createsignaturearray').then(function(response){
+			console.log('success creating sig array in tempservice', response);
+			data.signatures = response.data;
+			console.log('huh got signatures from db', data.signatures);
+		}, function(err){
+			console.log('err creating sigarray in tempservice', err);
+		})
+	}
+
+	function getHeadersArray(){
+		return $http.get('/photos/createheaderarray').then(function(response){
+			console.log('success creating header array in tempservice', response);
+			data.headers = response.data;
+			console.log('meh got headers from db', data.headers);
+		}, function(err){
+			console.log('err creating headersArray in tempservice', err);
+		})
+	}
 	// bleh();
 	return {
 		currentDonor: currentDonor,
@@ -319,7 +387,9 @@ function awesome(){
 		getTemplates: getTemplates,
 		templatesObject: templatesObject,
 		awesome: awesome,
-		saveTemplate: saveTemplate
+		saveTemplate: saveTemplate,
+		getSigArray: getSigArray,
+		getHeadersArray: getHeadersArray
 	}
 
 

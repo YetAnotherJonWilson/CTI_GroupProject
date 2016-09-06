@@ -14,7 +14,9 @@ var templateSchema = new Schema({
   temp: String,
   ps: String,
   senderName: String,
-  senderTitle: String
+  senderTitle: String,
+  sig: String,
+  header: String
 });
 
 module.exports = mongoose.model('Template', templateSchema);
