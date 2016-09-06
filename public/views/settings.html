@@ -1,14 +1,14 @@
 <div class="settingsMenu" class="animated fadeIn">
-    <button ng-click="settings.showPhotos(); settings.settingsClick('photo')" class="settingsMenuPhotoUpload">
+    <button ng-click="settings.showPhotos(); settings.settingsClick('photo')" class="settingsMenuPhotoUpload {{settings.menuHighlight.photo}}">
         <h1>Upload Photo</h1>
     </button>
-    <button ng-click="settings.settingsClick('template')" class="settingsMenuPhotoUpload">
+    <button ng-click="settings.settingsClick('template')" class="settingsMenuPhotoUpload {{settings.menuHighlight.template}}">
         <h1>Edit Template</h1>
     </button>
-    <button ng-click="settings.settingsClick('signature')" class="settingsMenuPhotoUpload">
+    <button ng-click="settings.settingsClick('signature')" class="settingsMenuPhotoUpload {{settings.menuHighlight.signature}}">
         <h1>Upload Signature</h1>
     </button>
-    <button ng-click="settings.settingsClick('header')" class="settingsMenuPhotoUpload">
+    <button ng-click="settings.settingsClick('header')" class="settingsMenuPhotoUpload {{settings.menuHighlight.header}}">
         <h1>Upload Header</h1>
     </button>
 </div>
@@ -60,11 +60,11 @@
       <button class="btn btnharvest"ng-click="settings.saveTemplate(settings.currentTemplate)">Save Template</button>
       <h3 class="text-success" ng-show="settings.templateSaved">Template Saved</h3>
         <div class="templateButtonsSettings">
-          <img class="TemplateSelector {{settings.templateHighlight.template1}}" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1'); settings.setHighlight('1')">
-          <img class="TemplateSelector {{settings.templateHighlight.template2}}" src="assets/template2.png"    ng-click="settings.setCurrentTemplate('2'); settings.setHighlight('2')">
-          <img class="TemplateSelector {{settings.templateHighlight.template3}}" src="assets/template3.png" ng-click="settings.setCurrentTemplate('3'); settings.setHighlight('3')">
-          <img class="TemplateSelector {{settings.templateHighlight.template4}}" src="assets/template4.png"  ng-click="settings.setCurrentTemplate('4'); settings.setHighlight('4')">
-          <img class="TemplateSelector_last {{settings.templateHighlight.template5}}" src="assets/template5.png" ng-click="settings.setCurrentTemplate('5'); settings.setHighlight('5')">
+          <img class="TemplateSelector {{settings.templateHighlight.template1}}" src="assets/template1.png" ng-click="settings.setCurrentTemplate('1'); settings.setTemplateHighlight('1')">
+          <img class="TemplateSelector {{settings.templateHighlight.template2}}" src="assets/template2.png"    ng-click="settings.setCurrentTemplate('2'); settings.setTemplateHighlight('2')">
+          <img class="TemplateSelector {{settings.templateHighlight.template3}}" src="assets/template3.png" ng-click="settings.setCurrentTemplate('3'); settings.setTemplateHighlight('3')">
+          <img class="TemplateSelector {{settings.templateHighlight.template4}}" src="assets/template4.png"  ng-click="settings.setCurrentTemplate('4'); settings.setTemplateHighlight('4')">
+          <img class="TemplateSelector_last {{settings.templateHighlight.template5}}" src="assets/template5.png" ng-click="settings.setCurrentTemplate('5'); settings.setTemplateHighlight('5')">
 
         </div>
       </div>

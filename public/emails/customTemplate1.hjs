@@ -19,7 +19,7 @@
                                 <td><img src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png"></td>
                             </tr>
                             <tr>
-                                <td class="date" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:40px 0 0 5px">{{date}}</td>
+                                <td class="date" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:40px 0 0 5px">{{sendDate}}</td>
                             </tr>
                             <tr>
                                 <td class="greeting" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:25px 0 0 5px">Dear {{name}}:</td>

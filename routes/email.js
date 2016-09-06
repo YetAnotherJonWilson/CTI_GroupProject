@@ -22,9 +22,18 @@ var template3 = './public/emails/customTemplate3.hjs';
 var template4 = './public/emails/customTemplate4.hjs';
 var template5 = './public/emails/customTemplate5.hjs';
 
+function GetFormattedDate() {
+    var todayTime = new Date();
+    var month = todayTime .getMonth() + 1;
+    var day = todayTime .getDate();
+    var year = todayTime .getFullYear();
+    return month + "/" + day + "/" + year;
+}
+
 
 router.post('/sendMail', function(request, response){
   var data = request.body;
+  var sendDate = GetFormattedDate();
   console.log('sendMail request.body', request.body);
 
   // var template = fs.readFileSync(template1, 'utf-8');
@@ -54,16 +63,17 @@ router.post('/sendMail', function(request, response){
     p3: data.p3,
     p4: data.p4,
     quote: data.q,
-    img: data.img,
-    img2: data.img2,
-    img3: data.img3,
-    img4: data.img4,
+    img: image1,
+    img2: image2,
+    img3: image3,
+    img4: image4,
     ps: data.ps,
     senderName: data.senderName,
     senderTitle: data.senderTitle,
     name: data.firstName,
     amount: data.amount,
-    date: data.date
+    date: data.date,
+    sendDate: sendDate
     }),
 };
 
@@ -73,6 +83,7 @@ router.post('/sendMail', function(request, response){
       console.log('There was an error', error);
       response.sendStatus(500);
     } else {
+      console.log('senddate', sendDate);
       console.log('Message Sent', info.response);
       response.sendStatus(200);
     }

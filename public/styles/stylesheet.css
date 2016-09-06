@@ -49,25 +49,27 @@ body {
 header {
   width: auto;
   height: 95px;
-  border-bottom: 2px solid #50504F;
+  /*border-bottom: 2px solid #50504F;*/
 }
-header a {
+header h3 {
   display: inline;
   float: right;
   font-size: 16px;
   margin: 65px 20px 0 0px;
   color: gray;
-}
-header a:first-child {
-  margin-right: 20px;
-}
-header a:hover {
-  color: #eb7536;
   text-decoration: none;
 }
-header a:active, header a:focus {
-  color: #eb7536;
+header h3:first-child {
+  margin-right: 20px;
 }
+header h3:hover {
+  color: #eb7536;
+  text-decoration: none;
+  cursor: default;
+}
+/*header a:active, header a:focus {
+  color: #eb7536;
+}*/
 #logo1 {
   height: 67px;
   width: 57px;
@@ -97,7 +99,7 @@ header a:active, header a:focus {
   color: white;
 }
 #loginDiv button:hover {
-  color: #faae18;
+  color: #EB7536;
 }
 /*home.html*/
 .donorInfoHome {
@@ -127,6 +129,7 @@ header a:active, header a:focus {
   height: 70px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   border-top: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 .homeDataTable:hover {
 background-color: rgba(0, 0, 0, 0.1);
@@ -168,7 +171,7 @@ background-color: rgba(0, 0, 0, 0.1);
   color: white;
 }
 #dropDown button:hover {
-  color: #faae18;
+  color: #EB7536;
 }
 .dropdown-menu {
   font-size: 14px;
@@ -197,7 +200,7 @@ background-color: rgba(0, 0, 0, 0.1);
   color: white;
 }
 #sendEmail:hover {
-  color: #faae18;
+  color: #EB7536;
 }
 #sendSingleMessageButton {
   float: left;
@@ -206,6 +209,9 @@ background-color: rgba(0, 0, 0, 0.1);
   background-color: #50504F;
   color: white;
   border: none;
+}
+#sendSingleMessageButton:hover {
+  color: #EB7536;
 }
 .donorSearchDiv {
   /*text-align: center;*/
@@ -220,8 +226,9 @@ background-color: rgba(0, 0, 0, 0.1);
 .donorSearchDiv input {
   float: left;
   width: 200px;
-  height: 32px;
+  height: 31px;
   font-size: 20px;
+  margin-top: 1px;
 }
 .actionItemsHome {
   height: 34px;
@@ -299,12 +306,12 @@ background-color: rgba(0, 0, 0, 0.1);
   margin-top: 10px;
 }
 .editmainback {
-    float: left;
+    /*float: left;*/
     position: relative;
     overflow: hidden;
     height: 600px;
     width: 450px;
-    margin: 50px 50px 0 350px;
+    margin: 50px auto 0 auto;
 }
 .editmainback h1 {
     position: relative;
@@ -428,8 +435,8 @@ background-color: rgba(0, 0, 0, 0.1);
   height: 33px;
   width: 145px;
   border: none;
-  margin-bottom: 3px;
-  padding: 3px;
+  /*margin-bottom: 3px;*/
+  /*padding: 3px;*/
   background-color: #50504F;
 }
 /*.settingsMenuPhotoUpload:hover,.settingsMenuSignatureUpload:hover, .settingsMenuHeaderUpload:hover{
@@ -591,15 +598,25 @@ input[type="file"] {
   color: #3ce50d;
 }
 .glyphicon-home,.glyphicon-cog {
-  margin-right: 3px;
+  margin-right: 4px;
 }
 .orange-highlight {
   border: 3px solid #EB7536;
 }
-.orange-underline {
-  border-bottom: 2px solid #EB7536;
-  background-color: blue;
-}
 .imgHighlight {
   opacity: .8;
 }
+.menu-highlight {
+  background-color: #E6E6E6;
+}
+.menu-highlight h1 {
+  color: #EB7536;
+}
+/*.mainNavHighlight {
+  color: #EB7536;
+}*/
+.menuActive {
+  color: #EB7536;
+}
+.highlightDonor {
+background-color: rgba(0, 0, 0, 0.2);
