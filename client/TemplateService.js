@@ -346,7 +346,6 @@ function awesome(){
 			ps: ps
 		})
 	}
-<<<<<<< HEAD
 
 	function getSigArray(){
 		return $http.get('/photos/createsignaturearray').then(function(response){
@@ -365,12 +364,11 @@ function awesome(){
 			console.log('meh got headers from db', data.headers);
 		}, function(err){
 			console.log('err creating headersArray in tempservice', err);
-		})
-=======
+		});
+	}
 	function updateCurrentTemplateKey(key, value, num){
 		console.log(key, value, num);
 		templatesObject["template"+num][key] = value;
->>>>>>> 616a25123b4407ac6c297741b091c62e9d474351
 	}
 	// bleh();
 	return {
@@ -393,12 +391,9 @@ function awesome(){
 		templatesObject: templatesObject,
 		awesome: awesome,
 		saveTemplate: saveTemplate,
-<<<<<<< HEAD
 		getSigArray: getSigArray,
-		getHeadersArray: getHeadersArray
-=======
+		getHeadersArray: getHeadersArray,
 		updateCurrentTemplateKey: updateCurrentTemplateKey
->>>>>>> 616a25123b4407ac6c297741b091c62e9d474351
 	}
 
 
