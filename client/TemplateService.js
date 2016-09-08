@@ -163,15 +163,15 @@ function awesome(){
 		var templateImage = {};
 		var templateSig = {};
 		var templateHeader = {};
-		console.log('tempservice sigObject', templatesObject.template1.sig);
-		console.log('tempservice headerObject', templatesObject.template2.header);
-		console.log('template service templatesObject.img', templatesObject.template5);
+		// console.log('tempservice sigObject', templatesObject.template1.sig);
+		// console.log('tempservice headerObject', templatesObject.template2.header);
+		// console.log('template service templatesObject.img', templatesObject.template5);
 		templateImage.t1 = {};
 		templateImage.t2 = {};
 		templateImage.t3 = {};
 		templateImage.t4 = {};
 		templateImage.t5 = {};
-		console.log('templatesObject.template1.img', templatesObject.template5.img);
+		// console.log('templatesObject.template1.img', templatesObject.template5.img);
 		templateImage.t1.img = templatesObject.template1.img.split('/');
 		templateImage.t2.img = templatesObject.template2.img.split('/');
 		templateImage.t3.img = templatesObject.template3.img.split('/');
@@ -184,16 +184,17 @@ function awesome(){
 		templateImage.t5.img2 = templatesObject.template5.img2.split('/');
 		templateImage.t5.img3 = templatesObject.template5.img3.split('/');
 		templateImage.t5.img4 = templatesObject.template5.img4.split('/');
-		templateSig.sig = templatesObject.template1.sig.split('/');
-		templateHeader.header = templatesObject.template1.header.split('/');
-		templateSig.sig = templatesObject.template2.sig.split('/');
-		templateHeader.header = templatesObject.template2.header.split('/');
-		templateSig.sig = templatesObject.template3.sig.split('/');
-		templateHeader.header = templatesObject.template3.header.split('/');
-		templateSig.sig = templatesObject.template4.sig.split('/');
-		templateHeader.header = templatesObject.template4.header.split('/');
-		templateSig.sig = templatesObject.template5.sig.split('/');
-		templateHeader.header = templatesObject.template5.header.split('/');
+		templateSig.sig1 = templatesObject.template1.sig.split('/');
+		templateHeader.header1 = templatesObject.template1.header.split('/');
+		templateSig.sig2 = templatesObject.template2.sig.split('/');
+		templateHeader.header2 = templatesObject.template2.header.split('/');
+		templateSig.sig3 = templatesObject.template3.sig.split('/');
+		templateHeader.header3 = templatesObject.template3.header.split('/');
+		templateSig.sig4 = templatesObject.template4.sig.split('/');
+		templateHeader.header4 = templatesObject.template4.header.split('/');
+		templateSig.sig5 = templatesObject.template5.sig.split('/');
+		templateHeader.header5 = templatesObject.template5.header.split('/');
+		console.log('find me now!!!! tempSig, tempHead', templateSig, templateHeader);
 		for (i = 0; i < imagesObject.images.length; i++) {
 			console.log('imagesObject.images', imagesObject.images);
 			if (templateImage.t1.img[2] == imagesObject.images[i].id) {
@@ -242,37 +243,37 @@ function awesome(){
 			}
 		}
 		for(n = 0; n < 5; n++){
-			if(templateSig.sig[2] == templatesObject.template1.sig.id){
-				templatesObject.template1.sig = data.signatures;
+			if(templateSig.sig1[2] == data.signatures[0].id){
+				templatesObject.template1.sig = data.signatures[0];
 			}
-			if(templateSig.sig[2] == templatesObject.template2.sig.id){
-				templatesObject.template2.sig = data.signatures;
+			if(templateSig.sig2[2] == data.signatures[0].id){
+				templatesObject.template2.sig = data.signatures[0];
 			}
-			if(templateSig.sig[2] == templatesObject.template3.sig.id){
-				templatesObject.template3.sig = data.signatures;
+			if(templateSig.sig3[2] == data.signatures[0].id){
+				templatesObject.template3.sig = data.signatures[0];
 			}
-			if(templateSig.sig[2] == templatesObject.template4.sig.id){
-				templatesObject.template4.sig = data.signatures;
+			if(templateSig.sig4[2] == data.signatures[0].id){
+				templatesObject.template4.sig = data.signatures[0];
 			}
-			if(templateSig.sig[2] == templatesObject.template5.sig.id){
-				templatesObject.template5.sig = data.signatures;
+			if(templateSig.sig5[2] == data.signatures[0].id){
+				templatesObject.template5.sig = data.signatures[0];
 			}
 		}
 		for(o = 0; o < 5; o++){
-			if(templateHeader.header[2] == templatesObject.template1.header.id){
-				templatesObject.template1.header = data.headers;
+			if(templateHeader.header1[2] == data.headers[0].id){
+				templatesObject.template1.header = data.headers[0];
 			}
-			if(templateHeader.header[2] == templatesObject.template2.header.id){
-				templatesObject.template2.header = data.headers;
+			if(templateHeader.header2[2] == data.headers[0].id){
+				templatesObject.template2.header = data.headers[0];
 			}
-			if(templateHeader.header[2] == templatesObject.template3.header.id){
-				templatesObject.template3.header = data.headers;
+			if(templateHeader.header3[2] == data.headers[0].id){
+				templatesObject.template3.header = data.headers[0];
 			}
-			if(templateHeader.header[2] == templatesObject.template4.header.id){
-				templatesObject.template4.header = data.headers;
+			if(templateHeader.header4[2] == data.headers[0].id){
+				templatesObject.template4.header = data.headers[0];
 			}
-			if(templateHeader.header[2] == templatesObject.template5.header.id){
-				templatesObject.template5.header = data.headers;
+			if(templateHeader.header5[2] == data.headers[0].id){
+				templatesObject.template5.header = data.headers[0];
 			}
 		}
 		console.log('template service templates object bleh', templatesObject);
@@ -370,7 +371,22 @@ function awesome(){
 		console.log(key, value, num);
 		templatesObject["template"+num][key] = value;
 	}
+
+	function createTemplate(){
+	  var sendData={};
+	  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+	}
+
+	function handletemplatesuccess(res){
+	  console.log('Template created');
+	}
+
+	function handletemplatefailure(res){
+	  console.log('template create failed');
+	}
+
 	// bleh();
+
 	return {
 		currentDonor: currentDonor,
 		//currentTemplate: currentTemplate,
