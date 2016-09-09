@@ -372,9 +372,9 @@ function awesome(){
 		templatesObject["template"+num][key] = value;
 	}
 
-	function createTemplate(){
+	function updateTemplate(sendData){
 	  var sendData={};
-	  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+	  $http.put('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
 	}
 
 	function handletemplatesuccess(res){
@@ -409,7 +409,8 @@ function awesome(){
 		saveTemplate: saveTemplate,
 		getSigArray: getSigArray,
 		getHeadersArray: getHeadersArray,
-		updateCurrentTemplateKey: updateCurrentTemplateKey
+		updateCurrentTemplateKey: updateCurrentTemplateKey,
+		updateTemplate: updateTemplate
 	}
 
 
