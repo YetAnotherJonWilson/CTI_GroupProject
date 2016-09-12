@@ -33,7 +33,7 @@ var overview = require('./routes/overview');
 var template = require('./routes/template')
 
 
-require('dotenv').config();
+// require('dotenv').config();
 //parse request
 app.use(bodyParser.json());
 //serve static files
