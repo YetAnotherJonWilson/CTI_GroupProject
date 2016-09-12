@@ -153,6 +153,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 				file.result = response.data;
 			});
 			if(response.status == 200){
+
 				createHeaderArray();
 			}
 		}, function(response) {
@@ -338,7 +339,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	vm.isActive = function(route) {
 			return route === $location.path();
 	}
-	
+
 	// DataService.getTemplates();
 	buildTemplateObject();
 	setTemplateOnLoad();
