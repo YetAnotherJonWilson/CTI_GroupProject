@@ -37,9 +37,9 @@ const oauth2 = new jsforce.OAuth2({
   redirectUri : process.env.SF_CALLBACK_URL
 })
 
-console.log({clientId : process.env.SF_CLIENT_ID,
-  clientSecret : process.env.SF_CLIENT_SECRET,
-  redirectUri : process.env.SF_CALLBACK_URL});
+// console.log({clientId : process.env.SF_CLIENT_ID,
+//   clientSecret : process.env.SF_CLIENT_SECRET,
+//   redirectUri : process.env.SF_CALLBACK_URL});
 
 router.get('/oauth2/callback', function(request, response){
   var conn = new jsforce.Connection({oauth2: oauth2});
