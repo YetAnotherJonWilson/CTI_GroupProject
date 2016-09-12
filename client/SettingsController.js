@@ -10,7 +10,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 
 	// console.log(UserService.photosArray);
-  TemplateService.bleh();
+  // TemplateService.bleh();
 
 	vm.deletePhoto = function(photo) {
 		swal({

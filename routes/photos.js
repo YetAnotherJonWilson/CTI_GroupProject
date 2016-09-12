@@ -357,12 +357,15 @@ router.get('/:photoId', function(req, res, next){
       console.log("search photo err" , err);
       res.sendStatus(500);
     }else {
-      console.log('mongo photo response????', img);
+      console.log('mongo photo response????');
       var photo = "data:image/jpeg;base64," + img.img.data.toString('base64');
+      console.log('photo');
       res.send(photo);
     }
   })
 });
+
+
 
 
 

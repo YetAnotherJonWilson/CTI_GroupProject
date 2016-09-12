@@ -84,6 +84,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		updateCurrentDonor(donor);
 		vm.currentDonor = donor;
 		setSelectedTemplate(donor["template"+num].temp);
+		vm.setTemplateHighlight(num);
 	}
 
 	function setSelectedTemplate(templateNum) {
