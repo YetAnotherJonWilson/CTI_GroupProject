@@ -174,11 +174,11 @@
             <!-- <p class="ps">
               P.S. Please get in touch with me if you have any questions about our programs or CTI in general (alexandra@compatibletechnology.org). And thanks again for your generosity and support!
             </p> -->
-            <p>
-                Alexandra Spieldoch,
+            <p class="fieldHover" ng-click="settings.editModal('senderName')">
+                {{settings.currentTemplate.senderName}},
             </p>
-            <p>
-                Executive Director
+            <p class="fieldHover" ng-click="settings.editModal('senderTitle')">
+                {{settings.currentTemplate.senderTitle}}
             </p>
         </div>
         <div class="footer">

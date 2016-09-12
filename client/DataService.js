@@ -79,7 +79,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 			Amount: 2000,
 			CloseDate: "2016-09-01",
 			Id: "006d000000r6ehSAAQ",
-			Name: "Maria Wilson- Donation 9/01/2016",
+			Name: "Mary Wilson- Donation 9/01/2016",
 			Primary_Contact__c: "003d0000037X61sAAC",
 			address: {
 				city: "real",
@@ -99,10 +99,10 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 				lifeTimeNumber: 2
 			},
 			email: "ctithankyou@outlook.com",
-			firstName: "Maria",
+			firstName: "Mary",
 			formalGreeting: "Mrs. Maria",
 			householdId: "a00d000000mOdn5AAC",
-			informalGreeting: "Maria",
+			informalGreeting: "Mary",
 			lastName: "Wilson",
 			npe01__Contact_Id_for_Role__c: "003d0000037X61sAAC",
 			npe01__Is_Opp_From_Individual__c: "true",

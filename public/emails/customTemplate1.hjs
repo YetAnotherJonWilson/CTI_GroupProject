@@ -44,7 +44,7 @@
                         <tbody>
                             <tr>
                                 <td><img src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg" alt="image" width="325px" height="200px"></td>
-                                <td>{{quote}}</td>
+                                <td class="quote" style="padding-left:5px">{{quote}}</td>
                             </tr>
                         </tbody>
                     </table>
