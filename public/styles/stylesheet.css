@@ -386,7 +386,9 @@ background-color: rgba(0, 0, 0, 0.1);
   margin: 0 0 5px 5px;
   padding-bottom: 10px;
 }
-
+#edit{
+  font-size: 20px;
+}
 .imageModalClass {
   width: 225px;
   position: fixed;
