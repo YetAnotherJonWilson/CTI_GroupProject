@@ -32,9 +32,9 @@ router.get('/oauth2/auth', function(request, response){
 });
 
 const oauth2 = new jsforce.OAuth2({
-  clientId : SF_CLIENT_ID,
-  clientSecret : SF_CLIENT_SECRET,
-  redirectUri : SF_CALLBACK_URL
+  clientId : process.env.SF_CLIENT_ID,
+  clientSecret : process.env.SF_CLIENT_SECRET,
+  redirectUri : process.env.SF_CALLBACK_URL
 })
 
 console.log({clientId : process.env.SF_CLIENT_ID,
