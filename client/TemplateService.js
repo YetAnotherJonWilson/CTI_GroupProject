@@ -39,6 +39,8 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
     sendData.p4 = template.p4;
     sendData.quote = template.quote;
 		sendData.ps = template.ps;
+		sendData.header = template.header;
+		sendData.sig = template.sig;
     if(template.img != null | template.img != ''){
       sendData.img = 'photos/getDbImages/' + template.img.id;
     }
@@ -51,6 +53,12 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
     if(template.img4 != null | template.img4 != ''){
       sendData.img4 = 'photos/getDbImages/' + template.img4.id;
     }
+		if(template.sig != null | template.sig != ''){
+			sendData.sig = 'photos/createsignaturearray/' + template.sig.id;
+		}
+		if(template.header != null | template.header != ''){
+			sendData.header = 'photos/createheaderarray/' + template.header.id;
+		}
     sendData.template = template.temp;
 		sendData.senderTitle = template.senderTitle;
 		sendData.senderName = template.senderName;
@@ -397,8 +405,7 @@ function awesome(){
 		saveTemplate: saveTemplate,
 		getSigArray: getSigArray,
 		getHeadersArray: getHeadersArray,
-		updateCurrentTemplateKey: updateCurrentTemplateKey,
-		updateTemplate: updateTemplate
+		updateCurrentTemplateKey: updateCurrentTemplateKey
 	}
 
 

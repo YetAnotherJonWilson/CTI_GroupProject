@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var Img = require('../models/image');
 var Sig = require('../models/sig');
-var Letterhead = require('../models/Letterhead');
+var Letterhead = require('../models/letterhead');
+var Template = require('../models/template');
 //var Sig = require('../models/signature');
 //var Letterhead = require('../models/letterhead);
 
@@ -121,11 +122,21 @@ router.post('/sigfile', uploadSig.single('file'), function (req, res) {
       console.log('error saving signature', err);
     }
     else{
-      console.log('success saving signature to mongdb');
-      res.sendStatus(200);
+      console.log('success saving signature to mongdb', signature._id);
+      signature.strung = 'photos/createsignaturearray/' + signature._id;
+      Template.update({}, {$set: {sig: signature.strung}}, {multi: true}, function(err){
+        if(err){
+          console.log('erorororoor', err);
+        }
+        else{
+          res.sendStatus(200);
+        }
+      });
+      // res.sendStatus(200);
     }
   });
   console.log('file uploaded:', req.file.path);
+
   // res.send(req.file.path);
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
@@ -153,10 +164,21 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
     }
     else{
       console.log('success saving header to mongdb');
-      res.sendStatus(200);
+      header.strung = 'photos/createsignaturearray/' + header._id;
+      Template.update({}, {$set: {header: header.strung}}, {multi: true}, function(err){
+        if(err){
+          console.log('erorororoor', err);
+        }
+        else{
+          res.sendStatus(200);
+        }
+      });
+      // res.sendStatus(200);
     }
   });
-  console.log('file uploaded:', req.file.path);
+  console.log('file uploaded: ', req.file.path);
+
+
   // res.send(req.file.path);
   // req.file is the `photo` file
   // req.body will hold the text fields, if there were any
