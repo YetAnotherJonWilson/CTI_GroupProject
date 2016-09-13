@@ -36,7 +36,7 @@
             <ul>
                 <li ng-repeat="photo in settings.photos">
 
-                    <img ng-src="/photos/{{photo}}" alt="{{photo.photo}}">
+                    <img ng-src="{{photo.photo}}" alt="{{photo.photo}}">
                     <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
 
                 </li>
@@ -108,7 +108,7 @@
         </div>
         <div class="settingsDisplayPhotos">
             <li ng-repeat="signature in settings.signatures">
-                <img ng-src="{{signature.signature}}" alt="{{signature.signature}}">
+                <img ng-src="{{signature.signature}}" alt="{{photo.photo}}">
                 <span id="settingsDeletePhoto" ng-click="settings.deletePhoto(photo)"><span class="glyphicon glyphicon-remove"></span></span>
             </li>
         </div>
