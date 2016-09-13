@@ -74,12 +74,11 @@ router.post('/getDbImages/:id', function(req, res, next){
       return next(err);
     }
     else{
-      console.log('doc', doc);
       var photo = {};
-      // for(var i = 0; i < doc.length; i++){
+      for(var i = 0; i < doc.length; i++){
         photo.photo = 'data:image/jpeg;base64,' + doc.img.data.toString('base64');
         photo.id = doc._id;
-      // }
+      }
       console.log('doc id', photo.id);
       res.contentType(doc.img.contentType);
       res.send(photo);

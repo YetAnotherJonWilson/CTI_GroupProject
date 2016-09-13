@@ -4,7 +4,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	var sorted = [];
 	var sortedObject = {};
 	var templatesObject = {};
- 
+
 	var donorObject = {
 		donors: [{
 			AccountId: "001d000000K2KKAAA3",
@@ -453,17 +453,17 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	sortedObject.sorted = sorted;
 	// preconvertDates();
 	// convertDates();
-	// function createTemplate(){
-	//   var sendData={};
-	//   $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
-	// }
-	// function handletemplatesuccess(res){
-	//   console.log('Template created');
-	// }
-	// function handletemplatefailure(res){
-	//   console.log('template create failed');
-	// }
-	// createTemplate();
+	function createTemplate(){
+	  var sendData={};
+	  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+	}
+	function handletemplatesuccess(res){
+	  console.log('Template created');
+	}
+	function handletemplatefailure(res){
+	  console.log('template create failed');
+	}
+	createTemplate();
 	// var templatesArray=[];
 	// function getTemplates(){
 	//     return $http.get('/template/getTemplates').then(getTemplateSuccess, getTemplateFailure);
