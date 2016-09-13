@@ -33,13 +33,13 @@ var upload = multer({ storage: storage });
 
 router.post('/deletePhoto', function(req, res) {
   console.log('remove req', req.body);
-  Img.findByIdAndRemove(req.body.id, function(response){
+  Img.findByIdAndRemove(req.body, function(response){
     console.log('successful remove of stuff', response);
   }, function(err){
     console.log('boo you suck....at removing pics', err);
   });
   console.log('trying to delete');
-  console.log('req.body' , req.body._id );
+  // console.log('req.body' , req.body._id );
   // var filePath = "public/photos/" + req.body.photo;
   // fs.unlinkSync(filePath);
   // res.sendStatus(200);
