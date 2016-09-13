@@ -51,14 +51,14 @@ router.post('/', upload.single('file'), function (req, res) {
   imgPath = req.file.path;
   image.img.data = fs.readFileSync(imgPath);
   image.img.contentType = 'image/png';
-  // image.save(function(err, image){
-  //   if(err){
-  //     console.log('error saving image', err);
-  //   }
-  //   else{
-  //     console.log('success saving image to mongdb');
-  //   }
-  // });
+  image.save(function(err, image){
+    if(err){
+      console.log('error saving image', err);
+    }
+    else{
+      console.log('success saving image to mongdb');
+    }
+  });
   console.log('file uploaded:', req.file.path);
   res.send(req.file.path);
   // req.file is the `photo` file
