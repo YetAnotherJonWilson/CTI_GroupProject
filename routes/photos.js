@@ -202,7 +202,7 @@ router.get('/createphotoarray', function(req, res) {
     }
     else{
       var photos = [];
-      console.log('doc', doc);
+      // console.log('doc', doc);
       // photos = doc;
       // if(doc.length == undefined){
       //   console.log('kfjldsa;jklsadf');
@@ -230,7 +230,7 @@ router.get('/createphotoarray', function(req, res) {
       for(var i = 0; i < photos.length; i++){
         console.log('photos.id', photos[i].id);
       }
-      console.log('photos', photos);
+      // console.log('photos', photos);
       res.contentType(doc[0].img.contentType);
       res.send(photos);
     }
