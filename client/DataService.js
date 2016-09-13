@@ -456,7 +456,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	function createTemplate(){
 	  var sendData={};
 		console.log('jfkdlsajfklwdjaksljfdkslajfdkslf;jsklkasldk;fa');
-	  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+	  return $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
 	}
 	function handletemplatesuccess(res){
 	  console.log('Template created');
@@ -491,7 +491,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 		// getDonors: getDonors,
 		getData: getData,
 		donorObject: donorObject,
-		createTemplate: createTemplate 
+		createTemplate: createTemplate
 			// ,
 			// templatesObject: templatesObject
 			// ,

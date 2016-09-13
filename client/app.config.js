@@ -11,6 +11,7 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controllerAs: 'home',
       resolve: {
         getstuff: ['DataService', function(DataService){
+          console.log('i know you should work');
           return DataService.createTemplate();
         }],
         someting: ['DataService', function(DataService){
