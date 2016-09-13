@@ -207,7 +207,7 @@ router.get('/createphotoarray', function(req, res) {
         console.log('photos.id', photos[i].id);
       }
       // console.log('photos', photos);
-      res.contentType(doc[0].img.contentType);
+      // res.contentType(doc[0].img.contentType);
       res.send(photos);
     }
   });
