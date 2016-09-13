@@ -455,6 +455,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	// convertDates();
 	function createTemplate(){
 	  var sendData={};
+		console.log('jfkdlsajfklwdjaksljfdkslajfdkslf;jsklkasldk;fa');
 	  $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
 	}
 	function handletemplatesuccess(res){
