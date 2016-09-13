@@ -48,8 +48,8 @@ if(process.env.MONGODB_URI != undefined) {
   // mongodb://heroku_82cmlrcs:9u7s403vn6rtk0vp2f2e2qsouu@ds029436.mlab.com:29436/heroku_82cmlrcs
 } else {
   // use the local database server
-databaseURI = 'mongodb:// ctithankyou:ctithankyou@ds029426.mlab.com:29426/donorcollection'
-  // databaseURI = 'mongodb://localhost:27017/donorCollection';
+// databaseURI = 'mongodb:// ctithankyou:ctithankyou@ds029426.mlab.com:29426/donorcollection'
+  databaseURI = 'mongodb://localhost:27017/donorCollection';
 }
 
 

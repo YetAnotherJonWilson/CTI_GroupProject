@@ -47,6 +47,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handlePhotoSuccess(response) {
 		vm.photos = response.data;
+		console.log('photosController photos', vm.photos );
 		TemplateService.imagesObject.images = response.data;
 	}
 
