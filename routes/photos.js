@@ -20,9 +20,9 @@ router.use(bodyParser.json());
 
 
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/photos/');
-  },
+  // destination: function (req, file, cb) {
+  //   cb(null, 'public/photos/');
+  // },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '.jpg'); //Appending .jpg
     console.log(file.mimetype);
@@ -187,96 +187,96 @@ router.post('/headers', uploadHeader.single('file'), function (req, res) {
   // req.body will hold the text fields, if there were any
 });
 router.get('/createphotoarray', function(req, res) {
-  fs.readdir('./public/photos', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-  // var photos = [];
-  // var photo = {};
-  // Img.find({}, function(err, doc){
-  //   if(err){
-  //     return next(err);
-  //   }
-  //   else{
-  //     var photos = [];
-  //     console.log('doc', doc);
-      // photos = doc;
-      // if(doc.length == undefined){
-      //   console.log('kfjldsa;jklsadf');
-      //   return;
-      //   res.send('');
-      // }
-      // if(doc.length == ''){
-      //   console.log('stuff');
-      //   return;
-      //   res.send('');
-      // }
-      // if(doc.length == null){
-      //   console.log('null');
-      // }
-      // for(var i = 0; i < doc.length; i++){
-      //   photo = {};
-      //   // var base64 = doc[i].img.data.toString('base64');
-      //   photo.photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-      //   photo.id = doc[i]._id;
-      //   // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-      //   // photos[i].id = doc[i].id;
-      //   photos.push(photo);
-      //   // console.log('photos.id', photos[i].id);
-      // }
-      // for(var i = 0; i < photos.length; i++){
-      //   console.log('photos.id', photos[i].id);
-      // }
-      // console.log('photos', photos);
-      // res.contentType(doc[0].img.contentType);
-      // res.send(photos);
+  // fs.readdir('./public/photos', function(err, files){
+  //   if(!err){
+  //     console.log(files);
+  //     res.send(files);
+  //   } else {
+  //     console.log(err);
   //   }
   // });
+  var photos = [];
+  var photo = {};
+  Img.find({}, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      var photos = [];
+      console.log('doc', doc);
+      photos = doc;
+      if(doc.length == undefined){
+        console.log('kfjldsa;jklsadf');
+        return;
+        res.send('');
+      }
+      if(doc.length == ''){
+        console.log('stuff');
+        return;
+        res.send('');
+      }
+      if(doc.length == null){
+        console.log('null');
+      }
+      for(var i = 0; i < doc.length; i++){
+        photo = {};
+        // var base64 = doc[i].img.data.toString('base64');
+        photo.photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        photo.id = doc[i]._id;
+        // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        // photos[i].id = doc[i].id;
+        photos.push(photo);
+        // console.log('photos.id', photos[i].id);
+      }
+      for(var i = 0; i < photos.length; i++){
+        console.log('photos.id', photos[i].id);
+      }
+      console.log('photos', photos);
+      res.contentType(doc[0].img.contentType);
+      res.send(photos);
+    }
+  });
 });
 
 router.get('/createsignaturearray', function(req, res) {
 
 
-  fs.readdir('./public/sigfile', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
-    }
-  });
-  // var signatures = [];
-  // var signature = {};
-  // Sig.find({}, function(err, doc){
-  //   if(err){
-  //     return next(err);
-  //   }
-  //   else{
-  //     var signatures = [];
-  //     console.log('signatures', doc);
-  //     // photos = doc;
-  //     for(var i = 0; i < doc.length; i++){
-  //       signature = {};
-  //       // var base64 = doc[i].img.data.toString('base64');
-  //       signature.signature = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-  //       signature.id = doc[i]._id;
-  //       // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-  //       // photos[i].id = doc[i].id;
-  //       signatures.push(signature);
-  //       // console.log('photos.id', photos[i].id);
-  //     }
-  //     for(var i = 0; i < signatures.length; i++){
-  //       console.log('signatures.id', signatures[i].id);
-  //     }
-  //     // console.log('photos', photos);
-  //     res.contentType(doc[0].img.contentType);
-  //     res.send(signatures);
+  // fs.readdir('./public/sigfile', function(err, files){
+  //   if(!err){
+  //     console.log(files);
+  //     res.send(files);
+  //   } else {
+  //     console.log(err);
   //   }
   // });
+  var signatures = [];
+  var signature = {};
+  Sig.find({}, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      var signatures = [];
+      console.log('signatures', doc);
+      // photos = doc;
+      for(var i = 0; i < doc.length; i++){
+        signature = {};
+        // var base64 = doc[i].img.data.toString('base64');
+        signature.signature = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        signature.id = doc[i]._id;
+        // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        // photos[i].id = doc[i].id;
+        signatures.push(signature);
+        // console.log('photos.id', photos[i].id);
+      }
+      for(var i = 0; i < signatures.length; i++){
+        console.log('signatures.id', signatures[i].id);
+      }
+      // console.log('photos', photos);
+      res.contentType(doc[0].img.contentType);
+      res.send(signatures);
+    }
+  });
   // var signatures = [];
   // var signature = {};
   // Img.find({}, function(err, doc){
@@ -308,17 +308,45 @@ router.get('/createsignaturearray', function(req, res) {
 });
 
 router.get('/createheaderarray', function(req, res) {
-  fs.readdir('./public/headers', function(err, files){
-    if(!err){
-      console.log(files);
-      res.send(files);
-    } else {
-      console.log(err);
+  // fs.readdir('./public/headers', function(err, files){
+  //   if(!err){
+  //     console.log(files);
+  //     res.send(files);
+  //   } else {
+  //     console.log(err);
+  //   }
+  // });
+  var headers = [];
+  var header = {};
+  Letterhead.find({}, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      var header = [];
+      console.log('doc', doc);
+      // photos = doc;
+      for(var i = 0; i < doc.length; i++){
+        header = {};
+        // var base64 = doc[i].img.data.toString('base64');
+        header.header = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        header.id = doc[i]._id;
+        // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
+        // photos[i].id = doc[i].id;
+        headers.push(header);
+        // console.log('photos.id', photos[i].id);
+      }
+      for(var i = 0; i < headers.length; i++){
+        console.log('headers.id', headers[i].id);
+      }
+      // console.log('photos', photos);
+      res.contentType(doc[0].img.contentType);
+      res.send(headers);
     }
   });
   // var headers = [];
   // var header = {};
-  // Letterhead.find({}, function(err, doc){
+  // Img.find({}, function(err, doc){
   //   if(err){
   //     return next(err);
   //   }
@@ -344,34 +372,6 @@ router.get('/createheaderarray', function(req, res) {
   //     res.send(headers);
   //   }
   // });
-  // // var headers = [];
-  // // var header = {};
-  // // Img.find({}, function(err, doc){
-  // //   if(err){
-  // //     return next(err);
-  // //   }
-  // //   else{
-  // //     var header = [];
-  // //     console.log('doc', doc);
-  // //     // photos = doc;
-  // //     for(var i = 0; i < doc.length; i++){
-  // //       header = {};
-  // //       // var base64 = doc[i].img.data.toString('base64');
-  // //       header.header = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-  // //       header.id = doc[i]._id;
-  // //       // photos[i].photo = 'data:image/jpeg;base64,' + doc[i].img.data.toString('base64');
-  // //       // photos[i].id = doc[i].id;
-  // //       headers.push(header);
-  // //       // console.log('photos.id', photos[i].id);
-  // //     }
-  // //     for(var i = 0; i < headers.length; i++){
-  // //       console.log('headers.id', headers[i].id);
-  // //     }
-  // //     // console.log('photos', photos);
-  // //     res.contentType(doc[0].img.contentType);
-  // //     res.send(headers);
-  // //   }
-  // // });
 });
 
 router.get('/:photoId', function(req, res, next){
@@ -385,7 +385,15 @@ router.get('/:photoId', function(req, res, next){
       console.log('mongo photo response????');
       var photo = "data:image/jpeg;base64," + img.img.data.toString('base64');
       console.log('photo');
-      res.send(photo);
+      res.contentType('jpeg');
+      res.end(img.img.data, 'binary');
+      // res.send(photo);
+  // function(req, res) {
+  // var id = req.param('id')
+  // fs.exists('/private/img/'+id, function(exists) {
+  //   if(exists) res.sendfile('/private/img/'+id)
+  //   else res.end('err')
+  // })
     }
   })
 });
