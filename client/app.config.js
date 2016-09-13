@@ -10,6 +10,9 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'HomeController',
       controllerAs: 'home',
       resolve: {
+        getstuff: ['DataService', function(DataService){
+          return DataService.createTemplate();
+        }],
         someting: ['DataService', function(DataService){
           return DataService.getData();
         }],

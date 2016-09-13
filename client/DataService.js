@@ -490,7 +490,8 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 		sortedObject: sortedObject,
 		// getDonors: getDonors,
 		getData: getData,
-		donorObject: donorObject
+		donorObject: donorObject,
+		createTemplate: createTemplate 
 			// ,
 			// templatesObject: templatesObject
 			// ,
