@@ -16,7 +16,7 @@
                     <table class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
-                                <td><img src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png"></td>
+                                <td><img src="https://ctithankyou.herokuapp.com/u/566253206/letterHead.png"></td>
                             </tr>
                             <tr>
                                 <td class="date" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:40px 0 0 5px">{{date}}</td>
@@ -43,9 +43,8 @@
                     <table class="imageRow" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;font-style:italic;padding-top:10px">
                         <tbody>
                             <tr>
-
                                 <td><img
-                                  src="https://dl.dropboxusercontent.com/u/566253206/sampleimage3.jpg"
+                                src="https://ctithankyou.herokuapp.com/photos/57c85d8d5919a24a02d01770"
                                    alt="image" width="325px" height="200px"></td>
                                 <td class="quote" style="padding-left:5px"> {{quote}}</td>
                             </tr>

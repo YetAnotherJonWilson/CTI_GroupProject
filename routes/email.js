@@ -46,7 +46,7 @@ router.post('/sendMail', function(request, response){
 
   var mailOptions = {
     from: 'CTI GROUP <ctithankyou@gmail.com',
-    to: request.body.email,
+    to: "ctithankyou@outlook.com",
     subject: 'Thank You',
     text: 'Thank You for donating!',
 
