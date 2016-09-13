@@ -32,17 +32,17 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.post('/deletePhoto', function(req, res) {
-  // console.log('remove req', req.body);
-  // Img.findByIdAndRemove(req.body.id, function(response){
-  //   console.log('successful remove of stuff', response);
-  // }, function(err){
-  //   console.log('boo you suck....at removing pics', err);
-  // });
-  // console.log('trying to delete');
-  // console.log('req.body' , req.body._id );
-  var filePath = "public/photos/" + req.body.photo;
-  fs.unlinkSync(filePath);
-  res.sendStatus(200);
+  console.log('remove req', req.body);
+  Img.findByIdAndRemove(req.body.id, function(response){
+    console.log('successful remove of stuff', response);
+  }, function(err){
+    console.log('boo you suck....at removing pics', err);
+  });
+  console.log('trying to delete');
+  console.log('req.body' , req.body._id );
+  // var filePath = "public/photos/" + req.body.photo;
+  // fs.unlinkSync(filePath);
+  // res.sendStatus(200);
 });
 
 router.post('/', upload.single('file'), function (req, res) {
@@ -204,20 +204,20 @@ router.get('/createphotoarray', function(req, res) {
     else{
       var photos = [];
       console.log('doc', doc);
-      photos = doc;
-      if(doc.length == undefined){
-        console.log('kfjldsa;jklsadf');
-        return;
-        res.send('');
-      }
-      if(doc.length == ''){
-        console.log('stuff');
-        return;
-        res.send('');
-      }
-      if(doc.length == null){
-        console.log('null');
-      }
+      // photos = doc;
+      // if(doc.length == undefined){
+      //   console.log('kfjldsa;jklsadf');
+      //   return;
+      //   res.send('');
+      // }
+      // if(doc.length == ''){
+      //   console.log('stuff');
+      //   return;
+      //   res.send('');
+      // }
+      // if(doc.length == null){
+      //   console.log('null');
+      // }
       for(var i = 0; i < doc.length; i++){
         photo = {};
         // var base64 = doc[i].img.data.toString('base64');

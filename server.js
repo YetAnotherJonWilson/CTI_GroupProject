@@ -43,14 +43,16 @@ app.use(express.static('public'));
 // process.env.MONGODB_URI will only be defined if you
 // are running on Heroku
 if(process.env.MONGODB_URI != undefined) {
-//   // use the string value of the environment variable
+  // use the string value of the environment variable
+
   databaseURI = process.env.MONGODB_URI;
-  // mongodb://heroku_82cmlrcs:9u7s403vn6rtk0vp2f2e2qsouu@ds029436.mlab.com:29436/heroku_82cmlrcs
+  
 } else {
   // use the local database server
 databaseURI = 'mongodb:// ctithankyou:ctithankyou@ds029426.mlab.com:29426/donorcollection';
   // databaseURI = 'mongodb://localhost:27017/donorCollection';
 }
+
 
 
 app.use(session({
