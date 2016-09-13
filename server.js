@@ -50,8 +50,8 @@ if(process.env.MONGODB_URI != undefined) {
 
 } else {
   // use the local database server
-databaseURI = 'mongodb:// ctithankyou:ctithankyou@ds029426.mlab.com:29426/donorcollection';
-  // databaseURI = 'mongodb://localhost:27017/donorCollection';
+// databaseURI = 'mongodb:// ctithankyou:ctithankyou@ds029426.mlab.com:29426/donorcollection';
+  databaseURI = 'mongodb://localhost:27017/donorCollection';
 }
 
 
