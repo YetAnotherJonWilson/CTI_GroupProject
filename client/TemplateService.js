@@ -380,6 +380,19 @@ function awesome(){
 		templatesObject["template"+num][key] = value;
 	}
 
+	function createTemplate(){
+	  var sendData={};
+		console.log('jfkdlsajfklwdjaksljfdkslajfdkslf;jsklkasldk;fa');
+	  return $http.post('/template/addtemplates', sendData).then(handletemplatesuccess, handletemplatefailure);
+	}
+	function handletemplatesuccess(res){
+	  console.log('Template created');
+	}
+	function handletemplatefailure(res){
+	  console.log('template create failed');
+	}
+	createTemplate();
+
 
 	// bleh();
 
@@ -405,7 +418,8 @@ function awesome(){
 		saveTemplate: saveTemplate,
 		getSigArray: getSigArray,
 		getHeadersArray: getHeadersArray,
-		updateCurrentTemplateKey: updateCurrentTemplateKey
+		updateCurrentTemplateKey: updateCurrentTemplateKey,
+		createTemplate: createTemplate
 	}
 
 
