@@ -86,6 +86,48 @@ router.post('/getDbImages/:id', function(req, res, next){
   });
 });
 
+router.post('/getDbSig/:id', function(req, res, next){
+  var base64 = [];
+  var id = req.params.id;
+  console.log('bleh id', req.params);
+  signature.findById(id, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      var signature = {};
+      for(var i = 0; i < doc.length; i++){
+        signature.sig = 'data:image/jpeg;base64,' + doc.img.data.toString('base64');
+        signature.id = doc._id;
+      }
+      console.log('doc id', signature.id);
+      res.contentType(doc.img.contentType);
+      res.send(signature);
+    }
+  });
+});
+
+router.post('/getDbHeader/:id', function(req, res, next){
+  var base64 = [];
+  var id = req.params.id;
+  console.log('bleh id', req.params);
+  Letterhead.findById(id, function(err, doc){
+    if(err){
+      return next(err);
+    }
+    else{
+      var header = {};
+      for(var i = 0; i < doc.length; i++){
+        header.header = 'data:image/jpeg;base64,' + doc.img.data.toString('base64');
+        header.id = doc._id;
+      }
+      console.log('doc id', header.id);
+      res.contentType(doc.img.contentType);
+      res.send(header);
+    }
+  });
+});
+
 router.post('/sigfile', uploadSig.single('file'), function (req, res) {
   var signatures = [];
   var signature = {};
