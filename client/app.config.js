@@ -18,6 +18,12 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
         }],
         stuff: ['TemplateService', function(TemplateService){
           return TemplateService.getTemplates();
+        }],
+        meh: ['TemplateService', function(TemplateService){
+          return TemplateService.getSigArray();
+        }],
+        huh: ['TemplateService', function(TemplateService){
+          return TemplateService.getHeadersArray();
         }]
       }
     })

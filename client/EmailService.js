@@ -19,6 +19,8 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.template = donor["template"+num].temp;
     sendData.senderName = donor["template"+num].senderName;
     sendData.senderTitle = donor["template"+num].senderTitle;
+    sendData.header = '';
+    sendData.sig = '';
     sendData.email = donor.email;
     sendData.firstName = donor.firstName;
     sendData.amount = donor.Amount;

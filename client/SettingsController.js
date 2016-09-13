@@ -59,11 +59,12 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleSignatureSuccess(response) {
 		vm.signatures = response.data;
+		// console.log('too many logs ', vm.signatures);
 		TemplateService.data.signatures = vm.signatures;
 		// console.log('tempalteservice.data.signatures', TemplateService.data.signatures);
 	}
 
-	// createSignatureArray();
+	createSignatureArray();
 
 	function createHeaderArray() {
 		$http.get('photos/createheaderarray').then(handleHeaderSuccess);
@@ -76,7 +77,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	}
 
 
-	// createHeaderArray();
+	createHeaderArray();
 
 
 	vm.photos = UserService.photosArray;
@@ -154,6 +155,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 				file.result = response.data;
 			});
 			if(response.status == 200){
+
 				createHeaderArray();
 			}
 		}, function(response) {
