@@ -13,22 +13,23 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
         getstuff: ['TemplateService', function(TemplateService){
           // console.log('i know you should work');
           return TemplateService.createTemplate();
-        }],
-        someting: ['DataService', function(DataService){
-          return DataService.getData();
-        }],
-        bleh: ['TemplateService', function(TemplateService){
-          return TemplateService.createPhotoArray();
-        }],
-        stuff: ['TemplateService', function(TemplateService){
-          return TemplateService.getTemplates();
-        }],
-        meh: ['TemplateService', function(TemplateService){
-          return TemplateService.getSigArray();
-        }],
-        huh: ['TemplateService', function(TemplateService){
-          return TemplateService.getHeadersArray();
         }]
+        // ,
+        // someting: ['DataService', function(DataService){
+        //   return DataService.getData();
+        // }],
+        // bleh: ['TemplateService', function(TemplateService){
+        //   return TemplateService.createPhotoArray();
+        // }],
+        // stuff: ['TemplateService', function(TemplateService){
+        //   return TemplateService.getTemplates();
+        // }],
+        // meh: ['TemplateService', function(TemplateService){
+        //   return TemplateService.getSigArray();
+        // }],
+        // huh: ['TemplateService', function(TemplateService){
+        //   return TemplateService.getHeadersArray();
+        // }]
       }
     })
     // .when('/edit', {

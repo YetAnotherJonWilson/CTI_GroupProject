@@ -46,7 +46,7 @@ if(process.env.MONGODB_URI != undefined) {
   // use the string value of the environment variable
 
   databaseURI = process.env.MONGODB_URI;
-  console.log('what value are you really?', databaseURI);
+  // console.log('what value are you really?', databaseURI);
 
 } else {
   // use the local database server
