@@ -35,7 +35,7 @@ function GetFormattedDate() {
 router.post('/sendMail', function(request, response){
   var data = request.body;
   var sendDate = GetFormattedDate();
-  // console.log('sendMail request.body', request.body);
+  console.log('sendMail request.body ------', data);
 
   // var template = fs.readFileSync(template1, 'utf-8');
   var temp = data.template;
