@@ -15,7 +15,7 @@
                     <table class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
-                                <td><img src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png"></td>
+                                <td><img src="{{header}}"></td>
                             </tr>
                             <tr>
                                 <td class="date" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:40px 0 0 5px">{{sendDate}}</td>
@@ -71,7 +71,7 @@
                     <table class="signature" border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:0 0 10px 5px">
                         <tbody>
                             <tr>
-                                <td><img src="https://dl.dropboxusercontent.com/u/566253206/Alexandra.png" width="200px" height="50px"></td>
+                                <td><img src="{{sig}}" width="200px" height="50px"></td>
                                 <td class="ps" width="250" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:12px;padding-right:10px">{{ps}}</td>
                             </tr>
                             <tr>
