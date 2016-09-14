@@ -16,7 +16,7 @@
                     <table class="header" border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                             <tr>
-                                <td><img src="https://dl.dropboxusercontent.com/u/566253206/letterHead.png"></td>
+                                <td><img src="https://ctithankyou.herokuapp.com/u/566253206/letterHead.png"></td>
                             </tr>
                             <tr>
                                 <td class="date" style="font-family:'PT SANS','OPEN SANS',MAKO;font-size:14px;padding:40px 0 0 5px">{{sendDate}}</td>
