@@ -12,15 +12,47 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.p4 = donor["template"+num].p4;
     sendData.q = donor["template"+num].quote;
     sendData.ps = donor["template"+num].ps;
-    sendData.img = "";
-    sendData.img2 = "";
-    sendData.img3 = "";
-    sendData.img4 = "";
+    if(donor.temp == 1){
+      sendData.img = donor.template1.img.id;
+      sendData.header = donor.template1.header.id;
+      // sendData.sig = donor.template1.sig.id;
+    }
+    if(donor.temp == 2){
+      sendData.img = donor.template2.img.id;
+      sendData.header = donor.template2.header.id;
+      // sendData.sig = '';
+    }
+    if(donor.temp == 3){
+      sendData.img = donor.template3.img.id;
+      sendData.img2 = donor.template3.img2.id;
+      sendData.header = donor.template3.header.id;
+      // sendData.sig = '';
+    }
+    if(donor.temp == 4){
+      sendData.img = donor.template4.img.id;
+      sendData.img2 = donor.template4.img2.id;
+      sendData.img3 = donor.template4.img3.id;
+      sendData.img4 = donor.template4.img4.id;
+      sendData.header = donor.template4.header.id;
+      // sendData.sig = '';
+    }
+    if(donor.temp == 5){
+      sendData.img = donor.template5.img.id;
+      sendData.img2 = donor.template5.img2.id;
+      sendData.img3 = donor.template5.img3.id;
+      sendData.img4 = donor.template5.img4.id;
+      sendData.header = donor.template5.header.id;
+      // sendData.sig = '';
+    }
+    // sendData.img = "";
+    // sendData.img2 = "";
+    // sendData.img3 = "";
+    // sendData.img4 = "";
     sendData.template = donor["template"+num].temp;
     sendData.senderName = donor["template"+num].senderName;
     sendData.senderTitle = donor["template"+num].senderTitle;
-    sendData.header = '';
-    sendData.sig = '';
+    // sendData.header = '';
+    // sendData.sig = '';
     sendData.email = donor.email;
     sendData.firstName = donor.firstName;
     sendData.amount = donor.Amount;
