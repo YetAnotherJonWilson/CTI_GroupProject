@@ -441,9 +441,9 @@ router.get('/:photoId', function(req, res, next){
 });
 
 router.get('/header/:photoId', function(req, res, next){
-  var emailImage = req.params.photoId;
-  console.log('This is the photo requested from email' , req.params.photoId);
-  Letterhead.findById(emailImage, function(err, img){
+  var headerImage = req.params.photoId;
+  console.log('This is the header requested from email' , req.params.photoId);
+  Letterhead.findById(headerImage, function(err, img){
     if(err) {
       console.log("search photo err" , err);
       res.sendStatus(500);
