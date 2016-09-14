@@ -12,23 +12,24 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.p4 = donor["template"+num].p4;
     sendData.q = donor["template"+num].quote;
     sendData.ps = donor["template"+num].ps;
-    if(donor.temp == 1){
+    if(donor.templateNum == 1){
+      console.log('justins log', donor.template1.img);
       sendData.img = donor.template1.img.id;
       sendData.header = donor.template1.header.id;
       // sendData.sig = donor.template1.sig.id;
     }
-    if(donor.temp == 2){
+    if(donor.templateNum == 2){
       sendData.img = donor.template2.img.id;
       sendData.header = donor.template2.header.id;
       // sendData.sig = '';
     }
-    if(donor.temp == 3){
+    if(donor.templateNum == 3){
       sendData.img = donor.template3.img.id;
       sendData.img2 = donor.template3.img2.id;
       sendData.header = donor.template3.header.id;
       // sendData.sig = '';
     }
-    if(donor.temp == 4){
+    if(donor.templateNum == 4){
       sendData.img = donor.template4.img.id;
       sendData.img2 = donor.template4.img2.id;
       sendData.img3 = donor.template4.img3.id;
@@ -36,7 +37,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       sendData.header = donor.template4.header.id;
       // sendData.sig = '';
     }
-    if(donor.temp == 5){
+    if(donor.templateNum == 5){
       sendData.img = donor.template5.img.id;
       sendData.img2 = donor.template5.img2.id;
       sendData.img3 = donor.template5.img3.id;
