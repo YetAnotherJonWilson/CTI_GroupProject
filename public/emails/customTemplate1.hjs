@@ -44,7 +44,7 @@
                         <tbody>
                             <tr>
 
-                                <td><img src="https://citthankyou.heroku.com/photos/" + "{{img1}}" alt="image" width="325px" height="200px"></td>
+                                <td><img src="https://citthankyou.heroku.com/photos/ {{img}}" alt="image" width="325px" height="200px"></td>
                                 <td class="quote" style="padding-left:5px">{{quote}}</td>
 
                             </tr>

@@ -54,7 +54,7 @@ router.post('/sendMail', function(request, response){
     }
   });
 
-  console.log('img1', data.img);
+  console.log('img1', 'https://citthankyou.heroku.com/photos/' + data.img);
   console.log('img2', data.img2);
   console.log('img3', data.img3);
   console.log('img4', data.img4);
@@ -71,7 +71,7 @@ router.post('/sendMail', function(request, response){
     p3: data.p3,
     p4: data.p4,
     quote: data.q,
-    img1: data.img,
+    img1: 'https://citthankyou.heroku.com/photos/' + data.img,
     img2: data.img2,
     img3: data.img3,
     img4: data.img4,
