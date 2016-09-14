@@ -23,7 +23,7 @@ router.get('/data', function(request, response){
   everything=[opportunities, contacts, accounts, households];
   response.send(everything);
 });
-
+console.log('test');
 router.get('/oauth2/auth', function(request, response){
   getStartUrl();
   // console.log("hellos");
