@@ -13,7 +13,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.q = donor["template"+num].quote;
     sendData.ps = donor["template"+num].ps;
     if(donor.templateNum == 1){
-      console.log('justins log', donor.template1.img);
+      console.log('justins log', donor);
       sendData.img = donor.template1.img.id;
       sendData.header = donor.template1.header.id;
       sendData.sig = donor.template1.sig.id;
