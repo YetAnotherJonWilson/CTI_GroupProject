@@ -5,7 +5,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
 
   function sendMail(donor, num) {
     var sendData = {};
-    console.log(donor);
+    console.log('home controller send mail', donor);
     sendData.p1 = donor["template"+num].p1;
     sendData.p2 = donor["template"+num].p2;
     sendData.p3 = donor["template"+num].p3;
