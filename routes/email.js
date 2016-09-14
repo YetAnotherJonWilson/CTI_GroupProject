@@ -54,10 +54,11 @@ router.post('/sendMail', function(request, response){
     }
   });
 
-  console.log('img1', 'https://ctithankyou.herokupp.com/photos/' + data.img);
-  console.log('img2', data.img2);
-  console.log('img3', data.img3);
-  console.log('img4', data.img4);
+  // console.log('img1', 'https://ctithankyou.herokupp.com/photos/' + data.img);
+  // console.log('img2', data.img2);
+  // console.log('img3', data.img3);
+  // console.log('img4', data.img4);
+  console.log('paragreaphs in emails???', data.p1, data.p2, data.p3, data.ps, data.qoute);
   // console.log('sig?????', data);
 
   var mailOptions = {
