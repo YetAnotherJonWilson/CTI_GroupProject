@@ -37,7 +37,7 @@ router.post('/deletePhoto', function(req, res) {
     console.log('boo you suck....at removing pics', err);
   }, function(res){
     console.log('successful remove of stuff', res);
-    
+
   });
   console.log('trying to delete');
   // console.log('req.body' , req.body._id );
@@ -440,7 +440,29 @@ router.get('/:photoId', function(req, res, next){
   })
 });
 
-
+router.get('/:photoId', function(req, res, next){
+  var emailImage = req.params.photoId;
+  console.log('This is the photo requested from email' , req.params.photoId);
+  Letterhead.findById(emailImage, function(err, img){
+    if(err) {
+      console.log("search photo err" , err);
+      res.sendStatus(500);
+    }else {
+      console.log('mongo photo response????');
+      var photo = "data:image/jpeg;base64," + img.img.data.toString('base64');
+      console.log('photo');
+      res.contentType('jpeg');
+      res.end(img.img.data, 'binary');
+      // res.send(photo);
+  // function(req, res) {
+  // var id = req.param('id')
+  // fs.exists('/private/img/'+id, function(exists) {
+  //   if(exists) res.sendfile('/private/img/'+id)
+  //   else res.end('err')
+  // })
+    }
+  })
+});
 
 
 
