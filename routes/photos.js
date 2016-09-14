@@ -37,6 +37,7 @@ router.post('/deletePhoto', function(req, res) {
     console.log('boo you suck....at removing pics', err);
   }, function(res){
     console.log('successful remove of stuff', res);
+    
   });
   console.log('trying to delete');
   // console.log('req.body' , req.body._id );

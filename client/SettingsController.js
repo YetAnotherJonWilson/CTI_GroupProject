@@ -39,6 +39,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handleDeleteFailure(response) {
 		console.log('Failed to delete', response);
+		createPhotoArray();
 	}
 
 	function createPhotoArray() {
