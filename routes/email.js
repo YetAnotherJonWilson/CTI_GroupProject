@@ -65,12 +65,10 @@ router.post('/sendMail', function(request, response){
     p3: data.p3,
     p4: data.p4,
     quote: data.q,
-
     img1: data.img,
     img2: data.img2,
     img3: data.img3,
     img4: data.img4,
-
     ps: data.ps,
     senderName: data.senderName,
     senderTitle: data.senderTitle,

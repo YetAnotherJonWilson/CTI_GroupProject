@@ -33,10 +33,10 @@ var upload = multer({ storage: storage });
 
 router.post('/deletePhoto', function(req, res) {
   console.log('remove req', req.body);
-  Img.findByIdAndRemove(req.body, function(response){
-    console.log('successful remove of stuff', response);
-  }, function(err){
+  Img.findByIdAndRemove(req.body, function(err){
     console.log('boo you suck....at removing pics', err);
+  }, function(response){
+    console.log('successful remove of stuff', response);
   });
   console.log('trying to delete');
   // console.log('req.body' , req.body._id );
