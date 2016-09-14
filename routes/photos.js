@@ -463,6 +463,28 @@ router.get('/header/:photoId', function(req, res, next){
     }
   })
 });
+router.get('/sig/:photoId', function(req, res, next){
+  var sigImage = req.params.photoId;
+  console.log('This is the signature requested from email' , req.params.photoId);
+  Sig.findById(sigImage, function(err, img){
+    if(err) {
+      console.log("search photo err" , err);
+      res.sendStatus(500);
+    }else {
+      console.log('mongo photo response????');
+    
+      res.contentType('jpeg');
+      res.end(img.img.data, 'binary');
+      // res.send(photo);
+  // function(req, res) {
+  // var id = req.param('id')
+  // fs.exists('/private/img/'+id, function(exists) {
+  //   if(exists) res.sendfile('/private/img/'+id)
+  //   else res.end('err')
+  // })
+    }
+  })
+});
 
 
 

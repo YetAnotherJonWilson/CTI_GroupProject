@@ -66,6 +66,8 @@ router.post('/sendMail', function(request, response){
     text: 'Thank You for donating!',
 
     html: compiledTemplate.render({
+    header: 'https://ctithankyou.herokuapp.com/photos/header/' + data.header,
+    sig: 'https://ctithankyou.herokuapp.com/photos/sig/' + data.sig,
     p1: data.p1,
     p2: data.p2,
     p3: data.p3,
