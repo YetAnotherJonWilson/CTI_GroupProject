@@ -28,8 +28,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 		// var tempStandardTemplate = TemplateService.templatesObject['template' + vm.standardTemplate];
 
-		var tempDonorList = DataService.donorObject.donors;
-		// var tempDonorList = DataService.sortedObject.sorted;
+		// var tempDonorList = DataService.donorObject.donors;
+		var tempDonorList = DataService.sortedObject.sorted;
 
 		for (var i = 0; i < tempDonorList.length; i++) {
 			tempDonorList[i].template1 = Object.assign({},TemplateService.templatesObject.template1);
