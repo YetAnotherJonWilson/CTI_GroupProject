@@ -39,8 +39,9 @@ router.post('/sendMail', function(request, response){
 
   // var template = fs.readFileSync(template1, 'utf-8');
   var temp = data.template;
+  console.log('email template', temp);
   var template = fs.readFileSync('./public/emails/customTemplate'+temp+'.hjs', 'utf-8');
-  console.log(template);
+  // console.log(template);
   var compiledTemplate = Hogan.compile(template);
   console.log('ENV' , process.env.emailuser);
   // console.log(mailData.customer.customer_email);
