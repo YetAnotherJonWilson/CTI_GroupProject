@@ -42,8 +42,8 @@
                     <table class="imageRow" border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="padding-top:15px">
                         <tbody>
                             <tr>
-                                <td><img src="{{img}}" alt="image" width="300px" height="200px"></td>
-                                <td><img src="{{img2}}" alt="image" width="300px" height="200px"></td>
+                                <td><img src="https://citthankyou.heroku.com/photos/{{img1}}" alt="image" width="300px" height="200px"></td>
+                                <td><img src="https://citthankyou.heroku.com/photos/{{img2}}" alt="image" width="300px" height="200px"></td>
                             </tr>
                         </tbody>
                     </table>
