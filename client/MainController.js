@@ -22,9 +22,9 @@ angular.module('App').controller('MainController', ['$http', '$location', 'Donat
       //   console.log('err', response);
       // });
       DonationService.getDonorDbStuff().then(function(response){
-        console.log('did you work?');
+        // console.log('did you work?');
       }, function(response){
-        console.log('worked???');
+        // console.log('worked???');
       });
 
     }
@@ -50,14 +50,14 @@ angular.module('App').controller('MainController', ['$http', '$location', 'Donat
       sendData.letterhead = '/path/to/letterhead';
       sendData.signature = '/path/to/signature';
       sendData.template = './emails/template#OverView';
-      console.log('test button');
+      // console.log('test button');
       // $http.post('/donor/createData', sendData).then(function(response){
       //   console.log('test success', response);
       // }, function(response){
       //   console.log('test fail', response);
       // });
       DonationService.saveToDb(sendData).then(function(response){
-        console.log('test save success', response);
+        // console.log('test save success', response);
       }, function(err){
         console.log('test save fail', err);
       });

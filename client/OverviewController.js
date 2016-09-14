@@ -26,7 +26,7 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
   // }
 
   vm.bleh = function(){
-    console.log('test');
+    // console.log('test');
   //   $http.get('/photos/getDbImages').then(function(response){
   //     console.log('found db images', response);
   //     vm.pics = response.data;
@@ -37,9 +37,9 @@ angular.module('App').controller('OverviewController', ['$http', '$location', 'D
   //   });
   // }
     var id = '57c6229c67c3eed5198b9e47';
-    console.log('id', id);
+    // console.log('id', id);
     $http.post('photos/getDbImages/' + id).then(function(response){
-      console.log('response', response);
+      // console.log('response', response);
     }, function(err){
       console.log('err', err);
     });

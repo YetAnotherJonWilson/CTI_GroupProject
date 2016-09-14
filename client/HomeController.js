@@ -41,8 +41,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			// tempDonorList[i].template.templateNum = tempStandardTemplate.temp;
 		}
 		vm.donorList = tempDonorList;
-		console.log('donorList after build:', vm.donorList);
-		console.log('DataService.templatesObject:', TemplateService.templatesObject);
+		// console.log('donorList after build:', vm.donorList);
+		// console.log('DataService.templatesObject:', TemplateService.templatesObject);
 	}
 
 
@@ -60,8 +60,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	//Check if there is a current donor.  If there is, replace that donor in the donorList.  Pull the new donor into the currentDonor.
 	vm.setCurrentEditView = function(donor) {
-		console.log(donor);
-		console.log('selectedTemplate:', vm.selectedTemplate);
+		// console.log(donor);
+		// console.log('selectedTemplate:', vm.selectedTemplate);
 
 		var tempIndex;
 		var tempDonor;
@@ -101,7 +101,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}
 
 	function updateCurrentDonorTemplate(template) {
-		console.log('template name:', template);
+		// console.log('template name:', template);
 		var splitTemplate = template.split(' ');
 		var templateNum = splitTemplate[1];
 		TemplateService.updateCurrentDonorTemplate(templateNum);
@@ -131,9 +131,9 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.setCurrentTemplate = function(template) {
 		setSelectedTemplate(template);
 		// TemplateService.updateCurrentDonorTemplate(template);
-		console.log(vm.currentDonor.templateNum);
+		// console.log(vm.currentDonor.templateNum);
 		vm.currentDonor.templateNum = template;
-		console.log("vm.current tempnum", vm.currentDonor.templateNum);
+		// console.log("vm.current tempnum", vm.currentDonor.templateNum);
 		// console.log('currentTemplate:', vm.currentTemplate);
 		// console.log('template selected:', template);
 	}
@@ -144,11 +144,11 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		vm.fieldId = id;
 		// vm.currentTemplate.currentField = id;
 		vm.currentDonor["template"+num].currentField = id;
-		console.log('about to update current donor template');
+		// console.log('about to update current donor template');
 
 		TemplateService.updateCurrentDonorTemplate(num)
 		// .then(function(response){
-		console.log('finished updating current donor template');
+		// console.log('finished updating current donor template');
 
 			// console.log('response', response);
 			$uibModal.open({
@@ -160,7 +160,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 				controllerAs: 'modal',
 				size: 'md'
 			});
-			console.log('finished updating current donor template');
+			// console.log('finished updating current donor template');
 
 		// });
 
@@ -172,7 +172,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		// console.log('about to update current donor template');
 		TemplateService.updateCurrentDonorTemplate(num);
 		// .then(function(response){
-		console.log('opening modal');
+		// console.log('opening modal');
 		$uibModal.open({
 			animation: true,
 			ariaLabelledBy: 'image modal',
@@ -193,8 +193,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.dropDownName = 'Donation';
 
 	vm.sortBy = function(propertyName) {
-		console.log('donorList:', vm.donors);
-		console.log('sortBy propertyName:', propertyName);
+		// console.log('donorList:', vm.donors);
+		// console.log('sortBy propertyName:', propertyName);
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
 
@@ -213,7 +213,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 	vm.sendMail = function(donor) {
-		console.log('You cliked me', vm.selectedTemplate);
+		// console.log('You cliked me', vm.selectedTemplate);
 		// updateCurrentDonorTemplate(vm.selectedTemplate.name);
 		// var template = vm.currentDonor.template.temp;
 		var templateNum = donor.templateNum;

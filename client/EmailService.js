@@ -5,7 +5,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
 
   function sendMail(donor, num) {
     var sendData = {};
-    console.log('home controller send mail', donor);
+    // console.log('home controller send mail', donor);
     sendData.p1 = donor["template"+num].p1;
     sendData.p2 = donor["template"+num].p2;
     sendData.p3 = donor["template"+num].p3;
@@ -13,7 +13,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.q = donor["template"+num].quote;
     sendData.ps = donor["template"+num].ps;
     if(donor.templateNum == 1){
-      console.log('justins log', donor);
+      // console.log('justins log', donor);
       sendData.img = donor.template1.img.id;
       sendData.header = donor.template1.header.id;
       sendData.sig = donor.template1.sig.id;
@@ -59,11 +59,11 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     sendData.amount = donor.Amount;
     sendData.date = donor.date;
 
-    console.log('sendData = ', sendData);
+    // console.log('sendData = ', sendData);
 
       $http.post('/email/sendMail', sendData).then(function(response) {
-          console.log('Button Pressed');
-          console.log('send email', response);
+          // console.log('Button Pressed');
+          // console.log('send email', response);
           // $http.post('/donor/createdDonor', sendData).then(function(response){
           //  console.log('success adding donor data to db', response);
           // }, function(err){

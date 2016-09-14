@@ -185,7 +185,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	}
 
 	function handleSuccess(res) {
-		console.log(res);
+		// console.log(res);
 		data = res.data;
 		sortData(data);
 		preconvertDates();
@@ -194,7 +194,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 	}
 
 	function handleFailure(res) {
-		console.log('fail', res);
+		// console.log('fail', res);
 	}
 
 	function preconvertDates() {
@@ -240,7 +240,7 @@ angular.module('App').factory('DataService', ['$http', '$location', function($ht
 			sorted[i].firstName = findFirstName(sorted[i]);
 			sorted[i].lastName = findLastName(sorted[i]);
 		}
-		console.log(sorted);
+		// console.log(sorted);
 	}
 
 	function findEmail(donationObject) {

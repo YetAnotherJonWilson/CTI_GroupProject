@@ -62,12 +62,12 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
     sendData.template = template.temp;
 		sendData.senderTitle = template.senderTitle;
 		sendData.senderName = template.senderName;
-		console.log('senddata',sendData);
+		// console.log('senddata',sendData);
 		return $http.post('/template/saveTemplate', sendData).then(saveTemplateSuccess, saveTemplateFailure);
 	}
 
 	function saveTemplateSuccess(res) {
-		console.log('temp save success', res);
+		// console.log('temp save success', res);
 	}
 
 	function saveTemplateFailure(res) {
@@ -89,14 +89,14 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	}
 
 	function updateCurrentDonorKey(key, value, num) {
-		console.log('key', key);
-		console.log('vlaue', value);
-		console.log('num', num);
-		console.log('bjljfkldaskdf', currentDonor.donor[0].donor["template"+num]);
+		// console.log('key', key);
+		// console.log('vlaue', value);
+		// console.log('num', num);
+		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor["template"+num]);
 		currentDonor.donor[0].donor["template"+num][key] = value;
 		// console.log('bjljfkldaskdf', currentDonor.donor[0].donor.template);
 
-		console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
+		// console.log('TemplateService updateCurrentDonorKey, currentDonor:', currentDonor.donor[0]);
 	}
 
 	// function updateCurrentDonorTemplate(templateNum) {
@@ -120,16 +120,16 @@ angular.module('App').factory('TemplateService', ['$location', 'Upload', '$timeo
 	// }
 
 	function updateCurrentDonor(donor) {
-		console.log('update current donor, donor:', donor);
+		// console.log('update current donor, donor:', donor);
 		currentDonor.donor[0].donor =  donor;
-		console.log('Template current donor:', currentDonor.donor[0].donor);
+		// console.log('Template current donor:', currentDonor.donor[0].donor);
 	}
  	data.currentTemplate = {key: 'bleh'};
 	function updateCurrentDonorTemplate(num){
 		data.currentTemplate = {};
 		// return $http.get('/template/bleh').then(function(response){
 			data.currentTemplate =	currentDonor.donor[0].donor["template"+num];
-			 console.log('currenttemp tempserv', data.currentTemplate);
+			//  console.log('currenttemp tempserv', data.currentTemplate);
 			 return data.currentTemplate;
 		// }, function(response){
 			// console.log('f');
@@ -158,7 +158,7 @@ function awesome(){
 	};
 
 	function handlePhotoSuccess(response) {
-		console.log('template service response.data', response.data);
+		// console.log('template service response.data', response.data);
 		imagesObject.images = response.data;
 		// bleh();
 
@@ -166,8 +166,8 @@ function awesome(){
 	// createPhotoArray();
 
 	function bleh() {
-		console.log('bleh', templatesObject);
-		console.log('images object', imagesObject);
+		// console.log('bleh', templatesObject);
+		// console.log('images object', imagesObject);
 		var templateImage = {};
 		var templateSig = {};
 		var templateHeader = {};
@@ -202,9 +202,9 @@ function awesome(){
 		templateHeader.header4 = templatesObject.template4.header.split('/');
 		templateSig.sig5 = templatesObject.template5.sig.split('/');
 		templateHeader.header5 = templatesObject.template5.header.split('/');
-		console.log('find me now!!!! tempSig, tempHead', templateSig, templateHeader);
+		// console.log('find me now!!!! tempSig, tempHead', templateSig, templateHeader);
 		for (i = 0; i < imagesObject.images.length; i++) {
-			console.log('imagesObject.images', imagesObject.images);
+			// console.log('imagesObject.images', imagesObject.images);
 			if (templateImage.t1.img[2] == imagesObject.images[i].id) {
 				templatesObject.template1.img = imagesObject.images[i];
 				break;
@@ -284,7 +284,7 @@ function awesome(){
 				templatesObject.template5.header = data.headers[0];
 			}
 		}
-		console.log('template service templates object bleh', templatesObject);
+		// console.log('template service templates object bleh', templatesObject);
 	}
 
 
@@ -317,9 +317,9 @@ function awesome(){
 	}
 
 	function getTemplateSuccess(res) {
-		console.log('templates data service', res);
+		// console.log('templates data service', res);
 		templatesArray = res.data;
-		console.log('templates array', templatesArray);
+		// console.log('templates array', templatesArray);
 		templatesObject.template1 = Object.assign({},templatesArray[0]);
 		templatesObject.template2 = Object.assign({},templatesArray[1]);
 		templatesObject.template3 = Object.assign({},templatesArray[2]);
@@ -358,9 +358,9 @@ function awesome(){
 
 	function getSigArray(){
 		return $http.get('/photos/createsignaturearray').then(function(response){
-			console.log('success creating sig array in tempservice', response);
+			// console.log('success creating sig array in tempservice', response);
 			data.signatures = response.data;
-			console.log('huh got signatures from db', data.signatures);
+			// console.log('huh got signatures from db', data.signatures);
 		}, function(err){
 			console.log('err creating sigarray in tempservice', err);
 		})
@@ -368,15 +368,15 @@ function awesome(){
 
 	function getHeadersArray(){
 		return $http.get('/photos/createheaderarray').then(function(response){
-			console.log('success creating header array in tempservice', response);
+			// console.log('success creating header array in tempservice', response);
 			data.headers = response.data;
-			console.log('meh got headers from db', data.headers);
+			// console.log('meh got headers from db', data.headers);
 		}, function(err){
 			console.log('err creating headersArray in tempservice', err);
 		});
 	}
 	function updateCurrentTemplateKey(key, value, num){
-		console.log(key, value, num);
+		// console.log(key, value, num);
 		templatesObject["template"+num][key] = value;
 	}
 

@@ -26,7 +26,7 @@ router.get('/data', function(request, response){
 
 router.get('/oauth2/auth', function(request, response){
   getStartUrl();
-  console.log("hellos");
+  // console.log("hellos");
   getSentDbStuff('/sentDonors');
   response.redirect(oauth2.getAuthorizationUrl({}));
 });
@@ -48,19 +48,19 @@ router.get('/oauth2/callback', function(request, response){
     if(err){
       return console.log(err);
     }
-    console.log('accessToken: ' + conn.accessToken);
-    console.log('connRefreshToken' + conn.refreshToken);
-    console.log('Instance url: ' + conn.instanceUrl);
-    console.log('user id: ' + userInfo.id);
-    console.log('org id: ' + userInfo.organizationId);
+    // console.log('accessToken: ' + conn.accessToken);
+    // console.log('connRefreshToken' + conn.refreshToken);
+    // console.log('Instance url: ' + conn.instanceUrl);
+    // console.log('user id: ' + userInfo.id);
+    // console.log('org id: ' + userInfo.organizationId);
     request.session.accessToken = conn.accessToken;
     request.session.instanceUrl = conn.instanceUrl;
-    console.log('work please');
+    // console.log('work please');
 
 
     getOpps(request.session.accessToken, request.session.instanceUrl).then(function(everything){
       // everything = everything;
-      console.log('great success', everything);
+      // console.log('great success', everything);
     //   response.redirect('/gettingdata');
       response.redirect('/home');
     });
@@ -69,7 +69,7 @@ router.get('/oauth2/callback', function(request, response){
 });
 
 function getStartUrl(){
- console.log('here');
+ // console.log('here');
  request("https://cti.my.salesforce.com/services/data", function(err, response, body){
    if(err){console.log('err', err);}
    else{
@@ -122,7 +122,7 @@ function getOpps(accessToken, instanceUrl){
       // done=true;
     // }
   }).catch(function(response){
-    console.log('dumb error', response);
+    console.log('error', response);
   });
 }
 function getContact(accessToken, instanceUrl, record){
@@ -163,7 +163,7 @@ function getHousehold(accessToken, instanceUrl, household){
       return households;
     // }
   }).catch(function(err){
-    console.log('wtf another one');
+    console.log('another error', err);
   });
 }
 function getAccount(accessToken, instanceUrl, AccountId){
@@ -183,25 +183,25 @@ function getAccount(accessToken, instanceUrl, AccountId){
       return accounts;
     // }
   }).catch(function(err){
-    console.log('ran out of words');
+    console.log('ran out of words', err);
   });
 }
 
 router.post('/overview', function(request, response, callback){
   var donors = {};
-  console.log('access token', request.session.accessToken);
-  console.log('request url', request.session.instanceUrl);
+  // console.log('access token', request.session.accessToken);
+  // console.log('request url', request.session.instanceUrl);
   accessToken = request.session.accessToken;
   instanceUrl = request.session.instanceUrl;
 
   var donors = request.body.donors;
-  console.log('donors from db', donors);
+  // console.log('donors from db', donors);
   var array = [];
   for(var i = 0; i < donors.length; i++){
     array.push(overviewInfo(accessToken, instanceUrl, donors[i]));
   }
   Promise.all(array).then(function(overview){
-    console.log('promise', overview);
+    // console.log('promise', overview);
     response.send(overview);
   })
 });

@@ -12,8 +12,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	vm.donorList = [];
 
 	function buildDonorList() {
-		console.log('standardTemplate:', vm.standardTemplate);
-		console.log('donorList before build:', vm.donorList);
+		// console.log('standardTemplate:', vm.standardTemplate);
+		// console.log('donorList before build:', vm.donorList);
 
 		var tempDonorList = DataService.donorObject.donors;
 
@@ -23,7 +23,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		}
 
 		vm.donorList = tempDonorList;
-		console.log('donorList after build:', vm.donorList);
+		// console.log('donorList after build:', vm.donorList);
 	}
 
 
@@ -46,8 +46,8 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 	vm.sortBy = function(propertyName) {
-		console.log('donorList:', vm.donors);
-		console.log('sortBy propertyName:', propertyName);
+		// console.log('donorList:', vm.donors);
+		// console.log('sortBy propertyName:', propertyName);
 		vm.reverse = (vm.propertyName === propertyName) ? !vm.reverse : false;
 		vm.propertyName = propertyName;
 
@@ -89,7 +89,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 		var tempIndex;
 
 		if (vm.currentDonor) {
-			console.log('If vm.currentDonor');
+			// console.log('If vm.currentDonor');
 			var isInArray;
 
 			//check if this donor is in editedDonorsArray.
@@ -102,10 +102,10 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 			//if the donor is in editedDonorsArray, replace it with the current edit.
 			//Else add it to the edited array
 			if (isInArray) {
-				console.log('if isInArray');
+				// console.log('if isInArray');
 				vm.editedDonorsArray[i] = vm.currentDonor;
 			} else {
-				console.log('if isInArray else statement');
+				// console.log('if isInArray else statement');
 				vm.editedDonorsArray.push(vm.currentDonor);
 			}
 		}
@@ -113,7 +113,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 		//if there are edited donors, check that list first to get current donor info and put it in tempDonor
 		if (vm.editedDonorsArray > 0) {
-			console.log('if vm.editedDonorsArray > 0');
+			// console.log('if vm.editedDonorsArray > 0');
 			for (var i = 0; i < vm.editedDonorsArray.length; i++) {
 				if (vm.editedDonorsArray[i].Id == id) {
 					tempDonor = vm.editedDonorsArray[i];
@@ -124,7 +124,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 		//If there was no match in the edited Array, then find the donor info in the donorList
 		if (!tempDonor) {
-			console.log('if !tempDonor');
+			// console.log('if !tempDonor');
 			for (var i = 0; i < vm.donorList.length; i++) {
 				if (vm.donorList[i].Id == id) {
 					tempDonor = vm.donorList[i];
@@ -180,7 +180,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 	//Pop up modal for editing text
 	vm.editModal = function(id) {
-		console.log('currentTemplate:', vm.currentTemplate);
+		// console.log('currentTemplate:', vm.currentTemplate);
 
 		vm.fieldId = id;
 		// vm.currentTemplate.currentField = id;
@@ -214,7 +214,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 
 
 	vm.sendMail = function(p1, p2, p3, p4, q, ps, donorInfo) {
-		console.log('You cliked me');
+		// console.log('You cliked me');
 		EmailService.sendMail(p1, p2, p3, p4, q, ps, donorInfo);
 	}
 
@@ -223,7 +223,7 @@ angular.module('App').controller('HomeController', ['$http', '$location', 'DataS
 	}
 
 	function getCurrentTemplate(templateNum) {
-		console.log('Im getting the current template');
+		// console.log('Im getting the current template');
 		TemplateService.getCurrentTemplate(templateNum);
 	}
 

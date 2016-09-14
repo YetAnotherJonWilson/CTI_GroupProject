@@ -1,9 +1,9 @@
 angular.module('App').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
     .when('/', {
-      templateUrl: '/views/login.html',
-      controller: 'LoginController',
-      controllerAs: 'login'
+      templateUrl: '/views/home.html',
+      controller: 'HomeController',
+      controllerAs: 'home'
     })
     .when('/home', {
       templateUrl: '/views/home.html',
@@ -56,17 +56,17 @@ angular.module('App').config(['$routeProvider', '$locationProvider', function($r
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .when('/overview', {
-      templateUrl: '/views/overview.html',
-      controller: 'OverviewController',
-      controllerAs: 'over'
-      // ,
-      // resolve: {
-      //   bleh: ['DonationService', function(DonationService){
-      //     return DonationService.getDonorDbStuff();
-      //   }]
-      // }
-    })
+    // .when('/overview', {
+    //   templateUrl: '/views/overview.html',
+    //   controller: 'OverviewController',
+    //   controllerAs: 'over'
+    //   // ,
+    //   // resolve: {
+    //   //   bleh: ['DonationService', function(DonationService){
+    //   //     return DonationService.getDonorDbStuff();
+    //   //   }]
+    //   // }
+    // })
 
     .otherwise({redirectTo:'/'});
 

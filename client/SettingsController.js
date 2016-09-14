@@ -25,7 +25,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 			swal("Deleted!", "Your image has been deleted.", "success");
 			deletePhoto = {};
 			id = 12345;
-			console.log('photo.id', photo.id);
+			// console.log('photo.id', photo.id);
 			deletePhoto.id = photo.id;
 			// console.log('delete pushed' , deletePhoto);
 			$http.post('/photos/deletePhoto', deletePhoto).then(handleDeleteSuccess, handleDeleteFailure);
@@ -33,7 +33,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	}
 
 	function handleDeleteSuccess(response) {
-		console.log('Photo Deleted', response);
+		// console.log('Photo Deleted', response);
 		createPhotoArray();
 	}
 
@@ -48,7 +48,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	function handlePhotoSuccess(response) {
 		vm.photos = response.data;
-		console.log('photosController photos', vm.photos );
+		// console.log('photosController photos', vm.photos );
 		TemplateService.imagesObject.images = response.data;
 	}
 
@@ -74,7 +74,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	function handleHeaderSuccess(response) {
 		vm.headers = response.data;
 		TemplateService.data.headers = vm.headers;
-		console.log('templateservice.data.headers', TemplateService.data.headers);
+		// console.log('templateservice.data.headers', TemplateService.data.headers);
 	}
 
 
@@ -130,14 +130,14 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 				createSignatureArray();
 			}
 		}, function(response) {
-			console.log('response fjklasjflsajklsa', response);
+			// console.log('response fjklasjflsajklsa', response);
 			if (response.status > 0){
 				vm.errorMsg = response.status + ': ' + response.data;
 			}
 		}, function(evt) {
 			// Math.min is to fix IE which reports 200% sometimes
 			file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-			console.log('1', file.progress);
+			// console.log('1', file.progress);
 		});
 	};
 
@@ -204,8 +204,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.menuHighlight.signature = '',
 		vm.menuHighlight.header = '',
 		vm.menuHighlight[id] = 'menu-highlight'
-		console.log('showsettings:', vm.showSettings);
-		console.log('menuHighlight:', vm.menuHighlight);
+		// console.log('showsettings:', vm.showSettings);
+		// console.log('menuHighlight:', vm.menuHighlight);
 	}
 
 	vm.showSettings = {
@@ -231,7 +231,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 	function buildTemplateObject() {
 		var tempTemplateList = TemplateService.templatesObject;
 		vm.templatesList = Object.assign({}, tempTemplateList)
-		console.log('vm.currentTemplate:', vm.currentTemplate);
+		// console.log('vm.currentTemplate:', vm.currentTemplate);
 	}
 
 	function getCurrentTemplate() {
@@ -242,8 +242,8 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 
 	//Pop up modal for editing text
 	vm.editModal = function(id) {
-		console.log('SettingsService.currentTemplate:', SettingsService.currentTemplate);
-		console.log('vm.currentTemplate:', vm.currentTemplate);
+		// console.log('SettingsService.currentTemplate:', SettingsService.currentTemplate);
+		// console.log('vm.currentTemplate:', vm.currentTemplate);
 
 		vm.fieldId = id;
 		vm.currentTemplate.currentField = id;
@@ -302,19 +302,19 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		getCurrentTemplate();
 		vm.templateSaved = false;
 
-		console.log('currentTemplate:', vm.currentTemplate);
-		console.log('template selected:', template);
+		// console.log('currentTemplate:', vm.currentTemplate);
+		// console.log('template selected:', template);
 	}
 
 
 
 	vm.saveAllTemplates = function() {
-		console.log('save all templates:', vm.templatesList);
+		// console.log('save all templates:', vm.templatesList);
 	}
 
 	function setTemplateOnLoad() {
 		SettingsService.currentTemplate.template[0].template = vm.templatesList['template1'];
-		console.log('SettingsService.currentTemplate.template[0].template:', SettingsService.currentTemplate.template[0].template);
+		// console.log('SettingsService.currentTemplate.template[0].template:', SettingsService.currentTemplate.template[0].template);
 	}
 
   vm.templateHighlight = {
@@ -334,7 +334,7 @@ angular.module('App').controller('SettingsController', ['$http', '$location', 'D
 		vm.templateHighlight['template' + id] = 'orange-highlight';
 	}
 	vm.saveTemplate = function(template){
-		console.log(template);
+		// console.log(template);
 		TemplateService.saveTemplate(template);
 		vm.templateSaved= true;
 	}

@@ -7,7 +7,7 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
 
   function getDonorDbStuff(){
     return $http.get('/donor/sentDonors').then(function(response){
-      console.log('db donors', response.data);
+      // console.log('db donors', response.data);
       // console.log('maybe?');
       dbDonors.donors = response.data;
       getDonorsSentEmailData(dbDonors);
@@ -20,11 +20,11 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
   function getDonorsSentEmailData(donors){
     // console.log('probably not', donors);
     return $http.post('/salesforce/overview', donors).then(function(response){
-      console.log('success getting donor stuff from db and sf', response);
+      // console.log('success getting donor stuff from db and sf', response);
       donorObject = response.data;
       // console.log('object', object);
       sortDonorObject(donorObject);
-      console.log('overview sorted', overview);
+      // console.log('overview sorted', overview);
       $location.path('/overview');
     }, function(err){
       console.log('faiiiiiiiiiiiiilure', err);
@@ -70,14 +70,14 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
     sendData.letterhead = '/path/to/letterhead';
     sendData.signature = '/path/to/signature';
     sendData.template = donor["template"+num].temp;
-    console.log('test button');
+    // console.log('test button');
     // $http.post('/donor/createData', sendData).then(function(response){
     //   console.log('test success', response);
     // }, function(response){
     //   console.log('test fail', response);
     // });
     return saveToDb(sendData).then(function(response){
-      console.log('test save success', response);
+      // console.log('test save success', response);
     }, function(err){
       console.log('test save fail', err);
     });
@@ -85,7 +85,7 @@ angular.module('App').factory('DonationService', ['$http', '$location', function
 
   function saveToDb(sendData){
     return $http.post('/donor/createData', sendData).then(function(response){
-      console.log('save to db success', response);
+      // console.log('save to db success', response);
     }, function(err){
       console.log('fail saving to db', err);
     });

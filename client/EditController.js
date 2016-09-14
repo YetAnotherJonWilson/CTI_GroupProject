@@ -59,7 +59,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 
 
 	vm.editModal = function(id) {
-		console.log('currentTemplate:', vm.currentTemplate);
+		// console.log('currentTemplate:', vm.currentTemplate);
 
 		vm.fieldId = id;
 		vm.currentTemplate.currentField = id;
@@ -104,7 +104,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 
 
 	vm.sendMail = function(p1, q, p2) {
-		console.log('You cliked me');
+		// console.log('You cliked me');
 		EmailService.sendMail(p1, q, p2);
 	};
 
@@ -113,7 +113,7 @@ angular.module('App').controller('EditController', ['$http', '$location', '$uibM
 	};
 
 	function getCurrentTemplate(templateNum) {
-		console.log('Im getting the current template');
+		// console.log('Im getting the current template');
 		TemplateService.getCurrentTemplate(templateNum);
 	}
 
