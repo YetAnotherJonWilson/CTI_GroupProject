@@ -16,7 +16,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       console.log('justins log', donor.template1.img);
       sendData.img = donor.template1.img.id;
       sendData.header = donor.template1.header.id;
-      // sendData.sig = donor.template1.sig.id;
+      sendData.sig = donor.template1.sig.id;
     }
     if(donor.templateNum == 2){
       sendData.img = donor.template2.img.id;
