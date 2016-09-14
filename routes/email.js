@@ -54,6 +54,11 @@ router.post('/sendMail', function(request, response){
     }
   });
 
+  console.log('img1', data.img);
+  console.log('img2', data.img2);
+  console.log('img3', data.img3);
+  console.log('img4', data.img4);
+
   var mailOptions = {
     from: 'CTI GROUP <ctithankyou@gmail.com',
     to: "ctithankyou@outlook.com",
