@@ -58,6 +58,7 @@ router.post('/sendMail', function(request, response){
   console.log('img2', data.img2);
   console.log('img3', data.img3);
   console.log('img4', data.img4);
+  // console.log('sig?????', data);
 
   var mailOptions = {
     from: 'CTI GROUP <ctithankyou@gmail.com',

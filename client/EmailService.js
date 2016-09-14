@@ -21,13 +21,13 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
     if(donor.templateNum == 2){
       sendData.img = donor.template2.img.id;
       sendData.header = donor.template2.header.id;
-      // sendData.sig = '';
+      sendData.sig = donor.template2.sig.id;
     }
     if(donor.templateNum == 3){
       sendData.img = donor.template3.img.id;
       sendData.img2 = donor.template3.img2.id;
       sendData.header = donor.template3.header.id;
-      // sendData.sig = '';
+      sendData.sig = donor.template3.sig.id;
     }
     if(donor.templateNum == 4){
       sendData.img = donor.template4.img.id;
@@ -35,7 +35,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       sendData.img3 = donor.template4.img3.id;
       sendData.img4 = donor.template4.img4.id;
       sendData.header = donor.template4.header.id;
-      // sendData.sig = '';
+      sendData.sig = donor.template4.sig.id;
     }
     if(donor.templateNum == 5){
       sendData.img = donor.template5.img.id;
@@ -43,7 +43,7 @@ angular.module('App').factory('EmailService', ['$http', '$location', function($h
       sendData.img3 = donor.template5.img3.id;
       sendData.img4 = donor.template5.img4.id;
       sendData.header = donor.template5.header.id;
-      // sendData.sig = '';
+      sendData.sig = donor.template5.sig.id;
     }
     // sendData.img = "";
     // sendData.img2 = "";
