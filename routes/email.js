@@ -50,7 +50,7 @@ router.post('/sendMail', function(request, response){
     service: 'Gmail',
     auth: {
       user: process.env.emailuser,
-      pass: process.env.emailpass,
+      pass: process.env.emailpass
     }
   });
 
@@ -86,7 +86,7 @@ router.post('/sendMail', function(request, response){
     amount: data.amount,
     date: data.date,
     sendDate: sendDate
-    }),
+    })
 };
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
@@ -105,4 +105,4 @@ router.post('/sendMail', function(request, response){
 
 
 
-module.exports = router
+module.exports = router;
